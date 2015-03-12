@@ -1,4 +1,4 @@
-##2015-01-25 04:13:35##
+##2015-03-12 07:35:16##
 
 ##notes##
  
@@ -43,6 +43,8 @@
 
 
 
+
+
 ##f$call##
 0 
    || [ prwin >= .98 ]                  
@@ -76,18 +78,21 @@
 
 
 
+
+
 ##f$check##
 // f$check and f$fold should evaluate to true per default
 // for auto-check-folding instead of time-outs.
 1 
+
+
 
 ##f$fold##
 // f$check and f$fold should evaluate to true per default
 // for auto-check-folding instead of time-outs.
 1 
 
-##f$prefold##
- 
+
 
 ##f$sitin##
  
@@ -110,11 +115,26 @@
 0
 
 
+
+
+##f$prefold##
+ 
+
 ##f$chat##
  
 
 ##f$delay##
- 
+// Autoplayer-delay in milli-seconds
+0
+
+
+##f$allin_on_betsize_balance_ratio##
+// Allin if betsize is more than X% of our total balance (including currentbet).
+// This affects f$betsize and all f$betpot_X_Y_ functions.
+//  0.00 =  0% = disabled
+//  0.50 = 50%
+0.00
+
 
 ##f$ini_function_on_startup##
  
@@ -139,11 +159,15 @@
 // Works even with "no opponents".
 nopponentsplaying + 1 
 
+
+
 ##f$prwin_number_of_iterations##
 // "Reasonable" default to get PrWin running for beginners.
 // Large enough to get usable results,
 // small enough to save CPU-time.
 1000 
+
+
 
 ##f$prwin_topclip##
  
@@ -164,6 +188,8 @@ nopponentsplaying + 1
 1.00
 
 
+
+
 ##f$icm_prize2##
  
 
@@ -176,6 +202,18 @@ nopponentsplaying + 1
 ##f$icm_prize5##
  
 
+##f$icm_prize6##
+ 
+
+##f$icm_prize7##
+ 
+
+##f$icm_prize8##
+ 
+
+##f$icm_prize9##
+ 
+
 ##f$test##
  
 
@@ -183,36 +221,27 @@ nopponentsplaying + 1
  
 
 ##list1##
-AA  KK  
-
+AA KK 
 
 
 ##list2##
-AA  KK  QQ  JJ  
+AA KK QQ JJ 
 AKs 
-KA  
-
 
 
 ##list3##
-AA  KK  QQ  JJ  TT  99  88  
+AA KK QQ JJ TT 99 88 
 AKs AQs AJs KQs 
-KA  QA  
-
 
 
 ##list4##
-AA  KK  QQ  JJ  TT  99  88  77  66  55  44  33  22  
+AA KK QQ JJ TT 99 88 77 66 55 44 33 22 
 AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs KTs QJs QTs JTs 
-KA  QA  QK  JA  JK  TA  
-
 
 
 ##list5##
-AA  KK  QQ  JJ  TT  99  88  77  66  55  44  33  22  
+AA KK QQ JJ TT 99 88 77 66 55 44 33 22 
 AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs KTs QJs QTs JTs 
-KA  QA  QK  JA  JK  JQ  TA  TK  TQ  TJ  9A  8A  7A  6A  5A  4A  3A  2A  
-
 
 
 ##f$evcall##
@@ -220,8 +249,12 @@ KA  QA  QK  JA  JK  JQ  TA  TK  TQ  TJ  9A  8A  7A  6A  5A  4A  3A  2A
 
 
 
+
+
 ##f$evrais##
 0
+
+
 
 
 
@@ -262,14 +295,20 @@ KA  QA  QK  JA  JK  JQ  TA  TK  TQ  TJ  9A  8A  7A  6A  5A  4A  3A  2A
 
 
 
+
+
 ##f$sraimin##
 [currentbet+call]
+
+
 
 
 
 ##f$swag_adjust##
 [swagtextmethod == 3 ? (call + currentbet) : 
  swagtextmethod == 2 ? (call) : 0]
+
+
 
 
 
