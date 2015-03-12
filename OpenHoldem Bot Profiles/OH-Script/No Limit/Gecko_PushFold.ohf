@@ -1,0 +1,71 @@
+##2015-01-17 10:59:06##
+
+##notes##
+//Contributed by PurpleKush37
+//http://www.maxinmontreal.com/forums/viewtopic.php?f=120&t=12118&start=0
+
+
+
+##f$alli##
+//open shoving
+br==1 && balance<11*bblind && f$stilltoact>=7 && nopponentscalling==0 && f$raises==0 && f$ncallers>.5 && f$ncallers<=1.5 && islist1 ? 1 :
+br==1 && balance<11*bblind && f$stilltoact==6 && nopponentscalling==0 && f$raises==0 && f$ncallers>.5 && f$ncallers<=1.5 && islist2 ? 1 :
+br==1 && balance<11*bblind && f$stilltoact==5 && nopponentscalling==0 && f$raises==0 && f$ncallers>.5 && f$ncallers<=1.5 && islist3 ? 1 :
+br==1 && balance<11*bblind && f$stilltoact==4 && nopponentscalling==0 && f$raises==0 && f$ncallers>.5 && f$ncallers<=1.5 && islist4 ? 1 :
+br==1 && balance<11*bblind && f$stilltoact==3 && nopponentscalling==0 && f$raises==0 && f$ncallers>.5 && f$ncallers<=1.5 && islist5 ? 1 :
+br==1 && balance<11*bblind && f$stilltoact==2 && nopponentscalling==0 && f$raises==0 && f$ncallers>.5 && f$ncallers<=1.5 && islist6 ? 1 :
+br==1 && balance<11*bblind && f$stilltoact==1 && nopponentscalling==0 && f$raises==0 && f$ncallers>.5 && f$ncallers<=1.5 && islist7 ? 1 :
+
+br==1 && balance<11*bblind && f$stilltoact>=7 && nopponentscalling==0 && f$raises==0 && f$ncallers>1.5 && f$ncallers<=2.5 && islist11 ? 1 :
+br==1 && balance<11*bblind && f$stilltoact==6 && nopponentscalling==0 && f$raises==0 && f$ncallers>1.5 && f$ncallers<=2.5 && islist12 ? 1 :
+br==1 && balance<11*bblind && f$stilltoact==5 && nopponentscalling==0 && f$raises==0 && f$ncallers>1.5 && f$ncallers<=2.5 && islist13 ? 1 :
+br==1 && balance<11*bblind && f$stilltoact==4 && nopponentscalling==0 && f$raises==0 && f$ncallers>1.5 && f$ncallers<=2.5 && islist14 ? 1 :
+br==1 && balance<11*bblind && f$stilltoact==3 && nopponentscalling==0 && f$raises==0 && f$ncallers>1.5 && f$ncallers<=2.5 && islist15 ? 1 :
+br==1 && balance<11*bblind && f$stilltoact==2 && nopponentscalling==0 && f$raises==0 && f$ncallers>1.5 && f$ncallers<=2.5 && islist16 ? 1 :
+br==1 && balance<11*bblind && f$stilltoact==1 && nopponentscalling==0 && f$raises==0 && f$ncallers>1.5 && f$ncallers<=2.5 && islist17 ? 1 :
+
+br==1 && balance<11*bblind && f$stilltoact>=7 && nopponentscalling==0 && f$raises==0 && f$ncallers>2.5 && f$ncallers<=3.5 && islist21 ? 1 :
+br==1 && balance<11*bblind && f$stilltoact==6 && nopponentscalling==0 && f$raises==0 && f$ncallers>2.5 && f$ncallers<=3.5 && islist22 ? 1 :
+br==1 && balance<11*bblind && f$stilltoact==5 && nopponentscalling==0 && f$raises==0 && f$ncallers>2.5 && f$ncallers<=3.5 && islist23 ? 1 :
+br==1 && balance<11*bblind && f$stilltoact==4 && nopponentscalling==0 && f$raises==0 && f$ncallers>2.5 && f$ncallers<=3.5 && islist24 ? 1 :
+br==1 && balance<11*bblind && f$stilltoact==3 && nopponentscalling==0 && f$raises==0 && f$ncallers>2.5 && f$ncallers<=3.5 && islist25 ? 1 :
+br==1 && balance<11*bblind && f$stilltoact==2 && nopponentscalling==0 && f$raises==0 && f$ncallers>2.5 && f$ncallers<=3.5 && islist26 ? 1 :
+br==1 && balance<11*bblind && f$stilltoact==1 && nopponentscalling==0 && f$raises==0 && f$ncallers>2.5 && f$ncallers<=3.5 && islist27 ? 1 :
+
+br==1 && balance<11*bblind && f$stilltoact>=7 && nopponentscalling==0 && f$raises==0 && f$ncallers>3.5 && f$ncallers<=4.5 && islist31 ? 1 :
+br==1 && balance<11*bblind && f$stilltoact==6 && nopponentscalling==0 && f$raises==0 && f$ncallers>3.5 && f$ncallers<=4.5 && islist32 ? 1 :
+br==1 && balance<11*bblind && f$stilltoact==5 && nopponentscalling==0 && f$raises==0 && f$ncallers>3.5 && f$ncallers<=4.5 && islist33 ? 1 :
+br==1 && balance<11*bblind && f$stilltoact==4 && nopponentscalling==0 && f$raises==0 && f$ncallers>3.5 && f$ncallers<=4.5 && islist34 ? 1 :
+br==1 && balance<11*bblind && f$stilltoact==3 && nopponentscalling==0 && f$raises==0 && f$ncallers>3.5 && f$ncallers<=4.5 && islist35 ? 1 :
+br==1 && balance<11*bblind && f$stilltoact==2 && nopponentscalling==0 && f$raises==0 && f$ncallers>3.5 && f$ncallers<=4.5 && islist36 ? 1 :
+br==1 && balance<11*bblind && f$stilltoact==1 && nopponentscalling==0 && f$raises==0 && f$ncallers>3.5 && f$ncallers<=4.5 && islist37 ? 1 :
+
+// shoving on limpers
+br==1 && balance<13*bblind && f$stilltoact>=7 && f$raises==0 && islist40 ? 1 :
+br==1 && balance<13*bblind && f$stilltoact==6 && f$raises==0 && islist41 ? 1 :
+br==1 && balance<13*bblind && f$stilltoact==5 && f$raises==0 && islist42 ? 1 :
+br==1 && balance<13*bblind && f$stilltoact==4 && f$raises==0 && islist43 ? 1 :
+br==1 && balance<13*bblind && f$stilltoact==3 && f$raises==0 && islist44 ? 1 :
+br==1 && balance<13*bblind && f$stilltoact==2 && f$raises==0 && islist45 ? 1 :
+br==1 && balance<13*bblind && f$stilltoact==1 && f$raises==0 && islist40 ? 1 :
+
+// 3/4 bet shove
+br==1 && f$raises==1 && balance<20*bblind && f$3bet==1 && call<=4*bblind ? 1 :
+br==1 && f$raises==1 && balance<(7*(call+currentbet)) && f$3bet==1 && call>4*bblind ? 1 :
+br==1 && f$raises==2 && balance<(5*(call+currentbet)) && f$3bet==1 && call<=14*bblind ? 1 :
+br==1 && f$raises==2 && balance<(4*(call+currentbet)) && f$3bet==1 && call>14*bblind ? 1 :
+
+//
+f$callbigpot && call>0 && 2*call>balance ? 1 :
+f$rais_bigpot && call==0 && balance<pot*1.2 ? 1 :
+f$rais_bigpot && call>=0 && call*5>balance ? 1 :
+
+0
+
+
+
+##f$Initiative_Hero##
+##2010-12-04 14:51:39##
+
+
+

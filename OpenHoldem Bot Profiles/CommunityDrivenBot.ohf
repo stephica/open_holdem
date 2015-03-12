@@ -1,0 +1,1912 @@
+##2015-03-11 01:34:44##
+
+##notes##
+ 
+
+##dll##
+ 
+
+##f$alli##
+ 
+
+##f$betpot_2_1##
+ 
+
+##f$betpot_1_1##
+ 
+
+##f$betpot_3_4##
+ 
+
+##f$betpot_2_3##
+ 
+
+##f$betpot_1_2##
+ 
+
+##f$betpot_1_3##
+ 
+
+##f$betpot_1_4##
+ 
+
+##f$betsize##
+// Betsize in dollars, raise-to semantics.
+// OpenHoldem will auto-adapt the betsize to the casinos input-requirements.
+// Please define your tablemaps "swagtextmethod" to configure this feature.
+
+
+##f$rais##
+ 
+
+##f$call##
+ 
+
+##f$check##
+// f$check and f$fold should evaluate to true per default
+// for auto-check-folding instead of time-outs.
+1 
+
+
+
+##f$fold##
+// f$check and f$fold should evaluate to true per default
+// for auto-check-folding instead of time-outs.
+1 
+
+
+
+##f$sitin##
+ 
+
+##f$sitout##
+ 
+
+##f$leave##
+ 
+
+##f$autopost##
+ 
+
+##f$close##
+ 
+
+##f$rebuy##
+// f$rebuy should evaluate to the target-amount in dollars.
+// This value will be passed to the rebuy-script as a parameter.
+0
+
+
+
+
+##f$prefold##
+ 
+
+##f$chat##
+ 
+
+##f$delay##
+// Autoplayer-delay in milli-seconds
+0
+
+
+##f$allin_on_betsize_balance_ratio##
+// Allin if betsize is more than X% of our total balance (including currentbet).
+// This affects f$betsize and all f$betpot_X_Y_ functions.
+//  0.00 =  0% = disabled
+//  0.50 = 50%
+0.00
+
+
+##f$ini_function_on_startup##
+ 
+
+##f$ini_function_on_connection##
+ 
+
+##f$ini_function_on_handreset##
+ 
+
+##f$ini_function_on_new_round##
+ 
+
+##f$ini_function_on_my_turn##
+ 
+
+##f$ini_function_on_heartbeat##
+ 
+
+##f$prwin_number_of_opponents##
+// "Reasonable" default to get standard PrWin running for beginners,
+// Works even with "no opponents".
+nopponentsplaying + 1 
+
+
+
+##f$prwin_number_of_iterations##
+// "Reasonable" default to get PrWin running for beginners.
+// Large enough to get usable results,
+// small enough to save CPU-time.
+1000 
+
+
+
+##f$prwin_topclip##
+ 
+
+##f$prwin_mustplay##
+ 
+
+##f$prwin_willplay##
+ 
+
+##f$prwin_wontplay##
+ 
+
+##f$icm_prize1##
+// f$icm_prizeX functions are used to configure the payout-structure in tournaments.
+// The sum of all f$icm_prizeX functions should be 1.00 (= 100%).
+// Default to get things going: the winner takes it all.
+1.00
+
+
+
+
+##f$icm_prize2##
+ 
+
+##f$icm_prize3##
+ 
+
+##f$icm_prize4##
+ 
+
+##f$icm_prize5##
+ 
+
+##f$icm_prize6##
+ 
+
+##f$icm_prize7##
+ 
+
+##f$icm_prize8##
+ 
+
+##f$icm_prize9##
+ 
+
+##f$test##
+ 
+
+##f$debug##
+ 
+
+##list3BetIP##
+AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s  
+KQs KJs KTs K9s K8s K7s K6s K5s K4s K3s K2s      
+QJs QTs Q9s Q8s Q7s Q6s Q5s Q4s Q3s Q2s  
+JTs J9s J8s J7s J6s J5s J4s J3s J2s  
+T9s T8s T7s T6s T5s T4s T3s T2s  
+98s 97s 96s 95s 94s 93s 92s  
+87s 86s 85s 84s 83s 82s  
+76s 75s 74s 73s 72s  
+65s 64s 63s 62s  
+54s 53s 52s  
+43s 42s  
+32s
+
+
+
+
+
+##list3BetOOP##
+AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s  
+KQs KJs KTs K9s K8s K7s K6s K5s K4s K3s K2s      
+QJs QTs Q9s Q8s Q7s Q6s Q5s Q4s Q3s Q2s  
+JTs J9s J8s J7s J6s J5s J4s J3s J2s  
+T9s T8s T7s T6s T5s T4s T3s T2s  
+98s 97s 96s 95s 94s 93s 92s  
+87s 86s 85s 84s 83s 82s  
+76s 75s 74s 73s 72s  
+65s 64s 63s 62s  
+54s 53s 52s  
+43s 42s  
+32s
+
+
+
+
+
+##list4BetBeforeHeroFirstActionIP##
+AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s  
+KQs KJs KTs K9s K8s K7s K6s K5s K4s K3s K2s      
+QJs QTs Q9s Q8s Q7s Q6s Q5s Q4s Q3s Q2s  
+JTs J9s J8s J7s J6s J5s J4s J3s J2s  
+T9s T8s T7s T6s T5s T4s T3s T2s  
+98s 97s 96s 95s 94s 93s 92s  
+87s 86s 85s 84s 83s 82s  
+76s 75s 74s 73s 72s  
+65s 64s 63s 62s  
+54s 53s 52s  
+43s 42s  
+32s
+
+
+
+
+
+##list4BetBeforeHeroFirstActionOOP##
+AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s  
+KQs KJs KTs K9s K8s K7s K6s K5s K4s K3s K2s      
+QJs QTs Q9s Q8s Q7s Q6s Q5s Q4s Q3s Q2s  
+JTs J9s J8s J7s J6s J5s J4s J3s J2s  
+T9s T8s T7s T6s T5s T4s T3s T2s  
+98s 97s 96s 95s 94s 93s 92s  
+87s 86s 85s 84s 83s 82s  
+76s 75s 74s 73s 72s  
+65s 64s 63s 62s  
+54s 53s 52s  
+43s 42s  
+32s
+
+
+
+
+
+##list4BetIP##
+AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s  
+KQs KJs KTs K9s K8s K7s K6s K5s K4s K3s K2s      
+QJs QTs Q9s Q8s Q7s Q6s Q5s Q4s Q3s Q2s  
+JTs J9s J8s J7s J6s J5s J4s J3s J2s  
+T9s T8s T7s T6s T5s T4s T3s T2s  
+98s 97s 96s 95s 94s 93s 92s  
+87s 86s 85s 84s 83s 82s  
+76s 75s 74s 73s 72s  
+65s 64s 63s 62s  
+54s 53s 52s  
+43s 42s  
+32s
+
+
+
+
+
+##list4BetOOP##
+AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s  
+KQs KJs KTs K9s K8s K7s K6s K5s K4s K3s K2s      
+QJs QTs Q9s Q8s Q7s Q6s Q5s Q4s Q3s Q2s  
+JTs J9s J8s J7s J6s J5s J4s J3s J2s  
+T9s T8s T7s T6s T5s T4s T3s T2s  
+98s 97s 96s 95s 94s 93s 92s  
+87s 86s 85s 84s 83s 82s  
+76s 75s 74s 73s 72s  
+65s 64s 63s 62s  
+54s 53s 52s  
+43s 42s  
+32s
+
+
+
+
+
+##list4BetVsSqueezeIP##
+AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s  
+KQs KJs KTs K9s K8s K7s K6s K5s K4s K3s K2s      
+QJs QTs Q9s Q8s Q7s Q6s Q5s Q4s Q3s Q2s  
+JTs J9s J8s J7s J6s J5s J4s J3s J2s  
+T9s T8s T7s T6s T5s T4s T3s T2s  
+98s 97s 96s 95s 94s 93s 92s  
+87s 86s 85s 84s 83s 82s  
+76s 75s 74s 73s 72s  
+65s 64s 63s 62s  
+54s 53s 52s  
+43s 42s  
+32s
+
+
+
+
+
+##list4BetVsSqueezeOOP##
+AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s  
+KQs KJs KTs K9s K8s K7s K6s K5s K4s K3s K2s      
+QJs QTs Q9s Q8s Q7s Q6s Q5s Q4s Q3s Q2s  
+JTs J9s J8s J7s J6s J5s J4s J3s J2s  
+T9s T8s T7s T6s T5s T4s T3s T2s  
+98s 97s 96s 95s 94s 93s 92s  
+87s 86s 85s 84s 83s 82s  
+76s 75s 74s 73s 72s  
+65s 64s 63s 62s  
+54s 53s 52s  
+43s 42s  
+32s
+
+
+
+
+
+##list5BetBeforeHeroFirstActionIP##
+AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s  
+KQs KJs KTs K9s K8s K7s K6s K5s K4s K3s K2s      
+QJs QTs Q9s Q8s Q7s Q6s Q5s Q4s Q3s Q2s  
+JTs J9s J8s J7s J6s J5s J4s J3s J2s  
+T9s T8s T7s T6s T5s T4s T3s T2s  
+98s 97s 96s 95s 94s 93s 92s  
+87s 86s 85s 84s 83s 82s  
+76s 75s 74s 73s 72s  
+65s 64s 63s 62s  
+54s 53s 52s  
+43s 42s  
+32s
+
+
+
+
+
+##list5BetBeforeHeroFirstActionOOP##
+AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s  
+KQs KJs KTs K9s K8s K7s K6s K5s K4s K3s K2s      
+QJs QTs Q9s Q8s Q7s Q6s Q5s Q4s Q3s Q2s  
+JTs J9s J8s J7s J6s J5s J4s J3s J2s  
+T9s T8s T7s T6s T5s T4s T3s T2s  
+98s 97s 96s 95s 94s 93s 92s  
+87s 86s 85s 84s 83s 82s  
+76s 75s 74s 73s 72s  
+65s 64s 63s 62s  
+54s 53s 52s  
+43s 42s  
+32s
+
+
+
+
+
+##list5BetIP##
+AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s  
+KQs KJs KTs K9s K8s K7s K6s K5s K4s K3s K2s      
+QJs QTs Q9s Q8s Q7s Q6s Q5s Q4s Q3s Q2s  
+JTs J9s J8s J7s J6s J5s J4s J3s J2s  
+T9s T8s T7s T6s T5s T4s T3s T2s  
+98s 97s 96s 95s 94s 93s 92s  
+87s 86s 85s 84s 83s 82s  
+76s 75s 74s 73s 72s  
+65s 64s 63s 62s  
+54s 53s 52s  
+43s 42s  
+32s
+
+
+
+
+
+##list5BetOOP##
+AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s  
+KQs KJs KTs K9s K8s K7s K6s K5s K4s K3s K2s      
+QJs QTs Q9s Q8s Q7s Q6s Q5s Q4s Q3s Q2s  
+JTs J9s J8s J7s J6s J5s J4s J3s J2s  
+T9s T8s T7s T6s T5s T4s T3s T2s  
+98s 97s 96s 95s 94s 93s 92s  
+87s 86s 85s 84s 83s 82s  
+76s 75s 74s 73s 72s  
+65s 64s 63s 62s  
+54s 53s 52s  
+43s 42s  
+32s
+
+
+
+
+
+##list6BetBeforeHeroFirstActionIP##
+AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s  
+KQs KJs KTs K9s K8s K7s K6s K5s K4s K3s K2s      
+QJs QTs Q9s Q8s Q7s Q6s Q5s Q4s Q3s Q2s  
+JTs J9s J8s J7s J6s J5s J4s J3s J2s  
+T9s T8s T7s T6s T5s T4s T3s T2s  
+98s 97s 96s 95s 94s 93s 92s  
+87s 86s 85s 84s 83s 82s  
+76s 75s 74s 73s 72s  
+65s 64s 63s 62s  
+54s 53s 52s  
+43s 42s  
+32s
+
+
+
+
+
+##list6BetBeforeHeroFirstActionOOP##
+AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s  
+KQs KJs KTs K9s K8s K7s K6s K5s K4s K3s K2s      
+QJs QTs Q9s Q8s Q7s Q6s Q5s Q4s Q3s Q2s  
+JTs J9s J8s J7s J6s J5s J4s J3s J2s  
+T9s T8s T7s T6s T5s T4s T3s T2s  
+98s 97s 96s 95s 94s 93s 92s  
+87s 86s 85s 84s 83s 82s  
+76s 75s 74s 73s 72s  
+65s 64s 63s 62s  
+54s 53s 52s  
+43s 42s  
+32s
+
+
+
+
+
+##list6BetIP##
+AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s  
+KQs KJs KTs K9s K8s K7s K6s K5s K4s K3s K2s      
+QJs QTs Q9s Q8s Q7s Q6s Q5s Q4s Q3s Q2s  
+JTs J9s J8s J7s J6s J5s J4s J3s J2s  
+T9s T8s T7s T6s T5s T4s T3s T2s  
+98s 97s 96s 95s 94s 93s 92s  
+87s 86s 85s 84s 83s 82s  
+76s 75s 74s 73s 72s  
+65s 64s 63s 62s  
+54s 53s 52s  
+43s 42s  
+32s
+
+
+
+
+
+##list6BetOOP##
+AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s  
+KQs KJs KTs K9s K8s K7s K6s K5s K4s K3s K2s      
+QJs QTs Q9s Q8s Q7s Q6s Q5s Q4s Q3s Q2s  
+JTs J9s J8s J7s J6s J5s J4s J3s J2s  
+T9s T8s T7s T6s T5s T4s T3s T2s  
+98s 97s 96s 95s 94s 93s 92s  
+87s 86s 85s 84s 83s 82s  
+76s 75s 74s 73s 72s  
+65s 64s 63s 62s  
+54s 53s 52s  
+43s 42s  
+32s
+
+
+
+
+
+##listCallRaiseWhenNoCallIP##
+AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o  
+KQo KJo KTo K9o K8o K7o K6o K5o K4o K3o K2o      
+QJo QTo Q9o Q8o Q7o Q6o Q5o Q4o Q3o Q2o  
+JTo J9o J8o J7o J6o J5o J4o J3o J2o  
+T9o T8o T7o T6o T5o T4o T3o T2o  
+98o 97o 96o 95o 94o 93o 92o  
+87o 86o 85o 84o 83o 82o  
+76o 75o 74o 73o 72o  
+65o 64o 63o 62o  
+54o 53o 52o  
+43o 42o  
+32o
+
+
+
+
+
+##listCallRaiseWhenNoCallOOP##
+AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o  
+KQo KJo KTo K9o K8o K7o K6o K5o K4o K3o K2o      
+QJo QTo Q9o Q8o Q7o Q6o Q5o Q4o Q3o Q2o  
+JTo J9o J8o J7o J6o J5o J4o J3o J2o  
+T9o T8o T7o T6o T5o T4o T3o T2o  
+98o 97o 96o 95o 94o 93o 92o  
+87o 86o 85o 84o 83o 82o  
+76o 75o 74o 73o 72o  
+65o 64o 63o 62o  
+54o 53o 52o  
+43o 42o  
+32o
+
+//******************************************************************************
+// Squeeze or coldcall a raise when 1 or more call before Hero first action
+//******************************************************************************
+
+
+
+
+##listCallRaiseWhenOthersCallsIP##
+AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o  
+KQo KJo KTo K9o K8o K7o K6o K5o K4o K3o K2o      
+QJo QTo Q9o Q8o Q7o Q6o Q5o Q4o Q3o Q2o  
+JTo J9o J8o J7o J6o J5o J4o J3o J2o  
+T9o T8o T7o T6o T5o T4o T3o T2o  
+98o 97o 96o 95o 94o 93o 92o  
+87o 86o 85o 84o 83o 82o  
+76o 75o 74o 73o 72o  
+65o 64o 63o 62o  
+54o 53o 52o  
+43o 42o  
+32o
+
+
+
+
+
+##listCallRaiseWhenOthersCallsOOP##
+AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o  
+KQo KJo KTo K9o K8o K7o K6o K5o K4o K3o K2o      
+QJo QTo Q9o Q8o Q7o Q6o Q5o Q4o Q3o Q2o  
+JTo J9o J8o J7o J6o J5o J4o J3o J2o  
+T9o T8o T7o T6o T5o T4o T3o T2o  
+98o 97o 96o 95o 94o 93o 92o  
+87o 86o 85o 84o 83o 82o  
+76o 75o 74o 73o 72o  
+65o 64o 63o 62o  
+54o 53o 52o  
+43o 42o  
+32o
+
+//******************************************************************************
+// 4Bet or ColdCall when Hero Facing 3Bet before first action
+//******************************************************************************
+
+
+
+
+##listColdCall3BetBeforeHeroFirstActionIP##
+AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o  
+KQo KJo KTo K9o K8o K7o K6o K5o K4o K3o K2o      
+QJo QTo Q9o Q8o Q7o Q6o Q5o Q4o Q3o Q2o  
+JTo J9o J8o J7o J6o J5o J4o J3o J2o  
+T9o T8o T7o T6o T5o T4o T3o T2o  
+98o 97o 96o 95o 94o 93o 92o  
+87o 86o 85o 84o 83o 82o  
+76o 75o 74o 73o 72o  
+65o 64o 63o 62o  
+54o 53o 52o  
+43o 42o  
+32o
+
+
+
+
+
+##listColdCall3BetBeforeHeroFirstActionOOP##
+AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o  
+KQo KJo KTo K9o K8o K7o K6o K5o K4o K3o K2o      
+QJo QTo Q9o Q8o Q7o Q6o Q5o Q4o Q3o Q2o  
+JTo J9o J8o J7o J6o J5o J4o J3o J2o  
+T9o T8o T7o T6o T5o T4o T3o T2o  
+98o 97o 96o 95o 94o 93o 92o  
+87o 86o 85o 84o 83o 82o  
+76o 75o 74o 73o 72o  
+65o 64o 63o 62o  
+54o 53o 52o  
+43o 42o  
+32o
+
+//******************************************************************************
+// 5Bet or ColdCall when Hero Facing 4Bet before first action
+//******************************************************************************
+
+
+
+
+##listColdCall3BetIP##
+AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o  
+KQo KJo KTo K9o K8o K7o K6o K5o K4o K3o K2o      
+QJo QTo Q9o Q8o Q7o Q6o Q5o Q4o Q3o Q2o  
+JTo J9o J8o J7o J6o J5o J4o J3o J2o  
+T9o T8o T7o T6o T5o T4o T3o T2o  
+98o 97o 96o 95o 94o 93o 92o  
+87o 86o 85o 84o 83o 82o  
+76o 75o 74o 73o 72o  
+65o 64o 63o 62o  
+54o 53o 52o  
+43o 42o  
+32o
+
+
+
+
+
+##listColdCall3BetOOP##
+AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o  
+KQo KJo KTo K9o K8o K7o K6o K5o K4o K3o K2o      
+QJo QTo Q9o Q8o Q7o Q6o Q5o Q4o Q3o Q2o  
+JTo J9o J8o J7o J6o J5o J4o J3o J2o  
+T9o T8o T7o T6o T5o T4o T3o T2o  
+98o 97o 96o 95o 94o 93o 92o  
+87o 86o 85o 84o 83o 82o  
+76o 75o 74o 73o 72o  
+65o 64o 63o 62o  
+54o 53o 52o  
+43o 42o  
+32o
+
+//******************************************************************************
+// 4Bet or ColdCall when Hero is the original raiser and Facing Squeeze
+//******************************************************************************
+
+
+
+
+##listColdCall4BetBeforeHeroFirstActionIP##
+AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o  
+KQo KJo KTo K9o K8o K7o K6o K5o K4o K3o K2o      
+QJo QTo Q9o Q8o Q7o Q6o Q5o Q4o Q3o Q2o  
+JTo J9o J8o J7o J6o J5o J4o J3o J2o  
+T9o T8o T7o T6o T5o T4o T3o T2o  
+98o 97o 96o 95o 94o 93o 92o  
+87o 86o 85o 84o 83o 82o  
+76o 75o 74o 73o 72o  
+65o 64o 63o 62o  
+54o 53o 52o  
+43o 42o  
+32o
+
+
+
+
+
+##listColdCall4BetBeforeHeroFirstActionOOP##
+AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o  
+KQo KJo KTo K9o K8o K7o K6o K5o K4o K3o K2o      
+QJo QTo Q9o Q8o Q7o Q6o Q5o Q4o Q3o Q2o  
+JTo J9o J8o J7o J6o J5o J4o J3o J2o  
+T9o T8o T7o T6o T5o T4o T3o T2o  
+98o 97o 96o 95o 94o 93o 92o  
+87o 86o 85o 84o 83o 82o  
+76o 75o 74o 73o 72o  
+65o 64o 63o 62o  
+54o 53o 52o  
+43o 42o  
+32o
+
+//******************************************************************************
+// 6Bet or ColdCall when Hero Facing 5Bet before first action
+//******************************************************************************
+
+
+
+
+##listColdCall4BetIP##
+AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o  
+KQo KJo KTo K9o K8o K7o K6o K5o K4o K3o K2o      
+QJo QTo Q9o Q8o Q7o Q6o Q5o Q4o Q3o Q2o  
+JTo J9o J8o J7o J6o J5o J4o J3o J2o  
+T9o T8o T7o T6o T5o T4o T3o T2o  
+98o 97o 96o 95o 94o 93o 92o  
+87o 86o 85o 84o 83o 82o  
+76o 75o 74o 73o 72o  
+65o 64o 63o 62o  
+54o 53o 52o  
+43o 42o  
+32o
+
+
+
+
+
+##listColdCall4BetOOP##
+AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o  
+KQo KJo KTo K9o K8o K7o K6o K5o K4o K3o K2o      
+QJo QTo Q9o Q8o Q7o Q6o Q5o Q4o Q3o Q2o  
+JTo J9o J8o J7o J6o J5o J4o J3o J2o  
+T9o T8o T7o T6o T5o T4o T3o T2o  
+98o 97o 96o 95o 94o 93o 92o  
+87o 86o 85o 84o 83o 82o  
+76o 75o 74o 73o 72o  
+65o 64o 63o 62o  
+54o 53o 52o  
+43o 42o  
+32o
+
+//******************************************************************************
+// 6Bet or ColdCall when Hero is the 4bettor and Facing 5Bet
+//******************************************************************************
+
+
+
+
+##listColdCall5BetBeforeHeroFirstActionIP##
+AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o  
+KQo KJo KTo K9o K8o K7o K6o K5o K4o K3o K2o      
+QJo QTo Q9o Q8o Q7o Q6o Q5o Q4o Q3o Q2o  
+JTo J9o J8o J7o J6o J5o J4o J3o J2o  
+T9o T8o T7o T6o T5o T4o T3o T2o  
+98o 97o 96o 95o 94o 93o 92o  
+87o 86o 85o 84o 83o 82o  
+76o 75o 74o 73o 72o  
+65o 64o 63o 62o  
+54o 53o 52o  
+43o 42o  
+32o
+
+
+
+
+
+##listColdCall5BetBeforeHeroFirstActionOOP##
+AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o  
+KQo KJo KTo K9o K8o K7o K6o K5o K4o K3o K2o      
+QJo QTo Q9o Q8o Q7o Q6o Q5o Q4o Q3o Q2o  
+JTo J9o J8o J7o J6o J5o J4o J3o J2o  
+T9o T8o T7o T6o T5o T4o T3o T2o  
+98o 97o 96o 95o 94o 93o 92o  
+87o 86o 85o 84o 83o 82o  
+76o 75o 74o 73o 72o  
+65o 64o 63o 62o  
+54o 53o 52o  
+43o 42o  
+32o
+
+//******************************************************************************
+// 4Bet or ColdCall when Hero is the original raiser and Facing 3Bet
+//******************************************************************************
+
+
+
+
+##listColdCall5BetIP##
+AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o  
+KQo KJo KTo K9o K8o K7o K6o K5o K4o K3o K2o      
+QJo QTo Q9o Q8o Q7o Q6o Q5o Q4o Q3o Q2o  
+JTo J9o J8o J7o J6o J5o J4o J3o J2o  
+T9o T8o T7o T6o T5o T4o T3o T2o  
+98o 97o 96o 95o 94o 93o 92o  
+87o 86o 85o 84o 83o 82o  
+76o 75o 74o 73o 72o  
+65o 64o 63o 62o  
+54o 53o 52o  
+43o 42o  
+32o
+
+
+
+
+
+##listColdCall5BetOOP##
+AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o  
+KQo KJo KTo K9o K8o K7o K6o K5o K4o K3o K2o      
+QJo QTo Q9o Q8o Q7o Q6o Q5o Q4o Q3o Q2o  
+JTo J9o J8o J7o J6o J5o J4o J3o J2o  
+T9o T8o T7o T6o T5o T4o T3o T2o  
+98o 97o 96o 95o 94o 93o 92o  
+87o 86o 85o 84o 83o 82o  
+76o 75o 74o 73o 72o  
+65o 64o 63o 62o  
+54o 53o 52o  
+43o 42o  
+32o
+
+//******************************************************************************
+//				 			S E T U P   P O S T F L O P
+//							===========================
+//	Have a look at the "Handstrenght" and "Board" section of the OpenPPL_Manual
+//  to create your own postflop strategy.
+//
+//	For debugging purpose bot act as follow:
+//		- When Have 4/5 FlushDraw or Flush: Action taken Raise or Bet
+//		- When Have 3/5 FlushDraw: Action taken Call or Check
+//		- When Have 2/5 FlushDraw: Action taken Check or Fold
+//
+//  Dictionary:
+//   - OneWayPot = 1 Opponents
+//   - TwoWayPot = 2 Opponents
+//   - MultyWayPot = 3+ Opponents
+//   - IP = Hero is In Position
+//   - OOP Hero is Out Of Position
+// 
+// N.B. Board and/or Handstrenght undefined (blank) will be checked or folded 
+//******************************************************************************
+
+//******************************************************************************
+// 							F L O P   S T R A T E G Y
+//							=========================
+//******************************************************************************
+//******************************************************************************
+// DonkBet: define Board and/or Handstrenght to DonkBetting Flop depending
+// on number of players.
+//******************************************************************************
+
+
+
+
+##listColdCallSqueezeIP##
+AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o  
+KQo KJo KTo K9o K8o K7o K6o K5o K4o K3o K2o      
+QJo QTo Q9o Q8o Q7o Q6o Q5o Q4o Q3o Q2o  
+JTo J9o J8o J7o J6o J5o J4o J3o J2o  
+T9o T8o T7o T6o T5o T4o T3o T2o  
+98o 97o 96o 95o 94o 93o 92o  
+87o 86o 85o 84o 83o 82o  
+76o 75o 74o 73o 72o  
+65o 64o 63o 62o  
+54o 53o 52o  
+43o 42o  
+32o
+
+
+
+
+
+##listColdCallSqueezeOOP##
+AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o  
+KQo KJo KTo K9o K8o K7o K6o K5o K4o K3o K2o      
+QJo QTo Q9o Q8o Q7o Q6o Q5o Q4o Q3o Q2o  
+JTo J9o J8o J7o J6o J5o J4o J3o J2o  
+T9o T8o T7o T6o T5o T4o T3o T2o  
+98o 97o 96o 95o 94o 93o 92o  
+87o 86o 85o 84o 83o 82o  
+76o 75o 74o 73o 72o  
+65o 64o 63o 62o  
+54o 53o 52o  
+43o 42o  
+32o
+
+//******************************************************************************
+// 5Bet or ColdCall when Hero is the 3bettor and Facing 4Bet
+//******************************************************************************
+
+
+
+
+##listIsolateLimpersBB##
+AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s  
+KQs KJs KTs K9s K8s K7s K6s K5s K4s K3s K2s      
+QJs QTs Q9s Q8s Q7s Q6s Q5s Q4s Q3s Q2s  
+JTs J9s J8s J7s J6s J5s J4s J3s J2s  
+T9s T8s T7s T6s T5s T4s T3s T2s  
+98s 97s 96s 95s 94s 93s 92s  
+87s 86s 85s 84s 83s 82s  
+76s 75s 74s 73s 72s  
+65s 64s 63s 62s  
+54s 53s 52s  
+43s 42s  
+32s
+
+//******************************************************************************
+// Limping Hands by Position
+//******************************************************************************
+
+
+
+
+##listIsolateLimpersBTN##
+AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s  
+KQs KJs KTs K9s K8s K7s K6s K5s K4s K3s K2s      
+QJs QTs Q9s Q8s Q7s Q6s Q5s Q4s Q3s Q2s  
+JTs J9s J8s J7s J6s J5s J4s J3s J2s  
+T9s T8s T7s T6s T5s T4s T3s T2s  
+98s 97s 96s 95s 94s 93s 92s  
+87s 86s 85s 84s 83s 82s  
+76s 75s 74s 73s 72s  
+65s 64s 63s 62s  
+54s 53s 52s  
+43s 42s  
+32s
+
+
+
+
+
+##listIsolateLimpersCO##
+AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s  
+KQs KJs KTs K9s K8s K7s K6s K5s K4s K3s K2s      
+QJs QTs Q9s Q8s Q7s Q6s Q5s Q4s Q3s Q2s  
+JTs J9s J8s J7s J6s J5s J4s J3s J2s  
+T9s T8s T7s T6s T5s T4s T3s T2s  
+98s 97s 96s 95s 94s 93s 92s  
+87s 86s 85s 84s 83s 82s  
+76s 75s 74s 73s 72s  
+65s 64s 63s 62s  
+54s 53s 52s  
+43s 42s  
+32s
+
+
+
+
+
+##listIsolateLimpersEP2##
+AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s  
+KQs KJs KTs K9s K8s K7s K6s K5s K4s K3s K2s      
+QJs QTs Q9s Q8s Q7s Q6s Q5s Q4s Q3s Q2s  
+JTs J9s J8s J7s J6s J5s J4s J3s J2s  
+T9s T8s T7s T6s T5s T4s T3s T2s  
+98s 97s 96s 95s 94s 93s 92s  
+87s 86s 85s 84s 83s 82s  
+76s 75s 74s 73s 72s  
+65s 64s 63s 62s  
+54s 53s 52s  
+43s 42s  
+32s
+
+
+
+
+
+##listIsolateLimpersEP3##
+AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s  
+KQs KJs KTs K9s K8s K7s K6s K5s K4s K3s K2s      
+QJs QTs Q9s Q8s Q7s Q6s Q5s Q4s Q3s Q2s  
+JTs J9s J8s J7s J6s J5s J4s J3s J2s  
+T9s T8s T7s T6s T5s T4s T3s T2s  
+98s 97s 96s 95s 94s 93s 92s  
+87s 86s 85s 84s 83s 82s  
+76s 75s 74s 73s 72s  
+65s 64s 63s 62s  
+54s 53s 52s  
+43s 42s  
+32s
+
+
+
+
+
+##listIsolateLimpersMP1##
+AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s  
+KQs KJs KTs K9s K8s K7s K6s K5s K4s K3s K2s      
+QJs QTs Q9s Q8s Q7s Q6s Q5s Q4s Q3s Q2s  
+JTs J9s J8s J7s J6s J5s J4s J3s J2s  
+T9s T8s T7s T6s T5s T4s T3s T2s  
+98s 97s 96s 95s 94s 93s 92s  
+87s 86s 85s 84s 83s 82s  
+76s 75s 74s 73s 72s  
+65s 64s 63s 62s  
+54s 53s 52s  
+43s 42s  
+32s
+
+
+
+
+
+##listIsolateLimpersMP2##
+AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s  
+KQs KJs KTs K9s K8s K7s K6s K5s K4s K3s K2s      
+QJs QTs Q9s Q8s Q7s Q6s Q5s Q4s Q3s Q2s  
+JTs J9s J8s J7s J6s J5s J4s J3s J2s  
+T9s T8s T7s T6s T5s T4s T3s T2s  
+98s 97s 96s 95s 94s 93s 92s  
+87s 86s 85s 84s 83s 82s  
+76s 75s 74s 73s 72s  
+65s 64s 63s 62s  
+54s 53s 52s  
+43s 42s  
+32s
+
+
+
+
+
+##listIsolateLimpersMP3##
+AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s  
+KQs KJs KTs K9s K8s K7s K6s K5s K4s K3s K2s      
+QJs QTs Q9s Q8s Q7s Q6s Q5s Q4s Q3s Q2s  
+JTs J9s J8s J7s J6s J5s J4s J3s J2s  
+T9s T8s T7s T6s T5s T4s T3s T2s  
+98s 97s 96s 95s 94s 93s 92s  
+87s 86s 85s 84s 83s 82s  
+76s 75s 74s 73s 72s  
+65s 64s 63s 62s  
+54s 53s 52s  
+43s 42s  
+32s
+
+
+
+
+
+##listIsolateLimpersSB##
+AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s  
+KQs KJs KTs K9s K8s K7s K6s K5s K4s K3s K2s      
+QJs QTs Q9s Q8s Q7s Q6s Q5s Q4s Q3s Q2s  
+JTs J9s J8s J7s J6s J5s J4s J3s J2s  
+T9s T8s T7s T6s T5s T4s T3s T2s  
+98s 97s 96s 95s 94s 93s 92s  
+87s 86s 85s 84s 83s 82s  
+76s 75s 74s 73s 72s  
+65s 64s 63s 62s  
+54s 53s 52s  
+43s 42s  
+32s
+
+
+
+
+
+##listLimpBTN##
+AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o  
+KQo KJo KTo K9o K8o K7o K6o K5o K4o K3o K2o      
+QJo QTo Q9o Q8o Q7o Q6o Q5o Q4o Q3o Q2o  
+JTo J9o J8o J7o J6o J5o J4o J3o J2o  
+T9o T8o T7o T6o T5o T4o T3o T2o  
+98o 97o 96o 95o 94o 93o 92o  
+87o 86o 85o 84o 83o 82o  
+76o 75o 74o 73o 72o  
+65o 64o 63o 62o  
+54o 53o 52o  
+43o 42o  
+32o
+
+
+
+
+
+##listLimpCO##
+AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o  
+KQo KJo KTo K9o K8o K7o K6o K5o K4o K3o K2o      
+QJo QTo Q9o Q8o Q7o Q6o Q5o Q4o Q3o Q2o  
+JTo J9o J8o J7o J6o J5o J4o J3o J2o  
+T9o T8o T7o T6o T5o T4o T3o T2o  
+98o 97o 96o 95o 94o 93o 92o  
+87o 86o 85o 84o 83o 82o  
+76o 75o 74o 73o 72o  
+65o 64o 63o 62o  
+54o 53o 52o  
+43o 42o  
+32o
+
+
+
+
+
+##listLimpEP1##
+AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o  
+KQo KJo KTo K9o K8o K7o K6o K5o K4o K3o K2o      
+QJo QTo Q9o Q8o Q7o Q6o Q5o Q4o Q3o Q2o  
+JTo J9o J8o J7o J6o J5o J4o J3o J2o  
+T9o T8o T7o T6o T5o T4o T3o T2o  
+98o 97o 96o 95o 94o 93o 92o  
+87o 86o 85o 84o 83o 82o  
+76o 75o 74o 73o 72o  
+65o 64o 63o 62o  
+54o 53o 52o  
+43o 42o  
+32o
+
+
+
+
+
+##listLimpEP2##
+AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o  
+KQo KJo KTo K9o K8o K7o K6o K5o K4o K3o K2o      
+QJo QTo Q9o Q8o Q7o Q6o Q5o Q4o Q3o Q2o  
+JTo J9o J8o J7o J6o J5o J4o J3o J2o  
+T9o T8o T7o T6o T5o T4o T3o T2o  
+98o 97o 96o 95o 94o 93o 92o  
+87o 86o 85o 84o 83o 82o  
+76o 75o 74o 73o 72o  
+65o 64o 63o 62o  
+54o 53o 52o  
+43o 42o  
+32o
+
+
+
+
+
+##listLimpEP3##
+AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o  
+KQo KJo KTo K9o K8o K7o K6o K5o K4o K3o K2o      
+QJo QTo Q9o Q8o Q7o Q6o Q5o Q4o Q3o Q2o  
+JTo J9o J8o J7o J6o J5o J4o J3o J2o  
+T9o T8o T7o T6o T5o T4o T3o T2o  
+98o 97o 96o 95o 94o 93o 92o  
+87o 86o 85o 84o 83o 82o  
+76o 75o 74o 73o 72o  
+65o 64o 63o 62o  
+54o 53o 52o  
+43o 42o  
+32o
+
+
+
+
+
+##listLimpMP1##
+AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o  
+KQo KJo KTo K9o K8o K7o K6o K5o K4o K3o K2o      
+QJo QTo Q9o Q8o Q7o Q6o Q5o Q4o Q3o Q2o  
+JTo J9o J8o J7o J6o J5o J4o J3o J2o  
+T9o T8o T7o T6o T5o T4o T3o T2o  
+98o 97o 96o 95o 94o 93o 92o  
+87o 86o 85o 84o 83o 82o  
+76o 75o 74o 73o 72o  
+65o 64o 63o 62o  
+54o 53o 52o  
+43o 42o  
+32o
+
+
+
+
+
+##listLimpMP2##
+AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o  
+KQo KJo KTo K9o K8o K7o K6o K5o K4o K3o K2o      
+QJo QTo Q9o Q8o Q7o Q6o Q5o Q4o Q3o Q2o  
+JTo J9o J8o J7o J6o J5o J4o J3o J2o  
+T9o T8o T7o T6o T5o T4o T3o T2o  
+98o 97o 96o 95o 94o 93o 92o  
+87o 86o 85o 84o 83o 82o  
+76o 75o 74o 73o 72o  
+65o 64o 63o 62o  
+54o 53o 52o  
+43o 42o  
+32o
+
+
+
+
+
+##listLimpMP3##
+AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o  
+KQo KJo KTo K9o K8o K7o K6o K5o K4o K3o K2o      
+QJo QTo Q9o Q8o Q7o Q6o Q5o Q4o Q3o Q2o  
+JTo J9o J8o J7o J6o J5o J4o J3o J2o  
+T9o T8o T7o T6o T5o T4o T3o T2o  
+98o 97o 96o 95o 94o 93o 92o  
+87o 86o 85o 84o 83o 82o  
+76o 75o 74o 73o 72o  
+65o 64o 63o 62o  
+54o 53o 52o  
+43o 42o  
+32o
+
+
+
+
+
+##listLimpSB##
+AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o  
+KQo KJo KTo K9o K8o K7o K6o K5o K4o K3o K2o      
+QJo QTo Q9o Q8o Q7o Q6o Q5o Q4o Q3o Q2o  
+JTo J9o J8o J7o J6o J5o J4o J3o J2o  
+T9o T8o T7o T6o T5o T4o T3o T2o  
+98o 97o 96o 95o 94o 93o 92o  
+87o 86o 85o 84o 83o 82o  
+76o 75o 74o 73o 72o  
+65o 64o 63o 62o  
+54o 53o 52o  
+43o 42o  
+32o
+
+//******************************************************************************
+// 3Bet or ColdCall a raise when no call before Hero first action
+//******************************************************************************
+
+
+
+
+##listOpenLimpBTN##
+AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o  
+KQo KJo KTo K9o K8o K7o K6o K5o K4o K3o K2o      
+QJo QTo Q9o Q8o Q7o Q6o Q5o Q4o Q3o Q2o  
+JTo J9o J8o J7o J6o J5o J4o J3o J2o  
+T9o T8o T7o T6o T5o T4o T3o T2o  
+98o 97o 96o 95o 94o 93o 92o  
+87o 86o 85o 84o 83o 82o  
+76o 75o 74o 73o 72o  
+65o 64o 63o 62o  
+54o 53o 52o  
+43o 42o  
+32o
+
+
+
+
+
+##listOpenLimpCO##
+AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o  
+KQo KJo KTo K9o K8o K7o K6o K5o K4o K3o K2o      
+QJo QTo Q9o Q8o Q7o Q6o Q5o Q4o Q3o Q2o  
+JTo J9o J8o J7o J6o J5o J4o J3o J2o  
+T9o T8o T7o T6o T5o T4o T3o T2o  
+98o 97o 96o 95o 94o 93o 92o  
+87o 86o 85o 84o 83o 82o  
+76o 75o 74o 73o 72o  
+65o 64o 63o 62o  
+54o 53o 52o  
+43o 42o  
+32o
+
+
+
+
+
+##listOpenLimpEP1##
+AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o  
+KQo KJo KTo K9o K8o K7o K6o K5o K4o K3o K2o      
+QJo QTo Q9o Q8o Q7o Q6o Q5o Q4o Q3o Q2o  
+JTo J9o J8o J7o J6o J5o J4o J3o J2o  
+T9o T8o T7o T6o T5o T4o T3o T2o  
+98o 97o 96o 95o 94o 93o 92o  
+87o 86o 85o 84o 83o 82o  
+76o 75o 74o 73o 72o  
+65o 64o 63o 62o  
+54o 53o 52o  
+43o 42o  
+32o
+
+
+
+
+
+##listOpenLimpEP2##
+AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o  
+KQo KJo KTo K9o K8o K7o K6o K5o K4o K3o K2o      
+QJo QTo Q9o Q8o Q7o Q6o Q5o Q4o Q3o Q2o  
+JTo J9o J8o J7o J6o J5o J4o J3o J2o  
+T9o T8o T7o T6o T5o T4o T3o T2o  
+98o 97o 96o 95o 94o 93o 92o  
+87o 86o 85o 84o 83o 82o  
+76o 75o 74o 73o 72o  
+65o 64o 63o 62o  
+54o 53o 52o  
+43o 42o  
+32o
+
+
+
+
+
+##listOpenLimpEP3##
+AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o  
+KQo KJo KTo K9o K8o K7o K6o K5o K4o K3o K2o      
+QJo QTo Q9o Q8o Q7o Q6o Q5o Q4o Q3o Q2o  
+JTo J9o J8o J7o J6o J5o J4o J3o J2o  
+T9o T8o T7o T6o T5o T4o T3o T2o  
+98o 97o 96o 95o 94o 93o 92o  
+87o 86o 85o 84o 83o 82o  
+76o 75o 74o 73o 72o  
+65o 64o 63o 62o  
+54o 53o 52o  
+43o 42o  
+32o
+
+
+
+
+
+##listOpenLimpMP1##
+AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o  
+KQo KJo KTo K9o K8o K7o K6o K5o K4o K3o K2o      
+QJo QTo Q9o Q8o Q7o Q6o Q5o Q4o Q3o Q2o  
+JTo J9o J8o J7o J6o J5o J4o J3o J2o  
+T9o T8o T7o T6o T5o T4o T3o T2o  
+98o 97o 96o 95o 94o 93o 92o  
+87o 86o 85o 84o 83o 82o  
+76o 75o 74o 73o 72o  
+65o 64o 63o 62o  
+54o 53o 52o  
+43o 42o  
+32o
+
+
+
+
+
+##listOpenLimpMP2##
+AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o  
+KQo KJo KTo K9o K8o K7o K6o K5o K4o K3o K2o      
+QJo QTo Q9o Q8o Q7o Q6o Q5o Q4o Q3o Q2o  
+JTo J9o J8o J7o J6o J5o J4o J3o J2o  
+T9o T8o T7o T6o T5o T4o T3o T2o  
+98o 97o 96o 95o 94o 93o 92o  
+87o 86o 85o 84o 83o 82o  
+76o 75o 74o 73o 72o  
+65o 64o 63o 62o  
+54o 53o 52o  
+43o 42o  
+32o
+
+
+
+
+
+##listOpenLimpMP3##
+AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o  
+KQo KJo KTo K9o K8o K7o K6o K5o K4o K3o K2o      
+QJo QTo Q9o Q8o Q7o Q6o Q5o Q4o Q3o Q2o  
+JTo J9o J8o J7o J6o J5o J4o J3o J2o  
+T9o T8o T7o T6o T5o T4o T3o T2o  
+98o 97o 96o 95o 94o 93o 92o  
+87o 86o 85o 84o 83o 82o  
+76o 75o 74o 73o 72o  
+65o 64o 63o 62o  
+54o 53o 52o  
+43o 42o  
+32o
+
+
+
+
+
+##listOpenLimpSB##
+AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o  
+KQo KJo KTo K9o K8o K7o K6o K5o K4o K3o K2o      
+QJo QTo Q9o Q8o Q7o Q6o Q5o Q4o Q3o Q2o  
+JTo J9o J8o J7o J6o J5o J4o J3o J2o  
+T9o T8o T7o T6o T5o T4o T3o T2o  
+98o 97o 96o 95o 94o 93o 92o  
+87o 86o 85o 84o 83o 82o  
+76o 75o 74o 73o 72o  
+65o 64o 63o 62o  
+54o 53o 52o  
+43o 42o  
+32o
+
+//******************************************************************************
+// IsolatingLimpers Hands by Position
+//******************************************************************************
+
+
+
+
+##listOpenRaiseBTN##
+AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s  
+KQs KJs KTs K9s K8s K7s K6s K5s K4s K3s K2s      
+QJs QTs Q9s Q8s Q7s Q6s Q5s Q4s Q3s Q2s  
+JTs J9s J8s J7s J6s J5s J4s J3s J2s  
+T9s T8s T7s T6s T5s T4s T3s T2s  
+98s 97s 96s 95s 94s 93s 92s  
+87s 86s 85s 84s 83s 82s  
+76s 75s 74s 73s 72s  
+65s 64s 63s 62s  
+54s 53s 52s  
+43s 42s  
+32s
+
+
+
+
+
+##listOpenRaiseCO##
+AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s  
+KQs KJs KTs K9s K8s K7s K6s K5s K4s K3s K2s      
+QJs QTs Q9s Q8s Q7s Q6s Q5s Q4s Q3s Q2s  
+JTs J9s J8s J7s J6s J5s J4s J3s J2s  
+T9s T8s T7s T6s T5s T4s T3s T2s  
+98s 97s 96s 95s 94s 93s 92s  
+87s 86s 85s 84s 83s 82s  
+76s 75s 74s 73s 72s  
+65s 64s 63s 62s  
+54s 53s 52s  
+43s 42s  
+32s
+
+
+
+
+
+##listOpenRaiseEP1##
+AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s  
+KQs KJs KTs K9s K8s K7s K6s K5s K4s K3s K2s      
+QJs QTs Q9s Q8s Q7s Q6s Q5s Q4s Q3s Q2s  
+JTs J9s J8s J7s J6s J5s J4s J3s J2s  
+T9s T8s T7s T6s T5s T4s T3s T2s  
+98s 97s 96s 95s 94s 93s 92s  
+87s 86s 85s 84s 83s 82s  
+76s 75s 74s 73s 72s  
+65s 64s 63s 62s  
+54s 53s 52s  
+43s 42s  
+32s
+
+
+
+
+
+##listOpenRaiseEP2##
+AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s  
+KQs KJs KTs K9s K8s K7s K6s K5s K4s K3s K2s      
+QJs QTs Q9s Q8s Q7s Q6s Q5s Q4s Q3s Q2s  
+JTs J9s J8s J7s J6s J5s J4s J3s J2s  
+T9s T8s T7s T6s T5s T4s T3s T2s  
+98s 97s 96s 95s 94s 93s 92s  
+87s 86s 85s 84s 83s 82s  
+76s 75s 74s 73s 72s  
+65s 64s 63s 62s  
+54s 53s 52s  
+43s 42s  
+32s
+
+
+
+
+
+##listOpenRaiseEP3##
+AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s  
+KQs KJs KTs K9s K8s K7s K6s K5s K4s K3s K2s      
+QJs QTs Q9s Q8s Q7s Q6s Q5s Q4s Q3s Q2s  
+JTs J9s J8s J7s J6s J5s J4s J3s J2s  
+T9s T8s T7s T6s T5s T4s T3s T2s  
+98s 97s 96s 95s 94s 93s 92s  
+87s 86s 85s 84s 83s 82s  
+76s 75s 74s 73s 72s  
+65s 64s 63s 62s  
+54s 53s 52s  
+43s 42s  
+32s
+
+
+
+
+
+##listOpenRaiseMP1##
+AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s  
+KQs KJs KTs K9s K8s K7s K6s K5s K4s K3s K2s      
+QJs QTs Q9s Q8s Q7s Q6s Q5s Q4s Q3s Q2s  
+JTs J9s J8s J7s J6s J5s J4s J3s J2s  
+T9s T8s T7s T6s T5s T4s T3s T2s  
+98s 97s 96s 95s 94s 93s 92s  
+87s 86s 85s 84s 83s 82s  
+76s 75s 74s 73s 72s  
+65s 64s 63s 62s  
+54s 53s 52s  
+43s 42s  
+32s
+
+
+
+
+
+##listOpenRaiseMP2##
+AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s  
+KQs KJs KTs K9s K8s K7s K6s K5s K4s K3s K2s      
+QJs QTs Q9s Q8s Q7s Q6s Q5s Q4s Q3s Q2s  
+JTs J9s J8s J7s J6s J5s J4s J3s J2s  
+T9s T8s T7s T6s T5s T4s T3s T2s  
+98s 97s 96s 95s 94s 93s 92s  
+87s 86s 85s 84s 83s 82s  
+76s 75s 74s 73s 72s  
+65s 64s 63s 62s  
+54s 53s 52s  
+43s 42s  
+32s
+
+
+
+
+
+##listOpenRaiseMP3##
+AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s  
+KQs KJs KTs K9s K8s K7s K6s K5s K4s K3s K2s      
+QJs QTs Q9s Q8s Q7s Q6s Q5s Q4s Q3s Q2s  
+JTs J9s J8s J7s J6s J5s J4s J3s J2s  
+T9s T8s T7s T6s T5s T4s T3s T2s  
+98s 97s 96s 95s 94s 93s 92s  
+87s 86s 85s 84s 83s 82s  
+76s 75s 74s 73s 72s  
+65s 64s 63s 62s  
+54s 53s 52s  
+43s 42s  
+32s
+
+
+
+
+
+##listOpenRaiseSB##
+AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s  
+KQs KJs KTs K9s K8s K7s K6s K5s K4s K3s K2s      
+QJs QTs Q9s Q8s Q7s Q6s Q5s Q4s Q3s Q2s  
+JTs J9s J8s J7s J6s J5s J4s J3s J2s  
+T9s T8s T7s T6s T5s T4s T3s T2s  
+98s 97s 96s 95s 94s 93s 92s  
+87s 86s 85s 84s 83s 82s  
+76s 75s 74s 73s 72s  
+65s 64s 63s 62s  
+54s 53s 52s  
+43s 42s  
+32s
+
+//******************************************************************************
+// OpenLimping Hands by Position
+//******************************************************************************
+
+
+
+
+##listSqueezeIP##
+AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s  
+KQs KJs KTs K9s K8s K7s K6s K5s K4s K3s K2s      
+QJs QTs Q9s Q8s Q7s Q6s Q5s Q4s Q3s Q2s  
+JTs J9s J8s J7s J6s J5s J4s J3s J2s  
+T9s T8s T7s T6s T5s T4s T3s T2s  
+98s 97s 96s 95s 94s 93s 92s  
+87s 86s 85s 84s 83s 82s  
+76s 75s 74s 73s 72s  
+65s 64s 63s 62s  
+54s 53s 52s  
+43s 42s  
+32s
+
+
+
+
+
+##listSqueezeOOP##
+AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s  
+KQs KJs KTs K9s K8s K7s K6s K5s K4s K3s K2s      
+QJs QTs Q9s Q8s Q7s Q6s Q5s Q4s Q3s Q2s  
+JTs J9s J8s J7s J6s J5s J4s J3s J2s  
+T9s T8s T7s T6s T5s T4s T3s T2s  
+98s 97s 96s 95s 94s 93s 92s  
+87s 86s 85s 84s 83s 82s  
+76s 75s 74s 73s 72s  
+65s 64s 63s 62s  
+54s 53s 52s  
+43s 42s  
+32s
+
+
+
+
+
+##f$preflop##
+WHEN OpenRaiseOrOpenLimp
+	WHEN InEarlyPosition1 AND listOpenRaiseEP1 RaiseTo StandardRaise Force
+	WHEN InEarlyPosition1 AND listOpenLimpEP1 Call Force	
+	WHEN InEarlyPosition2 AND listOpenRaiseEP2 RaiseTo StandardRaise Force
+	WHEN InEarlyPosition2 AND listOpenLimpEP2 Call Force	
+	WHEN InEarlyPosition2 AND listOpenRaiseEP3 RaiseTo StandardRaise Force
+	WHEN InEarlyPosition2 AND listOpenLimpEP3 Call Force	
+	WHEN InMiddlePosition1 AND listOpenRaiseMP1 RaiseTo StandardRaise Force
+	WHEN InMiddlePosition1 AND listOpenLimpMP1 Call Force	
+	WHEN InMiddlePosition2 AND listOpenRaiseMP2 RaiseTo StandardRaise Force
+	WHEN InMiddlePosition2 AND listOpenLimpMP2 Call Force	
+	WHEN InMiddlePosition3 AND listOpenRaiseMP3 RaiseTo StandardRaise Force
+	WHEN InMiddlePosition3 AND listOpenLimpMP3 Call Force	
+	WHEN InCutOff AND listOpenRaiseCO RaiseTo StandardRaise Force
+	WHEN InCutOff AND listOpenLimpCO Call Force	
+	WHEN InButton AND listOpenRaiseBTN RaiseTo StandardRaise Force
+	WHEN InButton AND listOpenLimpBTN Call Force	
+	WHEN InSmallBlind AND listOpenRaiseSB RaiseTo StandardRaise Force
+	WHEN InSmallBlind AND listOpenLimpSB Call Force	
+
+	WHEN Others Fold Force
+
+WHEN LimpOrIsolateLimpers
+	WHEN InEarlyPosition1 AND listLimpEP1 Call Force	
+	WHEN InEarlyPosition2 AND listIsolateLimpersEP2 RaiseTo StandardRaise Force
+	WHEN InEarlyPosition2 AND listLimpEP2 Call Force	
+	WHEN InEarlyPosition2 AND listIsolateLimpersEP3 RaiseTo StandardRaise Force
+	WHEN InEarlyPosition2 AND listLimpEP3 Call Force	
+	WHEN InMiddlePosition1 AND listIsolateLimpersMP1 RaiseTo StandardRaise Force
+	WHEN InMiddlePosition1 AND listLimpMP1 Call Force	
+	WHEN InMiddlePosition2 AND listIsolateLimpersMP2 RaiseTo StandardRaise Force
+	WHEN InMiddlePosition2 AND listLimpMP2 Call Force	
+	WHEN InMiddlePosition3 AND listIsolateLimpersMP3 RaiseTo StandardRaise Force
+	WHEN InMiddlePosition3 AND listLimpMP3 Call Force	
+	WHEN InCutOff AND listIsolateLimpersCO RaiseTo StandardRaise Force
+	WHEN InCutOff AND listLimpCO Call Force	
+	WHEN InButton AND listIsolateLimpersBTN RaiseTo StandardRaise Force
+	WHEN InButton AND listLimpBTN Call Force	
+	WHEN InSmallBlind AND listIsolateLimpersSB RaiseTo StandardRaise Force
+	WHEN InSmallBlind AND listLimpSB Call Force	
+	WHEN InBigBlind AND listIsolateLimpersBB RaiseTo StandardRaise Force
+	
+	WHEN Others Fold Force
+
+WHEN ThreeBetColdCall
+	WHEN InPosition AND list3BetIP RaiseTo StandardRaise Force
+	WHEN InPosition AND listCallRaiseWhenNoCallIP Call Force
+	WHEN NOT InPosition AND list3BetOOP RaiseTo StandardRaise Force
+	WHEN NOT InPosition AND listCallRaiseWhenNoCallOOP Call Force
+	
+	WHEN Others Fold Force
+
+WHEN SqueezeColdCall
+	WHEN InPosition AND listSqueezeIP RaiseTo StandardRaise Force
+	WHEN InPosition AND listCallRaiseWhenOthersCallsIP Call Force
+	WHEN NOT InPosition AND listSqueezeOOP RaiseTo StandardRaise Force
+	WHEN NOT InPosition AND listCallRaiseWhenOthersCallsOOP Call Force
+	
+	WHEN Others Fold Force
+
+WHEN Facing3BetBeforeFirstAction
+	WHEN InPosition AND list4BetBeforeHeroFirstActionIP RaiseTo StandardRaise Force
+	WHEN InPosition AND listColdCall3BetBeforeHeroFirstActionIP Call Force
+	WHEN NOT InPosition AND list4BetBeforeHeroFirstActionOOP RaiseTo StandardRaise Force
+	WHEN NOT InPosition AND listColdCall3BetBeforeHeroFirstActionOOP Call Force
+
+	WHEN Others Fold Force
+	
+WHEN Facing4BetBeforeFirstAction
+	WHEN InPosition AND list5BetBeforeHeroFirstActionIP RaiseTo StandardRaise Force
+	WHEN InPosition AND listColdCall4BetBeforeHeroFirstActionIP Call Force
+	WHEN NOT InPosition AND list5BetBeforeHeroFirstActionOOP RaiseTo StandardRaise Force
+	WHEN NOT InPosition AND listColdCall4BetBeforeHeroFirstActionOOP Call Force
+
+	WHEN Others Fold Force
+
+WHEN Facing5BetBeforeFirstAction
+	WHEN InPosition AND list6BetBeforeHeroFirstActionIP RaiseTo StandardRaise Force
+	WHEN InPosition AND listColdCall5BetBeforeHeroFirstActionIP Call Force
+	WHEN NOT InPosition AND list6BetBeforeHeroFirstActionOOP RaiseTo StandardRaise Force
+	WHEN NOT InPosition AND listColdCall5BetBeforeHeroFirstActionOOP Call Force
+
+	WHEN Others Fold Force
+
+WHEN Facing3Bet
+	WHEN InPosition AND list4BetIP RaiseTo StandardRaise Force
+	WHEN InPosition AND listColdCall3BetIP Call Force
+	WHEN NOT InPosition AND list4BetOOP RaiseTo StandardRaise Force
+	WHEN NOT InPosition AND listColdCall3BetOOP Call Force
+	
+	WHEN Others Fold Force
+
+WHEN FacingSqueeze
+	WHEN InPosition AND list4BetVsSqueezeIP RaiseTo StandardRaise Force
+	WHEN InPosition AND listColdCallSqueezeIP Call Force
+	WHEN NOT InPosition AND list4BetVsSqueezeOOP RaiseTo StandardRaise Force
+	WHEN NOT InPosition AND listColdCallSqueezeOOP Call Force
+
+	WHEN Others Fold Force
+	
+WHEN Facing4Bet
+	WHEN InPosition AND list5BetIP RaiseTo StandardRaise Force
+	WHEN InPosition AND listColdCall4BetIP Call Force
+	WHEN NOT InPosition AND list5BetOOP RaiseTo StandardRaise Force
+	WHEN NOT InPosition AND listColdCall4BetOOP Call Force
+
+	WHEN Others Fold Force
+	
+WHEN Facing5Bet
+	WHEN InPosition AND list6BetIP RaiseTo StandardRaise Force
+	WHEN InPosition AND listColdCall5BetIP Call Force
+	WHEN NOT InPosition AND list6BetOOP RaiseTo StandardRaise Force
+	WHEN NOT InPosition AND listColdCall5BetOOP Call Force
+
+	WHEN Others Fold Force
+
+//******************************************************************************
+//								F L O P  L O G I C
+//								==================
+//     Cover all Flop actions (Raise, Bet, Call, Check, Fold) by scenarios
+//										
+//******************************************************************************
+
+
+
+
+##f$flop##
+WHEN DonkBet
+	WHEN OneWayPot AND DonkBetOnOneWayPot RaiseBy StandardBet% Force
+	WHEN TwoWayPot AND DonkBetOnTwoWayPot RaiseBy StandardBet% Force
+	WHEN MultyWayPot AND DonkBetOnMultyWayPot RaiseBy StandardBet% Force
+	
+	WHEN Others Fold Force
+
+WHEN FacingFlopCbet
+	WHEN InPosition AND OneWayPot AND RaiseVsCbetOnOneWayPotIP RaiseTo StandardRaise Force
+	WHEN InPosition AND OneWayPot AND CallVsCbetOnOneWayPotIP Call Force
+	WHEN InPosition AND TwoWayPot AND RaiseVsCbetOnTwoWayPotIP RaiseTo StandardRaise Force
+	WHEN InPosition AND TwoWayPot AND CallVsCbetOnTwoWayPotIP Call Force
+	WHEN InPosition AND MultyWayPot AND RaiseVsCbetOnMultyWayPotIP RaiseTo StandardRaise Force
+	WHEN InPosition AND MultyWayPot AND CallVsCbetOnMultyWayPotIP Call Force
+	WHEN NOT InPosition AND OneWayPot AND RaiseVsCbetOnOneWayPotOOP RaiseTo StandardRaise Force
+	WHEN NOT InPosition AND OneWayPot AND CallVsCbetOnOneWayPotOOP Call Force
+	WHEN NOT InPosition AND TwoWayPot AND RaiseVsCbetOnTwoWayPotOOP RaiseTo StandardRaise Force
+	WHEN NOT InPosition AND TwoWayPot AND CallVsCbetOnTwoWayPotOOP Call Force
+	WHEN NOT InPosition AND MultyWayPot AND RaiseVsCbetOnMultyWayPotOOP RaiseTo StandardRaise Force
+	WHEN NOT InPosition AND MultyWayPot AND CallVsCbetOnMultyWayPotOOP Call Force
+
+	WHEN Others Fold Force
+	
+WHEN FlopCbetIP
+	WHEN InPosition AND OneWayPot AND CbetOnOneWayPotIP RaiseBy StandardBet% Force
+	WHEN InPosition AND TwoWayPot AND CbetOnTwoWayPotIP RaiseBy StandardBet% Force
+	WHEN InPosition AND MultyWayPot AND CbetOnMultyWayPotIP RaiseBy StandardBet% Force
+	
+	WHEN Others Fold Force
+
+WHEN FlopCbetOOP
+	WHEN NOT InPosition AND OneWayPot AND CbetOnOneWayPotOOP RaiseBy StandardBet% Force
+	WHEN NOT InPosition AND TwoWayPot AND CbetOnTwoWayPotOOP RaiseBy StandardBet% Force
+	WHEN NOT InPosition AND MultyWayPot AND CbetOnMultyWayPotOOP RaiseBy StandardBet% Force
+	
+	WHEN Others Fold Force
+
+WHEN FacingDonkBet
+	WHEN OneWayPot AND RaiseOnOneWayPotWhenFacingDonkBet RaiseTo StandardRaise Force
+	WHEN OneWayPot AND CallOnOneWayPotWhenFacingDonkBet Call Force
+	WHEN TwoWayPot AND RaiseOnTwoWayPotWhenFacingDonkBet RaiseTo StandardRaise Force
+	WHEN TwoWayPot AND CallOnTwoWayPotWhenFacingDonkBet Call Force
+	WHEN MultyWayPot AND RaiseOnMultyWayPotWhenFacingDonkBet RaiseTo StandardRaise Force
+	WHEN MultyWayPot AND CallOnMultyWayPotWhenFacingDonkBet Call Force
+	
+	WHEN Others Fold Force
+
+WHEN FacingCheckRaiseToCbet
+	WHEN OneWayPot AND RaiseOnOneWayPotWhenFacingCheckRaiseToCbet RaiseTo StandardRaise Force
+	WHEN OneWayPot AND CallOnOneWayPotWhenFacingCheckRaiseToCbet Call Force
+	WHEN TwoWayPot AND RaiseOnTwoWayPotWhenFacingCheckRaiseToCbet RaiseTo StandardRaise Force
+	WHEN TwoWayPot AND CallOnTwoWayPotWhenFacingCheckRaiseToCbet Call Force
+	WHEN MultyWayPot AND RaiseOnMultyWayPotWhenFacingCheckRaiseToCbet RaiseTo StandardRaise Force
+	WHEN MultyWayPot AND CallOnMultyWayPotWhenFacingCheckRaiseToCbet Call Force
+
+	WHEN Others Fold Force
+
+WHEN FacingRaiseToCbet
+	WHEN OneWayPot AND RaiseOnOneWayPotWhenFacingRaiseToCbet RaiseTo StandardRaise Force
+	WHEN OneWayPot AND CallOnOneWayPotWhenFacingRaiseToCbet Call Force
+	WHEN TwoWayPot AND RaiseOnTwoWayPotWhenFacingRaiseToCbet RaiseTo StandardRaise Force
+	WHEN TwoWayPot AND CallOnTwoWayPotWhenFacingRaiseToCbet Call Force
+	WHEN MultyWayPot AND RaiseOnMultyWayPotWhenFacingRaiseToCbet RaiseTo StandardRaise Force
+	WHEN MultyWayPot AND CallOnMultyWayPotWhenFacingRaiseToCbet Call Force
+
+	WHEN Others Fold Force
+
+//******************************************************************************
+//								T U R N  L O G I C
+//								==================
+//     Cover all Turn actions (Raise, Bet, Call, Check, Fold) by scenarios
+//										
+//******************************************************************************
+
+
+
+
+##f$turn##
+WHEN FacingSecondBarrel
+	WHEN InPosition AND OneWayPot AND RaiseVsSecondBarrelOnOneWayPotIP RaiseTo StandardRaise Force
+	WHEN InPosition AND OneWayPot AND CallVsSecondBarrelOnOneWayPotIP Call Force
+	WHEN InPosition AND TwoWayPot AND RaiseVsSecondBarrelOnTwoWayPotIP RaiseTo StandardRaise Force
+	WHEN InPosition AND TwoWayPot AND CallVsSecondBarrelOnTwoWayPotIP Call Force
+	WHEN InPosition AND MultyWayPot AND RaiseVsSecondBarrelOnMultyWayPotIP RaiseTo StandardRaise Force
+	WHEN InPosition AND MultyWayPot AND CallVsSecondBarrelOnMultyWayPotIP Call Force
+	WHEN NOT InPosition AND OneWayPot AND RaiseVsSecondBarrelOnOneWayPotOOP RaiseTo StandardRaise Force
+	WHEN NOT InPosition AND OneWayPot AND CallVsSecondBarrelOnOneWayPotOOP Call Force
+	WHEN NOT InPosition AND TwoWayPot AND RaiseVsSecondBarrelOnTwoWayPotOOP RaiseTo StandardRaise Force
+	WHEN NOT InPosition AND TwoWayPot AND CallVsSecondBarrelOnTwoWayPotOOP Call Force
+	WHEN NOT InPosition AND MultyWayPot AND RaiseVsSecondBarrelOnMultyWayPotOOP RaiseTo StandardRaise Force
+	WHEN NOT InPosition AND MultyWayPot AND CallVsSecondBarrelOnMultyWayPotOOP Call Force
+
+	WHEN Others Fold Force
+
+WHEN FacingDelayedCbet
+	WHEN InPosition AND OneWayPot AND RaiseVsDelayedCbetOnOneWayPotIP RaiseTo StandardRaise Force
+	WHEN InPosition AND OneWayPot AND CallVsDelayedCbetOnOneWayPotIP Call Force
+	WHEN InPosition AND TwoWayPot AND RaiseVsDelayedCbetOnTwoWayPotIP RaiseTo StandardRaise Force
+	WHEN InPosition AND TwoWayPot AND CallVsDelayedCbetOnTwoWayPotIP Call Force
+	WHEN InPosition AND MultyWayPot AND RaiseVsDelayedCbetOnMultyWayPotIP RaiseTo StandardRaise Force
+	WHEN InPosition AND MultyWayPot AND CallVsDelayedCbetOnMultyWayPotIP Call Force
+	WHEN NOT InPosition AND OneWayPot AND RaiseVsDelayedCbetOnOneWayPotOOP RaiseTo StandardRaise Force
+	WHEN NOT InPosition AND OneWayPot AND CallVsDelayedCbetOnOneWayPotOOP Call Force
+	WHEN NOT InPosition AND TwoWayPot AND RaiseVsDelayedCbetOnTwoWayPotOOP RaiseTo StandardRaise Force
+	WHEN NOT InPosition AND TwoWayPot AND CallVsDelayedCbetOnTwoWayPotOOP Call Force
+	WHEN NOT InPosition AND MultyWayPot AND RaiseVsDelayedCbetOnMultyWayPotOOP RaiseTo StandardRaise Force
+	WHEN NOT InPosition AND MultyWayPot AND CallVsDelayedCbetOnMultyWayPotOOP Call Force
+
+	WHEN Others Fold Force
+	
+WHEN DelayedCbet
+	WHEN InPosition AND OneWayPot AND DelayedCbetOnOneWayPotIP RaiseBy StandardBet% Force
+	WHEN InPosition AND TwoWayPot AND DelayedCbetOnTwoWayPotIP RaiseBy StandardBet% Force
+	WHEN InPosition AND MultyWayPot AND DelayedCbetOnMultyWayPotIP RaiseBy StandardBet% Force
+	WHEN NOT InPosition AND OneWayPot AND DelayedCbetOnOneWayPotOOP RaiseBy StandardBet% Force
+	WHEN NOT InPosition AND TwoWayPot AND DelayedCbetOnTwoWayPotOOP RaiseBy StandardBet% Force
+	WHEN NOT InPosition AND MultyWayPot AND DelayedCbetOnMultyWayPotOOP RaiseBy StandardBet% Force
+	
+	WHEN Others Fold Force
+
+WHEN SecondBarrel
+	WHEN InPosition AND OneWayPot AND SecondBarrelOnOneWayPotIP RaiseBy StandardBet% Force
+	WHEN InPosition AND TwoWayPot AND SecondBarrelOnTwoWayPotIP RaiseBy StandardBet% Force
+	WHEN InPosition AND MultyWayPot AND SecondBarrelOnMultyWayPotIP RaiseBy StandardBet% Force
+	WHEN NOT InPosition AND OneWayPot AND SecondBarrelOnOneWayPotOOP RaiseBy StandardBet% Force
+	WHEN NOT InPosition AND TwoWayPot AND SecondBarrelOnTwoWayPotOOP RaiseBy StandardBet% Force
+	WHEN NOT InPosition AND MultyWayPot AND SecondBarrelOnMultyWayPotOOP RaiseBy StandardBet% Force
+	
+	WHEN Others Fold Force
+	
+WHEN FacingCheckRaiseToSecondBarrel
+	WHEN OneWayPot AND RaiseOnOneWayPotWhenFacingCheckRaiseToSecondBarrel RaiseTo StandardRaise Force
+	WHEN OneWayPot AND CallOnOneWayPotWhenFacingCheckRaiseToSecondBarrel Call Force
+	WHEN TwoWayPot AND RaiseOnTwoWayPotWhenFacingCheckRaiseToSecondBarrel RaiseTo StandardRaise Force
+	WHEN TwoWayPot AND CallOnTwoWayPotWhenFacingCheckRaiseToSecondBarrel Call Force
+	WHEN MultyWayPot AND RaiseOnMultyWayPotWhenFacingCheckRaiseToSecondBarrel RaiseTo StandardRaise Force
+	WHEN MultyWayPot AND CallOnMultyWayPotWhenFacingCheckRaiseToSecondBarrel Call Force
+	
+	WHEN Others Fold Force
+
+WHEN FacingRaiseToSecondBarrel
+	WHEN OneWayPot AND RaiseOnOneWayPotWhenFacingRaiseToSecondBarrel RaiseTo StandardRaise Force
+	WHEN OneWayPot AND CallOnOneWayPotWhenFacingRaiseToSecondBarrel Call Force
+	WHEN TwoWayPot AND RaiseOnTwoWayPotWhenFacingRaiseToSecondBarrel RaiseTo StandardRaise Force
+	WHEN TwoWayPot AND CallOnTwoWayPotWhenFacingRaiseToSecondBarrel Call Force
+	WHEN MultyWayPot AND RaiseOnMultyWayPotWhenFacingRaiseToSecondBarrel RaiseTo StandardRaise Force
+	WHEN MultyWayPot AND CallOnMultyWayPotWhenFacingRaiseToSecondBarrel Call Force
+	
+	WHEN Others Fold Force
+
+//******************************************************************************
+//								R I V E R  L O G I C
+//								====================
+//     Cover all River actions (Raise, Bet, Call, Check, Fold) by scenarios
+//										
+//******************************************************************************
+
+
+
+
+##f$river##
+WHEN FacingThirdBarrel
+	WHEN InPosition AND OneWayPot AND RaiseVsThirdBarrelOnOneWayPotIP RaiseTo StandardRaise Force
+	WHEN InPosition AND OneWayPot AND CallVsThirdBarrelOnOneWayPotIP Call Force
+	WHEN InPosition AND TwoWayPot AND RaiseVsThirdBarrelOnTwoWayPotIP RaiseTo StandardRaise Force
+	WHEN InPosition AND TwoWayPot AND CallVsThirdBarrelOnTwoWayPotIP Call Force
+	WHEN InPosition AND MultyWayPot AND RaiseVsThirdBarrelOnMultyWayPotIP RaiseTo StandardRaise Force
+	WHEN InPosition AND MultyWayPot AND CallVsThirdBarrelOnMultyWayPotIP Call Force
+	WHEN NOT InPosition AND OneWayPot AND RaiseVsThirdBarrelOnOneWayPotOOP RaiseTo StandardRaise Force
+	WHEN NOT InPosition AND OneWayPot AND CallVsThirdBarrelOnOneWayPotOOP Call Force
+	WHEN NOT InPosition AND TwoWayPot AND RaiseVsThirdBarrelOnTwoWayPotOOP RaiseTo StandardRaise Force
+	WHEN NOT InPosition AND TwoWayPot AND CallVsThirdBarrelOnTwoWayPotOOP Call Force
+	WHEN NOT InPosition AND MultyWayPot AND RaiseVsThirdBarrelOnMultyWayPotOOP RaiseTo StandardRaise Force
+	WHEN NOT InPosition AND MultyWayPot AND CallVsThirdBarrelOnMultyWayPotOOP Call Force
+
+	WHEN Others Fold Force
+
+WHEN FacingDelayedSecondBarrel
+	WHEN InPosition AND OneWayPot AND RaiseVsDelayedSecondBarrelOnOneWayPotIP RaiseTo StandardRaise Force
+	WHEN InPosition AND OneWayPot AND CallVsDelayedSecondBarrelOnOneWayPotIP Call Force
+	WHEN InPosition AND TwoWayPot AND RaiseVsDelayedSecondBarrelOnTwoWayPotIP RaiseTo StandardRaise Force
+	WHEN InPosition AND TwoWayPot AND CallVsDelayedSecondBarrelOnTwoWayPotIP Call Force
+	WHEN InPosition AND MultyWayPot AND RaiseVsDelayedSecondBarrelOnMultyWayPotIP RaiseTo StandardRaise Force
+	WHEN InPosition AND MultyWayPot AND CallVsDelayedSecondBarrelOnMultyWayPotIP Call Force
+	WHEN NOT InPosition AND OneWayPot AND RaiseVsDelayedSecondBarrelOnOneWayPotOOP RaiseTo StandardRaise Force
+	WHEN NOT InPosition AND OneWayPot AND CallVsDelayedSecondBarrelOnOneWayPotOOP Call Force
+	WHEN NOT InPosition AND TwoWayPot AND RaiseVsDelayedSecondBarrelOnTwoWayPotOOP RaiseTo StandardRaise Force
+	WHEN NOT InPosition AND TwoWayPot AND CallVsDelayedSecondBarrelOnTwoWayPotOOP Call Force
+	WHEN NOT InPosition AND MultyWayPot AND RaiseVsDelayedSecondBarrelOnMultyWayPotOOP RaiseTo StandardRaise Force
+	WHEN NOT InPosition AND MultyWayPot AND CallVsDelayedSecondBarrelOnMultyWayPotOOP Call Force
+
+WHEN DelayedSecondBarrel
+	WHEN InPosition AND OneWayPot AND DelayedSecondBarrelOnOneWayPotIP RaiseBy StandardBet% Force
+	WHEN InPosition AND TwoWayPot AND DelayedSecondBarrelOnTwoWayPotIP RaiseBy StandardBet% Force
+	WHEN InPosition AND MultyWayPot AND DelayedSecondBarrelOnMultyWayPotIP RaiseBy StandardBet% Force
+	WHEN NOT InPosition AND OneWayPot AND DelayedSecondBarrelOnOneWayPotOOP RaiseBy StandardBet% Force
+	WHEN NOT InPosition AND TwoWayPot AND DelayedSecondBarrelOnTwoWayPotOOP RaiseBy StandardBet% Force
+	WHEN NOT InPosition AND MultyWayPot AND DelayedSecondBarrelOnMultyWayPotOOP RaiseBy StandardBet% Force
+	
+	WHEN Others Fold Force
+
+WHEN ThirdBarrel
+	WHEN InPosition AND OneWayPot AND ThirdBarrelOnOneWayPotIP RaiseBy StandardBet% Force
+	WHEN InPosition AND TwoWayPot AND ThirdBarrelOnTwoWayPotIP RaiseBy StandardBet% Force
+	WHEN InPosition AND MultyWayPot AND ThirdBarrelOnMultyWayPotIP RaiseBy StandardBet% Force
+	WHEN NOT InPosition AND OneWayPot AND ThirdBarrelOnOneWayPotOOP RaiseBy StandardBet% Force
+	WHEN NOT InPosition AND TwoWayPot AND ThirdBarrelOnTwoWayPotOOP RaiseBy StandardBet% Force
+	WHEN NOT InPosition AND MultyWayPot AND ThirdBarrelOnMultyWayPotOOP RaiseBy StandardBet% Force
+	
+	WHEN Others Fold Force
+	
+WHEN FacingCheckRaiseToThirdBarrel
+	WHEN OneWayPot AND RaiseOnOneWayPotWhenFacingCheckRaiseToThirdBarrel RaiseTo StandardRaise Force
+	WHEN OneWayPot AND CallOnOneWayPotWhenFacingCheckRaiseToThirdBarrel Call Force
+	WHEN TwoWayPot AND RaiseOnTwoWayPotWhenFacingCheckRaiseToThirdBarrel RaiseTo StandardRaise Force
+	WHEN TwoWayPot AND CallOnTwoWayPotWhenFacingCheckRaiseToThirdBarrel Call Force
+	WHEN MultyWayPot AND RaiseOnMultyWayPotWhenFacingCheckRaiseToThirdBarrel RaiseTo StandardRaise Force
+	WHEN MultyWayPot AND CallOnMultyWayPotWhenFacingCheckRaiseToThirdBarrel Call Force
+	
+	WHEN Others Fold Force
+
+WHEN FacingRaiseToThirdBarrel
+	WHEN OneWayPot AND RaiseOnOneWayPotWhenFacingRaiseToThirdBarrel RaiseTo StandardRaise Force
+	WHEN OneWayPot AND CallOnOneWayPotWhenFacingRaiseToThirdBarrel Call Force
+	WHEN TwoWayPot AND RaiseOnTwoWayPotWhenFacingRaiseToThirdBarrel RaiseTo StandardRaise Force
+	WHEN TwoWayPot AND CallOnTwoWayPotWhenFacingRaiseToThirdBarrel Call Force
+	WHEN MultyWayPot AND RaiseOnMultyWayPotWhenFacingRaiseToThirdBarrel RaiseTo StandardRaise Force
+	WHEN MultyWayPot AND CallOnMultyWayPotWhenFacingRaiseToThirdBarrel Call Force
+	
+	WHEN Others Fold Force
+
+//******************************************************************************
+//								T H E  G L O R Y  E N D 
+//								=======================
+//******************************************************************************
+
+
+
+

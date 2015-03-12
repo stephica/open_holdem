@@ -1,0 +1,60 @@
+##2008-12-07 18:04:18##
+
+##notes##
+
+##dll##
+EasyDoNEverestPoker.dll
+
+##bankroll##
+0.000000
+
+##defcon##
+0.500000
+
+##rake##
+0.000000
+
+##nit##
+1000
+
+##f$alli##
+0
+
+##f$swag##
+dll$decision == balance ? (balance) : (dll$decision  > bet+0.01) ? ((dll$decision/bet)^0)*bet : 0
+
+##f$srai##
+0
+
+##f$rais##
+balance < 3*bet+0.01
+|| dll$decision  > bet-0.01 ? 1 : 0
+
+##f$call##
+0
+|| dll$decision
+|| balance < 3*bet+0.01
+|| nbetstocall == 0
+
+##f$prefold##
+
+##f$delay##
+
+##f$chat##
+
+##f$P##
+(nopponentsplaying==0) ? 0 : nopponentsplaying
+
+##f$play##
+-1
+
+##f$test##
+
+##f$debug##
+0
+
+##f$evrais##
+0
+
+##f$evcall##
+0
