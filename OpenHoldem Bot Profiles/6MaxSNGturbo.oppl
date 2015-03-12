@@ -1,317 +1,10 @@
-##2015-03-12 07:58:27##
-
 ##notes##
- 
 
-##dll##
- 
-
-##f$alli##
- 
-
-##f$betpot_2_1##
- 
-
-##f$betpot_1_1##
- 
-
-##f$betpot_3_4##
- 
-
-##f$betpot_2_3##
- 
-
-##f$betpot_1_2##
- 
-
-##f$betpot_1_3##
- 
-
-##f$betpot_1_4##
- 
-
-##f$betsize##
-// Betsize in dollars, raise-to semantics.
-// OpenHoldem will auto-adapt the betsize to the casinos input-requirements.
-// Please define your tablemaps "swagtextmethod" to configure this feature.
-
-
-##f$rais##
- 
-
-##f$call##
- 
-
-##f$check##
-// Check whenever it is free to call
-(call == 0) 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-##f$fold##
-// f$fold should alwazs evaluate to true per default
-// for auto-check-folding instead of time-outs.
-1 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-##f$sitin##
- 1
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-##f$sitout##
- 
-
-##f$leave##
- 
-
-##f$autopost##
- 
-
-##f$close##
- 
-
-##f$rebuy##
-// f$rebuy should evaluate to the target-amount in dollars.
-// This value will be passed to the rebuy-script as a parameter.
-0
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-##f$prefold##
- 
-
-##f$chat##
- 
-
-##f$delay##
-// Autoplayer-delay in milli-seconds
-0
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-##f$allin_on_betsize_balance_ratio##
-// Allin if betsize is more than X% of our total balance (including currentbet).
-// This affects f$betsize and all f$betpot_X_Y_ functions.
-//  0.00 =  0% = disabled
-//  0.50 = 50%
-0.00
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-##f$ini_function_on_startup##
- 
-
-##f$ini_function_on_connection##
- 
-
-##f$ini_function_on_handreset##
- 
-
-##f$ini_function_on_new_round##
- 
-
-##f$ini_function_on_my_turn##
- 
-
-##f$ini_function_on_heartbeat##
- 
-
-##f$prwin_number_of_opponents##
-// "Reasonable" default to get standard PrWin running for beginners,
-// Works even with "no opponents".
-nopponentsplaying + 1 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-##f$prwin_number_of_iterations##
-// "Reasonable" default to get PrWin running for beginners.
-// Large enough to get usable results,
-// small enough to save CPU-time.
-1000 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-##f$prwin_topclip##
- 
-
-##f$prwin_mustplay##
- 
-
-##f$prwin_willplay##
- 
-
-##f$prwin_wontplay##
- 
-
-##f$icm_prize1##
-// f$icm_prizeX functions are used to configure the payout-structure in tournaments.
-// The sum of all f$icm_prizeX functions should be 1.00 (= 100%).
-// Default to get things going: the winner takes it all.
-1.00
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-##f$icm_prize2##
- 
-
-##f$icm_prize3##
- 
-
-##f$icm_prize4##
- 
-
-##f$icm_prize5##
- 
-
-##f$icm_prize6##
- 
-
-##f$icm_prize7##
- 
-
-##f$icm_prize8##
- 
-
-##f$icm_prize9##
- 
-
-##f$test##
- 
-
-##f$debug##
- 
+///////////////////////////////////////////////////////////////////////
+//                                                                   //
+// Converted using Poker_dog's PPL to OpenPPL Converter version 1.01 //
+//                                                                   //
+///////////////////////////////////////////////////////////////////////
 
 ##f$preflop##
 
@@ -451,30 +144,30 @@ WHEN OpponentsAtTable = 4 AND StillToAct = 3 AND Raises = 1 AND OpponentIsAllin 
 
 // 4 players at the table
 
-WHEN OpponentsAtTable = 3 AND InButton AND BigBlindSize = 150 AND StackSize <= 7 AND Raises = 0 AND Calls = 0 AND (hand$TT OR hand$99 OR hand$88 OR hand$77 OR hand$66 OR hand$AQ OR hand$AJ OR hand$AT OR hand$A9 OR hand$A8suited OR hand$KQ OR hand$KJsuited) RaiseMax FORCE
-WHEN OpponentsAtTable = 3 AND InButton AND BigBlindSize = 150 AND StackSize >= 8 AND Raises = 0 AND Calls = 0 AND PairInHand AND NOT (hand$22) RaiseMax FORCE
-WHEN OpponentsAtTable = 3 AND InButton AND BigBlindSize = 150 AND StackSize >= 8 AND Raises = 0 AND Calls = 0 AND hand$Asuited RaiseMax FORCE
-WHEN OpponentsAtTable = 3 AND InButton AND BigBlindSize = 150 AND StackSize >= 8 AND Raises = 0 AND Calls = 0 AND hand$A AND NOT (hand$A2 OR hand$A3 OR hand$A4) RaiseMax FORCE
-WHEN OpponentsAtTable = 3 AND InButton AND BigBlindSize = 150 AND StackSize >= 8 AND Raises = 0 AND Calls = 0 AND (hand$KQ OR hand$KJ OR hand$KT OR hand$K9suited OR hand$QTsuited) RaiseMax FORCE
-WHEN OpponentsAtTable = 3 AND InButton AND BigBlindSize = 100 AND StackSize <= 11 AND Raises = 0 AND Calls = 0 AND PairInHand AND NOT (hand$22 OR hand$33 OR hand$44) RaiseMax FORCE
-WHEN OpponentsAtTable = 3 AND InButton AND BigBlindSize = 100 AND StackSize <= 11 AND Raises = 0 AND Calls = 0 AND (hand$AQ OR hand$AJ OR hand$AT OR hand$A9 OR hand$A8 OR hand$A7suited OR hand$KQsuited) RaiseMax FORCE
-WHEN OpponentsAtTable = 3 AND InButton AND BigBlindSize = 50 AND StackSize <= 17 AND Raises = 0 AND Calls = 0 AND (hand$TT OR hand$99 OR hand$88 OR hand$AQ OR hand$AJsuited) RaiseMax FORCE
-WHEN OpponentsAtTable = 3 AND InButton AND BigBlindSize = 50 AND StackSize >= 18 AND Raises = 0 AND Calls = 0 AND (hand$TT OR hand$99 OR hand$88 OR hand$77 OR hand$AQ OR hand$AJ OR hand$ATsuited) RaiseMax FORCE
-WHEN OpponentsAtTable = 3 AND InButton AND BigBlindSize <= 50 AND StackSize >= 15 AND Raises = 0 AND Calls = 0 AND PairInHand AND NOT (hand$22 OR hand$33 OR hand$44 OR hand$55) RaiseMax FORCE
-WHEN OpponentsAtTable = 3 AND InButton AND BigBlindSize <= 50 AND StackSize >= 15 AND Raises = 0 AND Calls = 0 AND (hand$AQ OR hand$AJ OR hand$ATsuited) RaiseMax FORCE
+WHEN OpponentsAtTable = 3 AND InButton AND BigBlindSize = 400 AND StackSize <= 7 AND Raises = 0 AND Calls = 0 AND (hand$TT OR hand$99 OR hand$88 OR hand$77 OR hand$66 OR hand$AQ OR hand$AJ OR hand$AT OR hand$A9 OR hand$A8suited OR hand$KQ OR hand$KJsuited) RaiseMax FORCE
+WHEN OpponentsAtTable = 3 AND InButton AND BigBlindSize = 400 AND StackSize >= 8 AND Raises = 0 AND Calls = 0 AND PairInHand AND NOT (hand$22) RaiseMax FORCE
+WHEN OpponentsAtTable = 3 AND InButton AND BigBlindSize = 400 AND StackSize >= 8 AND Raises = 0 AND Calls = 0 AND hand$Asuited RaiseMax FORCE
+WHEN OpponentsAtTable = 3 AND InButton AND BigBlindSize = 400 AND StackSize >= 8 AND Raises = 0 AND Calls = 0 AND hand$A AND NOT (hand$A2 OR hand$A3 OR hand$A4) RaiseMax FORCE
+WHEN OpponentsAtTable = 3 AND InButton AND BigBlindSize = 400 AND StackSize >= 8 AND Raises = 0 AND Calls = 0 AND (hand$KQ OR hand$KJ OR hand$KT OR hand$K9suited OR hand$QTsuited) RaiseMax FORCE
+WHEN OpponentsAtTable = 3 AND InButton AND BigBlindSize = 300 AND StackSize <= 11 AND Raises = 0 AND Calls = 0 AND PairInHand AND NOT (hand$22 OR hand$33 OR hand$44) RaiseMax FORCE
+WHEN OpponentsAtTable = 3 AND InButton AND BigBlindSize = 300 AND StackSize <= 11 AND Raises = 0 AND Calls = 0 AND (hand$AQ OR hand$AJ OR hand$AT OR hand$A9 OR hand$A8 OR hand$A7suited OR hand$KQsuited) RaiseMax FORCE
+WHEN OpponentsAtTable = 3 AND InButton AND BigBlindSize = 200 AND StackSize <= 17 AND Raises = 0 AND Calls = 0 AND (hand$TT OR hand$99 OR hand$88 OR hand$AQ OR hand$AJsuited) RaiseMax FORCE
+WHEN OpponentsAtTable = 3 AND InButton AND BigBlindSize = 200 AND StackSize >= 18 AND Raises = 0 AND Calls = 0 AND (hand$TT OR hand$99 OR hand$88 OR hand$77 OR hand$AQ OR hand$AJ OR hand$ATsuited) RaiseMax FORCE
+WHEN OpponentsAtTable = 3 AND InButton AND BigBlindSize <= 160 AND StackSize >= 15 AND Raises = 0 AND Calls = 0 AND PairInHand AND NOT (hand$22 OR hand$33 OR hand$44 OR hand$55) RaiseMax FORCE
+WHEN OpponentsAtTable = 3 AND InButton AND BigBlindSize <= 160 AND StackSize >= 15 AND Raises = 0 AND Calls = 0 AND (hand$AQ OR hand$AJ OR hand$ATsuited) RaiseMax FORCE
 WHEN OpponentsAtTable = 3 AND InButton AND Raises = 0 AND Calls = 0 AND (PairInHand OR hand$AQ OR hand$AJ OR hand$AT OR hand$A9 OR hand$A8 OR hand$A7 OR hand$A6 OR hand$A5suited OR hand$A4suited OR hand$A3suited OR hand$A2suited OR hand$KQ OR hand$KJ OR hand$KT OR hand$K9 OR hand$QJ OR hand$QT OR hand$Q9 OR hand$JT) RaiseBy 100 % FORCE
 WHEN OpponentsAtTable = 3 AND InButton AND Raises = 1 AND (AmountToCall <= 25 % StackSize OR TotalInvested > 100% StackSize) AND (PairInHand OR hand$AQ OR hand$AJ OR hand$AT OR hand$A9 OR hand$KQ OR hand$KJ OR hand$KT OR hand$QJ OR hand$QT OR hand$JT) Call FORCE
-WHEN OpponentsAtTable = 3 AND InSmallBlind AND BigBlindSize >= 50 AND Raises = 0 AND Calls = 0 AND (PairInHand OR hand$A OR hand$K OR hand$Q OR hand$Jsuited) RaiseMax FORCE
-WHEN OpponentsAtTable = 3 AND InSmallBlind AND BigBlindSize >= 50 AND Raises = 0 AND Calls = 0 AND hand$J AND NOT (hand$J2 OR hand$J3) RaiseMax FORCE
-WHEN OpponentsAtTable = 3 AND InSmallBlind AND BigBlindSize >= 50 AND Raises = 0 AND Calls = 0 AND (hand$Tsuited OR hand$T9 OR hand$T8 OR hand$T7 OR hand$T6 OR hand$98 OR hand$97 OR hand$96 OR hand$87 OR hand$86 OR hand$75 OR hand$76 OR hand$65) RaiseMax FORCE
-WHEN OpponentsAtTable = 3 AND InSmallBlind AND BigBlindSize >= 75 AND Raises = 0 AND Calls = 0 AND (PairInHand OR hand$A OR hand$K OR hand$Q OR hand$J OR hand$T OR hand$98 OR hand$97 OR hand$96 OR hand$87 OR hand$86 OR hand$75 OR hand$76 OR hand$65) RaiseMax FORCE
-WHEN OpponentsAtTable = 3 AND InSmallBlind AND BigBlindSize = 100 AND Raises = 1 AND Calls = 0 AND PairInHand AND NOT (hand$22 OR hand$33) RaiseMax FORCE
-WHEN OpponentsAtTable = 3 AND InSmallBlind AND BigBlindSize = 100 AND Raises = 1 AND Calls = 0 AND (hand$AQ OR hand$AJ OR hand$AT OR hand$A9 OR hand$A8 OR hand$A7suited OR hand$A6suited OR hand$A5suited OR hand$KQ OR hand$KJ OR hand$KTsuited) RaiseMax FORCE
-WHEN OpponentsAtTable = 3 AND InSmallBlind AND BigBlindSize >= 150 AND StackSize <= 6 AND Raises = 0 AND Calls = 0 AND (PairInHand OR hand$A OR hand$K OR hand$Qsuited) RaiseMax FORCE
-WHEN OpponentsAtTable = 3 AND InSmallBlind AND BigBlindSize >= 150 AND StackSize <= 6 AND Raises = 0 AND Calls = 0 AND hand$Q AND NOT (hand$Q2 OR hand$Q3 OR hand$Q4 OR hand$Q5) RaiseMax FORCE
-WHEN OpponentsAtTable = 3 AND InSmallBlind AND BigBlindSize >= 150 AND StackSize <= 6 AND Raises = 0 AND Calls = 0 AND (hand$Jsuited OR hand$JT OR hand$J9 OR hand$J8 OR hand$J7) RaiseMax FORCE
-WHEN OpponentsAtTable = 3 AND InSmallBlind AND BigBlindSize >= 150 AND StackSize <= 6 AND Raises = 0 AND Calls = 0 AND hand$Tsuited AND NOT (hand$T3suited) RaiseMax FORCE
-WHEN OpponentsAtTable = 3 AND InSmallBlind AND BigBlindSize >= 150 AND StackSize <= 6 AND Raises = 0 AND Calls = 0 AND (hand$98 OR hand$97 OR hand$96 OR hand$87 OR hand$86 OR hand$75 OR hand$76 OR hand$65) RaiseMax FORCE
+WHEN OpponentsAtTable = 3 AND InSmallBlind AND BigBlindSize >= 100 AND Raises = 0 AND Calls = 0 AND (PairInHand OR hand$A OR hand$K OR hand$Q OR hand$Jsuited) RaiseMax FORCE
+WHEN OpponentsAtTable = 3 AND InSmallBlind AND BigBlindSize >= 100 AND Raises = 0 AND Calls = 0 AND hand$J AND NOT (hand$J2 OR hand$J3) RaiseMax FORCE
+WHEN OpponentsAtTable = 3 AND InSmallBlind AND BigBlindSize >= 100 AND Raises = 0 AND Calls = 0 AND (hand$Tsuited OR hand$T9 OR hand$T8 OR hand$T7 OR hand$T6 OR hand$98 OR hand$97 OR hand$96 OR hand$87 OR hand$86 OR hand$75 OR hand$76 OR hand$65) RaiseMax FORCE
+WHEN OpponentsAtTable = 3 AND InSmallBlind AND BigBlindSize >= 120 AND Raises = 0 AND Calls = 0 AND (PairInHand OR hand$A OR hand$K OR hand$Q OR hand$J OR hand$T OR hand$98 OR hand$97 OR hand$96 OR hand$87 OR hand$86 OR hand$75 OR hand$76 OR hand$65) RaiseMax FORCE
+WHEN OpponentsAtTable = 3 AND InSmallBlind AND BigBlindSize = 300 AND Raises = 1 AND Calls = 0 AND PairInHand AND NOT (hand$22 OR hand$33) RaiseMax FORCE
+WHEN OpponentsAtTable = 3 AND InSmallBlind AND BigBlindSize = 300 AND Raises = 1 AND Calls = 0 AND (hand$AQ OR hand$AJ OR hand$AT OR hand$A9 OR hand$A8 OR hand$A7suited OR hand$A6suited OR hand$A5suited OR hand$KQ OR hand$KJ OR hand$KTsuited) RaiseMax FORCE
+WHEN OpponentsAtTable = 3 AND InSmallBlind AND BigBlindSize >= 400 AND StackSize <= 6 AND Raises = 0 AND Calls = 0 AND (PairInHand OR hand$A OR hand$K OR hand$Qsuited) RaiseMax FORCE
+WHEN OpponentsAtTable = 3 AND InSmallBlind AND BigBlindSize >= 400 AND StackSize <= 6 AND Raises = 0 AND Calls = 0 AND hand$Q AND NOT (hand$Q2 OR hand$Q3 OR hand$Q4 OR hand$Q5) RaiseMax FORCE
+WHEN OpponentsAtTable = 3 AND InSmallBlind AND BigBlindSize >= 400 AND StackSize <= 6 AND Raises = 0 AND Calls = 0 AND (hand$Jsuited OR hand$JT OR hand$J9 OR hand$J8 OR hand$J7) RaiseMax FORCE
+WHEN OpponentsAtTable = 3 AND InSmallBlind AND BigBlindSize >= 400 AND StackSize <= 6 AND Raises = 0 AND Calls = 0 AND hand$Tsuited AND NOT (hand$T3suited) RaiseMax FORCE
+WHEN OpponentsAtTable = 3 AND InSmallBlind AND BigBlindSize >= 400 AND StackSize <= 6 AND Raises = 0 AND Calls = 0 AND (hand$98 OR hand$97 OR hand$96 OR hand$87 OR hand$86 OR hand$75 OR hand$76 OR hand$65) RaiseMax FORCE
 WHEN OpponentsAtTable = 3 AND InSmallBlind AND StackSize <= 20 AND Raises = 0 AND Calls = 0 AND (hand$TT OR hand$99 OR hand$88 OR hand$77 OR hand$66 OR hand$AQ OR hand$AJ OR hand$AT OR hand$A9suited OR hand$A8suited OR hand$A7suited OR hand$KQ OR hand$KJ OR hand$KTsuited OR hand$K9suited OR hand$QJsuited OR hand$QTsuited OR hand$Q9suited OR hand$JTsuited OR hand$J9suited OR hand$T9suited) RaiseMax FORCE
 WHEN OpponentsAtTable = 3 AND InSmallBlind AND StackSize <= 20 AND Raises = 0 AND Calls > 0 AND hand$TT RaiseMax FORCE
 WHEN OpponentsAtTable = 3 AND InSmallBlind AND StackSize <= 20 AND Raises = 0 AND Calls > 0 AND (hand$AQ OR hand$AJ OR hand$AT OR hand$KQsuited) RaiseBy 100 % FORCE
@@ -482,12 +175,12 @@ WHEN OpponentsAtTable = 3 AND InSmallBlind AND StackSize <= 20 AND Raises = 0 AN
 WHEN OpponentsAtTable = 3 AND InSmallBlind AND StackSize <= 20 AND Raises = 1 AND hand$TT RaiseMax FORCE
 WHEN OpponentsAtTable = 3 AND InBigBlind AND StackSize <= 4 AND PairInHand AND NOT (hand$22 OR hand$33) RaiseMax FORCE
 WHEN OpponentsAtTable = 3 AND InBigBlind AND StackSize <= 4 AND (hand$AQ OR hand$AJ OR hand$AT OR hand$KJsuited) RaiseMax FORCE
-WHEN OpponentsAtTable = 3 AND InBigBlind AND BigBlindSize >= 100 AND StackSize <= 12 AND Raises = 1 AND LastRaiserPosition = 3 AND AmountToCall = 1 AND (PairInHand OR hand$A OR hand$K OR hand$Q OR hand$Jsuited) RaiseMax FORCE
-WHEN OpponentsAtTable = 3 AND InBigBlind AND BigBlindSize >= 100 AND StackSize <= 12 AND Raises = 1 AND LastRaiserPosition = 3 AND AmountToCall = 1 AND hand$J AND NOT (hand$J2 OR hand$J3) RaiseMax FORCE
-WHEN OpponentsAtTable = 3 AND InBigBlind AND BigBlindSize >= 100 AND StackSize <= 12 AND Raises = 1 AND LastRaiserPosition = 3 AND AmountToCall = 1 AND (hand$T9 OR hand$T8 OR hand$T7 OR hand$T6 OR hand$98 OR hand$97 OR hand$96 OR hand$87 OR hand$86 OR hand$76 OR hand$75 OR hand$65) RaiseMax FORCE
+WHEN OpponentsAtTable = 3 AND InBigBlind AND BigBlindSize >= 300 AND StackSize <= 12 AND Raises = 1 AND LastRaiserPosition = 3 AND AmountToCall = 1 AND (PairInHand OR hand$A OR hand$K OR hand$Q OR hand$Jsuited) RaiseMax FORCE
+WHEN OpponentsAtTable = 3 AND InBigBlind AND BigBlindSize >= 300 AND StackSize <= 12 AND Raises = 1 AND LastRaiserPosition = 3 AND AmountToCall = 1 AND hand$J AND NOT (hand$J2 OR hand$J3) RaiseMax FORCE
+WHEN OpponentsAtTable = 3 AND InBigBlind AND BigBlindSize >= 300 AND StackSize <= 12 AND Raises = 1 AND LastRaiserPosition = 3 AND AmountToCall = 1 AND (hand$T9 OR hand$T8 OR hand$T7 OR hand$T6 OR hand$98 OR hand$97 OR hand$96 OR hand$87 OR hand$86 OR hand$76 OR hand$75 OR hand$65) RaiseMax FORCE
 WHEN OpponentsAtTable = 3 AND InBigBlind AND StackSize <= 10 AND hand$TT RaiseMax FORCE
 WHEN OpponentsAtTable = 3 AND InBigBlind AND Raises = 1 AND BetSize <= 2 AND (PairInHand OR hand$AQ OR hand$AJ OR hand$KQsuited) Call FORCE
-WHEN OpponentsAtTable = 3 AND StillToAct = 3 AND BigBlindSize >= 150 AND StackSize <= 6 AND Raises = 0 AND Calls = 0 AND (hand$TT OR hand$99 OR hand$AQ OR hand$AJsuited) RaiseMax FORCE
+WHEN OpponentsAtTable = 3 AND StillToAct = 3 AND BigBlindSize >= 400 AND StackSize <= 6 AND Raises = 0 AND Calls = 0 AND (hand$TT OR hand$99 OR hand$AQ OR hand$AJsuited) RaiseMax FORCE
 WHEN OpponentsAtTable = 3 AND StillToAct = 3 AND StackSize <= 13 AND (hand$TT OR hand$99 OR hand$AQ OR hand$AJsuited) RaiseMax FORCE
 
 
@@ -576,27 +269,16 @@ WHEN OpponentsAtTable = 1 AND InBigBlind AND Raises = 1 AND BetSize <= 3 AND (ha
 WHEN OpponentsAtTable = 1 AND InBigBlind AND Raises = 1 AND BetSize ~~ 2 AND (hand$55 OR hand$44 OR hand$33 OR hand$22 OR hand$A7 OR hand$A6 OR hand$A5 OR hand$A4 OR hand$A3 OR hand$A2 OR hand$KT OR hand$K9 OR hand$K8 OR hand$QT OR hand$Q8 OR hand$Q9 OR hand$JT OR hand$J9 OR hand$J8 OR hand$T9 OR hand$T8 OR hand$98 OR hand$97 OR hand$87 OR hand$76 OR hand$65) Call FORCE
 WHEN OpponentsAtTable = 1 AND InBigBlind AND Raises >= 2 AND (hand$88 OR hand$77 OR hand$66 OR hand$A9 OR hand$A8 OR hand$KQ OR hand$KJ OR hand$QJ) Fold FORCE
 
+//WHEN AllOpponentsLeftSittingOut AND Raises = 0 AND Calls = 0 RaiseMax FORCE
+
+// Threbetting a stealraiser
+WHEN Calls = 0 AND Raises = 1 AND LastRaiserPosition <= 3
+    WHEN AmountToCall <= 3 AND listStealRaiser RaiseTo 9 FORCE
+
+
 
 WHEN Others
  WHEN Others Fold FORCE
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ##f$flop##
 
@@ -917,24 +599,6 @@ WHEN Position = Last
 
 WHEN Others
  WHEN Others Fold FORCE
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ##f$turn##
 
@@ -1429,24 +1093,6 @@ WHEN Position = Last
 WHEN Others
  WHEN Others Fold FORCE
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ##f$river##
 
 WHEN (HaveStraightFlush OR HaveQuads OR HaveFullHouse)
@@ -1864,22 +1510,4 @@ WHEN Position = Last
 WHEN Others
  WHEN Others Fold FORCE
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
