@@ -1,4 +1,4 @@
-##2015-03-10 16:01:53##
+##2015-03-17 00:22:39##
 
 ##notes##
  
@@ -46,13 +46,19 @@
 // Check whenever it is free to call
 (call == 0) 
 
+
+
 ##f$fold##
 // f$fold should alwazs evaluate to true per default
 // for auto-check-folding instead of time-outs.
 1 
 
+
+
 ##f$sitin##
 1 
+
+
 
 ##f$sitout##
  
@@ -61,7 +67,7 @@
  
 
 ##f$autopost##
- 
+ 1
 
 ##f$close##
  
@@ -70,6 +76,8 @@
 // f$rebuy should evaluate to the target-amount in dollars.
 // This value will be passed to the rebuy-script as a parameter.
 0
+
+
 
 
 ##f$prefold##
@@ -83,12 +91,16 @@
 0
 
 
+
+
 ##f$allin_on_betsize_balance_ratio##
 // Allin if betsize is more than X% of our total balance (including currentbet).
 // This affects f$betsize and all f$betpot_X_Y_ functions.
 //  0.00 =  0% = disabled
 //  0.50 = 50%
 0.00
+
+
 
 
 ##f$ini_function_on_startup##
@@ -114,11 +126,15 @@
 // Works even with "no opponents".
 nopponentsplaying + 1 
 
+
+
 ##f$prwin_number_of_iterations##
 // "Reasonable" default to get PrWin running for beginners.
 // Large enough to get usable results,
 // small enough to save CPU-time.
 1000 
+
+
 
 ##f$prwin_topclip##
  
@@ -137,6 +153,8 @@ nopponentsplaying + 1
 // The sum of all f$icm_prizeX functions should be 1.00 (= 100%).
 // Default to get things going: the winner takes it all.
 1.00
+
+
 
 
 ##f$icm_prize2##
@@ -177,11 +195,15 @@ AKs AQs AKo
 
 
 
+
+
 ##list10##
 //13.12% Raise UTG Limp
 99 88 77 66 
 AJs ATs A9s A8s KQs KJs KTs QJs QTs JTs 
 AQo KQo AJo KJo ATo  
+
+
 
 
 
@@ -204,11 +226,15 @@ AKo AQo KQo AJo KJo QJo ATo KTo QTo JTo A9o K9o Q9o J9o T9o A8o K8o Q8o J8o T8o 
 
 
 
+
+
 ##list11##
 //17.19% Raise MP Limp
 99 88 77 66 55 
 AJs ATs A9s A8s A7s A6s KQs KJs KTs K9s QJs QTs Q9s JTs J9s T9s 
 AQo KQo AJo KJo QJo ATo A9o  
+
+
 
 
 
@@ -222,11 +248,15 @@ AQo KQo AJo KJo QJo ATo KTo QTo JTo A9o A8o A7o
 
 
 
+
+
 ##list13##
 //37.25% Raise BU Limp
 99  88  77  66  55  44  
 AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs KTs K9s K8s K7s K6s K5s K4s K3s K2s QJs QTs Q9s Q8s Q7s Q6s JTs J9s J8s J7s T9s T8s 98s 87s 76s 
 AQo KQo AJo KJo QJo ATo KTo QTo JTo A9o K9o Q9o J9o A8o K8o A7o K7o A6o A5o A4o A3o A2o  
+
+
 
 
 
@@ -240,11 +270,15 @@ AQo KQo AJo KJo QJo ATo KTo QTo JTo A9o K9o Q9o J9o T9o A8o K8o Q8o J8o T8o 98o 
 
 
 
+
+
 ##list20##
 //17.19% Raise 1 Limper
 99 88 77 66 55 
 AJs ATs A9s A8s A7s A6s KQs KJs KTs K9s QJs QTs Q9s JTs J9s T9s 
 AQo KQo AJo KJo QJo ATo A9o   
+
+
 
 
 
@@ -258,11 +292,15 @@ AQo KQo AJo KJo ATo A9o
 
 
 
+
+
 ##list22##
 //8.75% Raise 3 Limpers  
 99 
 AJs ATs KQs 
 AQo KQo AJo ATo  
+
+
 
 
 
@@ -276,11 +314,15 @@ QJo A9o
 
 
 
+
+
 ##list24##
 //13.73% Call 3 Limpers 
 88 77 66 55 44 33 22 
 A9s A8s A7s A6s A5s A4s A3s A2s KJs KTs K9s K8s K7s K6s QJs QTs Q9s Q8s Q7s JTs J9s T9s 98s 87s 76s 65s 54s 43s 32s 
 QJo A9o 
+
+
 
 
 
@@ -294,10 +336,14 @@ AQo AJo
 
 
 
+
+
 ##list31##
 //3.92% Pos=SB 3-BET 1 RAISER UTG 
 99 
 AJs ATs 
+
+
 
 
 
@@ -311,11 +357,15 @@ AQo KQo AJo ATo
 
 
 
+
+
 ##list33##
 //8.14% Pos=SB 3-BET 1 RAISER MP 
 99 
 AJs ATs A9s KQs 
 AQo AJo ATo  
+
+
 
 
 
@@ -329,11 +379,15 @@ AQo KQo AJo ATo A9o A8o
 
 
 
+
+
 ##list35##
 //12.07% Pos=SB 3-BET 1 RAISER CO 
 99 
 AJs ATs A9s A8s A7s KQs KJs KTs 
 AQo KQo AJo ATo A9o A8o  
+
+
 
 
 
@@ -347,8 +401,12 @@ AQo KQo AJo KJo ATo KTo A9o A8o A7o A6o A5o A4o A3o
 
 
 
+
+
 ##list40##
 88  77  66  55  44  33  22 
+
+
 
 
 
@@ -359,8 +417,12 @@ KJs QTs JTs
 
 
 
+
+
 ##list42##
 KJs
+
+
 
 
 
@@ -374,6 +436,8 @@ KQo AJo KJo QJo ATo A9o A8o A7o
 
 
 
+
+
 ##list51##
 //24.13% Call Raise MP I BB
 A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs KTs K9s K8s K7s K6s K5s K4s K3s K2s QJs QTs Q9s Q8s JTs J9s J8s T9s T8s T7s 98s 97s 87s 76s 65s 54s 
@@ -382,10 +446,14 @@ KQo KJo QJo ATo KTo QTo JTo A9o A8o A7o A6o A5o A4o A3o A2o
 
 
 
+
+
 ##list52##
 //32.58% Call Raise CO I BB
 A8s A7s A6s A5s A4s A3s A2s KQs KJs KTs K9s K8s K7s K6s K5s K4s K3s K2s QJs QTs Q9s Q8s Q7s Q6s Q5s Q4s Q3s JTs J9s J8s J7s J6s T9s T8s T7s T6s 98s 97s 96s 87s 86s 85s 76s 75s 65s 64s 54s 53s 
 KQo KJo QJo KTo QTo JTo A9o K9o Q9o J9o T9o A8o K8o 98o A7o A6o A5o A4o A3o A2o  
+
+
 
 
 
@@ -399,10 +467,14 @@ QJo KTo QTo JTo K9o Q9o J9o T9o A8o K8o Q8o J8o T8o 98o A7o K7o 97o 87o A6o K6o 
 
 
 
+
+
 ##list54##
 22 
 K5s K4s K3s K2s QTs Q9s Q8s Q7s Q6s Q5s Q4s Q3s Q2s JTs J9s J8s J7s J6s J5s J4s J3s J2s T9s T8s T7s T6s T5s T4s T3s T2s 98s 97s 96s 95s 94s 93s 92s 87s 86s 85s 84s 76s 75s 74s 65s 64s 63s 54s 53s 52s 43s 
 QTo JTo Q9o J9o T9o Q8o J8o T8o 98o K7o Q7o J7o T7o 97o 87o K6o Q6o J6o T6o 96o 86o 76o K5o Q5o J5o 65o K4o Q4o K3o Q3o K2o Q2o  
+
+
 
 
 
@@ -416,11 +488,15 @@ AKo AQo
 
 
 
+
+
 ##list56##
 //6.64% Raise 1 Raise MP I BB
 AA KK QQ JJ TT 99 
 AKs AQs AJs ATs 
 AKo AQo AJo  
+
+
 
 
 
@@ -434,11 +510,15 @@ AKo AQo AJo ATo
 
 
 
+
+
 ##list58##
 //15.54% Raise 1 Raise BU I BB
 99 88 77 66 55 44 
 AJs ATs A9s A8s A7s A6s A5s KQs KJs 
 AQo KQo AJo KJo ATo A9o A8o
+
+
 
 
 
@@ -452,10 +532,14 @@ AQo KQo AJo KJo QJo ATo KTo A9o K9o A8o K8o A7o A6o A5o A4o A3o A2o
 
 
 
+
+
 ##list80##
 AA  KK  QQ  JJ  TT  99  88  77  66  55  44  33  22  
 AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs KTs K9s K8s K7s K6s K5s K4s K3s K2s QJs QTs Q9s Q8s JTs J9s T9s T8s 98s 97s 87s 86s 76s 75s 65s 64s 54s 53s 43s 
 AKo AQo KQo AJo KJo QJo ATo KTo QTo JTo A9o K9o Q9o J9o T9o A8o 98o A7o 87o A6o 76o A5o A4o A3o A2o  
+
+
 
 
 
@@ -533,6 +617,8 @@ WHEN ((( Raises = 1 AND Calls = 0 AND InBigBlind)))
 //=========================================================================================================
 //=========================================================================================================
 	
+
+
 
 
 ##f$flop##
@@ -632,6 +718,8 @@ WHEN (Others)
 
 
 
+
+
 ##f$turn##
 WHEN (((f$PostFlop_Senario = 1)))
 //Eu sou o primeiro a agir
@@ -717,6 +805,8 @@ WHEN (Others)
 
 
 
+
+
 ##f$river##
 WHEN (((f$PostFlop_Senario = 1)))
 //Eu sou o primeiro a agir
@@ -788,6 +878,8 @@ WHEN (Others)
 	
 
 
+
+
 ##f$PostFlop_Senario##
 // 1. Eu sou o primeiro a agir 
 // 2. Viloes checaram sou o ultimo a agir
@@ -807,9 +899,13 @@ WHEN (Others)
 
 
 
+
+
 ##f$Round_First_Action##
 	WHEN (NOT didrais AND NOT didcall AND NOT didchec) RETURN 1 FORCE 
 	WHEN (Others) RETURN 0 FORCE
+
+
 
 
 
