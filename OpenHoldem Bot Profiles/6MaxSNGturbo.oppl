@@ -1,19 +1,226 @@
-##notes##
+##2015-03-14 19:11:39##
 
-///////////////////////////////////////////////////////////////////////
-//                                                                   //
-// Converted using Poker_dog's PPL to OpenPPL Converter version 1.01 //
-//                                                                   //
-///////////////////////////////////////////////////////////////////////
+##notes##
+ 
+
+##dll##
+ 
+
+##f$alli##
+ 
+
+##f$betpot_2_1##
+ 
+
+##f$betpot_1_1##
+ 
+
+##f$betpot_3_4##
+ 
+
+##f$betpot_2_3##
+ 
+
+##f$betpot_1_2##
+ 
+
+##f$betpot_1_3##
+ 
+
+##f$betpot_1_4##
+ 
+
+##f$betsize##
+// Betsize in dollars, raise-to semantics.
+// OpenHoldem will auto-adapt the betsize to the casinos input-requirements.
+// Please define your tablemaps "swagtextmethod" to configure this feature.
+
+
+##f$rais##
+ 
+
+##f$call##
+ 
+
+##f$check##
+// Check whenever it is free to call
+(call == 0) 
+
+
+
+
+
+##f$fold##
+// f$fold should alwazs evaluate to true per default
+// for auto-check-folding instead of time-outs.
+1 
+
+
+
+
+
+##f$sitin##
+1
+
+
+
+##f$sitout##
+ 
+
+##f$leave##
+ 
+
+##f$autopost##
+ 
+
+##f$close##
+ 
+
+##f$rebuy##
+// f$rebuy should evaluate to the target-amount in dollars.
+// This value will be passed to the rebuy-script as a parameter.
+0
+
+
+
+
+
+
+##f$prefold##
+ 
+
+##f$chat##
+ 
+
+##f$delay##
+// Autoplayer-delay in milli-seconds
+0
+
+
+
+
+
+
+##f$allin_on_betsize_balance_ratio##
+// Allin if betsize is more than X% of our total balance (including currentbet).
+// This affects f$betsize and all f$betpot_X_Y_ functions.
+//  0.00 =  0% = disabled
+//  0.50 = 50%
+0.00
+
+
+
+
+
+
+##f$ini_function_on_startup##
+ 
+
+##f$ini_function_on_connection##
+ 
+
+##f$ini_function_on_handreset##
+ 
+
+##f$ini_function_on_new_round##
+ 
+
+##f$ini_function_on_my_turn##
+ 
+
+##f$ini_function_on_heartbeat##
+ 
+
+##f$prwin_number_of_opponents##
+// "Reasonable" default to get standard PrWin running for beginners,
+// Works even with "no opponents".
+nopponentsplaying + 1 
+
+
+
+
+
+##f$prwin_number_of_iterations##
+// "Reasonable" default to get PrWin running for beginners.
+// Large enough to get usable results,
+// small enough to save CPU-time.
+1000 
+
+
+
+
+
+##f$prwin_topclip##
+ 
+
+##f$prwin_mustplay##
+ 
+
+##f$prwin_willplay##
+ 
+
+##f$prwin_wontplay##
+ 
+
+##f$icm_prize1##
+// f$icm_prizeX functions are used to configure the payout-structure in tournaments.
+// The sum of all f$icm_prizeX functions should be 1.00 (= 100%).
+// Default to get things going: the winner takes it all.
+1.00
+
+
+
+
+
+
+##f$icm_prize2##
+ 
+
+##f$icm_prize3##
+ 
+
+##f$icm_prize4##
+ 
+
+##f$icm_prize5##
+ 
+
+##f$icm_prize6##
+ 
+
+##f$icm_prize7##
+ 
+
+##f$icm_prize8##
+ 
+
+##f$icm_prize9##
+ 
+
+##f$test##
+ 
+
+##f$debug##
+ 
+
+##listStealRaiser##
+AA KK QQ JJ TT 99 88 77 66 55 44 33 22 
+AKs AQs AJs ATs KQs KJs KTs QJs QTs JTs 
+AKo AQo AJo ATo KQo KJo KTo QJo QTo JTo 
+
+
+
+
+
 
 ##f$preflop##
 
 // 6max turbo SNG profile - Version 8.0 - Dated 27th June 2010 - by Pokrhitman
 
 WHEN (hand$AA OR hand$KK) AND Raises = 0 RaisePot FORCE
-WHEN (hand$AA OR hand$KK) AND Raises = 1 RaiseMax FORCE
+WHEN (hand$AA OR hand$KK) AND Raises >= 1 RaiseMax FORCE
 WHEN (hand$QQ OR hand$JJ) AND Raises = 0 RaiseMax FORCE
-WHEN (hand$QQ OR hand$JJ) AND Raises = 1 AND AmountToCall <= 30% PotSize RaiseMax FORCE
+WHEN (hand$QQ OR hand$JJ) AND Raises >= 1 AND AmountToCall <= 30% PotSize RaiseMax FORCE
 WHEN (hand$QQ OR hand$JJ) AND (Raises = 1 OR OpponentIsAllin) AND AmountToCall < 60 % StackSize Call FORCE
 WHEN (OpponentsAtTable = 5 OR OpponentsAtTable = 4) AND Raises > 2 AND (hand$QQ OR hand$JJ) AND AmountToCall > 40 % StackSize Fold FORCE
 WHEN (OpponentsAtTable = 5 OR OpponentsAtTable = 4) AND Raises > 2 AND (hand$QQ OR hand$JJ) AND AmountToCall < 40% StackSize Call FORCE
@@ -279,6 +486,12 @@ WHEN Calls = 0 AND Raises = 1 AND LastRaiserPosition <= 3
 
 WHEN Others
  WHEN Others Fold FORCE
+
+
+
+
+
+
 
 ##f$flop##
 
@@ -599,6 +812,12 @@ WHEN Position = Last
 
 WHEN Others
  WHEN Others Fold FORCE
+
+
+
+
+
+
 
 ##f$turn##
 
@@ -1093,6 +1312,12 @@ WHEN Position = Last
 WHEN Others
  WHEN Others Fold FORCE
 
+
+
+
+
+
+
 ##f$river##
 
 WHEN (HaveStraightFlush OR HaveQuads OR HaveFullHouse)
@@ -1510,4 +1735,10 @@ WHEN Position = Last
 WHEN Others
  WHEN Others Fold FORCE
  
+
+
+
+
+
+
 
