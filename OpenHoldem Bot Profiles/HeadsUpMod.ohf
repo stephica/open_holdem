@@ -1,7 +1,15 @@
-##2015-03-10 07:09:00##
+##2015-03-16 13:01:38##
 
 ##notes##
 Heasd Up No Limit bot
+
+
+
+
+
+
+
+
 
 
 
@@ -20,6 +28,8 @@ Heasd Up No Limit bot
 || (f$headsup_allin)
 || (currentbet>f$balance)
 || (f$balance<(bblind+sblind))
+|| [prwin >= 0.8]
+
 
 
 
@@ -59,9 +69,28 @@ f$srai>= f$sraimin
 
 
 
+
+
+
+
+
+
+
+
 ##f$rais##
+f$headsup_raise                          ? f$raise_amount :
+f$bluffing                               ? f$raise_amount :
 0
-|| f$alli
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -74,24 +103,37 @@ f$srai>= f$sraimin
 || [ call >= f$balance && f$srai > 0 ]
 || [ !f$fold && f$headsup_call ]
 || [ f$alli ]
-
-
-
-
+|| [prwin >= 0.7]
 
 
 
 ##f$check##
 // Check whenever it is free to call
-(call == 0) 
+1
+
+
+
+
+
+
+
+
 
 
 
 
 
 ##f$fold##
-0
+1
 || [betround==3 && call>0 && pokerval<onepair && didcallround2]
+
+
+
+
+
+
+
+
 
 
 
@@ -101,6 +143,14 @@ f$srai>= f$sraimin
 
 ##f$sitin##
 1
+
+
+
+
+
+
+
+
 
 
 
@@ -129,8 +179,24 @@ f$srai>= f$sraimin
 
 
 
+
+
+
+
+
+
+
+
 ##f$prefold##
 0
+
+
+
+
+
+
+
+
 
 
 
@@ -147,8 +213,24 @@ f$srai>= f$sraimin
 
 
 
+
+
+
+
+
+
+
+
 ##f$delay##
 0
+
+
+
+
+
+
+
+
 
 
 
@@ -162,6 +244,14 @@ f$srai>= f$sraimin
 //  0.00 =  0% = disabled
 //  0.50 = 50%
 0.00
+
+
+
+
+
+
+
+
 
 
 
@@ -196,11 +286,27 @@ nopponentsdealt
 
 
 
+
+
+
+
+
+
+
+
 ##f$prwin_number_of_iterations##
 // "Reasonable" default to get PrWin running for beginners.
 // Large enough to get usable results,
 // small enough to save CPU-time.
 1000 
+
+
+
+
+
+
+
+
 
 
 
@@ -223,6 +329,14 @@ nopponentsdealt
 // The sum of all f$icm_prizeX functions should be 1.00 (= 100%).
 // Default to get things going: the winner takes it all.
 1.00
+
+
+
+
+
+
+
+
 
 
 
@@ -268,9 +382,25 @@ AKs AQs
 
 
 
+
+
+
+
+
+
+
+
 ##list15##
 AA KK QQ JJ TT 99 88 77 66 
 AKs AQs AJs ATs A9s A8s KQs KJs 
+
+
+
+
+
+
+
+
 
 
 
@@ -286,9 +416,25 @@ AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s KQs KJs KTs K9s K8s QJs QTs
 
 
 
+
+
+
+
+
+
+
+
 ##list17##
 AA KK QQ JJ TT 99 88 77 66 55 44 
 AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs KTs K9s K8s K7s K6s K5s QJs QTs Q9s Q8s JTs J9s 
+
+
+
+
+
+
+
+
 
 
 
@@ -304,9 +450,25 @@ AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs KTs K9s K8s K7s K6s K5s 
 
 
 
+
+
+
+
+
+
+
+
 ##list19##
 AA KK QQ JJ TT 99 88 77 66 55 44 33 22 
 AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs KTs K9s K8s K7s K6s K5s K4s K3s QJs QTs Q9s Q8s Q7s Q6s Q5s JTs J9s J8s T9s 
+
+
+
+
+
+
+
+
 
 
 
@@ -322,6 +484,14 @@ AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs KTs K9s K8s K7s QJs QTs 
 
 
 
+
+
+
+
+
+
+
+
 ##list21##
 AA KK QQ JJ TT 99 88 77 66 55 44 33 22 
 AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs KTs K9s K8s K7s QJs QTs Q9s Q8s Q7s JTs J9s J8s J7s T9s T8s T7s 98s 97s 87s 86s 76s 75s 65s 54s 43s 32s 
@@ -331,9 +501,25 @@ AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs KTs K9s K8s K7s QJs QTs 
 
 
 
+
+
+
+
+
+
+
+
 ##f$balance##
 balance<=1 ? bblind*10 :
 balance
+
+
+
+
+
+
+
+
 
 
 
@@ -443,6 +629,14 @@ balance
 
 
 
+
+
+
+
+
+
+
+
 ##f$checkrais##
 0
 || [istwopair && f$openboard && didchec]
@@ -451,6 +645,14 @@ balance
 || [isflush && f$nsuitedholeshi<4 && didchec]
 || [pokerval>flush && didchec]
 || [prwin>0.9 && didchec]
+
+
+
+
+
+
+
+
 
 
 
@@ -468,8 +670,24 @@ bblind>=200 ? (bblind+sblind)+(25*nplayersdealt) :
 
 
 
+
+
+
+
+
+
+
+
 ##f$csi##
 (f$balance+currentbet)/f$cpr
+
+
+
+
+
+
+
+
 
 
 
@@ -535,6 +753,14 @@ nplayersdealt==3 ?  (dealposition==3 ? 5 : 0):0
 
 
 
+
+
+
+
+
+
+
+
 ##f$evcall##
 0
 
@@ -544,8 +770,24 @@ nplayersdealt==3 ?  (dealposition==3 ? 5 : 0):0
 
 
 
+
+
+
+
+
+
+
+
 ##f$evrais##
 0
+
+
+
+
+
+
+
+
 
 
 
@@ -567,6 +809,14 @@ nplayersdealt==3 ?  (dealposition==3 ? 5 : 0):0
 
 
 
+
+
+
+
+
+
+
+
 ##f$headsup_bblind_allin##
 0
 || [ 1
@@ -577,6 +827,14 @@ nplayersdealt==3 ?  (dealposition==3 ? 5 : 0):0
 && f$csi<5
 && list16
 ]
+
+
+
+
+
+
+
+
 
 
 
@@ -602,6 +860,14 @@ nplayersdealt==3 ?  (dealposition==3 ? 5 : 0):0
 
 
 
+
+
+
+
+
+
+
+
 ##f$headsup_bblind_raise##
 0
 || [ 1
@@ -613,6 +879,14 @@ nplayersdealt==3 ?  (dealposition==3 ? 5 : 0):0
    || (call>0 && list15)
    )
 ]
+
+
+
+
+
+
+
+
 
 
 
@@ -634,6 +908,14 @@ nplayersdealt==3 ?  (dealposition==3 ? 5 : 0):0
 
 
 
+
+
+
+
+
+
+
+
 ##f$headsup_flop_allin##
 0
 || betround==2
@@ -647,6 +929,14 @@ nplayersdealt==3 ?  (dealposition==3 ? 5 : 0):0
    )
 ]
 }
+
+
+
+
+
+
+
+
 
 
 
@@ -682,6 +972,14 @@ nplayersdealt==3 ?  (dealposition==3 ? 5 : 0):0
    )
 ]
 }
+
+
+
+
+
+
+
+
 
 
 
@@ -736,6 +1034,14 @@ nplayersdealt==3 ?  (dealposition==3 ? 5 : 0):0
 
 
 
+
+
+
+
+
+
+
+
 ##f$headsup_raise##
 0
 || f$headsup_sblind_raise
@@ -743,6 +1049,14 @@ nplayersdealt==3 ?  (dealposition==3 ? 5 : 0):0
 || f$headsup_flop_raise
 || f$headsup_turn_raise
 || f$headsup_river_raise
+
+
+
+
+
+
+
+
 
 
 
@@ -766,8 +1080,24 @@ nplayersdealt==3 ?  (dealposition==3 ? 5 : 0):0
 
 
 
+
+
+
+
+
+
+
+
 ##f$headsup_river_call##
 0
+
+
+
+
+
+
+
+
 
 
 
@@ -823,6 +1153,14 @@ nopponentsdealt==1 && { 0
 
 
 
+
+
+
+
+
+
+
+
 ##f$headsup_sblind_allin##
 0
 || betround==1
@@ -840,6 +1178,14 @@ nopponentsdealt==1 && { 0
    )
 ]
 }
+
+
+
+
+
+
+
+
 
 
 
@@ -890,6 +1236,14 @@ nopponentsdealt==1 && { 0
 
 
 
+
+
+
+
+
+
+
+
 ##f$headsup_sblind_raise##
 0
 || [ 1
@@ -905,6 +1259,14 @@ nopponentsdealt==1 && { 0
    || (f$csi>10 && list17 && randomround<=0.3)
    )
 ]
+
+
+
+
+
+
+
+
 
 
 
@@ -938,6 +1300,14 @@ nopponentsdealt==1 && { 0
 
 
 
+
+
+
+
+
+
+
+
 ##f$headsup_turn_call##
 0
 || betround==3 &&
@@ -954,6 +1324,14 @@ nopponentsdealt==1 && { 0
    )
 ]
 }
+
+
+
+
+
+
+
+
 
 
 
@@ -995,11 +1373,27 @@ nopponentsdealt==1 && { 0
 
 
 
+
+
+
+
+
+
+
+
 ##f$isdraw##
 betround<4 &&
 (nstraightfill==1 ||
 nsuited==4 ||
 rankloplayer>rankhicommon)
+
+
+
+
+
+
+
+
 
 
 
@@ -1017,6 +1411,14 @@ rankloplayer>rankhicommon)
 
 
 
+
+
+
+
+
+
+
+
 ##f$openboard##
 // impossible to have a boat ,flush, or straight; top set is nuts
 [ nrankedcommon == 1 && nsuitedcommon <= 2 && nstraightfillcommon >=3 ]
@@ -1027,7 +1429,16 @@ rankloplayer>rankhicommon)
 
 
 
+
+
+
+
+
+
+
+
 ##f$raise_amount##
+betround==1 && dealposition==1 && prwin>0.7          ? bblind*5 :
 betround==1 && dealposition==1 && prwin>0.6          ? bblind*3 :
 betround==1 && dealposition==2 && prwin<0.6          ? bblind*2 :
 betround==1                                          ? bblind*2.5 :
@@ -1049,10 +1460,26 @@ pot*0.5
 
 
 
+
+
+
+
+
+
+
+
 ##f$srai##
 f$headsup_raise                          ? f$raise_amount :
 f$bluffing                               ? f$raise_amount :
 0
+
+
+
+
+
+
+
+
 
 
 
@@ -1069,8 +1496,24 @@ f$balance-call
 
 
 
+
+
+
+
+
+
+
+
 ##f$sraimin##
 currentbet+call
+
+
+
+
+
+
+
+
 
 
 
@@ -1088,11 +1531,27 @@ currentbet+call
 
 
 
+
+
+
+
+
+
+
+
 ##f$toppairtopkicker##
 isonepair &&
 nrankedcommon==1 &&
 ((rankloplayer==rankhicommon && rankhiplayer==14) ||
 (rankhiplayer==rankhicommon && rankloplayer==13))
+
+
+
+
+
+
+
+
 
 
 

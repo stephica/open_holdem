@@ -3,22 +3,6 @@
 ##notes##
 Heasd Up No Limit bot
 
-##defcon##
-0.500000
-
-##dll##
-
-##bankroll##
-0.000000
-
-##defcon##
-0.000000
-
-##rake##
-0.000000
-
-##nit##
-10000
 
 ##f$alli##
 0
@@ -29,7 +13,7 @@ Heasd Up No Limit bot
 || (currentbet>f$balance)
 || (f$balance<(bblind+sblind))
 
-##f$swag##
+##f$betsize##
 f$srai>= f$sraimin
 ? ((((f$swag_adjust+f$srai)/bblind)^0)*bblind) :
 0
@@ -60,15 +44,6 @@ f$bluffing                               ? f$raise_amount :
 
 ##f$chat##
 0
-
-##f$P##
-!ismyturn ? 1 :
-nopponentsdealt
-
-##f$play##
-(elapsed%4)                  ? -1 :  // disabled 3 out of 4 seconds
-f$balance>0 && issittingout  ?  1 :
--1
 
 ##f$test##
 f$version_0_7 // HUNL 0.7
