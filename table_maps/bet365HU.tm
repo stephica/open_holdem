@@ -2,7 +2,7 @@
 
 // OpenScrape 7.7.0
 
-// 2015-03-16 12:11:42
+// 2015-03-17 18:48:45
 // 32 bits per pixel
 
 //
@@ -29,7 +29,9 @@ s$t1type                    0
 s$t2type                    fuzzy
 s$t3type                    fuzzy
 s$titletext                 Heads
+s$titletext1                Asendorf
 s$ttlimits                  ^LH^* - ^s/^b
+s$ttlimits0                 ^*- ^*- €^s/€^b
 
 //
 // regions
