@@ -1,4 +1,4 @@
-##2015-03-17 07:37:26##
+##2015-03-17 08:25:23##
 
 ##notes##
  
@@ -92,9 +92,7 @@
 
 ##f$sitout##
  0
-|| elapsed > 3600 ? 1 : 0
-
-
+|| ((handsplayed > 100) ? 1 : 0)
 
 ##f$leave##
  
@@ -197,7 +195,7 @@
 ##f$prwin_number_of_opponents##
 // "Reasonable" default to get standard PrWin running for beginners,
 // Works even with "no opponents".
-nopponentsplaying + 1
+nopponentsplaying > 1 ? nopponentsplaying : 1
 
 
 
