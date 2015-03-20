@@ -1,4 +1,4 @@
-##2015-03-20 07:01:41##
+##2015-03-20 08:49:38##
 
 ##notes##
  
@@ -8,6 +8,8 @@
 
 ##f$alli##
 listAllIn || f$lateAllIn || (betround == 2 && pokerval > onepair) ? 1 : 0
+
+
 
 
 
@@ -46,16 +48,23 @@ f$rais > 0  ? (bblind * 3) : 0
 
 
 
+
+
 ##f$rais##
-f$latePosition && betround == 1 && nopponentsbetting < 1 &&	 listLateRaise ? 1 :
-(prwinnow**nopponentsplaying)>.80 ? 1 : 0
+f$FDP != 3 && betround == 1 && nopponentsbetting < 1 &&	 listLateRaise ? 1 :
+call > 0 && (prwinnow**nopponentsplaying)>.80 ? 1 : 0
+
+
 
 
 
 
 ##f$call##
+call == 0 ? 0 :
 betround == 1 && f$FDP != 3 && nopponentsbetting < 1 && listLimp ? 1 :
 (prwinnow**nopponentsplaying)>.75 ? 1 : 0
+
+
 
 
 
@@ -72,6 +81,8 @@ betround == 1 && f$FDP != 3 && nopponentsbetting < 1 && listLimp ? 1 :
 ##f$check##
 // Check whenever it is free to call
 1
+
+
 
 
 
@@ -153,8 +164,12 @@ betround == 1 && f$FDP != 3 && nopponentsbetting < 1 && listLimp ? 1 :
 
 
 
+
+
 ##f$sitin##
  1
+
+
 
 
 
@@ -246,6 +261,8 @@ betround == 1 && f$FDP != 3 && nopponentsbetting < 1 && listLimp ? 1 :
 
 
 
+
+
 ##f$prefold##
  
 
@@ -295,12 +312,16 @@ betround == 1 && f$FDP != 3 && nopponentsbetting < 1 && listLimp ? 1 :
 
 
 
+
+
 ##f$allin_on_betsize_balance_ratio##
 // Allin if betsize is more than X% of our total balance (including currentbet).
 // This affects f$betsize and all f$betpot_X_Y_ functions.
 //  0.00 =  0% = disabled
 //  0.50 = 50%
 0.00
+
+
 
 
 
@@ -402,11 +423,15 @@ nopponentsplaying + 1
 
 
 
+
+
 ##f$prwin_number_of_iterations##
 // "Reasonable" default to get PrWin running for beginners.
 // Large enough to get usable results,
 // small enough to save CPU-time.
 1000
+
+
 
 
 
@@ -503,6 +528,8 @@ nopponentsplaying + 1
 
 
 
+
+
 ##f$icm_prize2##
  
 
@@ -541,109 +568,6 @@ AKo
 
 
 
-
-
-
-##listBB25AllIn##
-AA KK QQ JJ TT
-AKs AQs AJs ATs KQs KJs KTs QJs QTs JTs
-AKo AQo AJo ATo KQo KJo KTo QJo QTo JTo
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-##listBB50AllIn##
-AA KK QQ JJ
-AKs AQs AJs KQs KJs QJs
-AKo AQo AJo KQo KJo QJo
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-##listBB75AllIn##
-AA KK QQ
-AKs
-AKo
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ##listLateRaise##
 TT 99 88 77 66
 AJs KQs KJs QJs
@@ -652,22 +576,12 @@ AJo KQo KJo QJo
 
 
 
+
+
 ##listLess12BB##
 AA KK QQ JJ TT 99 88 77 66 55 44 33 22
 AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs KTs K9s K8s K7s K6s K5s K4s K3s K2s QJs QTs Q9s Q8s Q7s Q6s Q5s Q4s Q3s Q2s JTs J9s J8s J7s J6s J5s J4s J3s J2s T9s T8s T7s T6s T5s T4s T3s T2s 98s 97s 96s 95s 94s 93s 92s 87s 86s 85s 84s 83s 82s 76s 75s 74s 73s 72s 65s 64s 63s 62s 54s 53s 52s 43s 42s 32s
 AKo AQo AJo ATo KQo KJo KTo QJo QTo JTo
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -683,54 +597,13 @@ AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs QJs JTs T9s 98s 87s 76s 65s 54s 
 
 
 
-##listRaiseAllIn##
-AA KK QQ
-AKs
-AKo
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-##listRaiseAllin##
-AA KK QQ
-AKs
-AKo
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ##listlateAllIn##
 JJ
 AQs
 AQo
+
+
 
 
 
@@ -802,54 +675,6 @@ nplayersdealt==3 ?  (dealposition==3 ? 5 : 0):0
 
 
 
-##f$FlopRaise##
-(prwinnow**nopponentsplaying)>.60 ? 1 : 0
-
-
-
-
-
-
-
-
-
-
-
-
-
-##f$Less12BBRaise##
-[balance<=(12*bblind)] && listLess12BB ? 1 : 0
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-##f$RiverRaise##
-(prwinnow**nopponentsplaying)>.70 ? 1 : 0
-
-
-
-
-
-
-
-
-
-
-
 
 
 ##f$StandardRaise##
@@ -867,23 +692,13 @@ nplayersdealt==3 ?  (dealposition==3 ? 5 : 0):0
 
 
 
-##f$TurnRaise##
-(prwinnow**nopponentsplaying)>.70 ? 1 : 0
-
-
-
-
-
-
-
-
-
-
 
 
 
 ##f$lateAllIn##
-f$FDP != 3 && nbetstocall < 1 && listlateAllIn ? 1 : 0
+betround == 1 && f$FDP != 3 && call <= bblind && listlateAllIn ? 1 : 0
+
+
 
 
 
@@ -893,6 +708,8 @@ f$FDP != 3 && nbetstocall < 1 && listlateAllIn ? 1 : 0
 
 ##f$latePosition##
 $FDP != 3 && nbetstocall < 1 ? 1 : 0
+
+
 
 
 
