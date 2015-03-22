@@ -11,23 +11,10 @@
 
 ##dll##
 
-
-##bankroll##
-0.000000
-
-##defcon##
-0.000000
-
-##rake##
-0.000000
-
-##nit##
-1000
-
 ##f$alli##
 
 
-##f$swag##
+##f$betsize##
 call<=0 && f$srai>0 ? {
 
     f$Betsize_Adjusted>=balance && balance>0                                                                           ? f$balance          :
@@ -53,7 +40,7 @@ call>0 && f$srai>0 ? {
 [ betround==4 ] ? f$river_raise   : 0
 
 ##f$rais##
-
+[f$rai]
 
 ##f$call##
 // Basic calls with nuts or free to check
@@ -89,26 +76,6 @@ f$dealposition==6 && !islist900          ? 1 : 0
 
 ##f$chat##
 0
-
-##f$P##
-nplayersplaying==2 && nplayersround2<=2 ? 1.00 :
-nplayersplaying==2 && nplayersround2==3 ? 1.50 :
-nplayersplaying==2 && nplayersround2==4 ? 2.25 :
-nplayersplaying==2 && nplayersround2==5 ? 2.50 :
-nplayersplaying==2 && nplayersround2>=6 ? 2.25 :
-nplayersplaying==3 && nplayersround2<=3 ? 1.33 :
-nplayersplaying==3 && nplayersround2==4 ? 2.00 :
-nplayersplaying==3 && nplayersround2==5 ? 2.66 :
-nplayersplaying==3 && nplayersround2>=6 ? 3.00 :
-nplayersplaying==4 && nplayersround2<=4 ? 2.50 :
-nplayersplaying==4 && nplayersround2==5 ? 2.75 :
-nplayersplaying==4 && nplayersround2>=6 ? 3.00 :
-nplayersplaying==5 && nplayersround2<=5 ? 3.25 :
-nplayersplaying==5 && nplayersround2>=6 ? 3.33 :
-nplayersplaying==6 && nplayersround2<=6 ? 3.50 : 1
-
-##f$play##
--1
 
 ##f$test##
 

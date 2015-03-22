@@ -46,7 +46,7 @@ f$srai>0 ? f$srai : 0
 0
 
 ##f$rais##
-
+[f$rai]
 
 ##f$call##
    [ prwin>=.98 ]              // dead nuts
@@ -69,15 +69,12 @@ f$srai>0 ? f$srai : 0
 ##f$chat##
    0                                  // default is: do not chat.
 
-##f$P##
+##f$prwin_number_of_opponents##
 // Number of opponents for the prwin simulation.
 
 (nopponentsplaying<=0) ? 1 :
 
 nopponentsplaying + defcon*nopponentsfolded
-
-##f$play##
--1
 
 ##f$test##
 
