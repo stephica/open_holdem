@@ -1,4 +1,4 @@
-##2015-03-22 15:46:28##
+##2015-03-22 22:18:44##
 
 ##notes##
  
@@ -10,8 +10,18 @@
 [listAllIn
 || f$lateAllIn
 || f$Less25BBAllIn
-|| f$FlopAllIn]
- && (balance > (25 * bblind))? 1 : 0
+|| f$FlopAllIn
+|| f$EmergencyAllIn
+|| prwin >= 0.9]
+ && [(balance > (25 * bblind) ) || (balance < (5 * bblind) )]? 1 : 0
+
+
+
+
+
+
+
+
 
 
 
@@ -99,9 +109,25 @@ f$rais > 0  ? f$rais : 0
 
 
 
+
+
+
+
+
+
+
+
 ##f$rais##
 [f$Less25BBRaise || f$LateRaise > 0  || f$StealWhenSittingOut > 0]
 ? (bblind * 4) : 0
+
+
+
+
+
+
+
+
 
 
 
@@ -119,7 +145,17 @@ f$rais > 0  ? f$rais : 0
 && (balance > 25 * bblind)
 && (f$FDP != 3)
 && (call <= bblind)
-&& listLimp] ? 1 : 0
+&& listLimp]
+|| (prwin > 0.8)
+? 1 : 0
+
+
+
+
+
+
+
+
 
 
 
@@ -160,6 +196,14 @@ f$rais > 0  ? f$rais : 0
 ##f$check##
 // Check whenever it is free to call
 1
+
+
+
+
+
+
+
+
 
 
 
@@ -289,8 +333,24 @@ f$rais > 0  ? f$rais : 0
 
 
 
+
+
+
+
+
+
+
+
 ##f$sitin##
  1
+
+
+
+
+
+
+
+
 
 
 
@@ -430,6 +490,14 @@ f$rais > 0  ? f$rais : 0
 
 
 
+
+
+
+
+
+
+
+
 ##f$prefold##
  
 
@@ -503,12 +571,28 @@ f$rais > 0  ? f$rais : 0
 
 
 
+
+
+
+
+
+
+
+
 ##f$allin_on_betsize_balance_ratio##
 // Allin if betsize is more than X% of our total balance (including currentbet).
 // This affects f$betsize and all f$betpot_X_Y_ functions.
 //  0.00 =  0% = disabled
 //  0.50 = 50%
 0.00
+
+
+
+
+
+
+
+
 
 
 
@@ -658,11 +742,27 @@ nopponentsplaying + 1
 
 
 
+
+
+
+
+
+
+
+
 ##f$prwin_number_of_iterations##
 // "Reasonable" default to get PrWin running for beginners.
 // Large enough to get usable results,
 // small enough to save CPU-time.
 1000
+
+
+
+
+
+
+
+
 
 
 
@@ -807,6 +907,14 @@ nopponentsplaying + 1
 
 
 
+
+
+
+
+
+
+
+
 ##f$icm_prize2##
  
 
@@ -865,8 +973,36 @@ AKo
 
 
 
+
+
+
+
+
+
+
+
+##listEmergencyAllIn##
+AA KK QQ JJ TT 99 88 77 66 55 44 33 22
+AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs KTs QJs QTs JTs
+AKo AQo AJo ATo KQo KJo KTo QJo QTo JTo
+
+
+
+
+
+
+
+
 ##listLateRaise##
 TT 99 88 77 66
+
+
+
+
+
+
+
+
 
 
 
@@ -923,6 +1059,14 @@ AKo AQo AJo ATo KQo KJo KTo QJo QTo JTo
 
 
 
+
+
+
+
+
+
+
+
 ##listLess12BBAllIn##
 AA KK QQ JJ TT
 AKs AQs AJs ATs KQs QJs
@@ -943,27 +1087,67 @@ AKo AQo AJo ATo KQo
 
 
 
+
+
+
+
+
+
+
+
 ##listLess25BBAllIn##
-AA KK QQ JJ TT 
-AKs 
-AKo 
+AA KK QQ JJ TT
+AKs
+AKo
+
+
+
+
+
+
+
+
 
 
 ##listLess25BBRaise##
-AA KK QQ JJ TT 99 
-AKs AQs AJs KQs 
-AKo AQo AJo KQo 
+AA KK QQ JJ TT 99
+AKs AQs AJs KQs
+AKo AQo AJo KQo
+
+
+
+
+
+
+
+
 
 
 ##listLimp##
-55 44 33 22 
-AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs QJs JTs T9s 98s 87s 76s 65s 54s 43s 32s 
+55 44 33 22
+AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs QJs JTs T9s 98s 87s 76s 65s 54s 43s 32s
+
+
+
+
+
+
+
+
 
 
 ##listPrwin30##
 AA KK QQ JJ TT 99 88 77 66 55 44 33 22
 AKs AQs AJs ATs KQs KJs KTs QJs QTs JTs
 AKo AQo AJo ATo KQo KJo KTo QJo QTo JTo
+
+
+
+
+
+
+
+
 
 
 
@@ -1000,33 +1184,18 @@ AKo AQo AJo ATo KQo KJo KTo QJo QTo JTo
 
 
 
+
+
+
+
+
+
+
+
 ##listlateAllIn##
 JJ
 AQs
 AQo
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ##f$BigBlindSittingOut##
 [(BigBlindChair <  0)] ? ERROR_BigBlindChair_Not_Recognized__Check_Your_TableMap :
@@ -1057,6 +1226,14 @@ True
 
 
 
+
+
+
+
+
+
+
+
 ##f$BlindSteal##
 pt_vpip_bigblind <= 9
 && pt_hands_bigblind >30
@@ -1071,6 +1248,24 @@ pt_vpip_bigblind <= 9
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##f$EmergencyAllIn##
+[balance <= (5 * bblind)
+&& listEmergencyAllIn] ? 1 : 0
 
 
 
@@ -1169,18 +1364,23 @@ nplayersdealt==3 ?  (dealposition==3 ? 5 : 0):0
 
 
 
-##f$FlopAllIn##
-0
-|| br==2
-&& { 0
 
-|| [ 1
-&& ( 0
-   || (f$TopPairTopKicker && f$OpenBoard)
-   || (istwopair && rankhiplayer==rankhicommon && f$OpenBoard)
-   )
-]
-}
+
+
+
+
+
+
+
+##f$FlopAllIn##
+[betround==2 && f$TwoPairOrMore] ? 1 : 0
+
+
+
+
+
+
+
 
 
 
@@ -1188,6 +1388,14 @@ nplayersdealt==3 ?  (dealposition==3 ? 5 : 0):0
 
 ##f$LateRaise##
 f$latePosition > 0 && listLateRaise ? 1: 0
+
+
+
+
+
+
+
+
 
 
 
@@ -1237,26 +1445,86 @@ betround == 1 && (bblind * 12) > balance
 
 
 
+
+
+
+
+
+
+
+
 ##f$Less25BBAllIn##
-//go allin if reraised 
+//go allin if reraised
 [didrais && betround == 1 && (bblind * 25) > balance
-&& listLess25BBAllIn] ? 1 : 0
+&& listLess25BBAllIn] 
+|| [f$Less25BBPostFlopAllin ]
+? 1 : 0
 
 
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+##f$Less25BBPostFlopAllin##
+//Nach dem Flop
+//In dieser Turnierphase entscheidet sich die Runde meist spätestens am Flop, 
+//einfach weil der Pot so groß wird, dass du nicht mehr rauskommst, 
+//wenn du dich einmal zum Weiterspielen entschieden hast.
+//Hast du vor dem Flop erhöht und nur einen Gegner, dann setz mit jedem Blatt ungefähr ½ bis 2/3 des Pots. 
+//Erhöht dein Gegner, dann geh mit jedem Toppaar und besser oder einem Flushdraw All-In. 
+//Das gilt auch, wenn du nichts getroffen hast, 
+//aber deine beiden Startkarten höher sind als jede Gemeinschaftskarte (Overcards).
+
+[nopponentstruelyraising > 0
+&& balance < (25*bblind)
+&& betround == 2
+&&(ishipair || f$TwoPairOrMore || (rankhiplayer>rankhicommon) || (nsuited == 4))] ? 1 : 0
+
+##f$Less25BBPostFlopRaise##
+//Nach dem Flop
+//In dieser Turnierphase entscheidet sich die Runde meist spätestens am Flop, 
+//einfach weil der Pot so groß wird, dass du nicht mehr rauskommst, 
+//wenn du dich einmal zum Weiterspielen entschieden hast.
+//Hast du vor dem Flop erhöht und nur einen Gegner, dann setz mit jedem Blatt ungefähr ½ bis 2/3 des Pots. 
+//Erhöht dein Gegner, dann geh mit jedem Toppaar und besser oder einem Flushdraw All-In. 
+//Das gilt auch, wenn du nichts getroffen hast, 
+//aber deine beiden Startkarten höher sind als jede Gemeinschaftskarte (Overcards).
 
 
 ##f$Less25BBRaise##
-[listLess25BBRaise 
+[listLess25BBRaise
 && !didrais
 && balance < (25 * bblind)] ? 1 : 0
+
+
+
+
+
+
+
+
 
 ##f$OpenBoard##
 // impossible to have a boat ,flush, or straight; top set is nuts
 [ nrankedcommon == 1 && nsuitedcommon <= 2 && nstraightfillcommon >=3 ]
+
+
+
+
+
+
+
+
 
 
 
@@ -1276,6 +1544,14 @@ betround == 1 && (bblind * 12) > balance
 [(SmallBlindChair == 8) && (playersactivebits & 0b0100000000)] ? False :
 [(SmallBlindChair == 9) && (playersactivebits & 0b1000000000)] ? False :
 True
+
+
+
+
+
+
+
+
 
 
 
@@ -1331,8 +1607,19 @@ True
 
 
 
+
+
+
+
+
+
+
+
 ##f$StealWhenSittingOut##
-f$FDP == 5
+//Steal Blinds when in late position
+//and nobody called and SB&BB sitting out
+[f$FDP == 5
+&& nopponentscalling == 0]
 && f$BigBlindSittingOut != 0
 && f$SmallBlindSittingOut != 0
 ? 1 : 0
@@ -1349,12 +1636,29 @@ f$FDP == 5
 
 
 
+
+
+
+
+
+
+
+
 ##f$TopPairTopKicker##
-isonepair &&
-nrankedcommon==1 &&
+[isonepair && nrankedcommon==1 &&
 ((rankloplayer==rankhicommon && rankhiplayer==14) ||
 (rankhiplayer==rankhicommon && rankloplayer==13))
+]
 
+##f$TwoPairOrMore##
+(istwopair
+|| isthreeofakind
+|| isstraight
+|| isflush
+|| isfullhouse
+|| isfourofakind
+|| isstraightflush
+|| isroyalflush) ? 1 : 0
 
 
 
@@ -1393,9 +1697,25 @@ betround == 1 && f$FDP != 3 && call <= bblind && listlateAllIn ? 1 : 0
 
 
 
+
+
+
+
+
+
+
+
 ##f$latePosition##
-((betround == 1) && (f$FDP != 3) && (call <= bblind))
+((betround == 1) && (f$FDP != 3) && (f$FDP != 4) && (call <= bblind))
 ? 1 : 0
+
+
+
+
+
+
+
+
 
 
 

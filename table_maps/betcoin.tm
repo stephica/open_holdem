@@ -2,7 +2,7 @@
 
 // OpenScrape 7.7.0
 
-// 2015-03-20 07:28:59
+// 2015-03-22 23:16:50
 // 32 bits per pixel
 
 //
@@ -47,7 +47,8 @@ r$c0cardface3suit    272 152 280 162        0    0 I
 r$c0cardface4nocard  305 179 305 179 ffffffff   -1 C
 r$c0cardface4rank    307 139 315 151        0    0 I
 r$c0cardface4suit    306 152 314 162        0    0 I
-r$c0pot0             250 116 275 124   459130 -140 T0
+r$c0handnumber        90   3 127   8        0 -239 T0
+r$c0pot0             249 116 276 124   459130 -140 T0
 r$i0button           307 310 367 334        0    0 N
 r$i0label            329 318 347 327        0    0 I
 r$i0state            330 320 334 326        0    0 I
@@ -62,8 +63,8 @@ r$i4button           462 351 497 357        0    0 N
 r$i4label            472 352 488 358        0    0 I
 r$i4state            472 352 479 357        0    0 I
 r$p0active           315  71 351  81        0    0 I
-r$p0balance          300  71 365  81 ff222121 -327 T0
-r$p0bet              278 110 321 125   42912f -103 T0
+r$p0balance          305  71 365  81 ff222121 -327 T0
+r$p0bet              278 113 321 125   42912f -103 T0
 r$p0cardback         304  28 311  33        0    0 I
 r$p0cardface0nocard  328  30 334  36        0    0 I
 r$p0cardface0rank    303  21 311  33        0    0 I
@@ -75,8 +76,8 @@ r$p0dealer           316  91 322  97        0    0 I
 r$p0name             303  56 361  66   c4ffc6  164 T0
 r$p0seated           363  65 367  71        0    0 I
 r$p1active           429 110 465 120        0    0 I
-r$p1balance          413 111 478 121 ff222121 -330 T0
-r$p1bet              359 145 397 155   42912f -103 T0
+r$p1balance          416 111 476 121 ff222121 -310 T0
+r$p1bet              359 147 397 158   42912f -103 T0
 r$p1cardback         415  68 422  73        0    0 I
 r$p1cardface0nocard  441  71 447  77        0    0 I
 r$p1cardface0rank    415  60 423  72        0    0 I
@@ -88,7 +89,7 @@ r$p1dealer           393 130 399 136        0    0 I
 r$p1name             416  96 477 106   c4ffc6  164 T0
 r$p1seated           476 105 480 111        0    0 I
 r$p2active           444 189 480 199        0    0 I
-r$p2balance          436 190 494 200 ff222121 -310 T0
+r$p2balance          433 190 494 200 ff222121 -310 T0
 r$p2bet              358 184 396 192   42912f -103 T0
 r$p2cardback         433 148 440 153        0    0 I
 r$p2cardface0nocard  458 150 464 156        0    0 I
@@ -111,7 +112,7 @@ r$p3cardface1nocard  390 227 396 233        0    0 I
 r$p3cardface1rank    397 219 405 231        0    0 I
 r$p3cardface1suit    396 231 404 241        0    0 I
 r$p3dealer           340 232 346 238        0    0 I
-r$p3name             359 254 429 264   c4ffc6  164 T0
+r$p3name             367 254 419 264   c4ffc6  164 T0
 r$p3seated           425 263 429 269        0    0 I
 r$p4active           249 291 285 301        0    0 I
 r$p4balance          233 292 298 302 ff222121 -330 T0
@@ -128,7 +129,7 @@ r$p4name             234 277 304 287   c4ffc6  164 T0
 r$p4seated           296 286 300 292        0    0 I
 r$p5active            88 270 124 280        0    0 I
 r$p5balance           73 270 138 280 ff222121 -330 T0
-r$p5bet              137 222 144 230   499837 -113 T0
+r$p5bet              137 222 176 230   499837 -113 T0
 r$p5cardback          79 226  86 231        0    0 I
 r$p5cardface0nocard  104 228 110 234        0    0 I
 r$p5cardface0rank     78 219  86 231        0    0 I
@@ -150,7 +151,7 @@ r$p6cardface1nocard   35 150  41 156        0    0 I
 r$p6cardface1rank     42 140  50 152        0    0 I
 r$p6cardface1suit     42 153  50 163        0    0 I
 r$p6dealer           108 193 114 199        0    0 I
-r$p6name               4 176  66 185   c4ffc6  164 T0
+r$p6name               4 176  61 185   c4ffc6  164 T0
 r$p6seated             1 184   5 190        0    0 I
 r$p7active            35 111  71 121        0    0 I
 r$p7balance           21 111  86 121 ff222121 -330 T0
@@ -163,11 +164,11 @@ r$p7cardface1nocard   52  70  58  76        0    0 I
 r$p7cardface1rank     59  60  67  72        0    0 I
 r$p7cardface1suit     59  73  67  83        0    0 I
 r$p7dealer           100 130 106 136        0    0 I
-r$p7name              19  96  89 106   c4ffc6  164 T0
+r$p7name              21  97  84 107   c4ffc6  164 T0
 r$p7seated            18 105  22 111        0    0 I
 r$p8active           147  71 183  81        0    0 I
 r$p8balance          133  71 198  81 ff222121 -330 T0
-r$p8bet              170 112 212 124   42912f -103 T0
+r$p8bet              170 112 223 124   42912f -103 T0
 r$p8cardback         139  28 146  33        0    0 I
 r$p8cardface0nocard  164  31 170  37        0    0 I
 r$p8cardface0rank    138  21 146  33        0    0 I
@@ -176,33 +177,50 @@ r$p8cardface1nocard  164  29 170  35        0    0 I
 r$p8cardface1rank    170  22 178  34        0    0 I
 r$p8cardface1suit    171  34 179  44        0    0 I
 r$p8dealer           177  91 183  97        0    0 I
-r$p8name             130  55 200  65   c4ffc6  164 T0
+r$p8name             134  56 195  65   c4ffc6  164 T0
 r$p8seated           130  65 134  71        0    0 I
 
 //
 // fonts
 //
 
+t0$f 10 10 ff 90 50
+t0$a 10 12 15 15 1f f
+t0$7 10 13 1c 10
+t0$t 10 7f 11
+t0$t 10 7f 11 11
 t0$? 10 7f 11 e 1b 11 11 1b e
 t0$w 10 e 3 1c 18 3 f 10
 t0$? 10 e 3 1c 18 3 f 10 40 5f
+t0$f 10 ff 90 10
+t0$2 11 13 15 1
+t0$3 11 15 1d 2
 t0$1 11 3f 1
+t0$5 1 15 15 12
+t0$3 1 41 49 7f 26
 t0$? 1 41 49 7f 26 10 7f 11
+t0$5 15 15 16
 t0$8 16 2d 2d 3f
 t0$8 17 2d 2d 3f
 t0$? 1 79 49 4f 46 3e 7f 41 7f 3e 3e 7f 41 7f 3e
 t0$9 18 25 25 3e
 t0$9 18 25 25 3e 1e
+t0$8 1b 15 15 2
+t0$9 1c 15 15 c
 t0$9 1c 25 25 3e
+t0$v 1c 3 3 1c
 t0$G 1c 36 41 41 49 4f 2e
 t0$C 1c 3e 63 41 41 41 62
 t0$? 1e 3 1 1f 10 e 11 11 11
 t0$0 1e 31 21 3f
+t0$6 1e 39 29 2f
 t0$6 1e 7f 49 4f 46
 t0$6 1e 7f 69 4f 46
 t0$6 1e 7f 69 4f 6
 t0$r 1f 10 10
 t0$n 1f 10 10 1f
+t0$m 1f 10 18 1f 10 1f f
+t0$m 1f 10 18 f 10 1f f
 t0$? 1f 10 18 f 10 1f f e 1d 15 15 d
 t0$u 1f 1 1 1f
 t0$? 1f 1f 1f 1f 11f 11f 9f 1f 5f 3f 3f 1f 1f 1f 1f 1f 1f 1f 1f 1f f f
@@ -214,6 +232,7 @@ t0$7 20 23 2e 38
 t0$3 21 21 29 3f
 t0$2 21 23 25 39
 t0$1 21 3f 1
+t0$a 2 15 15 1f f
 t0$? 2 15 15 1f f e 1b 11 11 11 e 1d 15 15 d 9 15 15 17
 t0$1 21 7f 1
 t0$1 21 7f 1 1
@@ -224,9 +243,13 @@ t0$1 21 7f 5 1
 t0$1 21 7f 51 1
 t0$1 21 7f 7f 1
 t0$, 3
+t0$9 30 49 49 6e 3c
+t0$9 30 79 49 4b 3c
 t0$0 31 21 3f
+t0$a 3 15 15 1f f
 t0$, 3 6
 t0$8 36 7f 49 7f 36
+t0$g 38 6d 45 45 7f
 t0$5 39 29 27
 t0$9 39 79 49 7f 3e
 t0$6 3b 49 49 6
@@ -234,50 +257,72 @@ t0$0 3e 7f 41 7f 3e
 t0$6 3e 7f 69 4f 4e
 t0$? 3f 24 3c e 9 9 f 3e 3f 11
 t0$? 3ff
+t0$y 40 31 f c 30 40
 t0$T 40 40 7f 7f 40 40
 t0$? 40 40 7f 7f 40 40 1c 3e 61 41 41 61 3e 1c 60 7f 48 4c
 t0$7 40 43 4e 78 60
+t0$i 40 5f
+t0$j 41 17f
 t0$3 41 41 49 7f
 t0$4 4 14 24 7f 4
 t0$2 41 43 45 79 21
 t0$2 41 43 45 79 31
+t0$7 41 44 50 40
 t0$7 41 46 58 60
 t0$? 41 46 58 60 4 14 24 7f 4
 t0$3 41 49 49 7f 36
 t0$3 41 49 59 6
+t0$3 41 49 7b
 t0$? 41 7f 7f
 t0$4 4 1c 34 3f
 t0$2 43 45 69 1
+t0$2 43 45 79
 t0$2 43 45 79 1
 t0$2 43 47 4d 79 31
+t0$4 4 c 1f 4
+t0$i 5f
+t0$W 60 3c 3 f 70 70 f 3 3c 60
+t0$8 6 59 49 49 4
 t0$8 6 7f 49 49 36
 t0$A 7 3c 64 3c 7
 t0$0 77 41 41 1c
 t0$5 79 49 49 46
 t0$? 79 49 49 46 4 14 24 7f 4 4 3b 49 49 6
 t0$9 79 49 4a 3c
+t0$5 79 49 4b
 t0$5 79 49 4b 46
 t0$5 79 49 4f 46
 t0$? 79 49 4f 46 30 49 49 6e 3c
 t0$5 7b 49 49 26
 t0$h 7f 10 10 1f
+t0$L 7f 1 1 1
+t0$K 7f 18 34 63 41
 t0$? 7f 30 e c 30 7f
+t0$D 7f 41 41 41 36 1c
+t0$0 7f 41 63 1e
 t0$p 7f 44 44 6c 38
 t0$? 7f 44 44 6c 38 100 17c
 t0$? 7f 44 44 6c 38 4 10c 114 1e4 4
+t0$R 7f 48 4c 73 1
 t0$E 7f 49 49 49 49
+t0$B 7f 49 49 79 26
 t0$N 7f 60 18 6 7f
 t0$M 7f 70 c c 30 7f
 t0$H 7f 8 8 8 7f
 t0$? 7f e 13 1
 t0$? 8 54 54 7c 3c 38 6d 45 45 7f
+t0$0 8 63 41 63 1c
 t0$? 9
+t0$s 9 15 15 17
+t0$4 c 14 24 7f 4
 t0$? c 14 24 7f 4 c 14 24 7f 4
+t0$4 c 1c 24 7f 4
 t0$4 c 1c 34 3f
 t0$4 c 1c 34 7f 4
 t0$4 c 1c 74 7f 4
 t0$? c 1c 74 7f 4 36 7f 49 7f 36
 t0$6 c 3f 49 49 6
+t0$6 e 15 15 6
 t0$c e 1b 11 11 11
 t0$o e 1b 11 11 1b e
 t0$d e 1b 11 11 7f
@@ -286,6 +331,7 @@ t0$e e 1d 15 15 d
 t0$6 e 39 29 2f
 t0$? ff
 t0$h ff 10 10 1f
+t0$b ff 11 11 1b e
 t0$k ff c 12 11
 t0$? ff e 1b 11 11 ff 80
 
@@ -479,6 +525,17 @@ df9c48000074bf00bf95000048aadf0000330000
 ffffff000085bf00bf89000048aadf0000310000
 df9c48000074bf00bf89000048aadf0000310000
 ffffff000085bf00bf89000048aadf0000310000
+i$allin            19  10 
+126c12ff126c12ff126c12ff126c12ff126c12ff126c12ff126c12ff126c12ff126c12ff126c12ff126c12ff126c12ff126c12ff126c12ff126c12ff126c12ff126c12ff126c12ff126c12ff
+126c12ff126c12ff126c12ffc0a312004dbce000c0a312004dbce000126c12ff126c12ff126c12ff126c12ff126c12ff126c12ff126c12ff126c12ff126c12ff126c12ff126c12ff126c12ff
+12899e00126c12ff126c12ffc0a3120049b1e000c08d050049b1e0000f430500126c12ff126c12ffc0a31200ffffff00e0ffff0012899e00126c12ff126c12ff126c12ff126c12ff126c12ff
+489ce000125f0b00126c12ffc0a3120049b1e000c08d050049b1e0000f430500126c12ff126c12ff126c12ffe0b14d000074bf0005000000125f0b00126c12ff126c12ff126c12ff126c12ff
+9de2c0000d404800106810ffc0a10f0049b0e000c08c050049b0e0000d400500106810ff106810ff106810ffe0ba4c00058cc0000f4e0800c0a10f00e0e9e000ffffff00c0ffff000f687700
+dfcd740000509c0000530000bf95000048aadf00bf85000048aadf0000330000025302ff025302ff025302ffdfb248000085bf00003e0000bf95000074c8ff0000170000df9c4800489cdf00
+ffffff0048a3df0000450000bf93000048aadf00bf85000048aadf00ffc57400ffffff009ce6ff00004e4800dfb048000085bf00003b0000bf93000048aadf0000230000bf93000048a6df00
+9c4800009cdfdf0000314800bf93000048aadf00bf85000048aadf0000310000002300000000000000160000dfb048000085bf00003b0000bf93000048aadf0000310000bf93000048aadf00
+484e0000dfe59c00004e9c00bf93000048aadf00bf85000048aadf0000310000004f00ff004f00ffbf930000ffffff00dfffff0000659c00bf93000048aadf0000310000bf93000048aadf00
+004f00ff004e00000016000000450000003b000000310000003b000000310000004f00ff004f00ff004f00ff003b0000000000000000000000450000003b000000310000004f00ff003b0000
 i$false            37  11 
 212020ff212020ff212020ff222121ff222121ff222121ff222121ff232222ff232222ff242323ff242323ff242323ff252424ff262525ff272626ff282727ff292828ff2a2929ff2a2929ff2b2a2aff2b2a2aff2c2b2bff2c2b2bff2c2b2bff2c2b2bff2c2b2bff2c2b2bff2c2b2bff2c2b2bff2c2b2bff2b2a2aff2b2a2aff2a2929ff2a2929ff292828ff282727ff272626ff
 212020ff212020ff212020ff212020ff222121ff222121ff222121ff222121ff232222ff232222ff242323ff242323ff242323ff252424ff252424ff262525ff272626ff282727ff292828ff292828ff2a2929ff2a2929ff2a2929ff2a2929ff2a2929ff2a2929ff2a2929ff2a2929ff2a2929ff2a2929ff2a2929ff292828ff292828ff282727ff272626ff262525ff252424ff
@@ -616,6 +673,20 @@ i$fold             19  10
 744e0000bfffbf0000007400004e0000004f00ff004f00ffffcc74000079bf0000450000bf93000074caff00bf7f000048aadf00ffc57400007fbf0000450000dfb048000085bf00003b0000
 744e0000bfffbf0000007400004e0000004f00ff004f00ff744e0000ffffbf00ffffff00bfffff00003b7400bf7f000048aadf009c5e0000ffffdf00ffffff00ffffff000085bf00003b0000
 004f00ff004e000000000000004e0000004f00ff004f00ff004f00ff004e0000000000000000000000000000004e0000003b00000031000000450000000000000000000000000000003b0000
+i$Q                9   13 
+ffffffffffffffffffffffffefefefffbfbfbfffbfbfbfffffffffffffffffffffffffff
+ffffffffffffffff9f9f9fff111111ff010101ff010101ff212121ffcfcfcfffffffffff
+ffffffffefefefff111111ff111111ffafafafff8f8f8fff010101ff414141ffffffffff
+ffffffffbfbfbfff010101ff616161ffffffffffffffffff212121ff010101ffffffffff
+ffffffff808080ff010101ff808080ffffffffffffffffff414141ff010101ffbfbfbfff
+ffffffff808080ff010101ff808080ffffffffffffffffff414141ff010101ffbfbfbfff
+ffffffff808080ff010101ff808080ffffffffffffffffff414141ff010101ffbfbfbfff
+ffffffff808080ff010101ff808080ffffffffffffffffff414141ff010101ffbfbfbfff
+ffffffffbfbfbfff010101ff616161ffffffffffffffffff212121ff010101ffffffffff
+ffffffffefefefff111111ff111111ffafafafff8f8f8fff010101ff414141ffffffffff
+ffffffffffffffff9f9f9fff111111ff010101ff010101ff010101ff313131ffefefefff
+ffffffffffffffffffffffffefefefffbfbfbfffcfcfcfff9f9f9fff111111ffcfcfcfff
+ffffffffffffffffffffffffffffffffffffffffffffffffffffffffefefefffffffffff
 i$Q                9   13 
 ffffffffffffffffeff0fdffc1c1f7ffc1c1f7ffffffffffffffffffffffffffffffffff
 ffffffffa1a2f3ff1617e2ff0608e0ff0608e0ff2527e4ffd0d1f9ffffffffffffffffff
@@ -820,6 +891,20 @@ ffffffffb4d9b4ff108510ff1f8d1fffd2e8d2ffffffffffffffffffffffffffffffffff
 f0f7f0ff1f8d1fff108510ffd2e8d2ffffffffffffffffffffffffffffffffffffffffff
 96c996ff108510ff2e942eff88c288ff88c288ff88c288ffe1f0e1ffffffffffffffffff
 5bab5bff108510ff108510ff108510ff108510ff108510ffc3e0c3ffffffffffffffffff
+ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+i$8                9   13 
+ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+ffffffffffffffffffffffff808080ff212121ff010101ff313131ffafafafffffffffff
+ffffffffffffffffcfcfcfff010101ff313131ffafafafff111111ff111111ffffffffff
+ffffffffffffffff808080ff010101ff808080ffffffffff414141ff010101ffbfbfbfff
+ffffffffffffffff9f9f9fff010101ff717171ffffffffff313131ff010101ffdfdfdfff
+ffffffffffffffffffffffff616161ff010101ff313131ff010101ff9f9f9fffffffffff
+ffffffffffffffffcfcfcfff111111ff313131ff808080ff111111ff313131ffefefefff
+ffffffffffffffff616161ff010101ffafafafffffffffff717171ff010101ff9f9f9fff
+ffffffffffffffff414141ff010101ffbfbfbfffffffffff808080ff010101ff808080ff
+ffffffffffffffff8f8f8fff010101ff717171ffefefefff414141ff010101ffcfcfcfff
+ffffffffffffffffefefefff414141ff010101ff010101ff010101ff717171ffffffffff
+ffffffffffffffffffffffffffffffffdfdfdfffbfbfbfffefefefffffffffffffffffff
 ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
 i$5                9   13 
 ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
@@ -1034,6 +1119,16 @@ ffffffffff6856ffff351dffffccc6ffffffffffff9a8effff351dffff9a8effffffffff
 ffffffffffa69cffff351dffff8e80fffff2f1ffff6856ffff351dffffd9d4ffffffffff
 fffffffffff2f1ffff6856ffff351dffff351dffff351dffff8e80ffffffffffffffffff
 ffffffffffffffffffffffffffe6e3ffffccc6fffff2f1ffffffffffffffffffffffffff
+i$allin            22  9  
+126c12ff126c12ff126c12ff126c12ff126c12ff126c12ff126c12ff126c12ff126c12ff126c12ff126c12ff126c12ffc0a312004dbce000c0a312004dbce000126c12ff126c12ff126c12ff126c12ff126c12ff126c12ff
+126c12ff126c12ff126c12ff126c12ff126c12ff126c12ff126c12ff9e891200e0ffe00012899e00126c12ff126c12ffc0a3120049b1e000c08d050049b1e0000f430500126c12ff126c12ffc0a31200ffffff00e0ffff00
+126c12ff126c12ff126c12ff126c12ff126c12ff126c12ff126c12ffe0bc4d00c0cfc000489ce000125f0b00126c12ffc0a3120049b1e000c08d050049b1e0000f430500126c12ff126c12ff126c12ffe0b14d000074bf00
+106810ff106810ff106810ff106810ff106810ff106810ff4c680f00c0e99e00754077009de2c0000d404800106810ffc0a10f0049b0e000c08c050049b0e0000d400500106810ff106810ff106810ffe0ba4c00058cc000
+025302ff025302ff025302ff025302ff025302ff025302ff9c76000074cddf0000170000dfcd740000509c0000530000bf95000048aadf00bf85000048aadf0000330000025302ff025302ff025302ffdfb248000085bf00
+004f00ff004f00ff004f00ff004f00ff004f00ff004f00ffdfb04800ffffff00ffffff00ffffff0048a3df0000450000bf93000048aadf00bf85000048aadf00ffc57400ffffff009ce6ff00004e4800dfb048000085bf00
+004f00ff004f00ff004f00ff004f00ff004f00ff484e0000bfe69c0000317400000000009c4800009cdfdf0000314800bf93000048aadf00bf85000048aadf0000310000002300000000000000160000dfb048000085bf00
+004f00ff004f00ff004f00ff004f00ff004f00ff9c7200009ce6df0000164800004e0000484e0000dfe59c00004e9c00bf93000048aadf00bf85000048aadf0000310000004f00ff004f00ffbf930000ffffff00dfffff00
+004f00ff004f00ff004f00ff004f00ff004f00ff004f00ff0045000000160000004e0000004f00ff004e00000016000000450000003b000000310000003b000000310000004f00ff004f00ff004f00ff003b000000000000
 i$true             5   7  
 ffffe000ffffff00ffffff004dbce000126c12ff
 9de8e0000000480074000000dfffbf000f6a9c00
@@ -1399,6 +1494,14 @@ i$fold             19  10
 22202000191717001f1d1d001e1c1c001f1d1d00201e1e001c1a1a001e1c1b001a1818001b191900242221001e1c1c002321210022202000211f1f001f1d1d001b191900222020001d1b1b00
 1513130022202000211f1f001e1c1c00211f1f001b1919001e1c1c002321210017151500211f1f001d1b1a001e1c1c00211f1f001e1c1c0019171700201e1e001e1c1c00211f1f001e1c1c00
 1c1a1a001d1b1b001a1818001d1b1b001c1a1a001f1d1d001d1b1b001c1a1a001d1b1b001c1a1a0023202000211f1f00211e1e001f1d1d001e1e1e001a181800211f1f001d1b1b00211f1f00
+i$true             5   7  
+126c12ff126c12ff126c12ff126c12ff126c12ff
+126c12ff126c12ff126c12ff126c12ff126c12ff
+106810ff106810ff106810ff106810ff106810ff
+025302ff025302ff025302ff025302ff025302ff
+004f00ff004f00ff004f00ff004f00ff004f00ff
+004f00ff004f00ff004f00ff004f00ff484e0000
+004f00ff004f00ff004f00ff004f00ff9c720000
 i$true             7   7  
 1a1b1b00171818001e1d1f001d1d1d001b1d20001b182c001d1d2b00
 191a1a001e1f1f001c1b1c0016161700232426003333380029293300
