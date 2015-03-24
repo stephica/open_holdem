@@ -10,24 +10,8 @@
 
 ##dll##
 
-##bankroll##
-0.000000
-
-##defcon##
-0.000000
-
-##rake##
-0.000000
-
-##nit##
-1000
 
 ##f$alli##
-0  
-
-##f$swag##
-0  
-##f$srai##
 0  
 
 ##f$rais##
@@ -41,19 +25,6 @@ pl_call
 ##f$prefold##
 //  Default is: do not prefold
 0 
-
-##f$evrais##
-0  
-
-##f$evcall##
-0 
-
-##f$P##
-3  
-
-##f$play##
-//  Redirect "play" to "pl_play"
-pl_play
 
 ##f$test##
 
