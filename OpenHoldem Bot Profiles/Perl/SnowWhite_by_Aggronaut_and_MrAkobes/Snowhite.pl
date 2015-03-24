@@ -67,7 +67,7 @@ use diagnostics;
 #    (Note: '\' is an escape character. We have to write
 #    two to get a single one.)
 #
-use lib ("C:\\Documents and Settings\\John\\Desktop\\Pokerbot\\");
+use lib ("C:\\Documents and Settings\\jiffy\\Desktop\\");
 
 
 #  The module "Perl_OH_Interaction.pm" contains the technical stuff

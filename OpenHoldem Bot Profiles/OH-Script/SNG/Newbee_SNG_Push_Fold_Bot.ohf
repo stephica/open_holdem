@@ -8,9 +8,6 @@
 ##dll##
 
 
-##nit##
-1000
-
 ##f$alli##
 0
 
@@ -69,80 +66,12 @@ f$srai>0 ? f$srai : 0
 ##f$chat##
    0                                  // default is: do not chat.
 
-##f$prwin_number_of_opponents##
-// Number of opponents for the prwin simulation.
-
-(nopponentsplaying<=0) ? 1 :
-
-nopponentsplaying + defcon*nopponentsfolded
 
 ##f$test##
 
 
 ##f$debug##
-          0.0000 = nopponentscalling
-          1.0000 = nopponentsraising
-
-
-          2.0000 = nplayersseated
-
-        200.0000 = bblind
-        100.0000 = sblind
-          0.2653 = f$M
-
-          2.0000 = f$dealposition
-       4902.0000 = f$bigstack
-
-       4902.0000 = stack0
-       1850.0000 = stack1
-          0.0000 = ante
-          1.0000 = stack0!=balance
-        398.0000 = balance
-
-        970.0000 = elapsed
-          0.0000 = nopponentscalling
-          1.0000 = nopponentsraising
-
-          0.0000 = balance0
-       1850.0000 = balance1
-          0.0000 = balance2
-          0.0000 = balance3
-        398.0000 = balance4
-       4902.0000 = balance5
-          0.0000 = balance6
-          0.0000 = balance7
-          0.0000 = balance8
-          0.0000 = balance9
-
-          0.0000 = didchec
-          0.0000 = didcall
-          0.0000 = didswag
-          0.0000 = didrais
-
-        100.0000 = sblind
-        200.0000 = bblind
-        200.0000 = bet
-
-          0.0000 = call
-        200.0000 = currentbet
-        398.0000 = balance
-
-        105.1500 = f$evcall
-        500.0000 = f$evrais
-
-        300.0000 = potplayer
-          0.0000 = potcommon
-        300.0000 = pot
-          0.0000 = rake
-
-          4.0000 = chair
-       1144.0000 = handrank2652
-     872448.0000 = pokerval
-          0.3250 = prwin
-          0.6240 = prlos
-          0.0510 = prtie
-          2.0000 = nopponents
-
+   
 ##list01##
 22  33  44  55  66  77  88  99  TT  JJ  QQ  KK  AA 
 
@@ -712,28 +641,28 @@ nopponentsdealt==2 ? (dealposition==3 ? 10 : 0):
 // smallblind
 [ f$dealposition==1 ] ? {
 
-   [ call==sblind && f$didnotactyet && islist103 && nopponentscalling==0 ] ? 3.5*bblind :
-   [ call==sblind && f$didnotactyet && islist100 ] ? 3.5*bblind :
-   [ call>sblind && islist101 ] ? 4*call : 0 } :
+   [ call==sblind && f$didnotactyet && list103 && nopponentscalling==0 ] ? 3.5*bblind :
+   [ call==sblind && f$didnotactyet && list100 ] ? 3.5*bblind :
+   [ call>sblind && list101 ] ? 4*call : 0 } :
 
 // bigblind
 [ f$dealposition==2 ] ? {
 
-   [ call==0 && islist100 && f$didnotactyet ] ? 3.5*bblind :
-   [ call>0 && islist101 ] ? 4*call : 0 } :
+   [ call==0 && list100 && f$didnotactyet ] ? 3.5*bblind :
+   [ call>0 && list101 ] ? 4*call : 0 } :
 
 // any position
 [ f$dealposition>=3 && f$dealposition<=9 ] ? {
 
-   [ call==bblind && islist100 ] ? 3.5*bblind :
-   [ islist101 ] ? 4*call : 0 } :
+   [ call==bblind && list100 ] ? 3.5*bblind :
+   [ list101 ] ? 4*call : 0 } :
 
 // button steal when first to enter pot
 [ f$dealposition==10 ] ? {
 
-   [ call==bblind && f$didnotactyet && islist103 && nopponentscalling==0 ] ? 3.5*bblind :
-   [ call==bblind && f$didnotactyet && islist100 ] ? 3.5*bblind :
-   [ call>bblind && islist101 ] ? 4*call : 0 } :
+   [ call==bblind && f$didnotactyet && list103 && nopponentscalling==0 ] ? 3.5*bblind :
+   [ call==bblind && f$didnotactyet && list100 ] ? 3.5*bblind :
+   [ call>bblind && list101 ] ? 4*call : 0 } :
 
 0
 
@@ -747,26 +676,26 @@ stack1 ? stack1 :
 0
 
 ##f$SUMMARY##
-[ f$ICM==1 && islist01 ] ? f$balance :
-[ f$ICM==2 && islist02 ] ? f$balance :
-[ f$ICM==3 && islist03 ] ? f$balance :
-[ f$ICM==4 && islist04 ] ? f$balance :
-[ f$ICM==5 && islist05 ] ? f$balance :
-[ f$ICM==6 && islist06 ] ? f$balance :
-[ f$ICM==7 && islist07 ] ? f$balance :
-[ f$ICM==8 && islist08 ] ? f$balance :
-[ f$ICM==9 && islist09 ] ? f$balance :
-[ f$ICM==10 && islist10 ] ? f$balance :
-[ f$ICM==11 && islist11 ] ? f$balance :
-[ f$ICM==12 && islist12 ] ? f$balance :
-[ f$ICM==13 && islist13 ] ? f$balance :
-[ f$ICM==14 && islist14 ] ? f$balance :
-[ f$ICM==15 && islist15 ] ? f$balance :
-[ f$ICM==16 && islist16 ] ? f$balance :
-[ f$ICM==17 && islist17 ] ? f$balance :
-[ f$ICM==18 && islist18 ] ? f$balance :
-[ f$ICM==19 && islist19 ] ? f$balance :
-[ f$ICM>=20 && islist20 ] ? f$balance : 0
+[ f$ICM==1 && list01 ] ? f$balance :
+[ f$ICM==2 && list02 ] ? f$balance :
+[ f$ICM==3 && list03 ] ? f$balance :
+[ f$ICM==4 && list04 ] ? f$balance :
+[ f$ICM==5 && list05 ] ? f$balance :
+[ f$ICM==6 && list06 ] ? f$balance :
+[ f$ICM==7 && list07 ] ? f$balance :
+[ f$ICM==8 && list08 ] ? f$balance :
+[ f$ICM==9 && list09 ] ? f$balance :
+[ f$ICM==10 && list10 ] ? f$balance :
+[ f$ICM==11 && list11 ] ? f$balance :
+[ f$ICM==12 && list12 ] ? f$balance :
+[ f$ICM==13 && list13 ] ? f$balance :
+[ f$ICM==14 && list14 ] ? f$balance :
+[ f$ICM==15 && list15 ] ? f$balance :
+[ f$ICM==16 && list16 ] ? f$balance :
+[ f$ICM==17 && list17 ] ? f$balance :
+[ f$ICM==18 && list18 ] ? f$balance :
+[ f$ICM==19 && list19 ] ? f$balance :
+[ f$ICM>=20 && list20 ] ? f$balance : 0
 
 ##f$balance##
 (balance)
@@ -776,19 +705,19 @@ stack1 ? stack1 :
 [ f$dealposition==1 ] ? {
 
    [ call==bblind && (ispair||issuited||rankloplayer>9) ] ? 1 :
-   [ call<=3*bblind && bblind<150 && islist100  ] ? 1 : 0 } :
+   [ call<=3*bblind && bblind<150 && list100  ] ? 1 : 0 } :
 
 // bigblind
 [ f$dealposition==2 ] ? {
 
    [ call==bblind && ispair ] ? 1 :
-   [ call<=3*bblind && bblind<150 && islist100  ] ? 1 : 0 } :
+   [ call<=3*bblind && bblind<150 && list100  ] ? 1 : 0 } :
 
 // any position
 [ f$dealposition>=3 ] ? {
 
    [ call==bblind && ispair ] ? 1 :
-   [ call<=3*bblind && bblind<150 && islist100  ] ? 1 : 0 } :
+   [ call<=3*bblind && bblind<150 && list100  ] ? 1 : 0 } :
 
 
 0
