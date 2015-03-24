@@ -2,7 +2,7 @@
 
 // OpenScrape 7.7.0
 
-// 2015-03-22 10:16:13
+// 2015-03-24 06:33:48
 // 32 bits per pixel
 
 //
@@ -29,9 +29,9 @@ s$t0type                    fuzzy
 s$t1type                    0.10
 s$t2type                    fuzzy
 s$t3type                    0.20
-s$titletext                 Handed
-s$titletext0                NLH
-s$titletext1                FLH
+s$titletext                 NLH
+s$titletext0                Handed
+s$titletext2                6-Handed
 s$ttlimits                  ^* ^LH ^*Blinds^* ^s/^b
 s$ttlimits0                 ^* ^L^*s: ^s/^b(^a)
 s$ttlimits1                 ^* ^* ^L^*H ^s/^b
