@@ -1,4 +1,4 @@
-##2015-03-26 04:44:05##
+##2015-03-26 19:23:32##
 
 ##notes##
  
@@ -7,7 +7,9 @@
  
 
 ##f$alli##
- prwin > 0.7 ? 1 : 0
+betround == 1 && prwin > 0.35
+||betround == 2 && prwin > 0.5
+||prwin > 0.7 ? 1 : 0
 
 
 
@@ -36,26 +38,41 @@
 // Betsize in dollars, raise-to semantics.
 // OpenHoldem will auto-adapt the betsize to the casinos input-requirements.
 // Please define your tablemaps "swagtextmethod" to configure this feature.
-f$rais > 0 ? prwin * 10 * bblind : 0
+f$rais > 0 ? prwin * 100 * bblind : 0
+
+
+
+
 
 
 ##f$rais##
-betround = 1 && prwin > 0.2 
-|| betround = 2 && prwin > 0.5
-|| betround = 3 && prwin > 0.7
-|| betround = 4 && prwin > 0.8 ? 1 : 0
+betround = 1 && prwin > 0.2
+|| betround = 2 && prwin > 0.35
+|| betround = 3 && prwin > 0.6
+|| betround = 4 && prwin > 0.7 ? 1 : 0
+
+
+
+
 
 ##f$call##
-betround == 1 && prwin > 0.2 ? 1 : 
-betround == 2 && prwin > 0.3 ? 1 : 
-betround == 3 && prwin > 0.4 ? 1 : 
-betround == 4 && prwin > 0.7 ? 1 :
-call <= (bblind * 3) 
+betround == 1 && prwin > 0.19 && call < 10*bblind ? 1 :
+betround == 2 && prwin > 0.3 ? 1 :
+betround == 3 && prwin > 0.4 ? 1 :
+betround == 4 && prwin > 0.7 ? 1 : 0
+
+
+
+
 
 
 ##f$check##
 // Check whenever it is free to call
 (call == 0)
+
+
+
+
 
 
 
@@ -70,8 +87,14 @@ call <= (bblind * 3)
 
 
 
+
+
+
+
 ##f$sitin##
- 
+ 1
+
+
 
 ##f$sitout##
  
@@ -95,6 +118,10 @@ call <= (bblind * 3)
 
 
 
+
+
+
+
 ##f$prefold##
  
 
@@ -110,12 +137,20 @@ call <= (bblind * 3)
 
 
 
+
+
+
+
 ##f$allin_on_betsize_balance_ratio##
 // Allin if betsize is more than X% of our total balance (including currentbet).
 // This affects f$betsize and all f$betpot_X_Y_ functions.
 //  0.00 =  0% = disabled
 //  0.50 = 50%
 0.00
+
+
+
+
 
 
 
@@ -156,11 +191,19 @@ nopponentscalling+nopponentstruelyraising+nopponentschecking*floppct+0.49
 
 
 
+
+
+
+
 ##f$prwin_number_of_iterations##
 // "Reasonable" default to get PrWin running for beginners.
 // Large enough to get usable results,
 // small enough to save CPU-time.
 1000
+
+
+
+
 
 
 
@@ -180,8 +223,16 @@ nopponentscalling+nopponentstruelyraising+nopponentschecking*floppct+0.49
 
 
 
+
+
+
+
 ##f$prwin_wontplay##
   f$prwin_willplay*1.4
+
+
+
+
 
 
 
@@ -196,6 +247,10 @@ nopponentscalling+nopponentstruelyraising+nopponentschecking*floppct+0.49
 // The sum of all f$icm_prizeX functions should be 1.00 (= 100%).
 // Default to get things going: the winner takes it all.
 1.00
+
+
+
+
 
 
 
@@ -231,4 +286,77 @@ nopponentscalling+nopponentstruelyraising+nopponentschecking*floppct+0.49
 
 ##f$debug##
  
+
+##f$DEBUG##
+prwin
+
+
+
+##f$position##
+// SB=1 BB=2 Early=3 Middle=4 Late=5
+
+dealposition==1 ? 1:
+dealposition==2 ? 2:
+
+nplayersdealt==10 ? (dealposition==3 ? 3 :
+                     dealposition==4 ? 3 :
+                     dealposition==5 ? 3 :
+                     dealposition==6 ? 4 :
+                     dealposition==7 ? 4 :
+                     dealposition==8 ? 4 :
+                     dealposition==9 ? 5 :
+                     dealposition==10? 5 : 0):
+
+nplayersdealt==9 ?  (dealposition==3 ? 3 :
+                     dealposition==4 ? 3 :
+                     dealposition==5 ? 3 :
+                     dealposition==6 ? 4 :
+                     dealposition==7 ? 4 :
+                     dealposition==8 ? 5 :
+                     dealposition==9 ? 5 : 0):
+
+nplayersdealt==8 ?  (dealposition==3 ? 3 :
+                     dealposition==4 ? 3 :
+                     dealposition==5 ? 4 :
+                     dealposition==6 ? 4 :
+                     dealposition==7 ? 5 :
+                     dealposition==8 ? 5 : 0):
+
+nplayersdealt==7 ?  (dealposition==3 ? 3 :
+                     dealposition==4 ? 3 :
+                     dealposition==5 ? 4 :
+                     dealposition==6 ? 4 :
+                     dealposition==7 ? 5 : 0):
+
+nplayersdealt==6 ?  (dealposition==3 ? 3 :
+                     dealposition==4 ? 4 :
+                     dealposition==5 ? 4 :
+                     dealposition==6 ? 5 : 0):
+
+nplayersdealt==5 ?  (dealposition==3 ? 3 :
+                     dealposition==4 ? 4 :
+                     dealposition==5 ? 5 : 0):
+
+nplayersdealt==4 ?  (dealposition==3 ? 4 :
+                     dealposition==4 ? 5 : 0):
+
+nplayersdealt==3 ?  (dealposition==3 ? 5 : 0):0
+
+
+
+
+
+
+
+
+
+
+
+
+
+##f$preflop_allin##
+
+##f$preflop_call##
+
+##f$preflop_raise##
 
