@@ -1,4 +1,4 @@
-##2015-03-22 05:49:22##
+##2015-03-26 04:54:36##
 
 ##notes##
  
@@ -7,15 +7,13 @@
  
 
 ##f$alli##
-0
-
-
-
-
-
-
-
-
+[f$Greater25BBAllIn
+|| f$lateAllIn
+|| f$Less25BBAllIn
+|| f$FlopAllIn
+|| f$TurnAllIn
+|| f$RiverAllIn
+|| f$EmergencyAllIn]? 1 : 0
 
 
 
@@ -62,29 +60,14 @@ f$rais > 0  ? f$rais : 0
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ##f$rais##
-f$LateRaise > 0 ? (bblind * 3) :
-[(prwin < prwinnow && prwinnow > 0.8)? (4 + betround) * bblind : 0]
-
-
-
-
-
-
+(betround == 1)
+&&
+[f$Less25BBRaise
+|| f$Less25BBLateRaise
+|| f$LateRaise > 0
+|| f$StealWhenSittingOut > 0]
+? ((bblind + sblind)*(4 + nopponentscalling)) : 0
 
 
 
@@ -96,22 +79,7 @@ f$LateRaise > 0 ? (bblind * 3) :
 
 
 ##f$call##
-[betround == 1
-&& f$FDP != 3
-&& nopponentsbetting < 1
-&& listLimp]
-||
-prwin>.80 ? 1 : 0
-
-
-
-
-
-
-
-
-
-
+(f$Limp > 0 || prwin > 0.8) ? 1 : 0
 
 
 
@@ -133,51 +101,7 @@ prwin>.80 ? 1 : 0
 
 ##f$check##
 // Check whenever it is free to call
-1
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+call == 0 ? 1 : 0
 
 
 
@@ -201,96 +125,8 @@ prwin>.80 ? 1 : 0
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ##f$sitin##
- 1
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+1
 
 
 
@@ -316,42 +152,6 @@ prwin>.80 ? 1 : 0
 // f$rebuy should evaluate to the target-amount in dollars.
 // This value will be passed to the rebuy-script as a parameter.
 0
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -398,51 +198,76 @@ prwin>.80 ? 1 : 0
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ##f$allin_on_betsize_balance_ratio##
 // Allin if betsize is more than X% of our total balance (including currentbet).
 // This affects f$betsize and all f$betpot_X_Y_ functions.
 //  0.00 =  0% = disabled
 //  0.50 = 50%
-0.00
+0.80
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -520,29 +345,13 @@ prwin>.80 ? 1 : 0
 ##f$prwin_number_of_opponents##
 // "Reasonable" default to get standard PrWin running for beginners,
 // Works even with "no opponents".
-nopponentsplaying + 1
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+(nopponentsplaying==0) ? 0 : //zero if no opponents
+(betround>1)? nopponentsplaying : //just use actual opponents post-flop
+(handsplayed<10)? nopponentsplaying : //fallback until floppct becomes reliable
+(nopponentscalling+nopponentstruelyraising+nopponentschecking*floppct+0.49)<1 ? 1 :
+//this should never happen, but .....
+nopponentscalling+nopponentstruelyraising+nopponentschecking*floppct+0.49
+//make anestimate for opponents who have still to act
 
 
 
@@ -636,6 +445,15 @@ nopponentsplaying + 1
 
 
 
+
+
+
+
+
+
+
+
+
 ##f$prwin_topclip##
  
 
@@ -643,63 +461,35 @@ nopponentsplaying + 1
  
 
 ##f$prwin_willplay##
- 
+ handsplayed<10?72:(180*floppct)>(f$prwin_number_of_opponents*2+1)?
+180*floppct:f$prwin_number_of_opponents*2+1
+
+
+
+
+
+
+
+
+
+
 
 ##f$prwin_wontplay##
- 
+ f$prwin_willplay*1.4
+
+
+
+
+
+
+
+
 
 ##f$icm_prize1##
 // f$icm_prizeX functions are used to configure the payout-structure in tournaments.
 // The sum of all f$icm_prizeX functions should be 1.00 (= 100%).
 // Default to get things going: the winner takes it all.
 1.00
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -753,33 +543,9 @@ AKo
 
 
 
-
-
-
-
-
-
-##listLateRaise##
-TT 99 88 77 66
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-##listLess12BB##
+##listEmergencyAllIn##
 AA KK QQ JJ TT 99 88 77 66 55 44 33 22
-AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs KTs K9s K8s K7s K6s K5s K4s K3s K2s QJs QTs Q9s Q8s Q7s Q6s Q5s Q4s Q3s Q2s JTs J9s J8s J7s J6s J5s J4s J3s J2s T9s T8s T7s T6s T5s T4s T3s T2s 98s 97s 96s 95s 94s 93s 92s 87s 86s 85s 84s 83s 82s 76s 75s 74s 73s 72s 65s 64s 63s 62s 54s 53s 52s 43s 42s 32s
+AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs KTs QJs QTs JTs
 AKo AQo AJo ATo KQo KJo KTo QJo QTo JTo
 
 
@@ -790,6 +556,12 @@ AKo AQo AJo ATo KQo KJo KTo QJo QTo JTo
 
 
 
+
+
+
+
+##listLateRaise##
+TT 99 88 77 66
 
 
 
@@ -813,6 +585,71 @@ AKo AQo AJo ATo KQo
 
 
 
+
+
+##listLess25BBAllIn##
+AA KK QQ JJ TT
+AKs
+AKo
+
+
+
+
+
+
+
+
+
+
+
+##listLess25BBLateRaise##
+AA KK QQ JJ TT 99
+AKs AQs AJs KQs
+AKo AQo AJo KQo
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##listLess25BBRaise##
+AA KK QQ JJ TT
+AKs
+AKo
+
+
+
+
+
+
+
+
+
+##listLess25BBReRaisedAllIn##
+AA KK QQ JJ TT 99
+AKs AQs
+AKo AQo
+
+
+
+
+
+
+
+
+
+
+
+
 ##listLimp##
 55 44 33 22
 AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs QJs JTs T9s 98s 87s 76s 65s 54s 43s 32s
@@ -828,50 +665,10 @@ AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs QJs JTs T9s 98s 87s 76s 65s 54s 
 
 
 
-
-
-
-
-
-
-
-
-
-##listPrwin30##
-AA KK QQ JJ TT 99 88 77 66 55 44 33 22
-AKs AQs AJs ATs KQs KJs KTs QJs QTs JTs
-AKo AQo AJo ATo KQo KJo KTo QJo QTo JTo
-
-
-
-
-
-
-
-
-##listVpip17##
-AA KK QQ JJ TT 99 88 77 66 55 44 33 22
-AKs AQs AJs ATs KQs KJs KTs QJs QTs JTs
-AKo AQo AJo ATo KQo KJo KTo QJo QTo JTo
-
-
-
-
-
-
-
-
 ##listlateAllIn##
 JJ
 AQs
 AQo
-
-
-
-
-
-
-
 
 
 
@@ -902,12 +699,205 @@ True
 
 
 
-##f$BlindSteal##
-pt_vpip_bigblind <= 9
-&& pt_hands_bigblind >30
-&& pt_vpip_smallblind <= 9
-&& pt_hands_smallblind > 30
-&& (f$FDP == 5 || f$FDP == 2) ? 1 : 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##f$DEBUG##
+prwin
+//handsplayed
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##f$EmergencyAllIn##
+[balance <= (5 * bblind)
+&& listEmergencyAllIn
+&& [f$FDP == 5 || f$FDP == 2 || f$FDP == 1]
+&& nopponentstruelyraising < 1] ? 1 : 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -998,6 +988,154 @@ nplayersdealt==3 ?  (dealposition==3 ? 5 : 0):0
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##f$FlopAllIn##
+[betround==2 && f$TwoPairOrMore || (f$TopPairTopKicker)]
+|| f$Less25BBPostFlopAllin? 1 : 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##f$Greater25BBAllIn##
+[betround == 1
+&& listAllIn
+&& (balance > 25 * bblind) ]? 1 : 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ##f$LateRaise##
 f$latePosition > 0 && listLateRaise ? 1: 0
 
@@ -1015,9 +1153,6 @@ f$latePosition > 0 && listLateRaise ? 1: 0
 
 
 
-##f$Less12AllIn##
-betround == 1 && (bblind * 12) > balance
-&& listLess12BBAllIn ? 1 : 0
 
 
 
@@ -1030,6 +1165,484 @@ betround == 1 && (bblind * 12) > balance
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##f$Less25BBAllIn##
+//go allin if reraised
+[didrais && betround == 1 && (bblind * 25) > balance
+&& listLess25BBReRaisedAllIn]
+|| [f$Less25BBPostFlopAllin ]
+? 1 : 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##f$Less25BBLateRaise##
+f$latePosition > 0 && listLess25BBLateRaise ? 1: 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##f$Less25BBPostFlopAllin##
+//Nach dem Flop
+//In dieser Turnierphase entscheidet sich die Runde meist spätestens am Flop,
+//einfach weil der Pot so groß wird, dass du nicht mehr rauskommst,
+//wenn du dich einmal zum Weiterspielen entschieden hast.
+//Hast du vor dem Flop erhöht und nur einen Gegner, dann setz mit jedem Blatt ungefähr ½ bis 2/3 des Pots.
+//Erhöht dein Gegner, dann geh mit jedem Toppaar und besser oder einem Flushdraw All-In.
+//Das gilt auch, wenn du nichts getroffen hast,
+//aber deine beiden Startkarten höher sind als jede Gemeinschaftskarte (Overcards).
+
+[balance < (25*bblind)
+&& betround == 2
+&&((ishipair || f$TwoPairOrMore) || (nsuited == 4))] ? 1 : 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##f$Less25BBRaise##
+[listLess25BBRaise
+&& balance < (25 * bblind)] ? 1 : 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##f$Limp##
+[betround == 1
+&& (balance > 25 * bblind)
+&& (f$FDP != 3 && f$FDP != 4 && f$FDP > 0)
+&& (call <= bblind)
+&& listLimp] ? 1 : 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##f$OpenBoard##
+// impossible to have a boat ,flush, or straight; top set is nuts
+[ nrankedcommon == 1 && nsuitedcommon <= 2 && nstraightfillcommon >=3 ]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##f$PrwinFlopAllin##
+betround == 2
+&& prwin > 0.7 ? 1 :0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##f$RiverAllIn##
+(betround == 4 && f$ThreeOfAKindOrMore) ? 1 : 0
 
 
 
@@ -1053,8 +1666,110 @@ True
 
 
 
-##f$StandardRaise##
-(3 + nopponentsbetting + nopponentscalling) * bblind
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1086,7 +1801,10 @@ True
 
 
 ##f$StealWhenSittingOut##
-f$FDP == 5
+//Steal Blinds when in late position
+//and nobody called and SB&BB sitting out
+[f$FDP == 5
+&& nopponentscalling == 0]
 && f$BigBlindSittingOut != 0
 && f$SmallBlindSittingOut != 0
 ? 1 : 0
@@ -1095,8 +1813,281 @@ f$FDP == 5
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##f$ThreeOfAKindOrMore##
+(isthreeofakind
+|| isstraight
+|| isflush
+|| isfullhouse
+|| isfourofakind
+|| isstraightflush
+|| isroyalflush) ? 1 : 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+##f$TopPairTopKicker##
+[isonepair && nrankedcommon==1 &&
+((rankloplayer==rankhicommon && rankhiplayer==14) ||
+(rankhiplayer==rankhicommon && rankloplayer==13))
+]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##f$TurnAllIn##
+(betround == 3 && f$TwoPairOrMore) ? 1 : 0
+
+
+
+
+##f$TwoPairOrMore##
+(istwopair
+|| isthreeofakind
+|| isstraight
+|| isflush
+|| isfullhouse
+|| isfourofakind
+|| isstraightflush
+|| isroyalflush) ? 1 : 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ##f$lateAllIn##
-betround == 1 && f$FDP != 3 && call <= bblind && listlateAllIn ? 1 : 0
+betround == 1
+&& f$FDP != 3 && f$FDP != 4  && f$FDP > 0
+&& call <= bblind && listlateAllIn ? 1 : 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1121,7 +2112,74 @@ betround == 1 && f$FDP != 3 && call <= bblind && listlateAllIn ? 1 : 0
 
 
 ##f$latePosition##
-betround == 1 && $FDP != 3 && nbetstocall < 1 ? 1 : 0
+((betround == 1)
+&& (f$FDP != 3) && (f$FDP != 4) && (f$FDP > 0)
+&& (call <= bblind))
+? 1 : 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

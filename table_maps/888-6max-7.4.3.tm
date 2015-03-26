@@ -2,7 +2,7 @@
 
 // OpenScrape 7.7.0
 
-// 2015-03-24 06:33:48
+// 2015-03-26 04:20:12
 // 32 bits per pixel
 
 //
@@ -31,6 +31,7 @@ s$t2type                    fuzzy
 s$t3type                    0.20
 s$titletext                 NLH
 s$titletext0                Handed
+s$titletext1                Astana
 s$titletext2                6-Handed
 s$ttlimits                  ^* ^LH ^*Blinds^* ^s/^b
 s$ttlimits0                 ^* ^L^*s: ^s/^b(^a)
