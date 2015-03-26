@@ -1,4 +1,4 @@
-##2015-03-26 08:52:02##
+##2015-03-26 05:32:49##
 
 ##notes##
  
@@ -7,7 +7,7 @@
  
 
 ##f$alli##
- listPreflopAllin ? 1 : 0
+ 
 
 ##f$betpot_2_1##
  
@@ -34,22 +34,13 @@
 // Betsize in dollars, raise-to semantics.
 // OpenHoldem will auto-adapt the betsize to the casinos input-requirements.
 // Please define your tablemaps "swagtextmethod" to configure this feature.
-f$rais > 0 ? (bblind * 3 ): 0
-
-
-
 
 
 ##f$rais##
-f$StealBlinds > 0
-? 1 : 0
-
-
-
-
+ 
 
 ##f$call##
- f$TwoPairOrMore > 0  ? 1 : 0
+ 
 
 ##f$check##
 // Check whenever it is free to call
@@ -69,10 +60,10 @@ f$StealBlinds > 0
 
 
 ##f$sitin##
- balance <= (100 * bblind) ? 1 : 0
+ 
 
 ##f$sitout##
-  balance >= (100 * bblind) ? 1 : 0
+ 
 
 ##f$leave##
  
@@ -210,17 +201,9 @@ nopponentsplaying + 1
 ##f$debug##
  
 
-##listPreflopAllin##
-AA KK QQ JJ 
-AKs 
-AKo 
-
-
-##f$DEBUG##
-pt_vpip_bigblind
-
 ##f$Position##
 // SB=1 BB=2 Early=3 Middle=4 Late=5
+nplayersdealt > 0 ?
 dealposition==1 ? 1:
 dealposition==2 ? 2:
 
@@ -266,35 +249,9 @@ nplayersdealt==5 ?  (dealposition==3 ? 3 :
 nplayersdealt==4 ?  (dealposition==3 ? 4 :
                      dealposition==4 ? 5 : 0):
 
-nplayersdealt==3 ?  (dealposition==3 ? 5 : 0):0
+nplayersdealt==3 ?  (dealposition==3 ? 5 : 0):0 : -1
 
 
 
 
-
-
-
-
-
-##f$StealBlinds##
-[((f$Position == 5)&&( nopponentscalling <= 0 && nopponentstruelyraising <= 0))&&((pt_hands_bigblind > 10 && pt_vpip_bigblind < 15)&&(pt_hands_smallblind > 10 && pt_vpip_smallblind < 15))]
-||
-[((f$Position == 2)&&( nopponentscalling <= 0 && nopponentstruelyraising <= 0))&&((pt_hands_bigblind > 10 && pt_vpip_bigblind < 15))]
-
-
-? 1 : 0
-
-
-
-
-
-##f$TwoPairOrMore##
-(istwopair
-|| isthreeofakind
-|| isstraight
-|| isflush
-|| isfullhouse
-|| isfourofakind
-|| isstraightflush
-|| isroyalflush) ? 1 : 0
 

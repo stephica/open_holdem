@@ -1,4 +1,4 @@
-##2015-03-07 06:38:16##
+##2015-03-22 05:10:41##
 
 ##notes##
  
@@ -7,7 +7,9 @@
  
 
 ##f$alli##
-  [ prwin>=.90 ] 
+  [ prwin>=.90 ]
+
+
 
 
 
@@ -71,6 +73,8 @@
 
 
 
+
+
 ##f$call##
     [ prwin>=.90 ]              // dead nuts
 || [ call<=0 ]              // zero call amount (check)
@@ -90,9 +94,13 @@
 
 
 
+
+
 ##f$check##
 // Check whenever it is free to call
-(call == 0) 
+(call == 0)
+
+
 
 
 
@@ -111,7 +119,9 @@
 ##f$fold##
 // f$fold should alwazs evaluate to true per default
 // for auto-check-folding instead of time-outs.
-1 
+1
+
+
 
 
 
@@ -162,11 +172,15 @@
 
 
 
+
+
 ##f$prefold##
  
 
 ##f$chat##
  0
+
+
 
 
 
@@ -195,11 +209,15 @@
 
 
 
+
+
 ##f$allin_on_betsize_balance_ratio##
 // Allin if betsize is more than X% of our total balance (including currentbet).
 // This affects f$betsize and all f$betpot_X_Y_ functions.
 //  0.00 =  0% = disabled
 [0.50]
+
+
 
 
 
@@ -251,11 +269,15 @@
 
 
 
+
+
 ##f$prwin_number_of_iterations##
 // "Reasonable" default to get PrWin running for beginners.
 // Large enough to get usable results,
 // small enough to save CPU-time.
-1000 
+1000
+
+
 
 
 
@@ -304,6 +326,8 @@
 
 
 
+
+
 ##f$icm_prize2##
  
 
@@ -335,8 +359,10 @@
  
 
 ##listHandGroup01##
-AA KK QQ JJ 
-AKs 
+AA KK QQ JJ
+AKs
+
+
 
 
 
@@ -350,9 +376,11 @@ AKs
 
 
 ##listHandGroup03##
-99 
-ATs KJs QJs JTs 
-AQo 
+99
+ATs KJs QJs JTs
+AQo
+
+
 
 
 
@@ -366,9 +394,11 @@ AQo
 
 
 ##listHandGroup04##
-88 
-KTs QTs J9s T9s 98s 
-AJo KQo 
+88
+KTs QTs J9s T9s 98s
+AJo KQo
+
+
 
 
 
@@ -382,9 +412,11 @@ AJo KQo
 
 
 ##listHandGroup05##
-77 66 
-A9s A8s A7s A6s A5s A4s A3s A2s Q9s T8s 97s 87s 76s 
-KJo QJo JTo 
+77 66
+A9s A8s A7s A6s A5s A4s A3s A2s Q9s T8s 97s 87s 76s
+KJo QJo JTo
+
+
 
 
 
@@ -398,9 +430,11 @@ KJo QJo JTo
 
 
 ##listHandGroup06##
-55 
-J8s 86s 75s 65s 54s 
-ATo KTo QTo 
+55
+J8s 86s 75s 65s 54s
+ATo KTo QTo
+
+
 
 
 
@@ -414,9 +448,11 @@ ATo KTo QTo
 
 
 ##listHandGroup07##
-44 33 22 
-K9s K8s K7s K6s K5s K4s K3s K2s 64s 53s 43s 
-J9o T9o 98o 
+44 33 22
+K9s K8s K7s K6s K5s K4s K3s K2s 64s 53s 43s
+J9o T9o 98o
+
+
 
 
 
@@ -430,8 +466,10 @@ J9o T9o 98o
 
 
 ##listHandGroup08##
-J7s 96s 85s 74s 42s 32s 
-A9o K9o Q9o J8o T8o 87o 76o 65o 54o 
+J7s 96s 85s 74s 42s 32s
+A9o K9o Q9o J8o T8o 87o 76o 65o 54o
+
+
 
 
 
@@ -445,8 +483,10 @@ A9o K9o Q9o J8o T8o 87o 76o 65o 54o
 
 
 ##listHandGroup09##
-Q8s Q7s Q6s Q5s Q4s Q3s Q2s J6s J5s J4s J3s J2s T7s T6s T5s T4s T3s T2s 95s 94s 93s 92s 84s 83s 82s 73s 72s 63s 62s 52s 
-A8o A7o A6o A5o A4o A3o A2o K8o K7o K6o K5o K4o K3o K2o Q8o Q7o Q6o Q5o Q4o Q3o Q2o J7o J6o J5o J4o J3o J2o T7o T6o T5o T4o T3o T2o 97o 96o 95o 94o 93o 92o 86o 85o 84o 83o 82o 75o 74o 73o 72o 64o 63o 62o 53o 52o 43o 42o 32o 
+Q8s Q7s Q6s Q5s Q4s Q3s Q2s J6s J5s J4s J3s J2s T7s T6s T5s T4s T3s T2s 95s 94s 93s 92s 84s 83s 82s 73s 72s 63s 62s 52s
+A8o A7o A6o A5o A4o A3o A2o K8o K7o K6o K5o K4o K3o K2o Q8o Q7o Q6o Q5o Q4o Q3o Q2o J7o J6o J5o J4o J3o J2o T7o T6o T5o T4o T3o T2o 97o 96o 95o 94o 93o 92o 86o 85o 84o 83o 82o 75o 74o 73o 72o 64o 63o 62o 53o 52o 43o 42o 32o
+
+
 
 
 
@@ -460,9 +500,11 @@ A8o A7o A6o A5o A4o A3o A2o K8o K7o K6o K5o K4o K3o K2o Q8o Q7o Q6o Q5o Q4o Q3o 
 
 
 ##listHandgroup02##
-TT 
-AQs AJs KQs 
-AKo 
+TT
+AQs AJs KQs
+AKo
+
+
 
 
 
@@ -496,6 +538,8 @@ AKo
 
 
 0
+
+
 
 
 
@@ -569,5 +613,5 @@ nopponentsdealt==2 ? (dealposition==3 ? 10 : 0):
 
 
 
-##f$raise_preflop##
+
 
