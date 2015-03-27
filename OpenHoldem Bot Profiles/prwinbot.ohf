@@ -1,4 +1,4 @@
-##2015-03-26 19:23:32##
+##2015-03-27 07:06:54##
 
 ##notes##
  
@@ -7,9 +7,9 @@
  
 
 ##f$alli##
-betround == 1 && prwin > 0.35
-||betround == 2 && prwin > 0.5
-||prwin > 0.7 ? 1 : 0
+prwin > 0.8? 1 : 0
+
+
 
 
 
@@ -45,21 +45,28 @@ f$rais > 0 ? prwin * 100 * bblind : 0
 
 
 
+
+
 ##f$rais##
-betround = 1 && prwin > 0.2
+!didrais && 
+[betround = 1 && prwin > 0.2 && call <= bblind
 || betround = 2 && prwin > 0.35
-|| betround = 3 && prwin > 0.6
-|| betround = 4 && prwin > 0.7 ? 1 : 0
+|| betround = 3 && prwin > 0.5
+|| betround = 4 && prwin > 0.6]? 1 : 0
+
+
 
 
 
 
 
 ##f$call##
-betround == 1 && prwin > 0.19 && call < 10*bblind ? 1 :
-betround == 2 && prwin > 0.3 ? 1 :
-betround == 3 && prwin > 0.4 ? 1 :
-betround == 4 && prwin > 0.7 ? 1 : 0
+betround == 1 && prwin > 0.5 && call < balance / 3 ? 1 :
+betround == 2 && prwin > 0.6 ? 1 :
+betround == 3 && prwin > 0.7 ? 1 :
+betround == 4 && prwin > 0.8 ? 1 : 0
+
+
 
 
 
@@ -69,6 +76,8 @@ betround == 4 && prwin > 0.7 ? 1 : 0
 ##f$check##
 // Check whenever it is free to call
 (call == 0)
+
+
 
 
 
@@ -91,8 +100,12 @@ betround == 4 && prwin > 0.7 ? 1 : 0
 
 
 
+
+
 ##f$sitin##
  1
+
+
 
 
 
@@ -122,6 +135,8 @@ betround == 4 && prwin > 0.7 ? 1 : 0
 
 
 
+
+
 ##f$prefold##
  
 
@@ -141,12 +156,16 @@ betround == 4 && prwin > 0.7 ? 1 : 0
 
 
 
+
+
 ##f$allin_on_betsize_balance_ratio##
 // Allin if betsize is more than X% of our total balance (including currentbet).
 // This affects f$betsize and all f$betpot_X_Y_ functions.
 //  0.00 =  0% = disabled
 //  0.50 = 50%
 0.00
+
+
 
 
 
@@ -195,11 +214,15 @@ nopponentscalling+nopponentstruelyraising+nopponentschecking*floppct+0.49
 
 
 
+
+
 ##f$prwin_number_of_iterations##
 // "Reasonable" default to get PrWin running for beginners.
 // Large enough to get usable results,
 // small enough to save CPU-time.
 1000
+
+
 
 
 
@@ -227,8 +250,12 @@ nopponentscalling+nopponentstruelyraising+nopponentschecking*floppct+0.49
 
 
 
+
+
 ##f$prwin_wontplay##
   f$prwin_willplay*1.4
+
+
 
 
 
@@ -247,6 +274,8 @@ nopponentscalling+nopponentstruelyraising+nopponentschecking*floppct+0.49
 // The sum of all f$icm_prizeX functions should be 1.00 (= 100%).
 // Default to get things going: the winner takes it all.
 1.00
+
+
 
 
 
@@ -289,6 +318,8 @@ nopponentscalling+nopponentstruelyraising+nopponentschecking*floppct+0.49
 
 ##f$DEBUG##
 prwin
+
+
 
 
 
@@ -354,9 +385,5 @@ nplayersdealt==3 ?  (dealposition==3 ? 5 : 0):0
 
 
 
-##f$preflop_allin##
 
-##f$preflop_call##
-
-##f$preflop_raise##
 

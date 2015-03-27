@@ -1,4 +1,4 @@
-##2015-03-26 08:52:02##
+##2015-03-27 01:59:26##
 
 ##notes##
  
@@ -8,6 +8,8 @@
 
 ##f$alli##
  listPreflopAllin ? 1 : 0
+
+
 
 ##f$betpot_2_1##
  
@@ -40,6 +42,8 @@ f$rais > 0 ? (bblind * 3 ): 0
 
 
 
+
+
 ##f$rais##
 f$StealBlinds > 0
 ? 1 : 0
@@ -48,12 +52,18 @@ f$StealBlinds > 0
 
 
 
+
+
 ##f$call##
  f$TwoPairOrMore > 0  ? 1 : 0
+
+
 
 ##f$check##
 // Check whenever it is free to call
 (call == 0)
+
+
 
 
 
@@ -68,11 +78,17 @@ f$StealBlinds > 0
 
 
 
+
+
 ##f$sitin##
  balance <= (100 * bblind) ? 1 : 0
 
+
+
 ##f$sitout##
   balance >= (100 * bblind) ? 1 : 0
+
+
 
 ##f$leave##
  
@@ -87,6 +103,8 @@ f$StealBlinds > 0
 // f$rebuy should evaluate to the target-amount in dollars.
 // This value will be passed to the rebuy-script as a parameter.
 0
+
+
 
 
 
@@ -108,12 +126,16 @@ f$StealBlinds > 0
 
 
 
+
+
 ##f$allin_on_betsize_balance_ratio##
 // Allin if betsize is more than X% of our total balance (including currentbet).
 // This affects f$betsize and all f$betpot_X_Y_ functions.
 //  0.00 =  0% = disabled
 //  0.50 = 50%
 0.00
+
+
 
 
 
@@ -147,11 +169,15 @@ nopponentsplaying + 1
 
 
 
+
+
 ##f$prwin_number_of_iterations##
 // "Reasonable" default to get PrWin running for beginners.
 // Large enough to get usable results,
 // small enough to save CPU-time.
 1000
+
+
 
 
 
@@ -174,6 +200,8 @@ nopponentsplaying + 1
 // The sum of all f$icm_prizeX functions should be 1.00 (= 100%).
 // Default to get things going: the winner takes it all.
 1.00
+
+
 
 
 
@@ -211,13 +239,17 @@ nopponentsplaying + 1
  
 
 ##listPreflopAllin##
-AA KK QQ JJ 
-AKs 
-AKo 
+AA KK QQ JJ
+AKs
+AKo
+
+
 
 
 ##f$DEBUG##
 pt_vpip_bigblind
+
+
 
 ##f$Position##
 // SB=1 BB=2 Early=3 Middle=4 Late=5
@@ -276,12 +308,14 @@ nplayersdealt==3 ?  (dealposition==3 ? 5 : 0):0
 
 
 
+
+
 ##f$StealBlinds##
-[((f$Position == 5)&&( nopponentscalling <= 0 && nopponentstruelyraising <= 0))&&((pt_hands_bigblind > 10 && pt_vpip_bigblind < 15)&&(pt_hands_smallblind > 10 && pt_vpip_smallblind < 15))]
+[((f$Position == 5)&&( nopponentscalling <= 0 && nopponentstruelyraising <= 0))&&
+((pt_hands_bigblind > 10 && pt_vpip_bigblind < 15)&&(pt_hands_smallblind > 10 && pt_vpip_smallblind < 15))]
 ||
-[((f$Position == 2)&&( nopponentscalling <= 0 && nopponentstruelyraising <= 0))&&((pt_hands_bigblind > 10 && pt_vpip_bigblind < 15))]
-
-
+[((f$Position == 2)&&( nopponentscalling <= 0 && nopponentstruelyraising <= 0))&&
+((pt_hands_bigblind > 10 && pt_vpip_bigblind < 15))]
 ? 1 : 0
 
 
@@ -297,4 +331,29 @@ nplayersdealt==3 ?  (dealposition==3 ? 5 : 0):0
 || isfourofakind
 || isstraightflush
 || isroyalflush) ? 1 : 0
+
+
+
+##f$bluffformula##
+nplayersplaying==2 && nplayersround2<4 && nbetsround2<12 && !didcallround2 ? {
+
+f$pt_vpip>0.12 && f$pt_vpip<=0.25 ? {
+
+    f$stats_wsdp>0.00 && f$stats_wsdp<=0.20 ? 3 :
+    f$stats_wsdp>0.20 && f$stats_wsdp<=0.25 ? 1 : 0 } :
+
+f$pt_vpip>0.25 && f$pt_vpip<=0.50 ? {
+
+    f$stats_wsdp>0.00 && f$stats_wsdp<=0.20 ? 3 :
+    f$stats_wsdp>0.20 && f$stats_wsdp<=0.25 ? 2 : 0 } :
+
+f$pt_vpip>0.50 && f$stats_wsdp>0 && f$stats_wsdp<0.25 ? 3 :
+
+0 } :
+
+0
+
+
+
+
 
