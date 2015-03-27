@@ -1,4 +1,4 @@
-##2015-03-27 10:48:56##
+##2015-03-27 11:10:13##
 
 ##notes##
  
@@ -14,7 +14,9 @@
 || f$TurnAllIn
 || f$RiverAllIn
 || f$less6_allin
-|| f$EmergencyAllIn]? 1 : 0
+|| f$less12_allin
+//|| f$EmergencyAllIn
+]? 1 : 0
 
 
 
@@ -624,6 +626,30 @@ AKo AQo AJo ATo KQo
 
 
 
+
+
+##listLess12BBBlinds##
+AA KK QQ JJ TT 99 88 77 66 55 44 33 22 
+AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs 
+AKo AQo AJo ATo A9o A8o KQo 
+
+
+##listLess12BBEarly##
+AA KK QQ JJ TT 
+AKs AQs 
+AKo AQo 
+
+
+##listLess12BBLate##
+AA KK QQ JJ TT 99 88 77 66 55 
+AKs AQs AJs ATs KQs 
+AKo AQo AJo ATo KQo 
+
+
+##listLess12BBMiddle##
+AA KK QQ JJ TT 99 88 77 
+AKs AQs AJs 
+AKo AQo AJo 
 
 
 ##listLess25BBAllIn##
@@ -2317,8 +2343,16 @@ betround == 1
 
 
 
+##f$less12_allin##
+balance < 12 * bblind && (nopponentsbetting + nopponentscalling)< 2 &&
+[f$FDP == 3 && listLess12BBEarly 
+|| f$FDP == 4 && listLess12BBMiddle
+|| f$FDP == 5 && listLess12BBLate
+|| f$FDP == 1 && listLess12BBBlinds
+|| f$FDP == 2 && listLess12BBBlinds] ? 1 : 0
+
 ##f$less6_allin##
-balance < 6 * bblind && nopponentsbetting < 2 &&
+balance < 6 * bblind && (nopponentsbetting + nopponentscalling) &&
 [f$FDP == 3 && listLess6BBEarly 
 || f$FDP == 4 && listLess6BBMiddle
 || f$FDP == 5 && listLess6BBLate
