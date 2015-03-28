@@ -1,4 +1,4 @@
-##2015-03-27 07:06:54##
+##2015-03-28 05:03:06##
 
 ##notes##
  
@@ -7,7 +7,31 @@
  
 
 ##f$alli##
-prwin > 0.8? 1 : 0
+//allin on reraise with given probability
+[betround == 1 &&
+(didrais && nopponentstruelyraising <=1) &&
+(pt_vpip_raischair > 20) && (prwin > .18)]
+||
+[betround = 1 && prwin > 0.2
+|| betround = 2 && prwin > 0.5
+|| betround = 3 && prwin > 0.7
+|| betround = 4 && prwin > 0.8]? 1 : 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -38,7 +62,21 @@ prwin > 0.8? 1 : 0
 // Betsize in dollars, raise-to semantics.
 // OpenHoldem will auto-adapt the betsize to the casinos input-requirements.
 // Please define your tablemaps "swagtextmethod" to configure this feature.
-f$rais > 0 ? prwin * 100 * bblind : 0
+f$rais > 0 ? call * 4 : 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -48,11 +86,35 @@ f$rais > 0 ? prwin * 100 * bblind : 0
 
 
 ##f$rais##
-!didrais && 
-[betround = 1 && prwin > 0.2 && call <= bblind
-|| betround = 2 && prwin > 0.35
-|| betround = 3 && prwin > 0.5
-|| betround = 4 && prwin > 0.6]? 1 : 0
+//reraise opponent only if we have a good chance go allin on another raise
+[
+[(betround == 1 && pt_fold_to_3bet_raischair > 50 && nopponentstruelyraising == 1 && (!didrais))
+||betround == 1 && prwin > 0.2
+|| betround == 2 && prwin > 0.5
+|| betround == 3 && prwin > 0.7
+|| betround == 4 && prwin > 0.8]
+]
+||
+//openraise opponent
+[nopponentstruelyraising < 1 &&
+[betround == 1 && prwin > 0.18
+|| betround == 2 && prwin > 0.4
+|| betround == 3 && prwin > 0.6
+|| betround == 4 && prwin > 0.7]]
+|| f$raise_to_steal_blinds > 0
+? 1 : 0
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -61,10 +123,18 @@ f$rais > 0 ? prwin * 100 * bblind : 0
 
 
 ##f$call##
-betround == 1 && prwin > 0.5 && call < balance / 3 ? 1 :
-betround == 2 && prwin > 0.6 ? 1 :
-betround == 3 && prwin > 0.7 ? 1 :
-betround == 4 && prwin > 0.8 ? 1 : 0
+(call == 0)
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -76,6 +146,20 @@ betround == 4 && prwin > 0.8 ? 1 : 0
 ##f$check##
 // Check whenever it is free to call
 (call == 0)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -102,8 +186,36 @@ betround == 4 && prwin > 0.8 ? 1 : 0
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ##f$sitin##
  1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -137,8 +249,29 @@ betround == 4 && prwin > 0.8 ? 1 : 0
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ##f$prefold##
- 
+ listPrefold ? 1 : 0
+
+
+
+
+
+
+
 
 ##f$chat##
  
@@ -158,12 +291,40 @@ betround == 4 && prwin > 0.8 ? 1 : 0
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ##f$allin_on_betsize_balance_ratio##
 // Allin if betsize is more than X% of our total balance (including currentbet).
 // This affects f$betsize and all f$betpot_X_Y_ functions.
 //  0.00 =  0% = disabled
 //  0.50 = 50%
 0.00
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -216,11 +377,39 @@ nopponentscalling+nopponentstruelyraising+nopponentschecking*floppct+0.49
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ##f$prwin_number_of_iterations##
 // "Reasonable" default to get PrWin running for beginners.
 // Large enough to get usable results,
 // small enough to save CPU-time.
 1000
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -252,8 +441,36 @@ nopponentscalling+nopponentstruelyraising+nopponentschecking*floppct+0.49
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ##f$prwin_wontplay##
   f$prwin_willplay*1.4
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -274,6 +491,20 @@ nopponentscalling+nopponentstruelyraising+nopponentschecking*floppct+0.49
 // The sum of all f$icm_prizeX functions should be 1.00 (= 100%).
 // Default to get things going: the winner takes it all.
 1.00
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -316,8 +547,68 @@ nopponentscalling+nopponentstruelyraising+nopponentschecking*floppct+0.49
 ##f$debug##
  
 
+##listPrefold##
+99 88 77 66 55 44 33 22
+A9s A8s A7s A6s A5s A4s A3s A2s K9s K8s K7s K6s K5s K4s K3s K2s Q9s Q8s Q7s Q6s Q5s Q4s Q3s Q2s J9s J8s J7s J6s J5s J4s J3s J2s T9s T8s T7s T6s T5s T4s T3s T2s 98s 97s 96s 95s 94s 93s 92s 87s 86s 85s 84s 83s 82s 76s 75s 74s 73s 72s 65s 64s 63s 62s 54s 53s 52s 43s 42s 32s
+A9o A8o A7o A6o A5o A4o A3o A2o K9o K8o K7o K6o K5o K4o K3o K2o Q9o Q8o Q7o Q6o Q5o Q4o Q3o Q2o J9o J8o J7o J6o J5o J4o J3o J2o T9o T8o T7o T6o T5o T4o T3o T2o 98o 97o 96o 95o 94o 93o 92o 87o 86o 85o 84o 83o 82o 76o 75o 74o 73o 72o 65o 64o 63o 62o 54o 53o 52o 43o 42o 32o
+
+
+
+
+
+
+
+
+
+
+##listRaise##
+AA KK QQ JJ TT
+AKs AQs AJs KQs KJs QJs
+AKo AQo KQo
+
+
+
+
+
+
+
+
+
+
+
+
+##listRaiseAllIn##
+AA KK QQ JJ
+AKs
+AKo
+
+
+
+
+
+
+
+
+
+
+
+
 ##f$DEBUG##
 prwin
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -376,6 +667,83 @@ nplayersdealt==3 ?  (dealposition==3 ? 5 : 0):0
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##f$raise_to_steal_blinds##
+[((f$position == 5)&&( nopponentscalling <= 0 && nopponentstruelyraising <= 0))&&
+((pt_hands_bigblind > 10 && pt_vpip_bigblind < 15)&&(pt_hands_smallblind > 10 && pt_vpip_smallblind < 15))]
+||
+[((f$position == 2)&&( nopponentscalling <= 0 && nopponentstruelyraising <= 0))&&
+((pt_hands_bigblind > 10 && pt_vpip_bigblind < 15))]
+? 1 : 0
+
+
+//pt_big_blind_fold_to_steal_bigblind > 20 &&
+
+
+
+
+##f$tracker_raischair_isNIT##
+
+//Spieler A: (Bet: 10%, Raise: 10%, Call: 2%, Fold: 78%)
+//AF: 10
+//AFq: 20%
+pt_vpip_raischair < 12 && pt_pfr_raischair < 12
+
+
+
+
+
+##f$tracker_select_victim##
+
+
+//isfish?
+pt_vpip_raischair - pt_pfr_raischair > 20 ? 1 :
+//is weak tight
+pt_aggr_factor_raischair < .09 - pt_wtsd_raischair < 20 ? 2 :
+//is tag
+(pt_vpip_raischair < 9 && pt_pfr_raischair < 13 && pt_pfr_raischair > 5) ? 3 : 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##f$wontplay##
+//We want max 1 opponent postflop
+nopponentstruelyraising + nopponentscalling > 2
 
 
 
