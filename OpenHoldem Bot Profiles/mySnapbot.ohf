@@ -1,4 +1,4 @@
-##2015-03-22 11:51:10##
+##2015-03-27 08:53:46##
 
 ##notes##
  
@@ -7,26 +7,8 @@
  
 
 ##f$alli##
-listHandGroup01
-||listHandGroup02
-||((listHandGroup03|| listHandGroup04) && (call <= bblind * 3))
-? 1 : 0
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ f$preflop_allin
+|| f$hand_2pair_or_more
 
 
 
@@ -62,11 +44,7 @@ listHandGroup01
 // Betsize in dollars, raise-to semantics.
 // OpenHoldem will auto-adapt the betsize to the casinos input-requirements.
 // Please define your tablemaps "swagtextmethod" to configure this feature.
-f$alli > 0 ? balance : 0
-
-
-
-
+ f$rais > 0 ? f$rais :0
 
 
 
@@ -75,33 +53,34 @@ f$alli > 0 ? balance : 0
 
 
 ##f$rais##
-f$alli
-
-
-
-
-
-
-
+ f$preflop_raise
 
 
 
 
 
 ##f$call##
-[prwin > 0.8] ? 1 : 0
-
-
-
-
-
-
-
-
+ 
 
 ##f$check##
 // Check whenever it is free to call
 (call == 0)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -180,14 +159,24 @@ f$alli
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ##f$sitin##
-0
-
-
-
-
-
-
+1
 
 
 
@@ -207,6 +196,22 @@ f$alli
 // f$rebuy should evaluate to the target-amount in dollars.
 // This value will be passed to the rebuy-script as a parameter.
 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -283,9 +288,41 @@ f$alli
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ##f$delay##
 // Autoplayer-delay in milli-seconds
 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -327,6 +364,22 @@ f$alli
 // This affects f$betsize and all f$betpot_X_Y_ functions.
 //  0.00 =  0% = disabled
 [0.50]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -422,11 +475,43 @@ f$alli
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ##f$prwin_number_of_iterations##
 // "Reasonable" default to get PrWin running for beginners.
 // Large enough to get usable results,
 // small enough to save CPU-time.
 1000
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -519,6 +604,22 @@ f$alli
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ##f$icm_prize2##
  
 
@@ -568,28 +669,11 @@ AKs
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ##listHandGroup02##
 TT
 AQs AJs KQs
 AKo
+
 
 
 
@@ -625,28 +709,26 @@ AQo
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ##listHandGroup04##
 88
 KTs QTs J9s T9s 98s
 AJo KQo
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -719,10 +801,42 @@ KJo QJo JTo
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ##listHandGroup06##
 55
 J8s 86s 75s 65s 54s
 ATo KTo QTo
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -795,6 +909,22 @@ J9o T9o 98o
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ##listHandGroup08##
 J7s 96s 85s 74s 42s 32s
 A9o K9o Q9o J8o T8o 87o 76o 65o 54o
@@ -832,9 +962,41 @@ A9o K9o Q9o J8o T8o 87o 76o 65o 54o
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ##listHandGroup09##
 Q8s Q7s Q6s Q5s Q4s Q3s Q2s J6s J5s J4s J3s J2s T7s T6s T5s T4s T3s T2s 95s 94s 93s 92s 84s 83s 82s 73s 72s 63s 62s 52s
 A8o A7o A6o A5o A4o A3o A2o K8o K7o K6o K5o K4o K3o K2o Q8o Q7o Q6o Q5o Q4o Q3o Q2o J7o J6o J5o J4o J3o J2o T7o T6o T5o T4o T3o T2o 97o 96o 95o 94o 93o 92o 86o 85o 84o 83o 82o 75o 74o 73o 72o 64o 63o 62o 53o 52o 43o 42o 32o
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -907,6 +1069,22 @@ AKo
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ##listHandgroup02##
 TT
 AQs AJs KQs
@@ -938,6 +1116,84 @@ AKo
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##listVPIP10##
+AA KK QQ JJ TT 99 88
+AKs AQs AJs ATs KQs KJs KTs QJs QTs JTs J9s T9s 98s
+AKo AQo AJo KQo
+
+
+
+
+##listVPIP17##
+AA KK QQ JJ TT 99 88
+AKs AQs AJs ATs KQs KJs KTs QJs QTs JTs J9s T9s 98s
+AKo AQo AJo KQo
+77 66
+A9s A8s A7s A6s A5s A4s A3s A2s Q9s T8s 97s 87s 76s
+KJo QJo JTo
+
+
+
+
+
+
+
+##listVPIP9##
+AA KK QQ JJ
+AKs
+
+
+
+
+
+
+TT
+AQs AJs KQs
+AKo
+
+
+
+
+99
+ATs KJs QJs JTs
+AQo
+
+
+
+
+
+
+
+
+
+
+##f$DEBUG##
+//pt_vpip_raischair
+//pt_vpip_bigblind
+pt_preflop_attempt_steal_dealer
 
 
 
@@ -999,56 +1255,71 @@ AKo
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ##f$dealposition##
-[
+// SB=1 BB=2 Early=3 Middle=4 Late=5
+
 dealposition==1 ? 1:
 dealposition==2 ? 2:
 
+nplayersdealt==10 ? (dealposition==3 ? 3 :
+                     dealposition==4 ? 3 :
+                     dealposition==5 ? 3 :
+                     dealposition==6 ? 4 :
+                     dealposition==7 ? 4 :
+                     dealposition==8 ? 4 :
+                     dealposition==9 ? 5 :
+                     dealposition==10? 5 : 0):
 
-nopponentsdealt==9 ? (dealposition==3 ? 3 :
-                      dealposition==4 ? 4 :
-                      dealposition==5 ? 5 :
-                      dealposition==6 ? 6 :
-                      dealposition==7 ? 7 :
-                      dealposition==8 ? 8 :
-                      dealposition==9 ? 9 :
-                      dealposition==10 ? 10 : 0):
+nplayersdealt==9 ?  (dealposition==3 ? 3 :
+                     dealposition==4 ? 3 :
+                     dealposition==5 ? 3 :
+                     dealposition==6 ? 4 :
+                     dealposition==7 ? 4 :
+                     dealposition==8 ? 5 :
+                     dealposition==9 ? 5 : 0):
 
-nopponentsdealt==8 ? (dealposition==3 ? 4 :
-                      dealposition==4 ? 5 :
-                      dealposition==5 ? 6 :
-                      dealposition==6 ? 7 :
-                      dealposition==7 ? 8 :
-                      dealposition==8 ? 9 :
-                      dealposition==9 ? 10 : 0):
+nplayersdealt==8 ?  (dealposition==3 ? 3 :
+                     dealposition==4 ? 3 :
+                     dealposition==5 ? 4 :
+                     dealposition==6 ? 4 :
+                     dealposition==7 ? 5 :
+                     dealposition==8 ? 5 : 0):
 
-nopponentsdealt==7 ? (dealposition==3 ? 5 :
-                      dealposition==4 ? 6 :
-                      dealposition==5 ? 7 :
-                      dealposition==6 ? 8 :
-                      dealposition==7 ? 9 :
-                      dealposition==8 ? 10: 0):
+nplayersdealt==7 ?  (dealposition==3 ? 3 :
+                     dealposition==4 ? 3 :
+                     dealposition==5 ? 4 :
+                     dealposition==6 ? 4 :
+                     dealposition==7 ? 5 : 0):
 
-nopponentsdealt==6 ? (dealposition==3 ? 6 :
-                      dealposition==4 ? 7 :
-                      dealposition==5 ? 8 :
-                      dealposition==6 ? 9 :
-                      dealposition==7 ? 10 : 0):
+nplayersdealt==6 ?  (dealposition==3 ? 3 :
+                     dealposition==4 ? 4 :
+                     dealposition==5 ? 4 :
+                     dealposition==6 ? 5 : 0):
 
-nopponentsdealt==5 ? (dealposition==3 ? 7 :
-                      dealposition==4 ? 8 :
-                      dealposition==5 ? 9 :
-                      dealposition==6 ? 10 : 0):
+nplayersdealt==5 ?  (dealposition==3 ? 3 :
+                     dealposition==4 ? 4 :
+                     dealposition==5 ? 5 : 0):
 
-nopponentsdealt==4 ? (dealposition==3 ? 8 :
-                      dealposition==4 ? 9 :
-                      dealposition==5 ? 10 : 0):
+nplayersdealt==4 ?  (dealposition==3 ? 4 :
+                     dealposition==4 ? 5 : 0):
 
-nopponentsdealt==3 ? (dealposition==3 ? 9 :
-                      dealposition==4 ? 10 : 0):
-
-nopponentsdealt==2 ? (dealposition==3 ? 10 : 0):
-0]
+nplayersdealt==3 ?  (dealposition==3 ? 5 : 0):0
 
 
 
@@ -1076,6 +1347,242 @@ nopponentsdealt==2 ? (dealposition==3 ? 10 : 0):
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##f$hand_2pair_or_more##
+(istwopair
+|| isthreeofakind
+|| isstraight
+|| isflush
+|| isfullhouse
+|| isfourofakind
+|| isstraightflush
+|| isroyalflush) ? 1 : 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##f$preflop_allin##
+//opponent raised or reraised -> allin with Handgroup1
+listHandGroup01
+||(f$dealposition != 3 ) && (listHandGroup02 ) && (call < 3 * balance || f$raiser_type_loose)
+||(f$dealposition != 3 ) && (listHandGroup03 ) && (call < 3 * balance || f$raiser_type_loose)
+
+? 1 : 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##f$preflop_call##
+//call group 2-3 if reraised or amount to call is more 3 bb and less 6bb
+((listHandGroup02 || listHandGroup03)
+&& (call <= (12*bblind)))
+? 1: 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##f$preflop_defend_blind##
+call <= (3*bblind) && f$dealposition == 2 
+&& nopponentscalling == 0
+&& pt_preflop_attempt_steal_raischair > 1
+&& !f$raiser_type_nit
+&& !listHandGroup09
+? currentbet *3 : 0
+
+##f$preflop_raise##
+//raise group 1-3 if no raiser or amount to call is less 3 bb
+((listHandGroup01 || listHandGroup02 || listHandGroup03)
+&& (!didrais && (call <= (3*bblind))))
+? (bblind * 6) + currentbet:
+f$preflop_raise_to_steal > 0 ? (bblind * 3):
+f$preflop_defend_blind > 0 ? (currentbet * 3):0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##f$preflop_raise_to_steal##
+(nopponentscalling == 0 && pt_hands_smallblind > 100 && pt_hands_bigblind > 100)
+&&((pt_vpip_smallblind < 9 && pt_vpip_bigblind < 9 )
+||(f$dealposition = 1 && pt_vpip_bigblind < 9))
+? 1 : 0
+
+
+
+
+
+
+
+
+##f$preflop_reraise_to defend_blind##
+
+##f$pt_vpip##
+[
+(opponentsplayingbits==1)  ? pt_vpip0 :
+(opponentsplayingbits==2)  ? pt_vpip1 :
+(opponentsplayingbits==4)  ? pt_vpip2 :
+(opponentsplayingbits==8)  ? pt_vpip3 :
+(opponentsplayingbits==16) ? pt_vpip4 :
+(opponentsplayingbits==32) ? pt_vpip5 : 0 ]
+
+
+
+
+
+
+
+
+
+
+
+##f$raiser_type_17##
+pt_hands_raischair > 20 &&
+(pt_vpip_raischair > 9 && pt_vpip_raischair < 17 )? 1 : 0
+
+
+
+
+
+
+
+##f$raiser_type_loose##
+pt_hands_raischair > 20 &&
+(pt_vpip_raischair > 17 )? 1 : 0
+
+
+
+
+
+
+
+##f$raiser_type_nit##
+pt_hands_raischair > 20 &&
+(pt_vpip_raischair > 0 && pt_vpip_raischair < 9 )? 1 : 0
 
 
 

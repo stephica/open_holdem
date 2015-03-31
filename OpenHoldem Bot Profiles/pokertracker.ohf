@@ -1,4 +1,4 @@
-##2015-03-27 14:09:22##
+##2015-03-31 03:44:40##
 
 ##notes##
  
@@ -7,6 +7,15 @@
  
 
 ##f$alli##
+pt_hands0 > 10
+&&pt_hands1 > 10
+&&pt_hands2 > 10
+&&pt_hands3 > 10
+&&pt_hands4 > 10
+&&pt_hands5 > 10
+&&pt_hands6 > 10 ? 0 : 1
+
+
 
 ##f$betpot_2_1##
  
@@ -36,15 +45,7 @@
 
 
 ##f$rais##
- (betround == 1 && balance > 12 * bblind)
-&&
-[(f$dealposition == 3 && listRaiseAllIn12BBEarly)
-||(f$dealposition == 4 && listRaiseAllIn12BBMiddle)
-|(f$dealposition == 5 && listRaiseAllIn12BBLate)
-|(f$dealposition == 2 && listRaiseAllIn12BBBlinds)
-|(f$dealposition == 1 && listRaiseAllIn12BBBlinds)]
-||
-(balance <= 12 * bblind)
+ 
 
 ##f$call##
  
@@ -55,10 +56,18 @@
 
 
 
+
+
+
+
 ##f$fold##
 // f$fold should alwazs evaluate to true per default
 // for auto-check-folding instead of time-outs.
 1
+
+
+
+
 
 
 
@@ -85,6 +94,10 @@
 
 
 
+
+
+
+
 ##f$prefold##
  
 
@@ -98,12 +111,20 @@
 
 
 
+
+
+
+
 ##f$allin_on_betsize_balance_ratio##
 // Allin if betsize is more than X% of our total balance (including currentbet).
 // This affects f$betsize and all f$betpot_X_Y_ functions.
 //  0.00 =  0% = disabled
 //  0.50 = 50%
 0.00
+
+
+
+
 
 
 
@@ -133,11 +154,19 @@ nopponentsplaying + 1
 
 
 
+
+
+
+
 ##f$prwin_number_of_iterations##
 // "Reasonable" default to get PrWin running for beginners.
 // Large enough to get usable results,
 // small enough to save CPU-time.
 1000
+
+
+
+
 
 
 
@@ -158,6 +187,10 @@ nopponentsplaying + 1
 // The sum of all f$icm_prizeX functions should be 1.00 (= 100%).
 // Default to get things going: the winner takes it all.
 1.00
+
+
+
+
 
 
 
@@ -191,10 +224,4 @@ nopponentsplaying + 1
 
 ##f$debug##
  
-
-##list12BBEarly##
-
-##listRaiseAllIn12BBEarly##
-
-##f$dealposition##
 
