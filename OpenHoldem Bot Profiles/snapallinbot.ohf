@@ -1,4 +1,4 @@
-##2015-04-02 00:11:54##
+##2015-04-02 00:40:33##
 
 ##notes##
  
@@ -7,8 +7,12 @@
  
 
 ##f$alli##
-(f$position != 3 && listAllIn)
-|| listAllInEP
+(dealposition == 1 && listAllInSB)
+||(dealposition == 2 && listAllInBB)
+||(dealposition == 3 && listAllInEP)
+||(dealposition == 4 && listAllInMP)
+||(dealposition == 5 && listAllInLP)
+||(dealposition == 6 && listAllInBTN)
 
 //|| f$bb_all_in
 || (betround == 2 && f$three_of_a_kind_or_more)
@@ -17,6 +21,8 @@
 || prwin > 0.89
 || (betround == 1 && nopponentsbetting == 1 && nopponentscalling == 0 && prwin > 0.26 && pt_pfr_raischair > 13 && pt_hands_raischair > 10)
 ? 1 : 0
+
+
 
 
 
@@ -229,6 +235,8 @@ f$rais > 0 ? f$rais : 0
 
 
 
+
+
 ##f$rais##
 f$steal_blinds > 0 ? (3*bblind) :
 f$defend_blinds > 0 ? f$defend_blinds :
@@ -250,6 +258,8 @@ betround == 3 && prwin > 0.75
 
 betround == 4 && prwin > 0.8
 && call <= bblind && !didrais ? bblind * (6+nopponentsplaying)  : 0
+
+
 
 
 
@@ -434,9 +444,13 @@ betround == 4 && prwin > 0.85 && call <= bblind * 6 ? 1 :
 
 
 
+
+
 ##f$check##
 // Check whenever it is free to call
 (call == 0)
+
+
 
 
 
@@ -635,8 +649,12 @@ betround == 4 && prwin > 0.85 && call <= bblind * 6 ? 1 :
 
 
 
+
+
 ##f$sitin##
 1
+
+
 
 
 
@@ -827,6 +845,8 @@ handsplayed > 1000
 
 
 
+
+
 ##f$autopost##
  
 
@@ -837,6 +857,8 @@ handsplayed > 1000
 // f$rebuy should evaluate to the target-amount in dollars.
 // This value will be passed to the rebuy-script as a parameter.
 0
+
+
 
 
 
@@ -1042,12 +1064,16 @@ handsplayed > 1000
 
 
 
+
+
 ##f$allin_on_betsize_balance_ratio##
 // Allin if betsize is more than X% of our total balance (including currentbet).
 // This affects f$betsize and all f$betpot_X_Y_ functions.
 //  0.00 =  0% = disabled
 //  0.50 = 50%
 0.00
+
+
 
 
 
@@ -1252,11 +1278,15 @@ nopponentscalling+nopponentstruelyraising+nopponentschecking*floppct+0.49
 
 
 
+
+
 ##f$prwin_number_of_iterations##
 // "Reasonable" default to get PrWin running for beginners.
 // Large enough to get usable results,
 // small enough to save CPU-time.
 1000
+
+
 
 
 
@@ -1445,8 +1475,12 @@ nopponentscalling+nopponentstruelyraising+nopponentschecking*floppct+0.49
 
 
 
+
+
 ##f$prwin_wontplay##
  f$prwin_willplay*1.4
+
+
 
 
 
@@ -1624,6 +1658,8 @@ nopponentscalling+nopponentstruelyraising+nopponentschecking*floppct+0.49
 
 
 
+
+
 ##f$icm_prize2##
  
 
@@ -1700,26 +1736,49 @@ AKo
 
 
 
+
+
 ##listAllInBB##
+AA KK QQ JJ TT 99 88 
+AKs 
+AKo 
+
 
 ##listAllInBTN##
+AA KK QQ JJ TT 
+AKs 
+AKo 
+
 
 ##listAllInEP##
+AA KK QQ 
+AKs 
+
+
+##listAllInLP##
+AA KK QQ JJ TT 
+AKs 
+AKo 
+
+
+##listAllInMP##
 AA KK QQ 
 AKs 
 AKo 
 
 
-##listAllInLP##
-
-##listAllInMP##
-
 ##listAllInSB##
+AA KK QQ JJ TT 99 
+AKs 
+AKo 
+
 
 ##listBB1RaiserAllIn##
 AA KK QQ JJ TT
 AKs AQs AJs KQs
 AKo AQo AJo
+
+
 
 
 
@@ -1834,7 +1893,7 @@ AKo AQo AJo ATo KQo KJo KTo QJo QTo JTo
 
 
 
-##listEPAllIn##
+
 
 ##listLateRaise##
 AA KK QQ JJ TT 99 88 77 66
@@ -1902,10 +1961,14 @@ AKo AQo AJo ATo KQo
 
 
 
+
+
 ##listSB0Raiser##
 AA KK QQ JJ TT
 AKs AQs AJs KQs
 AKo AQo AJo
+
+
 
 
 
@@ -2080,8 +2143,18 @@ AKo AQo KQo
 
 
 
+
+
+##listallInMP##
+AA KK QQ 
+AKs 
+AKo 
+
+
 ##f$DEBUG##
 handsplayed
+
+
 
 
 
@@ -2221,6 +2294,8 @@ dealposition == 2
 
 
 
+
+
 ##f$defend_blinds##
 //defend blinds based on pokertracker stats
 (dealpositionrais == 5 || dealpositionrais == 1)&&
@@ -2260,12 +2335,16 @@ dealposition == 2
 
 
 
+
+
 ##f$flush_or_more##
 (isflush
 || isfullhouse
 || isfourofakind
 || isstraightflush
 || isroyalflush) ? 1 : 0
+
+
 
 
 
@@ -2437,8 +2516,12 @@ dealposition == 2
 
 
 
+
+
 ##f$late_raise##
 f$late_position && listLateRaise && call <= bblind? 1: 0
+
+
 
 
 
@@ -2529,6 +2612,8 @@ f$late_position && listLateRaise && call <= bblind? 1: 0
 
 
 
+
+
 ##f$position##
 // SB=1 BB=2 Early=3 Middle=4 Late=5
 dealposition==1 ? 1:
@@ -2577,6 +2662,8 @@ nplayersdealt==4 ?  (dealposition==3 ? 4 :
                      dealposition==4 ? 5 : 0):
 
 nplayersdealt==3 ?  (dealposition==3 ? 5 : 0):0
+
+
 
 
 
@@ -2768,6 +2855,8 @@ dealposition == 1
 
 
 
+
+
 ##f$steal_blinds##
 [betround == 1 ]&&
 [
@@ -2866,6 +2955,8 @@ dealposition == 1
 
 
 
+
+
 ##f$straight_or_more##
 (isstraight
 || isflush
@@ -2873,6 +2964,8 @@ dealposition == 1
 || isfourofakind
 || isstraightflush
 || isroyalflush) ? 1 : 0
+
+
 
 
 
@@ -3077,6 +3170,8 @@ dealposition == 1
 
 
 
+
+
 ##f$two_pair_or_more##
 (istwopair
 || isthreeofakind
@@ -3086,6 +3181,8 @@ dealposition == 1
 || isfourofakind
 || isstraightflush
 || isroyalflush) ? 1 : 0
+
+
 
 
 
