@@ -1,4 +1,4 @@
-##2015-03-31 20:09:17##
+##2015-04-02 10:10:06##
 
 ##notes##
  
@@ -7,9 +7,7 @@
  
 
 ##f$alli##
- listAllIn ? 1 : 0
-
-
+listAllIn 
 
 
 
@@ -70,10 +68,17 @@
 
 
 
+
+
+
+
 ##f$fold##
 // f$fold should alwazs evaluate to true per default
 // for auto-check-folding instead of time-outs.
-1
+!listBeep
+
+
+
 
 
 
@@ -120,8 +125,16 @@
 
 
 
+
+
+
+
 ##f$prefold##
- !listAllIn ? 1 : 0
+ !listBeep ? 1 : 0
+
+
+
+
 
 
 
@@ -155,12 +168,20 @@
 
 
 
+
+
+
+
 ##f$allin_on_betsize_balance_ratio##
 // Allin if betsize is more than X% of our total balance (including currentbet).
 // This affects f$betsize and all f$betpot_X_Y_ functions.
 //  0.00 =  0% = disabled
 //  0.50 = 50%
 0.00
+
+
+
+
 
 
 
@@ -210,11 +231,19 @@ nopponentsplaying + 1
 
 
 
+
+
+
+
 ##f$prwin_number_of_iterations##
 // "Reasonable" default to get PrWin running for beginners.
 // Large enough to get usable results,
 // small enough to save CPU-time.
 1000
+
+
+
+
 
 
 
@@ -245,6 +274,10 @@ nopponentsplaying + 1
 // The sum of all f$icm_prizeX functions should be 1.00 (= 100%).
 // Default to get things going: the winner takes it all.
 1.00
+
+
+
+
 
 
 
@@ -295,5 +328,9 @@ AA KK
 
 
 
+##listBeep##
+AA KK QQ JJ TT 99 88 77 
+AKs AQs KQs QJs 
+AKo 
 
 
