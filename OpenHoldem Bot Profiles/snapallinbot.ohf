@@ -1,4 +1,4 @@
-##2015-04-02 12:18:12##
+##2015-04-02 12:50:52##
 
 ##notes##
  
@@ -3684,6 +3684,7 @@ dealposition == 2
 ]
 ? bblind * 3 : 0
 
+//defend small blind / steal BB
 
 
 
@@ -4586,9 +4587,11 @@ dealposition == 1
 ||
 [((f$position == 1)&&( nopponentscalling <= 0 && nopponentstruelyraising <= 0))&&
 ((pt_hands_bigblind > 10 && pt_vpip_bigblind < 10))]
-]? 1 : 0
+]? 1 : 
 
-
+(f$position == 5 && pt_big_blind_fold_to_steal_bigblind > 0.5 && pt_small_blind_fold_to_steal_smallblind > 0.5)
+||(f$position == 1 && pt_big_blind_fold_to_steal_bigblind > 0.5)
+? 1 : 0
 
 
 
