@@ -1,4 +1,4 @@
-##2015-04-02 12:50:52##
+##2015-04-02 13:16:33##
 
 ##notes##
  
@@ -3664,8 +3664,7 @@ dealposition == 2
 ##f$defend_blinds##
 //defend blinds based on pokertracker stats
 (dealpositionrais == 5 || dealpositionrais == 1)&&
-(dealposition == 2 && nopponentscalling == 0 && nopponentsbetting == 1 && call <= bblind * 3 && !didrais)
-
+(dealposition == 2 && nopponentscalling == 0 && nopponentsbetting == 1 && nopponentstruelyraising == 0 && call <= bblind * 3 && !didrais)
 //resteal if raiser isn't a nit & often fold to 3bet
 &&(pt_vpip_raischair > 17 && pt_pfr_raischair > 13)
 &&(pt_preflop_attempt_steal_raischair > 0.3 && pt_preflop_fold_to_3bet_raischair > 0.5 )
@@ -4580,7 +4579,7 @@ dealposition == 1
 
 
 ##f$steal_blinds##
-[betround == 1 ]&&
+[betround == 1 && call <= bblind]&&
 [
 [((f$position == 5)&&( nopponentscalling <= 0 && nopponentstruelyraising <= 0))&&
 ((pt_hands_bigblind > 10 && pt_vpip_bigblind < 10)&&(pt_hands_smallblind > 10 && pt_vpip_smallblind < 10))]
@@ -4589,6 +4588,8 @@ dealposition == 1
 ((pt_hands_bigblind > 10 && pt_vpip_bigblind < 10))]
 ]? 1 : 
 
+
+[nopponentscalling <= 0 && betround == 1 && call <= bblind] &&
 (f$position == 5 && pt_big_blind_fold_to_steal_bigblind > 0.5 && pt_small_blind_fold_to_steal_smallblind > 0.5)
 ||(f$position == 1 && pt_big_blind_fold_to_steal_bigblind > 0.5)
 ? 1 : 0
