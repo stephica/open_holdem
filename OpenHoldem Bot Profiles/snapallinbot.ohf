@@ -1,4 +1,4 @@
-##2015-04-02 16:58:22##
+##2015-04-03 02:18:37##
 
 ##notes##
  
@@ -8,7 +8,7 @@
 
 ##f$alli##
 betround == 1 &&
-
+//go allin per positional range selection
 [(dealposition == 1 && listAllInSB && call < 75 * bblind)
 ||(dealposition == 2 && listAllInBB && call < 75 * bblind)
 ||(listAllInEP)
@@ -24,6 +24,12 @@ betround == 1 &&
 || prwin > 0.89
 || (betround == 1 && nopponentsbetting == 1 && nopponentscalling == 0 && prwin > 0.26 && pt_pfr_raischair > 13 && pt_hands_raischair > 10)
 ? 1 : 0
+
+
+
+
+
+
 
 
 
@@ -356,6 +362,12 @@ f$rais > 0 ? f$rais : 0
 
 
 
+
+
+
+
+
+
 ##f$rais##
 f$steal_blinds > 0 ? (3*bblind) :
 f$defend_blinds > 0 ? f$defend_blinds :
@@ -532,9 +544,15 @@ betround == 4 && prwin > 0.8
 
 
 
+
+
+
+
+
+
 ##f$call##
 //
-f$two_pair_or_more && call <= bblind * 7 ? 1 :
+f$two_pair_or_more && call <= bblind * 10 ? 1 :
 f$three_of_a_kind_or_more && call <= bblind * 15 ? 1 :
 f$straight_or_more  && call <= bblind * 20 ? 1 :
 f$flush_or_more ? 1 :
@@ -716,9 +734,21 @@ betround == 4 && prwin > 0.85
 
 
 
+
+
+
+
+
+
 ##f$check##
 // Check whenever it is free to call
 (call == 0)
+
+
+
+
+
+
 
 
 
@@ -1037,6 +1067,12 @@ betround == 4 && prwin > 0.85
 
 
 
+
+
+
+
+
+
 ##f$sitin##
 balance > 60 * bblind && balance < 150 * bblind
 || balance == 0
@@ -1186,10 +1222,22 @@ balance > 60 * bblind && balance < 150 * bblind
 
 
 
+
+
+
+
+
+
 ##f$sitout##
  handsplayed > 1000
 || balance < 50 * bblind
-|| balance > 150 * bblind ? 1 : 0
+|| balance > 250 * bblind ? 1 : 0
+
+
+
+
+
+
 
 
 
@@ -1254,7 +1302,7 @@ balance > 60 * bblind && balance < 150 * bblind
 
 
 ##f$leave##
- 
+ f$sitout 
 
 ##f$autopost##
  
@@ -1266,6 +1314,12 @@ balance > 60 * bblind && balance < 150 * bblind
 // f$rebuy should evaluate to the target-amount in dollars.
 // This value will be passed to the rebuy-script as a parameter.
 0
+
+
+
+
+
+
 
 
 
@@ -1591,12 +1645,24 @@ balance > 60 * bblind && balance < 150 * bblind
 
 
 
+
+
+
+
+
+
 ##f$allin_on_betsize_balance_ratio##
 // Allin if betsize is more than X% of our total balance (including currentbet).
 // This affects f$betsize and all f$betpot_X_Y_ functions.
 //  0.00 =  0% = disabled
 //  0.50 = 50%
 0.00
+
+
+
+
+
+
 
 
 
@@ -1921,11 +1987,23 @@ nopponentscalling+nopponentstruelyraising+nopponentschecking*floppct+(0.59-((fma
 
 
 
+
+
+
+
+
+
 ##f$prwin_number_of_iterations##
 // "Reasonable" default to get PrWin running for beginners.
 // Large enough to get usable results,
 // small enough to save CPU-time.
 1000
+
+
+
+
+
+
 
 
 
@@ -2234,8 +2312,20 @@ nopponentscalling+nopponentstruelyraising+nopponentschecking*floppct+(0.59-((fma
 
 
 
+
+
+
+
+
+
 ##f$prwin_wontplay##
  f$prwin_willplay*1.4
+
+
+
+
+
+
 
 
 
@@ -2533,6 +2623,12 @@ nopponentscalling+nopponentstruelyraising+nopponentschecking*floppct+(0.59-((fma
 
 
 
+
+
+
+
+
+
 ##f$icm_prize2##
  
 
@@ -2567,6 +2663,12 @@ nopponentscalling+nopponentstruelyraising+nopponentschecking*floppct+(0.59-((fma
 AA KK QQ JJ TT
 AKs
 AKo
+
+
+
+
+
+
 
 
 
@@ -2733,10 +2835,22 @@ AKo
 
 
 
+
+
+
+
+
+
 ##listAllInBTN##
 AA KK QQ JJ TT
 AKs
 AKo
+
+
+
+
+
+
 
 
 
@@ -2804,66 +2918,16 @@ AKs
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ##listAllInLP##
 AA KK QQ JJ TT
 AKs
 AKo
+
+
+
+
+
+
 
 
 
@@ -2988,10 +3052,22 @@ AKo
 
 
 
+
+
+
+
+
+
 ##listAllInSB##
 AA KK QQ JJ TT 99
 AKs
 AKo
+
+
+
+
+
+
 
 
 
@@ -3086,10 +3162,22 @@ AKo AQo AJo
 
 
 
+
+
+
+
+
+
 ##listDontPrefold##
 AA KK QQ JJ TT
 AKs AQs AJs ATs KQs KJs KTs QJs QTs JTs
 AKo AQo AJo ATo KQo KJo KTo QJo QTo JTo
+
+
+
+
+
+
 
 
 
@@ -3310,10 +3398,22 @@ AKo AQo AJo ATo KQo
 
 
 
+
+
+
+
+
+
 ##listSB0Raiser##
 AA KK QQ JJ TT
 AKs AQs AJs KQs
 AKo AQo AJo
+
+
+
+
+
+
 
 
 
@@ -3608,6 +3708,12 @@ AKo AQo KQo
 
 
 
+
+
+
+
+
+
 ##listallInMP##
 AA KK QQ
 AKs
@@ -3672,8 +3778,20 @@ AKo
 
 
 
+
+
+
+
+
+
 ##f$DEBUG##
 handsplayed
+
+
+
+
+
+
 
 
 
@@ -3932,6 +4050,18 @@ dealposition == 2
 
 
 
+
+
+
+
+
+
+##f$blind_bot##
+////////////////////
+//Late Position////
+///////////////////
+
+
 ##f$defend_blinds##
 //defend blinds based on pokertracker stats
 (dealpositionrais == 5 || dealpositionrais == 1)&&
@@ -4037,12 +4167,24 @@ dealposition == 2
 
 
 
+
+
+
+
+
+
 ##f$flush_or_more##
 (isflush
 || isfullhouse
 || isfourofakind
 || isstraightflush
 || isroyalflush) ? 1 : 0
+
+
+
+
+
+
 
 
 
@@ -4334,8 +4476,20 @@ dealposition == 2
 
 
 
+
+
+
+
+
+
 ##f$late_raise##
 f$late_position && listLateRaise && call <= bblind? 1: 0
+
+
+
+
+
+
 
 
 
@@ -4481,6 +4635,12 @@ f$late_position && listLateRaise && call <= bblind? 1: 0
 || pt_flop_fold_to_cbet4 > 50
 || pt_flop_fold_to_cbet5 > 50
 || pt_flop_fold_to_cbet6 > 50) ? 1 : 0
+
+
+
+
+
+
 
 
 
@@ -4748,10 +4908,22 @@ nplayersdealt==3 ?  (dealposition==3 ? 5 : 0):0
 
 
 
+
+
+
+
+
+
 ##f$sb_no_raiser_all_in##
 dealposition == 1
 && nopponentstruelyraising == 0
 && listSB0RaiserAllIn ? 1 : 0
+
+
+
+
+
+
 
 
 
@@ -5066,6 +5238,12 @@ pt_hands_bigblind > 10 && pt_vpip_bigblind < 10]
 
 
 
+
+
+
+
+
+
 ##f$straight_or_more##
 (isstraight
 || isflush
@@ -5073,6 +5251,12 @@ pt_hands_bigblind > 10 && pt_vpip_bigblind < 10]
 || isfourofakind
 || isstraightflush
 || isroyalflush) ? 1 : 0
+
+
+
+
+
+
 
 
 
@@ -5397,6 +5581,12 @@ pt_hands_bigblind > 10 && pt_vpip_bigblind < 10]
 
 
 
+
+
+
+
+
+
 ##f$two_pair_or_more##
 (istwopair
 || isthreeofakind
@@ -5406,6 +5596,13 @@ pt_hands_bigblind > 10 && pt_vpip_bigblind < 10]
 || isfourofakind
 || isstraightflush
 || isroyalflush) ? 1 : 0
+
+
+
+
+
+
+
 
 
 
