@@ -1,4 +1,4 @@
-##2015-04-04 06:04:54##
+##2015-04-04 06:54:41##
 
 ##notes##
  
@@ -405,11 +405,13 @@ betround == 2 && prwin > 0.37 && call <= bblind && !didrais ? bblind * (3+noppon
 betround == 2 && prwin > 0.35 && call <= bblind && !didrais ? bblind * (2+nopponentsplaying) :
 betround == 2 && prwin > 0.33 && call <= bblind && !didrais ? bblind * (1+nopponentsplaying) :
 
+call <= bblind && f$top_pair_top_kicker && !didrais ? bblind * (3+nopponentsplaying) :
 
-betround == 3 && prwin > 0.65
+
+betround == 3 && prwin > 0.5
 && call <= bblind && !didrais ? bblind * (5+nopponentsplaying) :
 
-betround == 4 && prwin > 0.75
+betround == 4 && prwin > 0.6
 && call <= bblind && !didrais ? bblind * (6+nopponentsplaying)  : 0
 
 
@@ -575,6 +577,8 @@ betround == 4 && prwin > 0.75
 
 ##f$call##
 //
+f$low_pair_or_more && call <= 2 * bblind ? 1 :
+f$top_pair_top_kicker && call <= 6 * bblind ? 1 :
 f$two_pair_or_more && call <= bblind * 10 ? 1 :
 f$three_of_a_kind_or_more && call <= bblind * 15 ? 1 :
 f$straight_or_more  && call <= bblind * 20 ? 1 :
@@ -3609,6 +3613,12 @@ AKo AQo AJo ATo KQo
 
 
 
+##listOpenRaiseBTN##
+AA KK QQ JJ TT 99 88 77 66 55 44 33 22 
+AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs KTs QJs QTs JTs 
+AKo AQo AJo ATo KQo KJo KTo QJo QTo JTo 
+
+
 ##listSB0Raiser##
 AA KK QQ JJ TT
 AKs AQs AJs KQs
@@ -4578,6 +4588,8 @@ dealposition == 2
 
 
 
+##f$is_low_pair_or_more##
+
 ##f$late_position##
 ((betround == 1) && (f$position == 5 || f$position == 1))
 ? 1 : 0
@@ -4877,6 +4889,23 @@ f$late_position && listLateRaise && call <= bblind? 1: 0
 
 
 
+
+
+
+
+
+
+
+##f$low_pair_or_more##
+(ispair
+|| istwopair
+|| isthreeofakind
+|| isstraight
+|| isflush
+|| isfullhouse
+|| isfourofakind
+|| isstraightflush
+|| isroyalflush) ? 1 : 0
 
 
 
@@ -5369,7 +5398,9 @@ dealposition == 1
 ||
 (f$position == 5 && pt_big_blind_fold_to_steal_bigblind > 0.4 && pt_small_blind_fold_to_steal_smallblind > 0.4)
 ||
-(f$position == 1 && pt_big_blind_fold_to_steal_bigblind > 0.4)]
+(f$position == 1 && pt_big_blind_fold_to_steal_bigblind > 0.4)
+||
+((f$position == 5 || f$position == 1)&&listOpenRaiseBTN)]
 ?(nopponentsplaying+2)*bblind : 0
 
 
@@ -5891,6 +5922,12 @@ dealposition == 1
 
 
 
+
+##f$top_pair_top_kicker##
+[isonepair && nrankedcommon==1 &&
+((rankloplayer==rankhicommon && rankhiplayer==14) ||
+(rankhiplayer==rankhicommon && rankloplayer==13))
+]
 
 ##f$two_pair_or_more##
 (istwopair
