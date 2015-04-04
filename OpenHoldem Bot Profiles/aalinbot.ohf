@@ -1,4 +1,4 @@
-##2015-04-02 10:10:06##
+##2015-04-04 16:21:43##
 
 ##notes##
  
@@ -7,7 +7,15 @@
  
 
 ##f$alli##
-listAllIn 
+listAllIn
+|| istwopair
+|| isthreeofakind
+|| isstraight
+|| isflush
+
+
+
+
 
 
 
@@ -50,11 +58,17 @@ listAllIn
  
 
 ##f$call##
- 
+0
+
+
 
 ##f$check##
 // Check whenever it is free to call
 (call == 0)
+
+
+
+
 
 
 
@@ -92,14 +106,22 @@ listAllIn
 
 
 
+
+
+
+
 ##f$sitin##
  
 
 ##f$sitout##
- 
+ balance > 150 * bblind
+
+
 
 ##f$leave##
- 
+ balance > 150 * bblind
+
+
 
 ##f$autopost##
  
@@ -129,8 +151,16 @@ listAllIn
 
 
 
+
+
+
+
 ##f$prefold##
- !listBeep ? 1 : 0
+ !listAllIn ? 1 : 0
+
+
+
+
 
 
 
@@ -172,12 +202,20 @@ listAllIn
 
 
 
+
+
+
+
 ##f$allin_on_betsize_balance_ratio##
 // Allin if betsize is more than X% of our total balance (including currentbet).
 // This affects f$betsize and all f$betpot_X_Y_ functions.
 //  0.00 =  0% = disabled
 //  0.50 = 50%
 0.00
+
+
+
+
 
 
 
@@ -235,11 +273,19 @@ nopponentsplaying + 1
 
 
 
+
+
+
+
 ##f$prwin_number_of_iterations##
 // "Reasonable" default to get PrWin running for beginners.
 // Large enough to get usable results,
 // small enough to save CPU-time.
 1000
+
+
+
+
 
 
 
@@ -292,6 +338,10 @@ nopponentsplaying + 1
 
 
 
+
+
+
+
 ##f$icm_prize2##
  
 
@@ -323,14 +373,18 @@ nopponentsplaying + 1
  
 
 ##listAllIn##
-AA KK
-
-
+AA KK QQ 
+AKs 
+AKo 
 
 
 ##listBeep##
-AA KK QQ JJ TT 99 88 77 
-AKs AQs KQs QJs 
-AKo 
+AA KK QQ JJ TT 99 88 77
+AKs AQs KQs QJs
+AKo
+
+
+
+
 
 
