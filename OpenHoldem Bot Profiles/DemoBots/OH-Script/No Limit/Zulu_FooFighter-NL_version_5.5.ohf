@@ -180,25 +180,12 @@ flop start at line 425 in calls 10/22/10
 
 ##dll##
 
-
-##bankroll##
-0.000000
-
-##defcon##
-1.000000
-
-##rake##
-0.000000
-
-##nit##
-20000
-
 ##f$alli##
    0                                 // default is: do not alli
 || f$call==1 && call>balance
   
 
-##f$swag##
+##f$betsize##
 f$srai >= balance ? balance : 
 (f$srai> bet) ? f$srai+bblind :
 0
