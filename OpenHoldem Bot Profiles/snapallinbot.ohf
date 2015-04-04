@@ -1,4 +1,4 @@
-##2015-04-04 04:32:39##
+##2015-04-04 06:04:54##
 
 ##notes##
  
@@ -21,9 +21,12 @@ betround == 1 &&
 || (betround == 2 && didrais && f$three_of_a_kind_or_more)
 || (betround == 3 && didrais && f$straight_or_more)
 || (betround == 4 && didrais && f$flush_or_more)
-|| prwin > 0.89
-|| (betround == 1 && nopponentsbetting == 1 && nopponentscalling == 0 && prwin > 0.26 && pt_pfr_raischair > 13 && pt_hands_raischair > 10)
+|| prwin > 0.8
 ? 1 : 0
+
+
+
+
 
 
 
@@ -376,6 +379,10 @@ f$rais > 0 ? f$rais : 0
 
 
 
+
+
+
+
 ##f$rais##
 f$steal_blinds > 0 ? (3*bblind) :
 f$defend_blinds > 0 ? f$defend_blinds :
@@ -393,17 +400,21 @@ betround == 1 && prwin > 0.25 && dealposition == 6 && call <= bblind && !didrais
 betround == 1 && prwin > 0.24 && dealposition == 2 && call <= bblind && !didrais ? bblind * (3+nopponentsplaying) :
 betround == 1 && prwin > 0.23 && dealposition == 1 && call <= bblind && !didrais ? bblind * (3+nopponentsplaying) :
 
-betround == 2 && prwin > 0.38 && call <= bblind && !didrais ? bblind * (1+nopponentsplaying) :
-betround == 2 && prwin > 0.39 && call <= bblind && !didrais ? bblind * (2+nopponentsplaying) :
-betround == 2 && prwin > 0.4 && call <= bblind && !didrais ? bblind * (3+nopponentsplaying) :
-betround == 2 && prwin > 0.41 && call <= bblind && !didrais ? bblind * (4+nopponentsplaying) :
+betround == 2 && prwin > 0.39 && call <= bblind && !didrais ? bblind * (4+nopponentsplaying) :
+betround == 2 && prwin > 0.37 && call <= bblind && !didrais ? bblind * (3+nopponentsplaying) :
+betround == 2 && prwin > 0.35 && call <= bblind && !didrais ? bblind * (2+nopponentsplaying) :
+betround == 2 && prwin > 0.33 && call <= bblind && !didrais ? bblind * (1+nopponentsplaying) :
 
 
-betround == 3 && prwin > 0.75
+betround == 3 && prwin > 0.65
 && call <= bblind && !didrais ? bblind * (5+nopponentsplaying) :
 
-betround == 4 && prwin > 0.8
+betround == 4 && prwin > 0.75
 && call <= bblind && !didrais ? bblind * (6+nopponentsplaying)  : 0
+
+
+
+
 
 
 
@@ -569,14 +580,15 @@ f$three_of_a_kind_or_more && call <= bblind * 15 ? 1 :
 f$straight_or_more  && call <= bblind * 20 ? 1 :
 f$flush_or_more ? 1 :
 
-//only call if we already raised
-didrais && betround == 1 && prwin > 0.27 && call <= bblind * 3 ? 1 :
-didrais && betround == 1 && prwin > 0.28 && call <= bblind * 4 ? 1 :
-didrais && betround == 1 && prwin > 0.29 && call <= bblind * 5 ? 1 :
-didrais && betround == 1 && prwin > 0.30 && call <= bblind * 6 ? 1 :
-didrais && betround == 1 && prwin > 0.31 && call <= bblind * 7 ? 1 :
+betround == 1 && prwin > 0.27 && call <= bblind * 3 ? 1 :
+betround == 1 && prwin > 0.28 && call <= bblind * 4 ? 1 :
+betround == 1 && prwin > 0.29 && call <= bblind * 5 ? 1 :
+betround == 1 && prwin > 0.30 && call <= bblind * 6 ? 1 :
+betround == 1 && prwin > 0.31 && call <= bblind * 7 ? 1 :
 
-betround == 2 && prwin > 0.4 && call <= bblind * 3 ? 1 :
+betround == 2 && prwin > 0.33 && call <= bblind * 1 ? 1 :
+betround == 2 && prwin > 0.35 && call <= bblind * 2 ? 1 :
+betround == 2 && prwin > 0.39 && call <= bblind * 3 ? 1 :
 betround == 2 && prwin > 0.41 && call <= bblind * 4 ? 1 :
 betround == 2 && prwin > 0.42 && call <= bblind * 5 ? 1 :
 betround == 2 && prwin > 0.43 && call <= bblind * 6 ? 1 :
@@ -756,9 +768,17 @@ betround == 4 && prwin > 0.85
 
 
 
+
+
+
+
 ##f$check##
 // Check whenever it is free to call
 (call == 0)
+
+
+
+
 
 
 
@@ -1097,6 +1117,10 @@ betround == 4 && prwin > 0.85
 
 
 
+
+
+
+
 ##f$sitin##
 !f$sitout
 
@@ -1246,10 +1270,17 @@ betround == 4 && prwin > 0.85
 
 
 
+
+
+
+
 ##f$sitout##
  handsplayed > 1000
-|| balance < 50 * bblind
 || balance > 150 * bblind ? 1 : 0
+
+
+
+
 
 
 
@@ -1330,6 +1361,10 @@ betround == 4 && prwin > 0.85
 
 
 
+
+
+
+
 ##f$autopost##
  
 
@@ -1340,6 +1375,10 @@ betround == 4 && prwin > 0.85
 // f$rebuy should evaluate to the target-amount in dollars.
 // This value will be passed to the rebuy-script as a parameter.
 0
+
+
+
+
 
 
 
@@ -1685,12 +1724,20 @@ betround == 4 && prwin > 0.85
 
 
 
+
+
+
+
 ##f$allin_on_betsize_balance_ratio##
 // Allin if betsize is more than X% of our total balance (including currentbet).
 // This affects f$betsize and all f$betpot_X_Y_ functions.
 //  0.00 =  0% = disabled
 //  0.50 = 50%
 0.00
+
+
+
+
 
 
 
@@ -2035,11 +2082,19 @@ nopponentscalling+nopponentstruelyraising+nopponentschecking*floppct+(0.59-((fma
 
 
 
+
+
+
+
 ##f$prwin_number_of_iterations##
 // "Reasonable" default to get PrWin running for beginners.
 // Large enough to get usable results,
 // small enough to save CPU-time.
 1000
+
+
+
+
 
 
 
@@ -2368,8 +2423,16 @@ nopponentscalling+nopponentstruelyraising+nopponentschecking*floppct+(0.59-((fma
 
 
 
+
+
+
+
 ##f$prwin_wontplay##
  f$prwin_willplay*1.4
+
+
+
+
 
 
 
@@ -2687,6 +2750,10 @@ nopponentscalling+nopponentstruelyraising+nopponentschecking*floppct+(0.59-((fma
 
 
 
+
+
+
+
 ##f$icm_prize2##
  
 
@@ -2721,6 +2788,10 @@ nopponentscalling+nopponentstruelyraising+nopponentschecking*floppct+(0.59-((fma
 AA KK QQ JJ TT
 AKs
 AKo
+
+
+
+
 
 
 
@@ -2907,10 +2978,18 @@ AKo
 
 
 
+
+
+
+
 ##listAllInBTN##
 AA KK QQ JJ TT
 AKs
 AKo
+
+
+
+
 
 
 
@@ -2992,10 +3071,18 @@ AKs
 
 
 
+
+
+
+
 ##listAllInLP##
 AA KK QQ JJ TT
 AKs
 AKo
+
+
+
+
 
 
 
@@ -3140,10 +3227,18 @@ AKo
 
 
 
+
+
+
+
 ##listAllInSB##
 AA KK QQ JJ TT 99
 AKs
 AKo
+
+
+
+
 
 
 
@@ -3258,10 +3353,18 @@ AKo AQo AJo
 
 
 
+
+
+
+
 ##listDontPrefold##
 AA KK QQ JJ TT
 AKs AQs AJs ATs KQs KJs KTs QJs QTs JTs
 AKo AQo AJo ATo KQo KJo KTo QJo QTo JTo
+
+
+
+
 
 
 
@@ -3502,10 +3605,18 @@ AKo AQo AJo ATo KQo
 
 
 
+
+
+
+
 ##listSB0Raiser##
 AA KK QQ JJ TT
 AKs AQs AJs KQs
 AKo AQo AJo
+
+
+
+
 
 
 
@@ -3820,6 +3931,10 @@ AKo AQo KQo
 
 
 
+
+
+
+
 ##listallInMP##
 AA KK QQ
 AKs
@@ -3894,8 +4009,16 @@ AKo
 
 
 
+
+
+
+
 ##f$DEBUG##
 handsplayed
+
+
+
+
 
 
 
@@ -4174,29 +4297,24 @@ dealposition == 2
 
 
 
+
+
+
+
 ##f$defend_blinds##
 //defend blinds based on pokertracker stats
-(dealpositionrais == 5 || dealpositionrais == 1)&&
+(dealpositionrais == nplayersdealt || dealpositionrais == 1)&&
 (dealposition == 2 && nopponentscalling == 0 && nopponentsbetting == 1 && nopponentstruelyraising == 0 && call <= bblind * 3 && !didrais)
 //resteal if raiser isn't a nit & often fold to 3bet
 &&(pt_vpip_raischair > 17 && pt_pfr_raischair > 13)
-&&(pt_preflop_attempt_steal_raischair > 0.3 && pt_preflop_fold_to_3bet_raischair > 0.5 )
+&&(pt_preflop_attempt_steal_raischair > 0.3 && pt_preflop_fold_to_3bet_raischair > 0.4 )
 ? bblind * 9 :
 
-//one limper or call stealer
-(dealposition == 2 && call < bblind && nopponentscalling == 1)
-&&
-[
-(pt_preflop_called_raise0 < 0.3 && userchair != 0)
-||(pt_preflop_called_raise1 < 0.3 && userchair != 1)
-||(pt_preflop_called_raise2 < 0.3 && userchair != 2)
-||(pt_preflop_called_raise3 < 0.3 && userchair != 3)
-||(pt_preflop_called_raise4 < 0.3 && userchair != 4)
-||(pt_preflop_called_raise5 < 0.3 && userchair != 5)
-]
-? bblind * 3 : 0
+//hijack steal attempt from btn to defend small blind
+(dealposition == 1 && dealpositionrais == nplayersdealt && pt_preflop_fold_to_3bet_raischair > 0.4 && call <= 3*bblind)
+? bblind * 9 : 0
 
-//defend small blind / steal BB
+
 
 
 
@@ -4295,6 +4413,10 @@ dealposition == 2
 || isfourofakind
 || isstraightflush
 || isroyalflush) ? 1 : 0
+
+
+
+
 
 
 
@@ -4606,8 +4728,16 @@ dealposition == 2
 
 
 
+
+
+
+
 ##f$late_raise##
 f$late_position && listLateRaise && call <= bblind? 1: 0
+
+
+
+
 
 
 
@@ -4838,6 +4968,10 @@ f$late_position && listLateRaise && call <= bblind? 1: 0
 
 
 
+
+
+
+
 ##f$position##
 // SB=1 BB=2 Early=3 Middle=4 Late=5
 dealposition==1 ? 1:
@@ -4886,6 +5020,10 @@ nplayersdealt==4 ?  (dealposition==3 ? 4 :
                      dealposition==4 ? 5 : 0):
 
 nplayersdealt==3 ?  (dealposition==3 ? 5 : 0):0
+
+
+
+
 
 
 
@@ -5217,6 +5355,10 @@ dealposition == 1
 
 
 
+
+
+
+
 ##f$steal_blinds##
 //steal if btn or sb and sb/bb are nit players
 [betround == 1 && call <= bblind && nopponentscalling <= 0 && nopponentstruelyraising <= 0 && nopponentsbetting <= 0]
@@ -5225,10 +5367,15 @@ dealposition == 1
 ||
 [f$position == 1 && pt_hands_bigblind > 10 && pt_vpip_bigblind < 10]
 ||
-(f$position == 5 && pt_big_blind_fold_to_steal_bigblind > 0.5 && pt_small_blind_fold_to_steal_smallblind > 0.5)
+(f$position == 5 && pt_big_blind_fold_to_steal_bigblind > 0.4 && pt_small_blind_fold_to_steal_smallblind > 0.4)
 ||
-(f$position == 1 && pt_big_blind_fold_to_steal_bigblind > 0.5)]
-? 1 : 0
+(f$position == 1 && pt_big_blind_fold_to_steal_bigblind > 0.4)]
+?(nopponentsplaying+2)*bblind : 0
+
+
+
+
+
 
 
 
@@ -5393,6 +5540,10 @@ dealposition == 1
 || isfourofakind
 || isstraightflush
 || isroyalflush) ? 1 : 0
+
+
+
+
 
 
 
@@ -5737,6 +5888,10 @@ dealposition == 1
 
 
 
+
+
+
+
 ##f$two_pair_or_more##
 (istwopair
 || isthreeofakind
@@ -5746,6 +5901,10 @@ dealposition == 1
 || isfourofakind
 || isstraightflush
 || isroyalflush) ? 1 : 0
+
+
+
+
 
 
 
