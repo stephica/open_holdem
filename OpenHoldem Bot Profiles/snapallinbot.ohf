@@ -1,4 +1,4 @@
-##2015-04-04 20:34:59##
+##2015-04-04 21:10:13##
 
 ##notes##
  
@@ -244,12 +244,8 @@ f$defend_blinds > 0 ? f$defend_blinds :
 f$late_raise > 0 ? (4*bblind) :
 f$pokertracker_flop_folder > 0 ? 4* bblind :
 
-betround == 2 && call <= bblind && ishipair && !didrais ? bblind * 2 :
-betround >= 2 && call <= bblind && f$top_pair_top_kicker && !didrais ? (bblind * (2+nopponentsplaying+betround)) :
-betround >= 2 && !didrais && f$two_pair_or_more ? bblind * (3+betround) :
-betround >= 2 && !didrais && f$three_of_a_kind_or_more ? bblind * (4+betround) :
-betround >= 2 && !didrais && f$straight_or_more ? bblind * (5+betround) :
 
+//attack code
 betround == 1 && call <= bblind && listOpenRaiseEP ? bblind * (2+nopponentsplaying) :
 betround == 1 && call > bblind  && listAllIn ? call * 3 :
 
@@ -259,6 +255,14 @@ betround == 1 && prwin > 0.26 && dealposition == 5 && call <= bblind && !didrais
 betround == 1 && prwin > 0.25 && dealposition == 6 && call <= bblind && !didrais ? bblind * (3+nopponentsplaying) :
 betround == 1 && prwin > 0.24 && dealposition == 2 && call <= bblind && !didrais ? bblind * (3+nopponentsplaying) :
 betround == 1 && prwin > 0.23 && dealposition == 1 && call <= bblind && !didrais ? bblind * (3+nopponentsplaying) :
+
+
+betround == 2 && call <= bblind && ishipair && !didrais ? bblind * 2 :
+betround >= 2 && call <= bblind && f$top_pair_top_kicker && !didrais ? (bblind * (2+nopponentsplaying+betround)) :
+betround >= 2 && !didrais && f$two_pair_or_more ? bblind * (3+betround) :
+betround >= 2 && !didrais && f$three_of_a_kind_or_more ? bblind * (4+betround) :
+betround >= 2 && !didrais && f$straight_or_more ? bblind * (5+betround) :
+
 
 betround == 2 && prwin > 0.39 && call <= bblind && !didrais ? bblind * (4+nopponentsplaying) :
 betround == 2 && prwin > 0.37 && call <= bblind && !didrais ? bblind * (3+nopponentsplaying) :
@@ -4454,15 +4458,21 @@ dealposition == 2
 (betround == 1 && (dealpositionrais == nplayersdealt || dealpositionrais == 1))&&
 (dealposition == 2 && nopponentscalling == 0 && nopponentsbetting == 1 && nopponentstruelyraising == 0 && call <= bblind * 3 && !didrais)
 //resteal if raiser isn't a nit & often fold to 3bet
-&&(pt_vpip_raischair > 17 && pt_pfr_raischair > 13)
-&&(pt_preflop_attempt_steal_raischair > 0.3 && pt_preflop_fold_to_3bet_raischair > 0.4 )
+&&
+(pt_vpip_raischair > 17 && pt_pfr_raischair > 13)
+&&(pt_preflop_attempt_steal_raischair > 0.3 && pt_preflop_fold_to_3bet_raischair > 0.4)
 ? bblind * 9 :
 
 //hijack steal attempt from btn to defend small blind
 (betround == 1 && dealposition == 1 && dealpositionrais == nplayersdealt && pt_preflop_fold_to_3bet_raischair > 0.4 && call <= 3*bblind)
+? bblind * 9 : 
+
+
+//defend blinds w/o pokertracker
+betround == 1 && listOpenRaiseEP && (dealposition == 1 || dealposition == 2) 
+&& (dealpositionrais == nplayersdealt || dealpositionrais == 1)
+&& (nopponentscalling == 0 && nopponentsbetting == 1 && nopponentstruelyraising == 0 && call <= bblind * 3 && !didrais)
 ? bblind * 9 : 0
-
-
 
 
 
