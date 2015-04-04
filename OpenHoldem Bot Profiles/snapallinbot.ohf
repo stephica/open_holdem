@@ -1,4 +1,4 @@
-##2015-04-04 21:10:13##
+##2015-04-04 22:40:49##
 
 ##notes##
  
@@ -7,12 +7,18 @@
  
 
 ##f$alli##
+///////////////////////
+//preflop allin code///
+///////////////////////
 betround == 1 && didrais &&
 [(listAllInEP && call > bblind)
-||(call < currentbet && listAllIn)]
-
-
+||(call < currentbet && listAllIn)
+||(pt_preflop_fold_to_3bet_raischair > 0.5 && listOpenRaiseEP)]
 || f$bb_all_in
+
+///////////////////////
+//flop code////////////
+///////////////////////
 ||	(betround == 2 && f$top_pair_top_kicker && (call >= bblind))
 ||	(betround == 2 && (call >= bblind) && f$two_pair_or_more)
 || (betround >= 2 && (call >= bblind) && f$three_of_a_kind_or_more)
@@ -239,29 +245,25 @@ f$rais > 0 ? f$rais : 0
 
 
 ##f$rais##
+///////////////////////
+//preflop attack code//
+///////////////////////
+betround == 1 && call <= bblind && listOpenRaiseEP ? bblind * (2+nopponentsplaying) :
+betround == 1 && call > bblind  && listAllIn ? call * 3 :
+betround == 1 && pt_preflop_fold_to_3bet_raischair > 0.5  && listOpenRaiseEP ? call * 3 :
 f$steal_blinds > 0 ? (3*bblind) :
 f$defend_blinds > 0 ? f$defend_blinds :
 f$late_raise > 0 ? (4*bblind) :
-f$pokertracker_flop_folder > 0 ? 4* bblind :
 
-
-//attack code
-betround == 1 && call <= bblind && listOpenRaiseEP ? bblind * (2+nopponentsplaying) :
-betround == 1 && call > bblind  && listAllIn ? call * 3 :
-
-betround == 1 && prwin > 0.28 && dealposition == 3 && call <= bblind && !didrais ? bblind * (3+nopponentsplaying) :
-betround == 1 && prwin > 0.27 && dealposition == 4 && call <= bblind && !didrais ? bblind * (3+nopponentsplaying) :
-betround == 1 && prwin > 0.26 && dealposition == 5 && call <= bblind && !didrais ? bblind * (3+nopponentsplaying) :
-betround == 1 && prwin > 0.25 && dealposition == 6 && call <= bblind && !didrais ? bblind * (3+nopponentsplaying) :
-betround == 1 && prwin > 0.24 && dealposition == 2 && call <= bblind && !didrais ? bblind * (3+nopponentsplaying) :
-betround == 1 && prwin > 0.23 && dealposition == 1 && call <= bblind && !didrais ? bblind * (3+nopponentsplaying) :
-
-
+///////////////////////
+/////flop code/////////
+///////////////////////
 betround == 2 && call <= bblind && ishipair && !didrais ? bblind * 2 :
 betround >= 2 && call <= bblind && f$top_pair_top_kicker && !didrais ? (bblind * (2+nopponentsplaying+betround)) :
 betround >= 2 && !didrais && f$two_pair_or_more ? bblind * (3+betround) :
 betround >= 2 && !didrais && f$three_of_a_kind_or_more ? bblind * (4+betround) :
 betround >= 2 && !didrais && f$straight_or_more ? bblind * (5+betround) :
+f$pokertracker_flop_folder > 0 ? 4* bblind :
 
 
 betround == 2 && prwin > 0.39 && call <= bblind && !didrais ? bblind * (4+nopponentsplaying) :
@@ -270,10 +272,10 @@ betround == 2 && prwin > 0.35 && call <= bblind && !didrais ? bblind * (2+noppon
 betround == 2 && prwin > 0.33 && call <= bblind && !didrais ? bblind * (1+nopponentsplaying) :
 
 
-betround == 3 && prwin > 0.5
+betround == 3 && prwin > 0.6
 && call <= bblind && !didrais ? bblind * (5+nopponentsplaying) :
 
-betround == 4 && prwin > 0.6
+betround == 4 && prwin > 0.7
 && call <= bblind && !didrais ? bblind * (6+nopponentsplaying)  : 0
 
 
