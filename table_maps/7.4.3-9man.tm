@@ -2,7 +2,7 @@
 
 // OpenScrape 7.7.0
 
-// 2015-03-25 05:14:49
+// 2015-04-04 10:38:21
 // 32 bits per pixel
 
 //
@@ -37,6 +37,9 @@ s$titletext2                WHALE
 s$titletext3                Chrome
 s$titletext4                Iron
 s$titletext5                Germany
+s$titletext6                Iron
+s$titletext7                Tour
+s$titletext8                Depositors
 s$ttlimits                  ^* ^LH ^s/^b
 s$ttlimits0                 ^* ^L^*s: ^s/^b(^a)
 s$ttlimits1                 ^* ^* ^L^*H ^s/^b
