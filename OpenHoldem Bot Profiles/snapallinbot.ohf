@@ -1,4 +1,4 @@
-##2015-04-04 13:11:16##
+##2015-04-04 13:29:17##
 
 ##notes##
  
@@ -9,7 +9,9 @@
 ##f$alli##
 betround == 1 &&
 [(listAllInEP && didrais)
-||(listAllInEP && call > bblind)]
+||(listAllInEP && call > bblind)
+//go allin if didrais & reraise is less than currentbet
+||(didrais && call < currentbet)]
 
 
 || f$bb_all_in
@@ -18,190 +20,6 @@ betround == 1 &&
 || (betround >= 2 && (call >= bblind) && f$three_of_a_kind_or_more)
 || prwin > 0.8
 ? 1 : 0
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ##f$betpot_2_1##
  
@@ -404,12 +222,11 @@ f$defend_blinds > 0 ? f$defend_blinds :
 f$late_raise > 0 ? (4*bblind) :
 f$pokertracker_flop_folder > 0 ? 4* bblind :
 
-
-betround >= 2 && call <= bblind && isonepair && !didrais ? bblind * (1+nopponentsplaying+betround) :
+betround >= 2 && call <= bblind && ishipair && !didrais ? bblind * (1+nopponentsplaying+betround) :
 betround >= 2 && call <= bblind && f$top_pair_top_kicker && !didrais ? (bblind * (2+nopponentsplaying+betround)) :
 betround >= 2 && !didrais && f$two_pair_or_more ? bblind * (3+betround) :
-betround >= 3 && !didrais && f$three_of_a_kind_or_more ? bblind * (4+betround) :
-betround >= 4 && !didrais && f$straight_or_more ? bblind * (5+betround) :
+betround >= 2 && !didrais && f$three_of_a_kind_or_more ? bblind * (4+betround) :
+betround >= 2 && !didrais && f$straight_or_more ? bblind * (5+betround) :
 
 betround == 1 && call <= bblind && listOpenRaiseEP ? bblind * (3+nopponentsplaying) :
 
@@ -431,177 +248,6 @@ betround == 3 && prwin > 0.5
 
 betround == 4 && prwin > 0.6
 && call <= bblind && !didrais ? bblind * (6+nopponentsplaying)  : 0
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ##f$call##
 //
@@ -3899,11 +3545,9 @@ AKo AQo AJo ATo KQo KJo KTo QJo QTo JTo
 
 
 ##listOpenRaiseEP##
-AA KK QQ JJ TT
-AKs AQs AJs ATs KQs KJs QJs JTs
-AKo AQo AJo
-
-
+AA KK QQ JJ TT 99 
+AKs AQs AJs ATs KQs KJs QJs JTs 
+AKo AQo AJo 
 
 
 ##listSB0Raiser##
