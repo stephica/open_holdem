@@ -1,4 +1,4 @@
-##2015-04-04 13:49:17##
+##2015-04-04 14:05:10##
 
 ##notes##
  
@@ -257,7 +257,7 @@ betround == 4 && prwin > 0.6
 
 ##f$call##
 //
-(ishipair && call <= bblind * 6) ? 1 :
+(betround >= 2 && ishipair && call <= bblind * 3) ? 1 :
 f$top_pair_top_kicker && call <= 10 * bblind ? 1 :
 f$two_pair_or_more && call <= bblind * 20 ? 1 :
 f$three_of_a_kind_or_more && call <= bblind * 50 ? 1 :
