@@ -1,4 +1,4 @@
-##2015-04-07 21:49:40##
+##2015-04-07 22:33:26##
 
 ##notes##
  
@@ -26,6 +26,8 @@ betround >= 2 && (call >= bblind) && f$two_pair_or_more && f$open_board ? 1 :
 betround >= 2 && (call >= bblind) && f$three_of_a_kind_or_more && f$open_board ? 1 :
 prwin > 0.8 && call >= bblind && didrais
 ? 1 : 0
+
+
 
 
 
@@ -419,6 +421,8 @@ f$rais > 0 ? f$rais : 0
 
 
 
+
+
 ##f$rais##
 ///////////////////////////////
 //Pokertracker stats only play/
@@ -447,7 +451,7 @@ f$defend_blinds > 0 ? f$defend_blinds :
 ///////////////////////
 //with bighand we can bet for value with everything else only small bets
 betround == 2 && (f$is_big_hand && call <= 3*bblind && !didrais) ? pot :
-betround == 2 && (ishipair || istwopair) && call < bblind ? pot :
+betround == 2 && (ishipair || ((!ispair) && istwopair)) && call < bblind ? pot :
 
 //hand can already been beaten or can be beaten at turn and river
 betround == 2 && !didrais && (nsuitedcommon == 3 || nstraightfillcommon <= 2) &&(f$top_pair_top_kicker || f$three_of_a_kind_or_more ) ? pot / 2 :
@@ -567,6 +571,8 @@ prwin > 0.8 && !didrais ? pot : 0
 
 
 
+
+
 ##f$call##
 f$alli > 0 ? 1 :
 ////////////////
@@ -593,13 +599,13 @@ f$flush_or_more ? 1 :
 //if we are drawing
 betround == 2 && (nsuited == 4 || nstraight == 4)
 && call <= bblind *3 ? 1 :
-betround == 2 && (nsuited == 4 || nstraight == 4)
-&& call <= bblind *3 ? 1 :
+betround == 2 && (nsuited == 4 && nstraight == 4)
+&& call <= pot / 2  ? 1 :
 
 betround == 3 && (nsuited == 4 || nstraight == 4)
 && call <= bblind *3 ? 1 :
-betround == 3 && (nsuited == 4 || nstraight == 4)
-&& call <= bblind *3 ? 1 :
+betround == 3 && (nsuited == 4 && nstraight == 4)
+&& call <= pot / 2  ? 1 :
 
 prwin > 0.85
 ? 1 : 0
@@ -698,9 +704,13 @@ prwin > 0.85
 
 
 
+
+
 ##f$check##
 // Check whenever it is free to call
 (call == 0)
+
+
 
 
 
@@ -1263,8 +1273,12 @@ prwin > 0.85
 
 
 
+
+
 ##f$sitin##
 1
+
+
 
 
 
@@ -1417,8 +1431,12 @@ prwin > 0.85
 
 
 
+
+
 ##f$leave##
  0
+
+
 
 
 
@@ -1588,10 +1606,14 @@ prwin > 0.85
 
 
 
+
+
 ##f$rebuy##
 // f$rebuy should evaluate to the target-amount in dollars.
 // This value will be passed to the rebuy-script as a parameter.
 0
+
+
 
 
 
@@ -2161,12 +2183,16 @@ prwin > 0.85
 
 
 
+
+
 ##f$allin_on_betsize_balance_ratio##
 // Allin if betsize is more than X% of our total balance (including currentbet).
 // This affects f$betsize and all f$betpot_X_Y_ functions.
 //  0.00 =  0% = disabled
 //  0.50 = 50%
 0.00
+
+
 
 
 
@@ -2735,11 +2761,15 @@ nopponentscalling+nopponentstruelyraising+nopponentschecking*floppct+(0.59-((fma
 
 
 
+
+
 ##f$prwin_number_of_iterations##
 // "Reasonable" default to get PrWin running for beginners.
 // Large enough to get usable results,
 // small enough to save CPU-time.
 1000
+
+
 
 
 
@@ -3292,8 +3322,12 @@ nopponentscalling+nopponentstruelyraising+nopponentschecking*floppct+(0.59-((fma
 
 
 
+
+
 ##f$prwin_wontplay##
  f$prwin_willplay*1.4
+
+
 
 
 
@@ -3835,6 +3869,8 @@ nopponentscalling+nopponentstruelyraising+nopponentschecking*floppct+(0.59-((fma
 
 
 
+
+
 ##f$icm_prize2##
  
 
@@ -3869,6 +3905,8 @@ nopponentscalling+nopponentstruelyraising+nopponentschecking*floppct+(0.59-((fma
 AA KK QQ JJ TT
 AKs
 AKo
+
+
 
 
 
@@ -4279,10 +4317,14 @@ AKo
 
 
 
+
+
 ##listAllInBTN##
 AA KK QQ JJ TT
 AKs
 AKo
+
+
 
 
 
@@ -4579,10 +4621,14 @@ AKo
 
 
 
+
+
 ##listAllInLP##
 AA KK QQ JJ TT
 AKs
 AKo
+
+
 
 
 
@@ -4951,10 +4997,14 @@ AKo
 
 
 
+
+
 ##listAllInSB##
 AA KK QQ JJ TT 99
 AKs
 AKo
+
+
 
 
 
@@ -5293,6 +5343,8 @@ AKo AQo AJo
 
 
 
+
+
 ##listCallRaise##
 AA KK QQ JJ TT
 AKs AQs AJs ATs KQs KJs KTs QJs QTs JTs
@@ -5317,10 +5369,14 @@ AKo AQo
 
 
 
+
+
 ##listCallReRaiseEP##
 AA KK QQ JJ TT
 AKs AQs AJs ATs KQs KJs QJs JTs
 AKo AQo AJo ATo
+
+
 
 
 
@@ -5527,10 +5583,14 @@ AKo AQo AJo ATo KQo KJo KTo QJo QTo JTo
 
 
 
+
+
 ##listLateRaise##
 AA KK QQ JJ TT 99 88 77 66
 AKs AQs AJs ATs KQs
 AKo AQo AJo KQo
+
+
 
 
 
@@ -5641,6 +5701,8 @@ AKo AQo AJo ATo KQo KJo KTo QJo QTo JTo
 
 
 
+
+
 ##listOpenRaiseEP##
 AA KK QQ JJ TT 99 88 77 66 55 44 33 22
 AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs QJs JTs
@@ -5657,16 +5719,22 @@ AKo AQo AJo ATo KQo KJo QJo
 
 
 
+
+
 ##listOpenRaiseSB##
-AA KK QQ JJ TT 99 88 77 66 55 44 33 22 
-AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs KTs K9s K8s K7s K6s K5s K4s K3s K2s QJs QTs Q9s Q8s Q7s Q6s Q5s Q4s Q3s Q2s JTs J9s J8s J7s J6s J5s J4s J3s J2s T9s T8s T7s T6s T5s T4s T3s T2s 98s 97s 96s 95s 94s 93s 92s 87s 86s 85s 84s 83s 82s 76s 75s 74s 73s 72s 65s 64s 63s 62s 54s 53s 52s 43s 42s 32s 
-AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo QJo QTo JTo 
+AA KK QQ JJ TT 99 88 77 66 55 44 33 22
+AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs KTs K9s K8s K7s K6s K5s K4s K3s K2s QJs QTs Q9s Q8s Q7s Q6s Q5s Q4s Q3s Q2s JTs J9s J8s J7s J6s J5s J4s J3s J2s T9s T8s T7s T6s T5s T4s T3s T2s 98s 97s 96s 95s 94s 93s 92s 87s 86s 85s 84s 83s 82s 76s 75s 74s 73s 72s 65s 64s 63s 62s 54s 53s 52s 43s 42s 32s
+AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo QJo QTo JTo
+
+
 
 
 ##listSB0Raiser##
 AA KK QQ JJ TT
 AKs AQs AJs KQs
 AKo AQo AJo
+
+
 
 
 
@@ -6205,10 +6273,14 @@ AKo AQo KQo
 
 
 
+
+
 ##listShortStackAllIn##
 AA KK QQ JJ TT 99 88 77 66 55 44 33 22
 AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs KTs QJs QTs JTs
 AKo AQo AJo ATo KQo KJo KTo QJo QTo JTo
+
+
 
 
 
@@ -6411,9 +6483,13 @@ AKo
 
 
 
+
+
 ##f$DEBUG##
 //handsplayed
 ncardsbetter
+
+
 
 
 
@@ -6916,6 +6992,8 @@ dealposition == 2
 
 
 
+
+
 ##f$defend_blinds##
 //defend blinds based on pokertracker stats
 (betround == 1 && (dealpositionrais == nplayersdealt || dealpositionrais == 1))&&
@@ -6936,6 +7014,8 @@ betround == 1 && listOpenRaiseEP && (dealposition == 1 || dealposition == 2)
 && (dealpositionrais == nplayersdealt || dealpositionrais == 1)
 && (nopponentscalling == 0 && call <= bblind * 3 && !didrais)
 ? call * 3 : 0
+
+
 
 
 
@@ -7415,6 +7495,8 @@ betround == 1 && listOpenRaiseEP && (dealposition == 1 || dealposition == 2)
 
 
 
+
+
 ##f$is_big_hand##
 //top pair top kicker and no flush or straight possible
 (f$top_pair_top_kicker && f$open_board )
@@ -7500,9 +7582,13 @@ betround == 1 && listOpenRaiseEP && (dealposition == 1 || dealposition == 2)
 
 
 
+
+
 ##f$late_position##
 ((betround == 1) && (f$position == 5 || f$position == 1))
 ? 1 : 0
+
+
 
 
 
@@ -8022,6 +8108,8 @@ f$late_position && listLateRaise && call <= bblind? 1: 0
 
 
 
+
+
 ##f$low_pair_or_more##
 (isonepair
 || istwopair
@@ -8147,9 +8235,13 @@ f$late_position && listLateRaise && call <= bblind? 1: 0
 
 
 
+
+
 ##f$open_board##
 // impossible to have a boat ,flush, or straight; top set is nuts
 [ nrankedcommon == 1 && nsuitedcommon <= 2 && nstraightfillcommon >=3 ]
+
+
 
 
 
@@ -8450,6 +8542,8 @@ f$late_position && listLateRaise && call <= bblind? 1: 0
 
 
 
+
+
 ##f$pokertracker_opponent_is_fish##
 //checks if our opponent is a fish
 (nopponentsplaying == 1 && (nopponentschecking == 1 || nopponentscalling == 1))
@@ -8458,6 +8552,8 @@ f$late_position && listLateRaise && call <= bblind? 1: 0
 (nopponentsplaying == 1 && call >= bblind)
 && (pt_vpip_raischair > 0.4)
 ? 1 : 0
+
+
 
 
 
@@ -8584,6 +8680,8 @@ betround == 1 && call <= bblind * 4 && nopponentstruelyraising ==1 && !didrais &
 
 
 
+
+
 ##f$position##
 // SB=1 BB=2 Early=3 Middle=4 Late=5
 dealposition==1 ? 1:
@@ -8632,6 +8730,8 @@ nplayersdealt==4 ?  (dealposition==3 ? 4 :
                      dealposition==4 ? 5 : 0):
 
 nplayersdealt==3 ?  (dealposition==3 ? 5 : 0):0
+
+
 
 
 
@@ -9187,6 +9287,8 @@ dealposition == 1
 
 
 
+
+
 ##f$stacksize_raischair##
 raischair == 0 ? balance0 / bblind :
 raischair == 1 ? balance1 / bblind :
@@ -9198,6 +9300,8 @@ raischair == 6 ? balance6 / bblind :
 raischair == 7 ? balance7 / bblind :
 raischair == 8 ? balance8 / bblind :
 raischair == 9 ? balance9 / bblind : -1
+
+
 
 
 
@@ -9570,6 +9674,8 @@ raischair == 9 ? balance9 / bblind : -1
 
 
 
+
+
 ##f$straight_or_more##
 (isstraight
 || isflush
@@ -9577,6 +9683,8 @@ raischair == 9 ? balance9 / bblind : -1
 || isfourofakind
 || isstraightflush
 || isroyalflush) ? 1 : 0
+
+
 
 
 
@@ -10145,11 +10253,15 @@ raischair == 9 ? balance9 / bblind : -1
 
 
 
+
+
 ##f$top_pair_top_kicker##
 [isonepair && nrankedcommon==1 &&
 ((rankloplayer==rankhicommon && rankhiplayer==14) ||
 (rankhiplayer==rankhicommon && rankloplayer==13))
 ]
+
+
 
 
 
@@ -10268,6 +10380,8 @@ raischair == 9 ? balance9 / bblind : -1
 || isfourofakind
 || isstraightflush
 || isroyalflush) ? 1 : 0
+
+
 
 
 
