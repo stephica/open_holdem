@@ -1,4 +1,4 @@
-##2015-04-08 09:53:02##
+##2015-04-08 05:42:08##
 
 ##notes##
  
@@ -7,7 +7,7 @@
  
 
 ##f$alli##
-0
+ 
 
 ##f$betpot_2_1##
  
@@ -37,44 +37,19 @@
 
 
 ##f$rais##
-pt_hands_raischair > 10
-&&
-pt_fold_to_3bet_raischair > .7
-&&
-nopponentscalling == 0
-&&
-nopponentstruelyraising == 1
-&&
-call <= 3 * bblind
-? call * 3 : 0
+ 
 
 ##f$call##
  
 
 ##f$check##
 // Check whenever it is free to call
-(call == 0)
-
-
-
-
-
-
-
-
+(call == 0) 
 
 ##f$fold##
 // f$fold should alwazs evaluate to true per default
 // for auto-check-folding instead of time-outs.
-1
-
-
-
-
-
-
-
-
+1 
 
 ##f$sitin##
  
@@ -97,14 +72,6 @@ call <= 3 * bblind
 0
 
 
-
-
-
-
-
-
-
-
 ##f$prefold##
  
 
@@ -116,28 +83,12 @@ call <= 3 * bblind
 0
 
 
-
-
-
-
-
-
-
-
 ##f$allin_on_betsize_balance_ratio##
 // Allin if betsize is more than X% of our total balance (including currentbet).
 // This affects f$betsize and all f$betpot_X_Y_ functions.
 //  0.00 =  0% = disabled
 //  0.50 = 50%
 0.00
-
-
-
-
-
-
-
-
 
 
 ##f$ini_function_on_startup##
@@ -161,29 +112,13 @@ call <= 3 * bblind
 ##f$prwin_number_of_opponents##
 // "Reasonable" default to get standard PrWin running for beginners,
 // Works even with "no opponents".
-nopponentsplaying + 1
-
-
-
-
-
-
-
-
+nopponentsplaying + 1 
 
 ##f$prwin_number_of_iterations##
 // "Reasonable" default to get PrWin running for beginners.
 // Large enough to get usable results,
 // small enough to save CPU-time.
-1000
-
-
-
-
-
-
-
-
+1000 
 
 ##f$prwin_topclip##
  
@@ -202,14 +137,6 @@ nopponentsplaying + 1
 // The sum of all f$icm_prizeX functions should be 1.00 (= 100%).
 // Default to get things going: the winner takes it all.
 1.00
-
-
-
-
-
-
-
-
 
 
 ##f$icm_prize2##
@@ -241,4 +168,12 @@ nopponentsplaying + 1
 
 ##f$debug##
  
+
+##listRaiseAllInEp##
+
+##listRaiseAllInLP##
+
+##listRaiseFoldLP##
+
+##listRaiseFoldMP##
 
