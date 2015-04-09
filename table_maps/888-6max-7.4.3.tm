@@ -2,7 +2,7 @@
 
 // OpenScrape 7.7.0
 
-// 2015-04-05 07:14:20
+// 2015-04-09 05:26:46
 // 32 bits per pixel
 
 //
@@ -67,7 +67,7 @@ r$i0label            231 264 259 274   2ebd66   60 I
 r$i0state            204 280 217 280   d58205   60 C
 r$i1button           297 263 387 280        0    0 N
 r$i1label            316 265 344 273   615f5e   60 I
-r$i1state            337 281 353 281     e57e   60 C
+r$i1state            337 281 353 281     e57e   60 I
 r$i2button           395 263 483 282        0    0 N
 r$i2label            412 279 453 280   2ebd66   60 I
 r$i2state            440 280 453 280    77ef9   60 C
