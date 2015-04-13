@@ -1,4 +1,4 @@
-##2015-04-08 11:03:34##
+##2015-04-12 23:20:06##
 
 ##notes##
  
@@ -12,6 +12,8 @@ listAllIn
 || isthreeofakind
 || isstraight
 || isflush
+
+
 
 
 
@@ -78,6 +80,8 @@ f$rais
 
 
 
+
+
 ##f$rais##
  dealpositionrais == 5
 && dealposition == 2
@@ -85,6 +89,8 @@ f$rais
 && listDefendBlinds
 && call <= bblind *2
 ? 3 * call : 0
+
+
 
 
 
@@ -116,9 +122,13 @@ f$rais
 
 
 
+
+
 ##f$check##
 // Check whenever it is free to call
 (call == 0)
+
+
 
 
 
@@ -192,6 +202,8 @@ f$rais
 
 
 
+
+
 ##f$sitin##
  !f$sitout
 
@@ -207,8 +219,12 @@ f$rais
 
 
 
+
+
 ##f$sitout##
- balance > 50 * bblind
+ balance > 150 * bblind
+
+
 
 
 
@@ -245,11 +261,19 @@ f$rais
 
 
 
+
+
 ##f$autopost##
  
 
 ##f$close##
- 
+  balance > 150 * bblind
+
+
+
+
+
+
 
 ##f$rebuy##
 // f$rebuy should evaluate to the target-amount in dollars.
@@ -291,9 +315,13 @@ f$rais
 
 
 
+
+
 ##f$prefold##
-!listShortStackAllIn
+!listAllIn
 ? 1 : 0
+
+
 
 
 
@@ -371,12 +399,16 @@ f$rais
 
 
 
+
+
 ##f$allin_on_betsize_balance_ratio##
 // Allin if betsize is more than X% of our total balance (including currentbet).
 // This affects f$betsize and all f$betpot_X_Y_ functions.
 //  0.00 =  0% = disabled
 //  0.50 = 50%
 0.00
+
+
 
 
 
@@ -470,11 +502,15 @@ nopponentsplaying + 1
 
 
 
+
+
 ##f$prwin_number_of_iterations##
 // "Reasonable" default to get PrWin running for beginners.
 // Large enough to get usable results,
 // small enough to save CPU-time.
 1000
+
+
 
 
 
@@ -563,6 +599,8 @@ nopponentsplaying + 1
 
 
 
+
+
 ##f$icm_prize2##
  
 
@@ -594,15 +632,16 @@ nopponentsplaying + 1
  
 
 ##listAllIn##
-AA KK QQ JJ TT 
-AKs AQs AJs ATs 
-AKo 
+AA KK 
+AKs 
 
 
 ##listBeep##
 AA KK QQ JJ TT 99 88 77
 AKs AQs KQs QJs
 AKo
+
+
 
 
 
@@ -639,10 +678,14 @@ AKo AQo AJo ATo KQo KJo KTo QJo QTo JTo
 
 
 
+
+
 ##listShortStackAllIn##
 AA KK QQ JJ TT 99 88 77
 AKs AQs AJs ATs KQs KJs KTs QJs QTs JTs
 AKo AQo AJo ATo
+
+
 
 
 
