@@ -1,4 +1,4 @@
-##2015-04-12 23:20:06##
+##2015-04-04 17:18:30##
 
 ##notes##
  
@@ -7,41 +7,7 @@
  
 
 ##f$alli##
-listAllIn
-|| ((balance < 25 * bblind) && listShortStackAllIn)
-|| isthreeofakind
-|| isstraight
-|| isflush
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+f$rais >= balance ? 1 : 0
 
 ##f$betpot_2_1##
  
@@ -68,212 +34,43 @@ listAllIn
 // Betsize in dollars, raise-to semantics.
 // OpenHoldem will auto-adapt the betsize to the casinos input-requirements.
 // Please define your tablemaps "swagtextmethod" to configure this feature.
-f$rais
-
-
-
-
-
-
-
-
-
-
-
-
+f$rais > 1 ? f$rais : 0
 
 ##f$rais##
- dealpositionrais == 5
-&& dealposition == 2
-&& nopponentscalling == 0
-&& listDefendBlinds
-&& call <= bblind *2
-? 3 * call : 0
-
-
-
-
-
-
-
-
-
-
-
-
-
+betround == 1 && f$preflop > 1 ? f$preflop :
+betround == 2 && f$flop > 1 ? f$flop :
+betround == 3 && f$turn > 1 ? f$turn :
+betround == 4 && f$river > 1 ? f$river : 0
 
 ##f$call##
-0
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+betround == 1 && f$preflop >= 1 ? 1 :
+betround == 2 && f$flop >= 1 ? 1 :
+betround == 3 && f$turn >= 1 ? 1 :
+betround == 4 && f$river >= 1 ? 1 : 0
 
 ##f$check##
 // Check whenever it is free to call
-(call == 0)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+(call == 0) 
 
 ##f$fold##
 // f$fold should alwazs evaluate to true per default
 // for auto-check-folding instead of time-outs.
-!listBeep
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+1 
 
 ##f$sitin##
- !f$sitout
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ 
 
 ##f$sitout##
- balance > 150 * bblind
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ 
 
 ##f$leave##
- balance > 150 * bblind
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ 
 
 ##f$autopost##
  
 
 ##f$close##
-  balance > 150 * bblind
-
-
-
-
-
-
+ 
 
 ##f$rebuy##
 // f$rebuy should evaluate to the target-amount in dollars.
@@ -281,81 +78,8 @@ f$rais
 0
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ##f$prefold##
-!listAllIn
-? 1 : 0
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ 
 
 ##f$chat##
  
@@ -365,84 +89,12 @@ f$rais
 0
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ##f$allin_on_betsize_balance_ratio##
 // Allin if betsize is more than X% of our total balance (including currentbet).
 // This affects f$betsize and all f$betpot_X_Y_ functions.
 //  0.00 =  0% = disabled
 //  0.50 = 50%
 0.00
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 ##f$ini_function_on_startup##
@@ -466,85 +118,13 @@ f$rais
 ##f$prwin_number_of_opponents##
 // "Reasonable" default to get standard PrWin running for beginners,
 // Works even with "no opponents".
-nopponentsplaying + 1
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+nopponentsplaying + 1 
 
 ##f$prwin_number_of_iterations##
 // "Reasonable" default to get PrWin running for beginners.
 // Large enough to get usable results,
 // small enough to save CPU-time.
-1000
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+1000 
 
 ##f$prwin_topclip##
  
@@ -563,42 +143,6 @@ nopponentsplaying + 1
 // The sum of all f$icm_prizeX functions should be 1.00 (= 100%).
 // Default to get things going: the winner takes it all.
 1.00
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 ##f$icm_prize2##
@@ -631,66 +175,12 @@ nopponentsplaying + 1
 ##f$debug##
  
 
-##listAllIn##
-AA KK 
-AKs 
+##f$preflop##
+1
 
+##f$flop##
 
-##listBeep##
-AA KK QQ JJ TT 99 88 77
-AKs AQs KQs QJs
-AKo
+##f$turn##
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-##listDefendBlinds##
-AA KK QQ JJ TT 99 88 77 66 55 44 33 22
-AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs KTs K9s K8s K7s K6s K5s K4s K3s K2s QJs QTs Q9s Q8s Q7s Q6s Q5s Q4s Q3s Q2s JTs J9s J8s J7s J6s J5s J4s J3s J2s T9s T8s T7s T6s T5s T4s T3s T2s 98s 97s 96s 95s 94s 93s 92s 87s 86s 85s 84s 83s 82s 76s 75s 74s 73s 72s 65s 64s 63s 62s 54s 53s 52s 43s 42s 32s
-AKo AQo AJo ATo KQo KJo KTo QJo QTo JTo
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-##listShortStackAllIn##
-AA KK QQ JJ TT 99 88 77
-AKs AQs AJs ATs KQs KJs KTs QJs QTs JTs
-AKo AQo AJo ATo
-
-
-
-
-
-
-
-
-
+##f$river##
 

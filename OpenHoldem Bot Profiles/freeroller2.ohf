@@ -1,4 +1,4 @@
-##2015-03-27 14:09:22##
+##2015-04-09 07:40:23##
 
 ##notes##
  
@@ -7,6 +7,60 @@
  
 
 ##f$alli##
+//////////////////////////////////////////////////////////
+/////////////////////More than 25BB///////////////////////
+//////////////////////////////////////////////////////////
+//Preflop
+(balance > (25 * bblind) && betround == 1)&&
+[
+	(list25BBAllIn)
+||(list25BBLateAllIn && call <= bblind && f$position !=  3)
+] ? 1 :
+
+
+
+//////////////////////////////////////////////////////////
+/////////////////////Less than 25BB///////////////////////
+//////////////////////////////////////////////////////////
+(balance < (25 * bblind))&&
+[
+	(didrais && list12BBRaiseAllIn)
+] ? 1 :
+
+//////////////////////////////////////////////////////////
+/////////////////////Less than 12BB///////////////////////
+//////////////////////////////////////////////////////////
+(balance < (12 * bblind) && call < bblind)&&
+[
+	(f$position == 3 && listPushFoldEP)
+||(f$position == 4 && listPushFoldMP)
+||(f$position == 5 && listPushFoldLP)
+||(f$position == 1 && listPushFoldLP)
+||(f$position == 2 && listPushFoldLP)
+]
+? 1 :
+
+
+
+//////////////////////////////////////////////////////////
+/////////////////////Generic flop code////////////////////
+//////////////////////////////////////////////////////////
+(betround >= 2)&&
+[
+	(f$two_pair_or_more)
+||(call > bblind &&(HaveStraightDraw || HaveFlushDraw))
+||(nopponentsplaying <= 2 && HaveTopPair)
+||(HaveTopPair && !PairOnBoard && !FlushPossible && !StraightPossible)
+] ? 1 :0
+
+
+
+
+
+
+
+
+
 
 ##f$betpot_2_1##
  
@@ -33,21 +87,102 @@
 // Betsize in dollars, raise-to semantics.
 // OpenHoldem will auto-adapt the betsize to the casinos input-requirements.
 // Please define your tablemaps "swagtextmethod" to configure this feature.
+f$rais > 0 ? f$rais :
+f$alli > 0 ? balance :0
+
+
+
+
+
 
 
 ##f$rais##
- (betround == 1 && balance > 12 * bblind)
-&&
-[(f$dealposition == 3 && listRaiseAllIn12BBEarly)
-||(f$dealposition == 4 && listRaiseAllIn12BBMiddle)
-|(f$dealposition == 5 && listRaiseAllIn12BBLate)
-|(f$dealposition == 2 && listRaiseAllIn12BBBlinds)
-|(f$dealposition == 1 && listRaiseAllIn12BBBlinds)]
-||
-(balance <= 12 * bblind)
+ //////////////////////////////////////////////////////////
+/////////////////////More than 25BB///////////////////////
+//////////////////////////////////////////////////////////
+(balance > (25 * bblind))&&
+[
+	(list25BBLateRaise && call <= bblind && f$position ==  5)
+] ? (4+nopponentscalling) * bblind :
+
+ //////////////////////////////////////////////////////////
+/////////////////////Less than 25BB///////////////////////
+//////////////////////////////////////////////////////////
+(balance < (25 * bblind) && !didrais)&&
+[
+	(list12BBRaiseAllIn) || (list12BBRaise)
+] ? (4 + nopponentscalling) * bblind :
+
+
+
+
+/////////////////////////////////////////////////////////
+////////////////Flop Continuation Bet////////////////////
+/////////////////////////////////////////////////////////
+(didraisround1 && nopponentsplaying <= 2 && call == 0) ? pot / 2 :
+
+/////////////////////////////////////////////////////////
+//////////Steal Blinds when SB&BB sitting out////////////
+/////////////////////////////////////////////////////////
+(f$position == 5 && nopponentscalling == 0)&& f$bb_sitting_out && f$sb_sitting_out
+? 1 :
+(f$position == 1 && nopponentscalling == 0 && f$bb_sitting_out)
+? 1 :0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ##f$call##
- 
+///////////////////////////////////////////////////////////
+/////////////////////More than 25BB (Limp)/////////////////
+//////////////////////////////////////////////////////////
+(balance > (25 * bblind))&&
+[
+//Limp for Trips if call max 5% stack
+(HavePocketPair && call > bblind && call < (balance / 100)*5) ? 1: 0
+] ? 1 : 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ##f$check##
 // Check whenever it is free to call
@@ -55,10 +190,54 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ##f$fold##
 // f$fold should alwazs evaluate to true per default
 // for auto-check-folding instead of time-outs.
 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -85,6 +264,28 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ##f$prefold##
  
 
@@ -98,12 +299,56 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ##f$allin_on_betsize_balance_ratio##
 // Allin if betsize is more than X% of our total balance (including currentbet).
 // This affects f$betsize and all f$betpot_X_Y_ functions.
 //  0.00 =  0% = disabled
 //  0.50 = 50%
 0.00
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -133,11 +378,55 @@ nopponentsplaying + 1
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ##f$prwin_number_of_iterations##
 // "Reasonable" default to get PrWin running for beginners.
 // Large enough to get usable results,
 // small enough to save CPU-time.
 1000
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -158,6 +447,28 @@ nopponentsplaying + 1
 // The sum of all f$icm_prizeX functions should be 1.00 (= 100%).
 // Default to get things going: the winner takes it all.
 1.00
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -192,9 +503,441 @@ nopponentsplaying + 1
 ##f$debug##
  
 
-##list12BBEarly##
+##list12BBAllIn##
+AA KK QQ JJ
+AKs
+AKo
 
-##listRaiseAllIn12BBEarly##
 
-##f$dealposition##
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##list12BBLateAllIn##
+AA KK QQ JJ TT 99 88 
+AKs 
+AKo 
+
+
+##list12BBLateRaiseAllIn##
+AA KK QQ JJ TT 99 88 
+AKs 
+AKo 
+
+
+##list12BBRaise##
+AQs AJs KQs 
+AQo AJo KQo 
+
+
+##list12BBRaiseAllIn##
+AA KK QQ JJ
+AKs
+AKo
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##list25BBAllIn##
+AA KK QQ
+AKs
+AKo
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##list25BBLateAllIn##
+AA KK QQ JJ
+AKs AQs
+AKo AQo
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##list25BBLateLimp##
+AA KK QQ JJ TT 99 88 77 66 55 44 33 22
+AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs KTs QJs QTs JTs T9s 98s 87s 76s 65s 54s 43s 32s
+AKo AQo AJo ATo KQo KJo KTo QJo QTo JTo
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##list25BBLateRaise##
+AA KK QQ JJ TT 99 88 77 66
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##list6BBAllIn##
+AA KK QQ JJ TT 
+AKs 
+AKo 
+
+
+##listPushFoldEP##
+AA KK QQ JJ TT 99 88
+AKs AQs AJs ATs A9s A8s A7s KQs KJs KTs K9s QJs QTs JTs
+AKo AQo AJo ATo KQo
+
+
+
+
+
+
+
+
+##listPushFoldLP##
+AA KK QQ JJ TT 99 88 77 66 55 44 33 22
+AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs KTs K9s K8s K7s K6s K5s K4s K3s K2s QJs QTs Q9s Q8s Q7s Q6s Q5s JTs T9s 98s 87s 76s 65s 54s
+AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo K9o QJo QTo Q9o JTo J9o T9o
+
+
+
+
+
+
+
+
+##listPushFoldMP##
+AA KK QQ JJ TT 99 88 77 66 55 44 33 22
+AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs KTs K9s K8s K7s QJs QTs Q9s JTs
+AKo AQo AJo ATo KQo KJo KTo QJo QTo JTo
+
+
+
+
+
+
+
+
+##f$bb_sitting_out##
+[(BigBlindChair <  0)] ? ERROR_BigBlindChair_Not_Recognized__Check_Your_TableMap :
+[(BigBlindChair == 0) && (playersactivebits & 0b0000000001)] ? False :
+[(BigBlindChair == 1) && (playersactivebits & 0b0000000010)] ? False :
+[(BigBlindChair == 2) && (playersactivebits & 0b0000000100)] ? False :
+[(BigBlindChair == 3) && (playersactivebits & 0b0000001000)] ? False :
+[(BigBlindChair == 4) && (playersactivebits & 0b0000010000)] ? False :
+[(BigBlindChair == 5) && (playersactivebits & 0b0000100000)] ? False :
+[(BigBlindChair == 6) && (playersactivebits & 0b0001000000)] ? False :
+[(BigBlindChair == 7) && (playersactivebits & 0b0010000000)] ? False :
+[(BigBlindChair == 8) && (playersactivebits & 0b0100000000)] ? False :
+[(BigBlindChair == 9) && (playersactivebits & 0b1000000000)] ? False :
+True
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##f$big_blind_sitting_out##
+[(BigBlindChair <  0)] ? ERROR_BigBlindChair_Not_Recognized__Check_Your_TableMap :
+[(BigBlindChair == 0) && (playersactivebits & 0b0000000001)] ? False :
+[(BigBlindChair == 1) && (playersactivebits & 0b0000000010)] ? False :
+[(BigBlindChair == 2) && (playersactivebits & 0b0000000100)] ? False :
+[(BigBlindChair == 3) && (playersactivebits & 0b0000001000)] ? False :
+[(BigBlindChair == 4) && (playersactivebits & 0b0000010000)] ? False :
+[(BigBlindChair == 5) && (playersactivebits & 0b0000100000)] ? False :
+[(BigBlindChair == 6) && (playersactivebits & 0b0001000000)] ? False :
+[(BigBlindChair == 7) && (playersactivebits & 0b0010000000)] ? False :
+[(BigBlindChair == 8) && (playersactivebits & 0b0100000000)] ? False :
+[(BigBlindChair == 9) && (playersactivebits & 0b1000000000)] ? False :
+True
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##f$position##
+// SB=1 BB=2 Early=3 Middle=4 Late=5
+
+dealposition==1 ? 1:
+dealposition==2 ? 2:
+
+nplayersdealt==10 ? (dealposition==3 ? 3 :
+                     dealposition==4 ? 3 :
+                     dealposition==5 ? 3 :
+                     dealposition==6 ? 4 :
+                     dealposition==7 ? 4 :
+                     dealposition==8 ? 4 :
+                     dealposition==9 ? 5 :
+                     dealposition==10? 5 : 0):
+
+nplayersdealt==9 ?  (dealposition==3 ? 3 :
+                     dealposition==4 ? 3 :
+                     dealposition==5 ? 3 :
+                     dealposition==6 ? 4 :
+                     dealposition==7 ? 4 :
+                     dealposition==8 ? 5 :
+                     dealposition==9 ? 5 : 0):
+
+nplayersdealt==8 ?  (dealposition==3 ? 3 :
+                     dealposition==4 ? 3 :
+                     dealposition==5 ? 4 :
+                     dealposition==6 ? 4 :
+                     dealposition==7 ? 5 :
+                     dealposition==8 ? 5 : 0):
+
+nplayersdealt==7 ?  (dealposition==3 ? 3 :
+                     dealposition==4 ? 3 :
+                     dealposition==5 ? 4 :
+                     dealposition==6 ? 4 :
+                     dealposition==7 ? 5 : 0):
+
+nplayersdealt==6 ?  (dealposition==3 ? 3 :
+                     dealposition==4 ? 4 :
+                     dealposition==5 ? 4 :
+                     dealposition==6 ? 5 : 0):
+
+nplayersdealt==5 ?  (dealposition==3 ? 3 :
+                     dealposition==4 ? 4 :
+                     dealposition==5 ? 5 : 0):
+
+nplayersdealt==4 ?  (dealposition==3 ? 4 :
+                     dealposition==4 ? 5 : 0):
+
+nplayersdealt==3 ?  (dealposition==3 ? 5 : 0):0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##f$sb_sitting_out##
+[(SmallBlindChair <  0)] ? ERROR_SmallBlindChair_Not_Recognized__Check_Your_TableMap :
+[(SmallBlindChair == 0) && (playersactivebits & 0b0000000001)] ? False :
+[(SmallBlindChair == 1) && (playersactivebits & 0b0000000010)] ? False :
+[(SmallBlindChair == 2) && (playersactivebits & 0b0000000100)] ? False :
+[(SmallBlindChair == 3) && (playersactivebits & 0b0000001000)] ? False :
+[(SmallBlindChair == 4) && (playersactivebits & 0b0000010000)] ? False :
+[(SmallBlindChair == 5) && (playersactivebits & 0b0000100000)] ? False :
+[(SmallBlindChair == 6) && (playersactivebits & 0b0001000000)] ? False :
+[(SmallBlindChair == 7) && (playersactivebits & 0b0010000000)] ? False :
+[(SmallBlindChair == 8) && (playersactivebits & 0b0100000000)] ? False :
+[(SmallBlindChair == 9) && (playersactivebits & 0b1000000000)] ? False :
+True
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##f$two_pair_or_more##
+HaveTwoPair
+||HaveSet
+||HaveTrips
+||HaveFlush
+||HaveStraight
+||HaveFullHouse
+||HaveQuads ? 1 :0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
