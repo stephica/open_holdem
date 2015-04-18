@@ -2,7 +2,7 @@
 
 // OpenScrape 7.7.0
 
-// 2015-04-02 18:34:21
+// 2015-04-18 04:24:52
 // 32 bits per pixel
 
 //
@@ -29,6 +29,7 @@ s$t1type                    0
 s$t2type                    fuzzy
 s$t3type                    fuzzy
 s$titletext                 Rocket
+s$titletext0                Freeroll
 s$ttlimits                  ^* - ^s/^b
 s$ttlimits0                 ^* - ^s/^b
 s$ttlimits1                 ^* - ^* - €^s/€^b
