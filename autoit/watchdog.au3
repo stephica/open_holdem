@@ -1,6 +1,7 @@
 While Sleep(5000)
    oh_watchdog()
    spam_killer()
+   table_watchdog()
 WEnd
 
 
@@ -35,6 +36,18 @@ Func table_watchdog()
    Func sitin()
 	  If WinExists("Lobby") Then
 		 WinActivate("Lobby")
-		 WinMove("Lobby",0,0)
+		 WinMove("Lobby","",0,0)
+		 Sleep(500)
+		 MouseClick("left",681,151,1)
+		 Sleep(500)
+		 MouseClick("left",650,260,1)
+		 WinWaitActive("Choose your buy-in amount")
+		 Send("{Enter}")
+	  Else
+		 Run("C:\Program Files\PacificPoker\bin\888Poker.exe")
+		 Sleep(500)
+		 WinWaitActive("Login")
+		 Sleep(500)
+		 Send("{Enter}")
 	  EndIf
    EndFunc
