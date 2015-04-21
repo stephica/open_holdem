@@ -24,8 +24,8 @@ EndFunc
 
 Func table_watchdog()
 	  If WinExists("Ahmadabad") Then
-
 	  ElseIf WinExists("Astana") Then
+	  ElseIf WinExists("Kimpo") Then
 
 	  Else
 		 sitin()
