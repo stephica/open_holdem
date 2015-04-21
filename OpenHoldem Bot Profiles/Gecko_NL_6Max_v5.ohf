@@ -7,7 +7,7 @@
  
 
 ##f$alli##
- betround == 1 && list106 && didrais && call < currentbet && call > balance ? 1: 0
+// betround == 1 && list106 && didrais && call < currentbet && call > balance ? 1: 0
 
 
 
