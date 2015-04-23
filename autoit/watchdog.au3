@@ -51,3 +51,6 @@ Func table_watchdog()
 		 Send("{Enter}")
 	  EndIf
    EndFunc
+
+Func register_freeroll()
+EndFunc
