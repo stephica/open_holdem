@@ -2,7 +2,7 @@
 
 // OpenScrape 7.7.0
 
-// 2015-03-24 16:20:45
+// 2015-04-25 04:29:45
 // 32 bits per pixel
 
 //
@@ -32,7 +32,6 @@ s$t2type                    fuzzy
 s$t3type                    0.20
 s$titletext                 Heads
 s$titletext0                Kumanovo
-s$titletext1                Thornton
 s$ttlimits                  ^* ^LH ^s/^b
 s$ttlimits0                 ^* ^L^*s: ^s/^b(^a)
 s$ttlimits1                 ^* ^* ^L^*H ^s/^b
@@ -114,7 +113,7 @@ r$p0cardface0suit    257   2 263  22   ffffff -200 T2
 r$p0cardface1nocard  226  11 226  24        0    0 I
 r$p0cardface1rank    209   2 222  23   fefefe -200 T2
 r$p0cardface1suit    225   2 231  22   ffffff -200 T2
-r$p0dealer           192  56 204  67        0    0 I
+r$p0dealer           198  57 210  68        0    0 I
 r$p0name             218  28 282  37   ffffff  250 T1
 r$p0seated           191  26 215  29   74716d    0 I
 r$p1active           285 228 285 228   807d7b   -1 C

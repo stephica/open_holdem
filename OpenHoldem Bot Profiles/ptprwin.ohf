@@ -1,4 +1,4 @@
-##2015-03-24 07:46:27##
+##2015-04-24 12:39:31##
 
 ##notes##
  
@@ -42,9 +42,13 @@
 ##f$call##
  prwin > 0.5
 
+
+
 ##f$check##
 // Check whenever it is free to call
 (call == 0)
+
+
 
 
 
@@ -52,6 +56,8 @@
 // f$fold should alwazs evaluate to true per default
 // for auto-check-folding instead of time-outs.
 1
+
+
 
 
 
@@ -78,6 +84,8 @@
 
 
 
+
+
 ##f$prefold##
  
 
@@ -91,12 +99,16 @@
 
 
 
+
+
 ##f$allin_on_betsize_balance_ratio##
 // Allin if betsize is more than X% of our total balance (including currentbet).
 // This affects f$betsize and all f$betpot_X_Y_ functions.
 //  0.00 =  0% = disabled
 //  0.50 = 50%
 0.00
+
+
 
 
 
@@ -126,11 +138,15 @@ nopponentsplaying > 0 ? nopponentsplaying : 1
 
 
 
+
+
 ##f$prwin_number_of_iterations##
 // "Reasonable" default to get PrWin running for beginners.
 // Large enough to get usable results,
 // small enough to save CPU-time.
 1000
+
+
 
 
 
@@ -151,6 +167,8 @@ nopponentsplaying > 0 ? nopponentsplaying : 1
 // The sum of all f$icm_prizeX functions should be 1.00 (= 100%).
 // Default to get things going: the winner takes it all.
 1.00
+
+
 
 
 
@@ -185,6 +203,12 @@ nopponentsplaying > 0 ? nopponentsplaying : 1
 ##f$debug##
  
 
+##listVPIP13##
+AA KK QQ JJ TT 99 
+AKs AQs AJs ATs KQs KJs KTs QJs QTs JTs 
+AKo AQo AJo ATo KQo KJo QJo JTo 
+
+
 ##listVPIP17##
 AA KK QQ JJ TT 99 88 77 66 55 44 33 22
 AKs AQs AJs ATs KQs KJs KTs QJs QTs JTs
@@ -193,10 +217,20 @@ AKo AQo AJo ATo KQo KJo KTo QJo QTo JTo
 
 
 
+
+
+##listVPIP22##
+AA KK QQ JJ TT 99 88 77 66 55 44 33 22 
+AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs KTs QJs QTs JTs T9s 
+AKo AQo AJo ATo A9o A8o KQo KJo KTo QJo QTo JTo 
+
+
 ##listVPIP30##
 AA KK QQ JJ TT 99 88 77 66 55 44 33 22
 AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs KTs K9s K8s K7s K6s K5s K4s K3s K2s QJs QTs Q9s Q8s Q7s Q6s Q5s Q4s Q3s Q2s JTs J9s J8s J7s J6s J5s J4s J3s J2s T9s T8s T7s T6s T5s T4s T3s T2s
 AKo AQo AJo ATo KQo KJo KTo QJo QTo JTo
+
+
 
 
 
@@ -209,8 +243,16 @@ AKo AQo AJo KQo KJo QJo
 
 
 
+
+
 ##f$VpipPrWin##
-pt_vpip_raischair < 9 ? vs$listVPIP9$prwin : 0
+pt_pfr_raischair < .09 ? vs$listVPIP9$prwin : 
+pt_pfr_raischair < .13 && pt_pfr_raischair > .09 ? vs$listVPIP13$prwin :
+pt_pfr_raischair < .17 && pt_pfr_raischair > .13 ? vs$listVPIP17$prwin :
+pt_pfr_raischair < .22 && pt_pfr_raischair > .17 ? vs$listVPIP22$prwin :
+pt_pfr_raischair > .22 ? vs$listVPIP22$prwin : 0
+
+
 
 
 
