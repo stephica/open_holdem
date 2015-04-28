@@ -17,14 +17,14 @@ EndIf
 Local $y = 233
 Local $entry = 0
 Run($ohpath)
+init_loop()
 
-While Sleep(6000)
+Func init_loop()
 if register_sng() == true Then
    WinWait("SNG")
-   While WinExists("Member Message") <> True
+While WinExists("SNG")
 	  oh_watchdog
-	  Sleep(3000)
-   WEnd
+	  Sleep(5000)
    if WinExists("Member Message") Then
 	  WinActivate("Member Message")
 	  Send("{TAB}{TAB}{ENTER}")
@@ -34,15 +34,21 @@ if register_sng() == true Then
 	  WinActivate("Player")
 	  Send("{ENTER}")
    EndIf
-EndIf
 WEnd
-
+EndIf
+Sleep(3000)
+init_loop()
+EndFunc
 
 Func start_888()
    if WinExists("Lobby") Then
 	  WinActivate("Lobby")
-	  Sleep(1500)
+	  Sleep(500)
 	  WinMove("Lobby","",0,0)
+	  If WinExists("Login") Then
+		 WinActivate("Login")
+		 Send("{ENTER}")
+	  EndIf
    Else
 	  Run($888path)
 	  WinWait("Login")
@@ -70,25 +76,23 @@ EndFunc
 
 Func register_sng()
    start_888()
-   WinActivate("Lobby")
    MouseClick("left",424,153,1)
-   Sleep(1500)
-  While confirm_registration() <> true
+   Sleep(500)
+
    WinActivate("Lobby")
    MouseClick("left",390,$y+$entry,1)
-   Sleep(1500)
+   Sleep(500)
    MouseClick("left",815,605,1)
-   Sleep(1500)
-  WEnd
+   confirm_registration()
 Return True
 EndFunc
+
 
 Func confirm_registration()
    if WinExists("Tournament Registration: ") Then
 	  WinActivate("Tournament Registration: ")
 	  Send("{Enter}")
-	  Sleep(2500)
-	  if WinExists("Tournament ID :") Then
+	 if WinExists("Tournament ID :") Then
 		 WinActivate("Tournament ID :")
 		 Send("{Enter}")
 		 Return True
