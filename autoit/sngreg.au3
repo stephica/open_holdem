@@ -23,7 +23,7 @@ For $i = 5 To 1 Step -1
 if register_sng() == true Then
    WinWait("SNG")
    While WinExists("Member Message") <> True
-	  oh_watchdog
+	  oh_watchdog()
 	  Sleep(3000)
    WEnd
    if WinExists("Member Message") Then
