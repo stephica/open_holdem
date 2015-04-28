@@ -17,7 +17,10 @@ EndIf
 Local $y = 233
 Local $entry = 0
 oh_watchdog()
+Sleep(10000)
 start_888()
+Sleep(10000)
+
 
 For $i = 5 To 1 Step -1
 if register_sng() = true Then
@@ -32,7 +35,6 @@ if register_sng() = true Then
     if WinExists("User") Then
 	  WinActivate("User")
 	  Send("{ENTER}")
-	  WinClose("SNG")
    EndIf
    If WinExists("Message","finished") Then
 	  WinActivate("Message")
@@ -47,11 +49,9 @@ Next
 
 Func start_888()
    Run($888path)
-    Sleep(5500)
    WinWaitActive("Login")
-   Sleep(5500)
+   Sleep(1000)
 	  Send("{ENTER}")
-	  Sleep(5500)
    WinActivate("Lobby")
 	  WinMove("Lobby","",0,0)
 EndFunc
