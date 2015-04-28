@@ -20,12 +20,11 @@ oh_watchdog()
 start_888()
 
 For $i = 5 To 1 Step -1
-if register_sng() == true Then
+if register_sng() = true Then
    WinWait("SNG")
-   While WinExists("Member Message") <> True
+   While WinExists("SNG")
 	  oh_watchdog()
 	  Sleep(3000)
-   WEnd
    if WinExists("Member Message") Then
 	  WinActivate("Member Message")
 	  Send("{TAB}{TAB}{ENTER}")
@@ -35,7 +34,8 @@ if register_sng() == true Then
 	  Send("{ENTER}")
 	  WinClose("SNG")
    EndIf
-
+   WEnd
+Sleep(1800000)
 EndIf
 Next
 
