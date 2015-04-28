@@ -1,17 +1,34 @@
+#include <MsgBoxConstants.au3>
+
 Local $888path = "C:\Program Files\PacificPoker\bin\888Poker.exe"
-Local $ohpath = "C:\Documents and Settings\freroller\Desktop\OpenHoldem_7.7.2\OpenHoldem.exe"
+
+If FileExists("C:\Documents and Settings\freroller\Desktop\OpenHoldem_7.7.2\OpenHoldem.exe") Then
+   Local $ohpath = "C:\Documents and Settings\freroller\Desktop\OpenHoldem_7.7.2\OpenHoldem.exe"
+ElseIf FileExists("D:\oh\OpenHoldem.exe") Then
+   Local $ohpath = "D:\oh\OpenHoldem.exe"
+EndIf
+
 Local $y = 233
 Local $entry = 0
+Run($ohpath)
 
-
-While Sleep(5000)
-   oh_watchdog()
+While Sleep(6000)
 if register_sng() == true Then
-WinWait("Member Message")
-   WinActivate("Member Message")
-   Send("{TAB}{TAB}{ENTER}")
-   WinClose("Tour NLH")
+   WinWait("SNG")
+   While WinExists("Member Message") <> True
+	  oh_watchdog
+	  Sleep(3000)
+   WEnd
+   if WinExists("Member Message") Then
+	  WinActivate("Member Message")
+	  Send("{TAB}{TAB}{ENTER}")
+	  WinClose("SNG")
    EndIf
+    if WinExists("Member Message") Then
+	  WinActivate("Player")
+	  Send("{ENTER}")
+   EndIf
+EndIf
 WEnd
 
 
@@ -22,6 +39,11 @@ Func start_888()
 	  WinMove("Lobby","",0,0)
    Else
 	  Run($888path)
+	  WinWait("Login")
+	  WinActivate("Login")
+	  Send("{ENTER}")
+	  Sleep(5000)
+	  start_888()
    EndIf
 EndFunc
 
@@ -32,6 +54,11 @@ Func oh_watchdog()
 	  Sleep(3000)
 	  Run($ohpath)
    EndIf
+   If WinExists("6MaxSNGturbo.oppl") == 0 Then
+	   Run($ohpath)
+   EndIf
+
+   Return True
 EndFunc
 
 
@@ -46,11 +73,6 @@ Func register_sng()
    Sleep(1500)
    MouseClick("left",815,605,1)
    Sleep(1500)
-   $entry = $entry + 20
-   if $entry > 160 Then
-	  $entry = 0
-	  Sleep(60000)
-   EndIf
   WEnd
 Return True
 EndFunc
@@ -65,4 +87,37 @@ Func confirm_registration()
 		 Return True
 	  EndIf
    EndIf
+   If WinExists("Registration to tournament ") Then
+	  Return False
+   EndIf
 EndFunc
+
+Func find_oh()
+	  FileChangeDir ( "c:\" )
+      ; Assign a Local variable the search handle of all files in the current directory.
+    Local $hSearch = FileFindFirstFile("c:\*OpenHoldem.exe")
+
+    ; Check if the search was successful, if not display a message and return False.
+    If $hSearch = -1 Then
+        MsgBox($MB_SYSTEMMODAL, "", "Error: No files/directories matched the search pattern.")
+        Return False
+    EndIf
+
+    ; Assign a Local variable the empty string which will contain the files names found.
+    Local $sFileName = "", $iResult = 0
+
+    While 1
+        $sFileName = FileFindNextFile($hSearch)
+        ; If there is no more file matching the search.
+        If @error Then ExitLoop
+
+    ; Display the file name.
+        $iResult = MsgBox(BitOR($MB_SYSTEMMODAL, $MB_OKCANCEL), "", "File: " & $sFileName)
+        If $iResult <> $IDOK Then ExitLoop ; If the user clicks on the cancel/close button.
+
+	  WEnd
+    ; Close the search handle.
+    FileClose($hSearch)
+EndFunc   ;==>Example
+
+
