@@ -34,8 +34,13 @@ if register_sng() = true Then
 	  Send("{ENTER}")
 	  WinClose("SNG")
    EndIf
+   If WinExists("Message","finished") Then
+	  WinActivate("Message")
+	  Send("{ENTER}")
+	  WinClose("SNG")
+   EndIf
    WEnd
-Sleep(1800000)
+Sleep(60000)
 EndIf
 Next
 
@@ -59,9 +64,9 @@ Func oh_watchdog()
 	  Run($ohpath)
    EndIf
    If WinExists("6MaxSNGturbo.oppl") == 0 Then
-	   Run($ohpath)
+	   RunWait($ohpath)
 	   Send("{CTRLDOWN}o{CTRLUP}")
-	  _WinWaitActivate("Select Formula file to OPEN","")
+	  WinWaitActive("Select Formula file to OPEN","")
 	  Send("6{SHIFTDOWN}m{SHIFTUP}ax{SHIFTDOWN}sng{SHIFTUP}turbo.oppl{ENTER}")
    EndIf
    Return True
