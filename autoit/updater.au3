@@ -1,7 +1,7 @@
 Local $AmIConnected
 TestConnection()
 
-RunWait("D:\sync.bat")
+RunWait("D:\oh\open_holdem\autoit\sync.bat")
 FileChangeDir("D:\oh\open_holdem\table_maps\")
 FileCopy ( "D:\oh\open_holdem\table_maps\*", "D:\oh\scraper\" , 1)
 
