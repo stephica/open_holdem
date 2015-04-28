@@ -64,10 +64,7 @@ Func oh_watchdog()
 	  Run($ohpath)
    EndIf
    If WinExists("6MaxSNGturbo.oppl") == 0 Then
-	   RunWait($ohpath)
-	   Send("{CTRLDOWN}o{CTRLUP}")
-	  WinWaitActive("Select Formula file to OPEN","")
-	  Send("6{SHIFTDOWN}m{SHIFTUP}ax{SHIFTDOWN}sng{SHIFTUP}turbo.oppl{ENTER}")
+	   Run($ohpath)
    EndIf
    Return True
 EndFunc
@@ -91,8 +88,8 @@ Func confirm_registration()
    if WinExists("Tournament Registration: ") Then
 	  WinActivate("Tournament Registration: ")
 	  Send("{Enter}")
-	  WinWait("Tournament ID :")
-	  if WinExists("Tournament ID :") Then
+	  Sleep(1000)
+	 if WinExists("Tournament ID :") Then
 		 WinActivate("Tournament ID :")
 		 Send("{Enter}")
 		 Return True
