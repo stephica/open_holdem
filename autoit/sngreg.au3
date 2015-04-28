@@ -16,9 +16,10 @@ EndIf
 
 Local $y = 233
 Local $entry = 0
-Run($ohpath)
+oh_watchdog()
 start_888()
-While Sleep(6000)
+
+For $i = 5 To 1 Step -1
 if register_sng() == true Then
    WinWait("SNG")
    While WinExists("Member Message") <> True
@@ -29,20 +30,19 @@ if register_sng() == true Then
 	  WinActivate("Member Message")
 	  Send("{TAB}{TAB}{ENTER}")
    EndIf
-    if WinExists("Player") Then
-	  WinActivate("Player")
+    if WinExists("User") Then
+	  WinActivate("User")
 	  Send("{ENTER}")
 	  WinClose("SNG")
    EndIf
 
 EndIf
-WEnd
+Next
 
 
 Func start_888()
    Run($888path)
     Sleep(5500)
-
    WinWaitActive("Login")
    Sleep(5500)
 	  Send("{ENTER}")
@@ -60,8 +60,10 @@ Func oh_watchdog()
    EndIf
    If WinExists("6MaxSNGturbo.oppl") == 0 Then
 	   Run($ohpath)
+	   Send("{CTRLDOWN}o{CTRLUP}")
+	  _WinWaitActivate("Select Formula file to OPEN","")
+	  Send("6{SHIFTDOWN}m{SHIFTUP}ax{SHIFTDOWN}sng{SHIFTUP}turbo.oppl{ENTER}")
    EndIf
-
    Return True
 EndFunc
 
@@ -86,6 +88,7 @@ Func confirm_registration()
 	  Send("{Enter}")
 	  WinWait("Tournament ID :")
 	  if WinExists("Tournament ID :") Then
+		 WinActivate("Tournament ID :")
 		 Send("{Enter}")
 		 Return True
 	  EndIf
