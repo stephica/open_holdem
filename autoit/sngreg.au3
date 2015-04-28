@@ -87,15 +87,19 @@ Func confirm_registration()
    if WinExists("Tournament Registration: ") Then
 	  WinActivate("Tournament Registration: ")
 	  Send("{Enter}")
-	  Sleep(500)
+	  Sleep(2500)
 	  if WinExists("Tournament ID :") Then
+		 WinActivate("Tournament ID :")
 		 Send("{Enter}")
 		 Return True
 	  EndIf
    EndIf
    If WinExists("Registration to tournament ") Then
+	  WinActivate("Registration to tournament ")
+		 Send("{Enter}")
 	  Return False
    EndIf
+   Return True
 EndFunc
 
 Func find_oh()
