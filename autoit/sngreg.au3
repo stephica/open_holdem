@@ -17,46 +17,38 @@ EndIf
 Local $y = 233
 Local $entry = 0
 Run($ohpath)
-init_loop()
-
-Func init_loop()
+start_888()
+While Sleep(6000)
 if register_sng() == true Then
    WinWait("SNG")
-While WinExists("SNG")
+   While WinExists("Member Message") <> True
 	  oh_watchdog
-	  Sleep(5000)
+	  Sleep(3000)
+   WEnd
    if WinExists("Member Message") Then
 	  WinActivate("Member Message")
 	  Send("{TAB}{TAB}{ENTER}")
-	  WinClose("SNG")
    EndIf
-    if WinExists("Member Message") Then
+    if WinExists("Player") Then
 	  WinActivate("Player")
 	  Send("{ENTER}")
+	  WinClose("SNG")
    EndIf
-WEnd
+
 EndIf
-Sleep(3000)
-init_loop()
-EndFunc
+WEnd
+
 
 Func start_888()
-   if WinExists("Lobby") Then
-	  WinActivate("Lobby")
-	  Sleep(500)
-	  WinMove("Lobby","",0,0)
-	  If WinExists("Login") Then
-		 WinActivate("Login")
-		 Send("{ENTER}")
-	  EndIf
-   Else
-	  Run($888path)
-	  WinWait("Login")
-	  WinActivate("Login")
+   Run($888path)
+    Sleep(5500)
+
+   WinWaitActive("Login")
+   Sleep(5500)
 	  Send("{ENTER}")
-	  Sleep(5000)
-	  start_888()
-   EndIf
+	  Sleep(5500)
+   WinActivate("Lobby")
+	  WinMove("Lobby","",0,0)
 EndFunc
 
 Func oh_watchdog()
@@ -75,35 +67,32 @@ EndFunc
 
 
 Func register_sng()
-   start_888()
+   While confirm_registration() <> true
+   WinActivate("Lobby")
    MouseClick("left",424,153,1)
-   Sleep(500)
-
+   Sleep(1500)
    WinActivate("Lobby")
    MouseClick("left",390,$y+$entry,1)
-   Sleep(500)
+   Sleep(1500)
    MouseClick("left",815,605,1)
-   confirm_registration()
+   Sleep(1500)
+  WEnd
 Return True
 EndFunc
-
 
 Func confirm_registration()
    if WinExists("Tournament Registration: ") Then
 	  WinActivate("Tournament Registration: ")
 	  Send("{Enter}")
-	 if WinExists("Tournament ID :") Then
-		 WinActivate("Tournament ID :")
+	  WinWait("Tournament ID :")
+	  if WinExists("Tournament ID :") Then
 		 Send("{Enter}")
 		 Return True
 	  EndIf
    EndIf
    If WinExists("Registration to tournament ") Then
-	  WinActivate("Registration to tournament ")
-		 Send("{Enter}")
 	  Return False
    EndIf
-   Return True
 EndFunc
 
 Func find_oh()
