@@ -1,4 +1,4 @@
-##2015-04-09 07:40:23##
+##2015-04-27 18:28:02##
 
 ##notes##
  
@@ -30,7 +30,7 @@
 //////////////////////////////////////////////////////////
 /////////////////////Less than 12BB///////////////////////
 //////////////////////////////////////////////////////////
-(balance < (12 * bblind) && call < bblind)&&
+(balance < (12 * bblind) && call <= bblind)&&
 [
 	(f$position == 3 && listPushFoldEP)
 ||(f$position == 4 && listPushFoldMP)
@@ -52,6 +52,10 @@
 ||(nopponentsplaying <= 2 && HaveTopPair)
 ||(HaveTopPair && !PairOnBoard && !FlushPossible && !StraightPossible)
 ] ? 1 :0
+
+
+
+
 
 
 
@@ -96,19 +100,24 @@ f$alli > 0 ? balance :0
 
 
 
+
+
+
+
 ##f$rais##
  //////////////////////////////////////////////////////////
 /////////////////////More than 25BB///////////////////////
 //////////////////////////////////////////////////////////
-(balance > (25 * bblind))&&
+(balance > (25 * bblind) && betround == 1)&&
 [
 	(list25BBLateRaise && call <= bblind && f$position ==  5)
 ] ? (4+nopponentscalling) * bblind :
 
- //////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////
 /////////////////////Less than 25BB///////////////////////
 //////////////////////////////////////////////////////////
-(balance < (25 * bblind) && !didrais)&&
+(balance < (25 * bblind) && !didrais && betround == 1)&&
 [
 	(list12BBRaiseAllIn) || (list12BBRaise)
 ] ? (4 + nopponentscalling) * bblind :
@@ -119,7 +128,10 @@ f$alli > 0 ? balance :0
 /////////////////////////////////////////////////////////
 ////////////////Flop Continuation Bet////////////////////
 /////////////////////////////////////////////////////////
-(didraisround1 && nopponentsplaying <= 2 && call == 0) ? pot / 2 :
+(betround == 2 && didraisround1 && nopponentschecking == nopponentsplaying && call == 0) ? pot / 2 :
+(betround == 3 && didchecround2 && call == 0) ? pot / 2 :
+
+
 
 /////////////////////////////////////////////////////////
 //////////Steal Blinds when SB&BB sitting out////////////
@@ -128,6 +140,10 @@ f$alli > 0 ? balance :0
 ? 1 :
 (f$position == 1 && nopponentscalling == 0 && f$bb_sitting_out)
 ? 1 :0
+
+
+
+
 
 
 
@@ -184,9 +200,17 @@ f$alli > 0 ? balance :0
 
 
 
+
+
+
+
 ##f$check##
 // Check whenever it is free to call
 (call == 0)
+
+
+
+
 
 
 
@@ -216,6 +240,10 @@ f$alli > 0 ? balance :0
 // f$fold should alwazs evaluate to true per default
 // for auto-check-folding instead of time-outs.
 1
+
+
+
+
 
 
 
@@ -286,6 +314,10 @@ f$alli > 0 ? balance :0
 
 
 
+
+
+
+
 ##f$prefold##
  
 
@@ -321,12 +353,20 @@ f$alli > 0 ? balance :0
 
 
 
+
+
+
+
 ##f$allin_on_betsize_balance_ratio##
 // Allin if betsize is more than X% of our total balance (including currentbet).
 // This affects f$betsize and all f$betpot_X_Y_ functions.
 //  0.00 =  0% = disabled
 //  0.50 = 50%
 0.00
+
+
+
+
 
 
 
@@ -400,11 +440,19 @@ nopponentsplaying + 1
 
 
 
+
+
+
+
 ##f$prwin_number_of_iterations##
 // "Reasonable" default to get PrWin running for beginners.
 // Large enough to get usable results,
 // small enough to save CPU-time.
 1000
+
+
+
+
 
 
 
@@ -447,6 +495,10 @@ nopponentsplaying + 1
 // The sum of all f$icm_prizeX functions should be 1.00 (= 100%).
 // Default to get things going: the winner takes it all.
 1.00
+
+
+
+
 
 
 
@@ -533,27 +585,47 @@ AKo
 
 
 
+
+
+
+
 ##list12BBLateAllIn##
-AA KK QQ JJ TT 99 88 
-AKs 
-AKo 
+AA KK QQ JJ TT 99 88
+AKs
+AKo
+
+
+
+
 
 
 ##list12BBLateRaiseAllIn##
-AA KK QQ JJ TT 99 88 
-AKs 
-AKo 
+AA KK QQ JJ TT 99 88
+AKs
+AKo
+
+
+
+
 
 
 ##list12BBRaise##
-AQs AJs KQs 
-AQo AJo KQo 
+AQs AJs KQs
+AQo AJo KQo
+
+
+
+
 
 
 ##list12BBRaiseAllIn##
 AA KK QQ JJ
 AKs
 AKo
+
+
+
+
 
 
 
@@ -610,10 +682,18 @@ AKo
 
 
 
+
+
+
+
 ##list25BBLateAllIn##
 AA KK QQ JJ
 AKs AQs
 AKo AQo
+
+
+
+
 
 
 
@@ -664,6 +744,10 @@ AKo AQo AJo ATo KQo KJo KTo QJo QTo JTo
 
 
 
+
+
+
+
 ##list25BBLateRaise##
 AA KK QQ JJ TT 99 88 77 66
 
@@ -690,16 +774,28 @@ AA KK QQ JJ TT 99 88 77 66
 
 
 
+
+
+
+
 ##list6BBAllIn##
-AA KK QQ JJ TT 
-AKs 
-AKo 
+AA KK QQ JJ TT
+AKs
+AKo
+
+
+
+
 
 
 ##listPushFoldEP##
 AA KK QQ JJ TT 99 88
 AKs AQs AJs ATs A9s A8s A7s KQs KJs KTs K9s QJs QTs JTs
 AKo AQo AJo ATo KQo
+
+
+
+
 
 
 
@@ -720,10 +816,18 @@ AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo K9o QJo QTo Q9o JTo 
 
 
 
+
+
+
+
 ##listPushFoldMP##
 AA KK QQ JJ TT 99 88 77 66 55 44 33 22
 AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs KTs K9s K8s K7s QJs QTs Q9s JTs
 AKo AQo AJo ATo KQo KJo KTo QJo QTo JTo
+
+
+
+
 
 
 
@@ -768,6 +872,10 @@ True
 
 
 
+
+
+
+
 ##f$big_blind_sitting_out##
 [(BigBlindChair <  0)] ? ERROR_BigBlindChair_Not_Recognized__Check_Your_TableMap :
 [(BigBlindChair == 0) && (playersactivebits & 0b0000000001)] ? False :
@@ -781,6 +889,10 @@ True
 [(BigBlindChair == 8) && (playersactivebits & 0b0100000000)] ? False :
 [(BigBlindChair == 9) && (playersactivebits & 0b1000000000)] ? False :
 True
+
+
+
+
 
 
 
@@ -879,6 +991,10 @@ nplayersdealt==3 ?  (dealposition==3 ? 5 : 0):0
 
 
 
+
+
+
+
 ##f$sb_sitting_out##
 [(SmallBlindChair <  0)] ? ERROR_SmallBlindChair_Not_Recognized__Check_Your_TableMap :
 [(SmallBlindChair == 0) && (playersactivebits & 0b0000000001)] ? False :
@@ -918,6 +1034,25 @@ True
 
 
 
+
+
+
+
+##f$top_pair_top_kicker##
+[isonepair && nrankedcommon==1 &&
+((rankloplayer==rankhicommon && rankhiplayer==14) ||
+(rankhiplayer==rankhicommon && rankloplayer==13))
+]
+
+
+
+##f$top_pair_top_kicker_or_more##
+f$top_pair_top_kicker
+||f$two_pair_or_more
+
+
+
+
 ##f$two_pair_or_more##
 HaveTwoPair
 ||HaveSet
@@ -926,6 +1061,10 @@ HaveTwoPair
 ||HaveStraight
 ||HaveFullHouse
 ||HaveQuads ? 1 :0
+
+
+
+
 
 
 
