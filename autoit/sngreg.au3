@@ -50,8 +50,9 @@ Next
 Func start_888()
    Run($888path)
    WinWaitActive("Login")
-   Sleep(1000)
+Sleep(5000)
 	  Send("{ENTER}")
+	  Sleep(5000)
    WinActivate("Lobby")
 	  WinMove("Lobby","",0,0)
 EndFunc
@@ -88,10 +89,11 @@ Func confirm_registration()
    if WinExists("Tournament Registration: ") Then
 	  WinActivate("Tournament Registration: ")
 	  Send("{Enter}")
-	  Sleep(1000)
+	  Sleep(4000)
 	 if WinExists("Tournament ID :") Then
 		 WinActivate("Tournament ID :")
 		 Send("{Enter}")
+		 Sleep(4000)
 		 Return True
 	  EndIf
    EndIf
