@@ -1,2 +1,2 @@
-RunWait("D:\oh\autoit\updater.exe")
-RunWait("D:\oh\autoit\sngreg.exe")
+RunWait("D:\oh\open_holdem\autoit\updater.exe")
+RunWait("D:\oh\open_holdem\autoit\sngreg.exe")
