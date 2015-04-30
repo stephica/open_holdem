@@ -1,2 +1,6 @@
-RunWait("D:\updater.exe")
-Run("D:\sngreg.exe")
+#include <MsgBoxConstants.au3>
+#include "func_lib.au3"
+#include "config.inc.au3"
+
+
+#include "D:\updater.au3"
