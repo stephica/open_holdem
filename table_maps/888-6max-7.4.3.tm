@@ -2,7 +2,7 @@
 
 // OpenScrape 7.7.0
 
-// 2015-04-28 09:21:22
+// 2015-04-29 04:27:56
 // 32 bits per pixel
 
 //
@@ -30,6 +30,7 @@ s$t1type                    0.10
 s$t2type                    fuzzy
 s$t3type                    0.20
 s$titletext                 6-Handed
+s$titletext0                Snap
 s$titletext1                Astana
 s$titletext3                Arlington
 s$titletext4                Santiago
