@@ -1,4 +1,4 @@
-##2015-04-28 18:35:33##
+##2015-04-30 05:30:53##
 
 ##notes##
  
@@ -62,6 +62,10 @@
 
 
 
+
+
+
+
 ##f$fold##
 // f$fold should alwazs evaluate to true per default
 // for auto-check-folding instead of time-outs.
@@ -83,8 +87,16 @@
 
 
 
+
+
+
+
 ##f$sitin##
 1
+
+
+
+
 
 
 
@@ -134,6 +146,10 @@
 
 
 
+
+
+
+
 ##f$prefold##
  
 
@@ -161,12 +177,20 @@
 
 
 
+
+
+
+
 ##f$allin_on_betsize_balance_ratio##
 // Allin if betsize is more than X% of our total balance (including currentbet).
 // This affects f$betsize and all f$betpot_X_Y_ functions.
 //  0.00 =  0% = disabled
 //  0.50 = 50%
 0.90
+
+
+
+
 
 
 
@@ -224,11 +248,19 @@ nopponentsplaying + 1
 
 
 
+
+
+
+
 ##f$prwin_number_of_iterations##
 // "Reasonable" default to get PrWin running for beginners.
 // Large enough to get usable results,
 // small enough to save CPU-time.
 1000
+
+
+
+
 
 
 
@@ -263,6 +295,10 @@ nopponentsplaying + 1
 // The sum of all f$icm_prizeX functions should be 1.00 (= 100%).
 // Default to get things going: the winner takes it all.
 1.00
+
+
+
+
 
 
 
@@ -326,6 +362,10 @@ ATs A9s A8s A7s A6s A5s A4s A3s A2s KJs KTs K9s QJs QTs Q9s Q8s JTs J9s J8s J7s
 
 
 
+
+
+
+
 ##listRaiseAllin##
 AA KK QQ JJ TT
 AKs AQs AJs ATs KQs KJs KTs QJs QTs JTs
@@ -338,10 +378,18 @@ AKo KQo
 
 
 
+
+
+
+
 ##listStealRaiser##
 AA KK QQ JJ TT 99 88 77 66 55 44 33 22
 AKs AQs AJs ATs KQs KJs KTs QJs QTs JTs
 AKo AQo AJo ATo KQo KJo KTo QJo QTo JTo
+
+
+
+
 
 
 
@@ -633,6 +681,10 @@ WHEN Calls = 0 AND Raises = 1 AND LastRaiserPosition <= 3
 
 WHEN Others
  WHEN Others Fold FORCE
+
+
+
+
 
 
 
@@ -971,6 +1023,10 @@ WHEN Position = Last
 
 WHEN Others
  WHEN Others Fold FORCE
+
+
+
+
 
 
 
@@ -1501,6 +1557,10 @@ WHEN Others
 
 
 
+
+
+
+
 ##f$river##
 
 WHEN (HaveStraightFlush OR HaveQuads OR HaveFullHouse)
@@ -1917,6 +1977,10 @@ WHEN Position = Last
 
 WHEN Others
  WHEN Others Fold FORCE
+
+
+
+
 
 
 
