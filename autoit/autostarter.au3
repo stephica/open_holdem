@@ -4,3 +4,5 @@
 
 
 #include "D:\updater.au3"
+
+Run("watchdog.au3")
