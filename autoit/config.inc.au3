@@ -10,3 +10,8 @@ If FileExists("C:\Documents and Settings\freroller\Desktop\OpenHoldem_7.7.2\Open
 ElseIf FileExists("D:\oh\OpenHoldem.exe") Then
    Local $ohpath = "D:\oh\OpenHoldem.exe"
 EndIf
+
+
+;Iron
+Global $tournaments[2][4] = [[2478387292, 3157807, 25, 12] ,[3865244129, 0, 38, 13] ]
+Global $position[8] = [0]

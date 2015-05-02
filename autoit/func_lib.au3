@@ -8,14 +8,3 @@ WEnd
 EndFunc
 
 
-
-Func start_888()
-   if WinExists("Lobby") = False Then
-   RunWait($888path)
-   WinWaitActive("Login")
-   Send("{ENTER}")
-Else
-   WinActivate("Lobby")
-   WinMove("Lobby","",0,0)
-EndIf
-EndFunc

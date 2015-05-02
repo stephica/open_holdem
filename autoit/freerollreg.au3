@@ -1,11 +1,8 @@
-Local $888path = "C:\Program Files\PacificPoker\bin\888Poker.exe"
-Local $ohpath = "C:\Documents and Settings\freroller\Desktop\OpenHoldem_7.7.2\OpenHoldem.exe"
 Local $y = 233
 Local $entry = 0
 
 
 While Sleep(5000)
-   oh_watchdog()
 if register_freeroll() == true Then
 WinWait("Member Message")
    WinActivate("Member Message")

@@ -1,0 +1,7 @@
+## JScrape v1.3 character array, compiled: 2015-04-30, no characters: 0
+## Image '', file image-1.bmp
+## Checksum 3865244129, pixel colour 0
+0
+32
+32
+EOF
