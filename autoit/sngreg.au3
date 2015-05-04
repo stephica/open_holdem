@@ -1,20 +1,9 @@
 #include <MsgBoxConstants.au3>
+#include <MsgBoxConstants.au3>
+#include "func_lib.au3"
+#include "config.inc.au3"
 
-Local $888path = "C:\Program Files\PacificPoker\bin\888Poker.exe"
-
-If FileExists("C:\Program Files\PacificPoker\bin\888Poker.exe") Then
-   Local $888path = "C:\Program Files\PacificPoker\bin\888Poker.exe"
-ElseIf FileExists("C:\Programme\PacificPoker\bin\888Poker.exe") Then
-     Local $888path = "C:\Programme\PacificPoker\bin\888Poker.exe"
-EndIf
-
-If FileExists("C:\Documents and Settings\freroller\Desktop\OpenHoldem_7.7.2\OpenHoldem.exe") Then
-   Local $ohpath = "C:\Documents and Settings\freroller\Desktop\OpenHoldem_7.7.2\OpenHoldem.exe"
-ElseIf FileExists("D:\oh\OpenHoldem.exe") Then
-   Local $ohpath = "D:\oh\OpenHoldem.exe"
-EndIf
-
-Local $y = 233
+Local $y = 243
 Local $entry = 0
 oh_watchdog()
 Sleep(10000)
@@ -22,10 +11,11 @@ start_888()
 Sleep(10000)
 
 
-For $i = 5 To 1 Step -1
+For $i = 50 To 1 Step -1
 if register_sng() = true Then
    WinWait("SNG")
    While WinExists("SNG")
+	  Sleep(3000)
 	  oh_watchdog()
 	  Sleep(3000)
    if WinExists("Member Message") Then
@@ -50,26 +40,12 @@ Next
 Func start_888()
    Run($888path)
    WinWaitActive("Login")
-Sleep(5000)
+	  Sleep(500)
 	  Send("{ENTER}")
-	  Sleep(5000)
+	  Sleep(15000)
    WinActivate("Lobby")
 	  WinMove("Lobby","",0,0)
 EndFunc
-
-Func oh_watchdog()
-  If WinExists("OpenHoldem.exe") Then
-	  WinActivate("OpenHoldem.exe")
-	  Send("{TAB}{TAB}{TAB}{ENTER}")
-	  Sleep(3000)
-	  Run($ohpath)
-   EndIf
-   If WinExists("6MaxSNGturbo.oppl") == 0 Then
-	   Run($ohpath)
-   EndIf
-   Return True
-EndFunc
-
 
 Func register_sng()
    While confirm_registration() <> true
