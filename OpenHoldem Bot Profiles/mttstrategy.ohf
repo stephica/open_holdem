@@ -1,13 +1,15 @@
-##2015-04-27 23:22:42##
+##2015-05-05 08:20:15##
 
 ##notes##
- //http://de.pokerstrategy.com/strategy/mtt/1559/1/
+ 
 
 ##dll##
  
 
 ##f$alli##
 f$rais >= balance ? 1 : 0
+
+
 
 
 
@@ -44,6 +46,8 @@ f$rais > 0 ? f$rais : 0
 
 
 
+
+
 ##f$rais##
 //////////////////////////////////////////////////////
 ////////////////EARLY TOURNAMENT STAGE////////////////
@@ -55,12 +59,16 @@ balance > 25 * bblind && betround == 1 ? f$early_postflop > 1 ? f$early_postflop
 
 
 
+
+
 ##f$call##
 //////////////////////////////////////////////////////
 ////////////////EARLY TOURNAMENT STAGE////////////////
 //////////////////////////////////////////////////////
-balance > 25 * bblind && betround == 1 && f$early_preflop == 1 ? 1 :
-balance > 25 * bblind && betround > 1 && f$early_postflop == 1 ? 1 : 0
+balance > 25 * bblind && betround == 1 && f$early_preflop = 1 ? 1 :
+balance > 25 * bblind && betround > 1 && f$early_postflop = 1 ? 1 : 0
+
+
 
 
 
@@ -74,10 +82,14 @@ balance > 25 * bblind && betround > 1 && f$early_postflop == 1 ? 1 : 0
 
 
 
+
+
 ##f$fold##
 // f$fold should alwazs evaluate to true per default
 // for auto-check-folding instead of time-outs.
 1
+
+
 
 
 
@@ -108,6 +120,8 @@ balance > 25 * bblind && betround > 1 && f$early_postflop == 1 ? 1 : 0
 
 
 
+
+
 ##f$prefold##
  
 
@@ -123,12 +137,16 @@ balance > 25 * bblind && betround > 1 && f$early_postflop == 1 ? 1 : 0
 
 
 
+
+
 ##f$allin_on_betsize_balance_ratio##
 // Allin if betsize is more than X% of our total balance (including currentbet).
 // This affects f$betsize and all f$betpot_X_Y_ functions.
 //  0.00 =  0% = disabled
 //  0.50 = 50%
 0.00
+
+
 
 
 
@@ -162,11 +180,15 @@ nopponentsplaying + 1
 
 
 
+
+
 ##f$prwin_number_of_iterations##
 // "Reasonable" default to get PrWin running for beginners.
 // Large enough to get usable results,
 // small enough to save CPU-time.
 1000
+
+
 
 
 
@@ -189,6 +211,8 @@ nopponentsplaying + 1
 // The sum of all f$icm_prizeX functions should be 1.00 (= 100%).
 // Default to get things going: the winner takes it all.
 1.00
+
+
 
 
 
@@ -231,17 +255,28 @@ AA KK
 
 
 
+
+
 ##f$early_postflop##
 0
 
 
 
+
+
 ##f$early_preflop##
 nopponentstruelyraising > 1 && (hand$AA || hand$KK) ? balance :
-nopponentstruelyraising == 1 && (hand$AA || hand$KK || hand$QQ) ? call * (3 + nopponentscalling) :
+nopponentstruelyraising == 1 && didrais = 0 && (hand$AA || hand$KK || hand$QQ) ? call * (3 + nopponentscalling) :
+
+//All In if raiser behind us
+(didrais > 0 || call > 6 * bblind) && (hand$AA || hand$KK || hand$QQ|| hand$AK) ? balance :
+
+//Open Raise
 call <= bblind && (hand$AA || hand$KK || hand$QQ|| hand$AK) ? (bblind * (4 + nopponentscalling)) :
 
 0
+
+
 
 
 
@@ -294,6 +329,8 @@ nplayersdealt==4 ?  (dealposition==3 ? 4 :
                      dealposition==4 ? 5 : 0):
 
 nplayersdealt==3 ?  (dealposition==3 ? 5 : 0):0
+
+
 
 
 

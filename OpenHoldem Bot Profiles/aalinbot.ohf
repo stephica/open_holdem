@@ -1,4 +1,4 @@
-##2015-04-30 18:47:57##
+##2015-05-05 06:53:36##
 
 ##notes##
  
@@ -7,10 +7,26 @@
  
 
 ##f$alli##
+(didrais >= 0 || call >= bblind) &&
+[
 [listAllIn]
 ||
+[call <= (bblind * 3) && listShortStackAllin && balance < 60 * bblind]
+]? 1 :
 betround >= 2 && [HaveTopPair || HaveTrips || HaveOverPair || HaveTwoPair || HaveFlush || HaveStraight || HaveFullHouse]
-? 1 :1
+? 1 :
+
+
+dealposition = 2 && dealpositionrais = nplayersdealt && call <= 3 * bblind ? 1 :
+
+dealposition = 2 && call < bblind ? 1 : 0
+
+
+
+
+
+
+
 
 
 
@@ -45,7 +61,21 @@ betround >= 2 && [HaveTopPair || HaveTrips || HaveOverPair || HaveTwoPair || Hav
 // Betsize in dollars, raise-to semantics.
 // OpenHoldem will auto-adapt the betsize to the casinos input-requirements.
 // Please define your tablemaps "swagtextmethod" to configure this feature.
-f$rais
+f$rais > 0 ? f$rais : 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -60,10 +90,7 @@ f$rais
 
 
 ##f$rais##
- listAllIn ? (pot + call) * 2.5 : 0
-
-
-
+listShortStackAllin ? bblind * 2 : 0
 
 
 
@@ -76,6 +103,20 @@ f$rais
 ##f$check##
 // Check whenever it is free to call
 (call == 0)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -106,6 +147,20 @@ f$rais
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ##f$sitin##
 1
 
@@ -119,17 +174,43 @@ f$rais
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ##f$sitout##
- 
+ 0
+
+
+
+
 
 ##f$leave##
- 
+0
+
+
+
+
 
 ##f$autopost##
  
 
 ##f$close##
- 
+0
+
+
+
+
 
 ##f$rebuy##
 // f$rebuy should evaluate to the target-amount in dollars.
@@ -149,8 +230,36 @@ f$rais
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ##f$prefold##
- !listAllIn?1:0
+ f$alli?0:1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -183,12 +292,40 @@ f$rais
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ##f$allin_on_betsize_balance_ratio##
 // Allin if betsize is more than X% of our total balance (including currentbet).
 // This affects f$betsize and all f$betpot_X_Y_ functions.
 //  0.00 =  0% = disabled
 //  0.50 = 50%
 0.00
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -238,11 +375,39 @@ nopponentsplaying + 1
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ##f$prwin_number_of_iterations##
 // "Reasonable" default to get PrWin running for beginners.
 // Large enough to get usable results,
 // small enough to save CPU-time.
 1000
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -273,6 +438,20 @@ nopponentsplaying + 1
 // The sum of all f$icm_prizeX functions should be 1.00 (= 100%).
 // Default to get things going: the winner takes it all.
 1.00
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -318,11 +497,21 @@ nopponentsplaying + 1
  
 
 ##listAllIn##
-AA KK QQ
+AA KK QQ JJ TT
+AKs
+AKo
 
 
 
 
+
+
+
+
+##listShortStackAllin##
+AA KK QQ JJ TT 99 88 77 66 55 44 33 22
+AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs QJs JTs
+AKo AQo AJo ATo
 
 
 

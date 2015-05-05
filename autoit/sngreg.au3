@@ -3,7 +3,7 @@
 #include "func_lib.au3"
 #include "config.inc.au3"
 
-Local $y = 243
+Local $y = 223
 Local $entry = 0
 oh_watchdog()
 Sleep(10000)
@@ -11,10 +11,10 @@ start_888()
 Sleep(10000)
 
 
-For $i = 50 To 1 Step -1
+;For $i = 50 To 1 Step -1
 if register_sng() = true Then
    WinWait("SNG")
-   While WinExists("SNG")
+   While 1 = 1
 	  Sleep(3000)
 	  oh_watchdog()
 	  Sleep(3000)
@@ -26,15 +26,18 @@ if register_sng() = true Then
 	  WinActivate("User")
 	  Send("{ENTER}")
    EndIf
-   If WinExists("Message","finished") Then
-	  WinActivate("Message")
-	  Send("{ENTER}")
+   If WinExists("Sit & Go","") Then
+	  WinActivate("Sit & Go")
+	  WinMove("Sit & Go","",0,0)
+	  Sleep(500)
+	  MouseClick("left",144,213,1)
+	  confirm_registration()
 	  WinClose("SNG")
    EndIf
    WEnd
 Sleep(60000)
 EndIf
-Next
+;Next
 
 
 Func start_888()
@@ -54,9 +57,9 @@ Func register_sng()
    Sleep(1500)
    WinActivate("Lobby")
    MouseClick("left",390,$y+$entry,1)
-   Sleep(1500)
+   Sleep(500)
    MouseClick("left",815,605,1)
-   Sleep(1500)
+   Sleep(500)
   WEnd
 Return True
 EndFunc
@@ -65,11 +68,11 @@ Func confirm_registration()
    if WinExists("Tournament Registration: ") Then
 	  WinActivate("Tournament Registration: ")
 	  Send("{Enter}")
-	  Sleep(4000)
-	 if WinExists("Tournament ID :") Then
+	  WinWait("Tournament ID :")
+	  Sleep(500)
+	  if WinExists("Tournament ID :") Then
 		 WinActivate("Tournament ID :")
 		 Send("{Enter}")
-		 Sleep(4000)
 		 Return True
 	  EndIf
    EndIf
