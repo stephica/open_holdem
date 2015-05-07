@@ -1,10 +1,8 @@
 #include <MsgBoxConstants.au3>
-#include <MsgBoxConstants.au3>
 #include "func_lib.au3"
 #include "config.inc.au3"
 
-Local $y = 223
-Local $entry = 0
+
 oh_watchdog()
 Sleep(10000)
 start_888()
@@ -20,16 +18,16 @@ if register_sng() = true Then
 	  Sleep(3000)
    if WinExists("Member Message") Then
 	  WinActivate("Member Message")
-	  Send("{TAB}{TAB}{ENTER}")
+	  Send("{ENTER}")
    EndIf
-    if WinExists("User") Then
+   if WinExists("User") Then
 	  WinActivate("User")
 	  Send("{ENTER}")
    EndIf
    If WinExists("Sit & Go","") Then
 	  WinActivate("Sit & Go")
 	  WinMove("Sit & Go","",0,0)
-	  Sleep(500)
+	  Sleep(1500)
 	  MouseClick("left",144,213,1)
 	  confirm_registration()
 	  WinClose("SNG")
@@ -38,48 +36,6 @@ if register_sng() = true Then
 Sleep(60000)
 EndIf
 ;Next
-
-
-Func start_888()
-   Run($888path)
-   WinWaitActive("Login")
-	  Sleep(500)
-	  Send("{ENTER}")
-	  Sleep(15000)
-   WinActivate("Lobby")
-	  WinMove("Lobby","",0,0)
-EndFunc
-
-Func register_sng()
-   While confirm_registration() <> true
-   WinActivate("Lobby")
-   MouseClick("left",424,153,1)
-   Sleep(1500)
-   WinActivate("Lobby")
-   MouseClick("left",390,$y+$entry,1)
-   Sleep(500)
-   MouseClick("left",815,605,1)
-   Sleep(500)
-  WEnd
-Return True
-EndFunc
-
-Func confirm_registration()
-   if WinExists("Tournament Registration: ") Then
-	  WinActivate("Tournament Registration: ")
-	  Send("{Enter}")
-	  WinWait("Tournament ID :")
-	  Sleep(500)
-	  if WinExists("Tournament ID :") Then
-		 WinActivate("Tournament ID :")
-		 Send("{Enter}")
-		 Return True
-	  EndIf
-   EndIf
-   If WinExists("Registration to tournament ") Then
-	  Return False
-   EndIf
-EndFunc
 
 Func find_oh()
 	  FileChangeDir ( "c:\" )

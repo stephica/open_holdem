@@ -68,15 +68,7 @@ EndIf
 
 EndFunc
 
-Func SpamKiller()
-	WinClose("888poker - Windows Internet Explorer")
-	Sleep(500)
-	WinClose("Cashier")
-	Sleep(500)
-	WinClose("888poker - Windows Internet Explorer")
 
-	Return True
-	EndFunc
 
 Func Sitin()
 	WinActivate($Lobby)

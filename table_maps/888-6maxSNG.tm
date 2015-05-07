@@ -2,7 +2,7 @@
 
 // OpenScrape 7.7.0
 
-// 2015-05-05 03:15:08
+// 2015-05-05 17:18:05
 // 32 bits per pixel
 
 //
@@ -102,8 +102,6 @@ r$i864button         300 264 386 276   6a6a6a    0 N
 r$i864state          308 266 308 272   ffffff    0 C
 r$i865button         418 251 484 258        0    0 N
 r$i865state          416 249 416 249    d84fe    0 C
-r$i866button         127 240 218 255        0    0 N
-r$i866state          162 243 182 253        0    0 I
 r$i8button           203 264 290 275        0    0 N
 r$i8label            228 265 262 272   282828  -95 I
 r$i8state            224 266 243 272   ffffff    0 I
