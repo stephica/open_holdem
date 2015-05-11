@@ -3,39 +3,27 @@
 #include "config.inc.au3"
 
 
-oh_watchdog()
+start_oh_turbo_sng()
 Sleep(10000)
 start_888()
 Sleep(10000)
 
-
-;For $i = 50 To 1 Step -1
-if register_sng() = true Then
-   WinWait("SNG")
-   While 1 = 1
-	  Sleep(3000)
+While 1 = 1
+   While WinExists("SNG","")
 	  oh_watchdog()
-	  Sleep(3000)
-   if WinExists("Member Message") Then
-	  WinActivate("Member Message")
-	  Send("{ENTER}")
-   EndIf
-   if WinExists("User") Then
-	  WinActivate("User")
-	  Send("{ENTER}")
-   EndIf
-   If WinExists("Sit & Go","") Then
-	  WinActivate("Sit & Go")
-	  WinMove("Sit & Go","",0,0)
-	  Sleep(1500)
-	  MouseClick("left",144,213,1)
-	  confirm_registration()
-	  WinClose("SNG")
-   EndIf
+	  Sleep(5000)
    WEnd
-Sleep(60000)
-EndIf
-;Next
+   if $IsRegistered = True Then
+	  WinWait("SNG","",180)
+	  $IsRegistered = False
+   Else
+	  register_sng()
+	  Sleep(1500)
+	  confirm_registration()
+   EndIf
+
+   Sleep(3000)
+WEnd
 
 Func find_oh()
 	  FileChangeDir ( "c:\" )

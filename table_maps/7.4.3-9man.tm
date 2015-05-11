@@ -2,7 +2,7 @@
 
 // OpenScrape 7.7.0
 
-// 2015-04-27 15:16:22
+// 2015-05-07 19:04:56
 // 32 bits per pixel
 
 //
@@ -30,8 +30,7 @@ s$t0type                    fuzzy
 s$t1type                    0.10
 s$t2type                    fuzzy
 s$t3type                    0.20
-s$titletext                 Bonus
-s$titletext0                Bonus
+s$titletext                 9-Handed
 s$titletext1                Copper
 s$titletext2                WHALE
 s$titletext3                Chrome

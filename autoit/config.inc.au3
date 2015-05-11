@@ -15,3 +15,4 @@ Global $watchdog_path = "C:\Documents and Settings\freroller\Desktop\open_holdem
 ;Iron
 Global $tournaments[2][4] = [[2478387292, 3157807, 25, 12] ,[3865244129, 0, 38, 13] ]
 Global $position[8] = [0]
+Global $IsRegistered = False
