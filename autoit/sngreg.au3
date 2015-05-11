@@ -3,7 +3,7 @@
 #include "config.inc.au3"
 
 
-start_oh_turbo_sng()
+start_oh_sng()
 Sleep(10000)
 start_888()
 Sleep(10000)
