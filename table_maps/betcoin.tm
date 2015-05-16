@@ -2,7 +2,7 @@
 
 // OpenScrape 7.7.0
 
-// 2015-04-24 03:41:11
+// 2015-05-12 16:45:27
 // 32 bits per pixel
 
 //
@@ -28,6 +28,7 @@ s$swagselectionmethod       Sng click
 s$swagtextmethod            3
 s$t0type                    0.1
 s$titletext                 Table
+s$titletext0                No Limit
 s$ttlimits                  ^* - ^* - ^L - ^s / ^b ^*
 
 //
@@ -249,6 +250,8 @@ t0$3 21 21 29 3f
 t0$2 21 23 25 39
 t0$7 21 27 3c
 t0$7 21 27 3c 30
+t0$3 21 29 3f
+t0$? 21 29 3f 1e 3f 21 3f
 t0$1 21 3f 1
 t0$a 2 15 15 1f f
 t0$? 2 15 15 1f f e 1b 11 11 11 e 1d 15 15 d 9 15 15 17
@@ -335,6 +338,7 @@ t0$5 79 49 4f 46
 t0$? 79 49 4f 46 30 49 49 6e 3c
 t0$8 7b 49 49 26
 t0$U 7e 1 1 1 7e
+t0$? 7e 1 1 1 7e 40 41 22 1c 1c 22 41
 t0$h 7f 10 10 1f
 t0$L 7f 1 1 1
 t0$K 7f 18 34 63 41
@@ -345,6 +349,7 @@ t0$0 7f 41 63 1e
 t0$p 7f 44 44 6c 38
 t0$? 7f 44 44 6c 38 100 17c
 t0$? 7f 44 44 6c 38 4 10c 114 1e4 4
+t0$F 7f 48 48 48 48
 t0$R 7f 48 4c 73 1
 t0$E 7f 49 49 49 49
 t0$B 7f 49 49 79 26
@@ -374,6 +379,7 @@ t0$o e 1b 11 11 1b e
 t0$d e 1b 11 11 7f
 t0$d e 1b 11 11 ff
 t0$e e 1d 15 15 d
+t0$? e 1d 15 15 d 10 ff 90 10 ff 90 10 7f 11 11 ff 10 10 1f
 t0$6 e 39 29 2f
 t0$0 e 3f 21 3f 1e
 t0$? ff
@@ -381,6 +387,7 @@ t0$h ff 10 10 1f
 t0$b ff 11 11 1b e
 t0$k ff c 12 11
 t0$? ff e 1b 11 11 ff 80
+t0$? ff e 1d 15 15 d
 
 //
 // points

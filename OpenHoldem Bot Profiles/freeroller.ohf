@@ -3163,13 +3163,13 @@ f$latePosition > 0 && listLess25BBLateRaise ? 1: 0
 
 ##f$Less25BBPostFlopAllin##
 //Nach dem Flop
-//In dieser Turnierphase entscheidet sich die Runde meist spätestens am Flop,
-//einfach weil der Pot so groß wird, dass du nicht mehr rauskommst,
+//In dieser Turnierphase entscheidet sich die Runde meist spï¿½testens am Flop,
+//einfach weil der Pot so groï¿½ wird, dass du nicht mehr rauskommst,
 //wenn du dich einmal zum Weiterspielen entschieden hast.
-//Hast du vor dem Flop erhöht und nur einen Gegner, dann setz mit jedem Blatt ungefähr ½ bis 2/3 des Pots.
-//Erhöht dein Gegner, dann geh mit jedem Toppaar und besser oder einem Flushdraw All-In.
+//Hast du vor dem Flop erhï¿½ht und nur einen Gegner, dann setz mit jedem Blatt ungefï¿½hr ï¿½ bis 2/3 des Pots.
+//Erhï¿½ht dein Gegner, dann geh mit jedem Toppaar und besser oder einem Flushdraw All-In.
 //Das gilt auch, wenn du nichts getroffen hast,
-//aber deine beiden Startkarten höher sind als jede Gemeinschaftskarte (Overcards).
+//aber deine beiden Startkarten hï¿½her sind als jede Gemeinschaftskarte (Overcards).
 
 [balance < (25*bblind)
 && betround == 2

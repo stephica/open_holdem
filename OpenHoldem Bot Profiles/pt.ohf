@@ -1,0 +1,310 @@
+##2015-05-11 22:01:20##
+
+##notes##
+ 
+
+##dll##
+ 
+
+##f$alli##
+ 
+
+##f$betpot_2_1##
+ 
+
+##f$betpot_1_1##
+ 
+
+##f$betpot_3_4##
+ 
+
+##f$betpot_2_3##
+ 
+
+##f$betpot_1_2##
+ 
+
+##f$betpot_1_3##
+ 
+
+##f$betpot_1_4##
+ 
+
+##f$betsize##
+// Betsize in dollars, raise-to semantics.
+// OpenHoldem will auto-adapt the betsize to the casinos input-requirements.
+// Please define your tablemaps "swagtextmethod" to configure this feature.
+f$rais > 0 ? f$rais : 0
+
+
+
+
+
+
+
+
+
+##f$rais##
+f$3bet_raiser > 1 ? f$3bet_raiser :
+f$catch_aggro_steal_raiser_on_turn > 1 ? f$catch_aggro_steal_raiser_on_turn :
+f$flop_folder > 1 ? f$flop_folder : 0
+
+
+
+
+
+
+
+##f$call##
+f$catch_aggro_steal_raiser_on_turn = 1 ? 1 : 0
+
+
+
+
+
+
+##f$check##
+// Check whenever it is free to call
+(call == 0)
+
+
+
+
+
+
+
+
+
+##f$fold##
+// f$fold should alwazs evaluate to true per default
+// for auto-check-folding instead of time-outs.
+1
+
+
+
+
+
+
+
+
+
+##f$sitin##
+ 1
+
+##f$sitout##
+ 
+
+##f$leave##
+ 
+
+##f$autopost##
+ 
+
+##f$close##
+ 
+
+##f$rebuy##
+// f$rebuy should evaluate to the target-amount in dollars.
+// This value will be passed to the rebuy-script as a parameter.
+0
+
+
+
+
+
+
+
+
+
+
+##f$prefold##
+ 
+
+##f$chat##
+ 
+
+##f$delay##
+// Autoplayer-delay in milli-seconds
+0
+
+
+
+
+
+
+
+
+
+
+##f$allin_on_betsize_balance_ratio##
+// Allin if betsize is more than X% of our total balance (including currentbet).
+// This affects f$betsize and all f$betpot_X_Y_ functions.
+//  0.00 =  0% = disabled
+//  0.50 = 50%
+0.00
+
+
+
+
+
+
+
+
+
+
+##f$ini_function_on_startup##
+ 
+
+##f$ini_function_on_connection##
+ 
+
+##f$ini_function_on_handreset##
+ 
+
+##f$ini_function_on_new_round##
+ 
+
+##f$ini_function_on_my_turn##
+ 
+
+##f$ini_function_on_heartbeat##
+ 
+
+##f$prwin_number_of_opponents##
+// "Reasonable" default to get standard PrWin running for beginners,
+// Works even with "no opponents".
+nopponentsplaying + 1
+
+
+
+
+
+
+
+
+
+##f$prwin_number_of_iterations##
+// "Reasonable" default to get PrWin running for beginners.
+// Large enough to get usable results,
+// small enough to save CPU-time.
+1000
+
+
+
+
+
+
+
+
+
+##f$prwin_topclip##
+ 
+
+##f$prwin_mustplay##
+ 
+
+##f$prwin_willplay##
+ 
+
+##f$prwin_wontplay##
+ 
+
+##f$icm_prize1##
+// f$icm_prizeX functions are used to configure the payout-structure in tournaments.
+// The sum of all f$icm_prizeX functions should be 1.00 (= 100%).
+// Default to get things going: the winner takes it all.
+1.00
+
+
+
+
+
+
+
+
+
+
+##f$icm_prize2##
+ 
+
+##f$icm_prize3##
+ 
+
+##f$icm_prize4##
+ 
+
+##f$icm_prize5##
+ 
+
+##f$icm_prize6##
+ 
+
+##f$icm_prize7##
+ 
+
+##f$icm_prize8##
+ 
+
+##f$icm_prize9##
+ 
+
+##f$test##
+ 
+
+##f$debug##
+ 
+
+##listRaiseAllin##
+AA KK QQ JJ TT
+AKs
+AKo
+
+
+
+
+##f$3bet_raiser##
+ nopponentstruelyraising = 1 && betround =1 && pt_fold_to_3bet_raischair > 0.5 ? call * 3 : 0
+
+
+
+
+
+
+
+
+
+##f$catch_aggro_steal_raiser_on_turn##
+betround = 1 && dealpositionrais = nplayersdealt && dealposition = 2 && f$raiser_is_lag ? 1 :
+betround = 2 && didcallround1 && f$raiser_is_lag ? 1 :
+betround = 4 && didchecround3 && didcallround1 && didcallround2 && f$raiser_is_lag ? pot / 3 * 2 : 0
+
+
+
+##f$flop_folder##
+//Flop 1 opponent with high fold to flop cbet lets raise
+(nopponentsplaying == 1 && betround == 2 &&  call <= bblind )&&
+(pt_flop_fold_to_cbet1 > 50 && userchair != 1
+|| pt_flop_fold_to_cbet2 > 50 && userchair != 2
+|| pt_flop_fold_to_cbet3 > 50 && userchair != 3
+|| pt_flop_fold_to_cbet4 > 50 && userchair != 4
+|| pt_flop_fold_to_cbet5 > 50 && userchair != 5
+|| pt_flop_fold_to_cbet6 > 50 && userchair != 6) ? pot / 3 * 2 : 0
+
+
+
+##f$prelop_raise_allin##
+betround = 1 && (didrais >= 1 || call > bblind) && listRaiseAllin ? balance : 0
+
+
+
+##f$raiser_is_lag##
+pt_pfr_raischair > 0.2 ? 1 : 0
+
+
+
+
+
+
+
+
+
