@@ -32,7 +32,7 @@ Func start_oh_turbo_sng()
 EndFunc
 Func start_oh_sng()
    Run($ohpath)
-   Sleep(2000)
+   Sleep(5000)
    Send("{CTRLDOWN}o{CTRLUP}")
    WinWait("Select Formula file to OPEN","")
    Send("sng.ohf{ENTER}")
@@ -76,7 +76,7 @@ Func register_sng()
 	  MouseClick("left",390,225,1)
 	  Sleep(500)
 	  MouseClick("left",815,605,1)
-	  Sleep(500)
+	  Sleep(1500)
 	  confirm_registration()
 EndFunc
 
@@ -84,7 +84,7 @@ Func confirm_registration()
    if WinExists("Tournament Registration: ") Then
 	  WinActivate("Tournament Registration: ")
 	  Send("{Enter}")
-	 Sleep(500)
+	 Sleep(1500)
 	 if WinExists("Tournament ID :") Then
 		 WinActivate("Tournament ID :")
 		 Send("{Enter}")
