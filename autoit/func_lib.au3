@@ -76,7 +76,7 @@ Func register_sng()
 	  MouseClick("left",390,225,1)
 	  Sleep(500)
 	  MouseClick("left",815,605,1)
-	  Sleep(1500)
+	  Sleep(2500)
 	  confirm_registration()
 EndFunc
 
@@ -84,7 +84,7 @@ Func confirm_registration()
    if WinExists("Tournament Registration: ") Then
 	  WinActivate("Tournament Registration: ")
 	  Send("{Enter}")
-	 Sleep(1500)
+	 Sleep(5000)
 	 if WinExists("Tournament ID :") Then
 		 WinActivate("Tournament ID :")
 		 Send("{Enter}")
