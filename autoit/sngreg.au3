@@ -9,19 +9,18 @@ start_888()
 Sleep(10000)
 
 While 1 = 1
-   While WinExists("SNG","")
-	  oh_watchdog()
-	  Sleep(5000)
-   WEnd
    if $IsRegistered = True Then
-	  WinWait("SNG","",180)
+	  WinWait("SNG","",300)
 	  $IsRegistered = False
    Else
 	  register_sng()
 	  Sleep(1500)
 	  confirm_registration()
    EndIf
-
+   While WinExists("SNG","")
+	  oh_watchdog()
+	  Sleep(5000)
+   WEnd
    Sleep(3000)
 WEnd
 
