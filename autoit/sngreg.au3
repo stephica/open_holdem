@@ -20,6 +20,17 @@ While 1 = 1
    While WinExists("SNG","")
 	  oh_watchdog()
 	  Sleep(5000)
+	  if WinExists("Member Message") Then
+		 Sleep(5000)
+		 if WinExists("Member Message") Then
+			WinActivate("Member Message")
+			Sleep(1500)
+			Send("{TAB}")
+			Send("{TAB}")
+			Send("{ENTER}")
+			WinClose("SNG")
+		 EndIf
+	  EndIf
    WEnd
    Sleep(3000)
 WEnd
