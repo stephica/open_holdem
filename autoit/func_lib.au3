@@ -84,12 +84,12 @@ Func confirm_registration()
    if WinExists("Tournament Registration: ") Then
 	  WinActivate("Tournament Registration: ")
 	  Send("{Enter}")
-	 Sleep(2000)
+	 Sleep(4000)
 	 if WinExists("Tournament ID :") Then
 		 WinActivate("Tournament ID :")
-		 Sleep(1000)
+		 Sleep(3000)
 		 Send("{Enter}")
-		 Sleep(1000)
+		 Sleep(2000)
 		 $IsRegistered = True
 	  ElseIf WinExists("Registration to") Then
 		 WinActivate("Registration to")
