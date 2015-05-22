@@ -65,6 +65,11 @@ Func spam_killer()
 	WinClose("Cashier")
 	Sleep(500)
 	WinClose("888poker - Windows Internet Explorer")
+	if WinExists("User Message") Then
+		 WinActivate("User Message")
+		 Sleep(500)
+		 Send("{ENTER}")
+   EndIf
 	Return True
 EndFunc
 
@@ -73,7 +78,7 @@ Func register_sng()
 	  MouseClick("left",424,153,1)
 	  Sleep(500)
 	  WinActivate("Lobby")
-	  MouseClick("left",390,235,1)
+	  MouseClick("left",390,245,1)
 	  Sleep(500)
 	  MouseClick("left",815,605,1)
 	  Sleep(2500)

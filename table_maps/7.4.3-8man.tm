@@ -2,7 +2,7 @@
 
 // OpenScrape 7.7.0
 
-// 2015-04-13 20:11:29
+// 2015-05-22 18:37:22
 // 32 bits per pixel
 
 //
@@ -31,6 +31,7 @@ s$t1type                    0.10
 s$t2type                    fuzzy
 s$t3type                    0.20
 s$titletext                 40-Seats
+s$titletext0                DoN
 s$ttlimits                  ^* ^LH ^s/^b
 s$ttlimits0                 ^* ^L^*s: ^s/^b(^a)
 s$ttlimits1                 ^* ^* ^L^*H ^s/^b
@@ -236,7 +237,7 @@ r$u3active           396 226 396 226   e6e6e6    0 C
 r$u3balance          292 231 356 241    1dcfc  220 T3
 r$u3name             292 222 356 231   ffffff    1 T1
 r$u4active           285 238 285 238   e5e5e5    1 C
-r$u4balance          218 232 282 242    1dcfc  220 T3
+r$u4balance          145 232 209 242    1dcfc  220 T3
 r$u4name             218 222 282 231   ffffff    1 T1
 r$u5active           174 229 174 229   e9e9e9    1 C
 r$u5balance          107 232 171 242    1dcfc  220 T3

@@ -30,13 +30,14 @@ While 1 = 1
 			Send("{ENTER}")
 			if WinExists("User Message") Then
 			   WinActivate("User Message")
-			   Sleep(1500)
+			   Sleep(500)
 			   Send("{ENTER}")
-			   EndIf
+			EndIf
 			WinClose("SNG")
 		 EndIf
 	  EndIf
    WEnd
+   spam_killer()
    Sleep(3000)
 WEnd
 

@@ -2,7 +2,7 @@
 
 // OpenScrape 7.7.0
 
-// 2015-05-21 21:08:22
+// 2015-05-22 18:56:43
 // 32 bits per pixel
 
 //
@@ -32,9 +32,10 @@ s$t3type                    0.20
 s$titletext                 6-Handed
 s$titletext0                Snap
 s$titletext1                Astana
+s$titletext2                Caruaru
 s$titletext3                Arlington
 s$titletext4                Santiago
-s$titletext5                NLH
+s$titletext5                6 Handed
 s$titletext6                FLH
 s$ttlimits                  ^* ^LH ^*Blinds^* ^s/^b
 s$ttlimits0                 ^* ^L^*s: ^s/^b(^a)
