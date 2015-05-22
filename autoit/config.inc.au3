@@ -9,6 +9,8 @@ If FileExists("C:\Dokumente und Einstellungen\Administrator\Desktop\oh\OpenHolde
    Local $ohpath = "C:\Dokumente und Einstellungen\Administrator\Desktop\oh\OpenHoldem.exe"
 ElseIf FileExists("D:\oh\OpenHoldem.exe") Then
    Local $ohpath = "D:\oh\OpenHoldem.exe"
+ElseIf FileExists("C:\Documents and Settings\freroller\Desktop\OpenHoldem_7.7.3\OpenHoldem.exe") Then
+   Local $ohpath = "C:\Documents and Settings\freroller\Desktop\OpenHoldem_7.7.3\OpenHoldem.exe"
 EndIf
 
 Global $watchdog_path = "C:\Documents and Settings\freroller\Desktop\open_holdem\autoit\watchdog.au3"

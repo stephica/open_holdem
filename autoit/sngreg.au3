@@ -14,7 +14,7 @@ While 1 = 1
 	  $IsRegistered = False
    Else
 	  register_sng()
-	  Sleep(1500)
+	  Sleep(500)
 	  confirm_registration()
    EndIf
    While WinExists("SNG","")
@@ -29,6 +29,13 @@ While 1 = 1
 			Send("{TAB}")
 			Send("{ENTER}")
 			WinClose("SNG")
+			if WinExists("User Message") Then
+			   WinActivate("User Message")
+			   Sleep(1500)
+			   Send("{TAB}")
+			   Send("{TAB}")
+			   Send("{ENTER}")
+			EndIf
 		 EndIf
 	  EndIf
    WEnd
