@@ -2,7 +2,7 @@
 
 // OpenScrape 7.7.0
 
-// 2015-05-24 17:49:19
+// 2015-05-24 22:27:16
 // 32 bits per pixel
 
 //
@@ -36,7 +36,6 @@ s$titletext2                Caruaru
 s$titletext3                Arlington
 s$titletext4                Santiago
 s$titletext5                6 Handed
-s$titletext6                NLH
 s$ttlimits                  ^* ^LH ^*Blinds^* ^s/^b
 s$ttlimits0                 ^* ^L^*s: ^s/^b(^a)
 s$ttlimits1                 ^* ^* ^L^*H ^s/^b
