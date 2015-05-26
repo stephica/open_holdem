@@ -2,7 +2,7 @@
 
 // OpenScrape 7.7.0
 
-// 2015-05-20 19:54:26
+// 2015-05-25 15:24:40
 // 32 bits per pixel
 
 //
@@ -74,6 +74,8 @@ r$i4label            358 464 391 478        0    0 I
 r$i4state            358 465 366 478        0    0 I
 r$i860button         372 544 436 563        0    0 N
 r$i860state          380 554 386 559        0    0 I
+r$i861button         372 538 436 557        0    0 N
+r$i861state          378 544 384 549        0    0 I
 r$p0active           609  37 613  54   1a16ad  -10 C
 r$p0balance          582  46 642  56 ffffffff    0 T0
 r$p0bet              584 138 641 149 ffffffff    1 T1
@@ -402,6 +404,13 @@ ccccccffccccccffccccccffccccccffccccccffccccccffccccccff
 ccccccffccccccffccccccffccccccffccccccffccccccffccccccff
 ccccccffccccccffccccccffccccccffccccccffccccccffccccccff
 ccccccffccccccffccccccffccccccffccccccffccccccffccccccff
+i$false            7   6  
+3232320091919100ccccccffccccccffccccccffccccccffccccccff
+74747400ccccccffccccccffccccccffccccccffccccccffccccccff
+ccccccffccccccffccccccffccccccffccccccffccccccffccccccff
+ccccccffccccccffccccccffccccccffccccccffccccccffccccccff
+ccccccffccccccffccccccffccccccffccccccffccccccffccccccff
+ccccccffccccccffccccccffccccccffccccccffccccccffccccccff
 i$raise            46  12 
 ececec00ebebeb00ebebeb007474740072727200707070006e6e6e006c6c6c006c6c6c006d6d6d007f7f7f00afafaf00e8e8e800e8e8e800e8e8e800e7e7e700e7e7e700e7e7e700e7e7e700e6e6e600e6e6e600e6e6e600e5e5e500e5e5e5004b4b4b0049494900e4e4e400e4e4e400e4e4e400e3e3e300e3e3e300e3e3e300e3e3e300e2e2e200e2e2e200e2e2e200e2e2e200e1e1e100e1e1e100e1e1e100e0e0e000e0e0e000e0e0e000e0e0e000dfdfdf00dfdfdf00
 eeeeee00eeeeee00ededed007474740072727200707070006e6e6e006c6c6c006a6a6a00686868006666660064646400aeaeae00eaeaea00eaeaea00eaeaea00eaeaea00eaeaea00e9e9e900e9e9e900e9e9e900e8e8e800e8e8e800e8e8e8004b4b4b0049494900e7e7e700e7e7e700e7e7e700e6e6e600e6e6e600e6e6e600e6e6e600e5e5e500e5e5e500e5e5e500e5e5e500e4e4e400e4e4e400e4e4e400e4e4e400e3e3e300e3e3e300e3e3e300e3e3e300e2e2e200
@@ -545,6 +554,13 @@ e8e8e800e8e8e800e7e7e700e7e7e700e7e7e700e6e6e600e6e6e600
 ebebeb00eaeaea00eaeaea00e9e9e900e9e9e900e9e9e900e9e9e900
 ededed00ececec00ececec00ececec00ececec00ebebeb00ebebeb00
 efefef00efefef00efefef00eeeeee00eeeeee00eeeeee00ededed00
+i$true             7   6  
+7b7b7b007c7c7c009d9d9d00e4e4e400eeeeee00717171006f6f6f00
+f1f1f100bababa00767676009d9d9d00f1f1f100717171006f6f6f00
+f3f3f300f1f1f1007676760078787800f3f3f300717171006f6f6f00
+f0f0f000ececec003d3d3d0042424200efefef003b3b3b003a3a3a00
+ededed007f7f7f00060606005a5a5a00efefef000707070007070700
+09090900121212005b5b5b00e2e2e200f1f1f1000707070007070700
 i$fold0            32  12 
 6c6c6c006a6a6a0068686800676767006464640063636300616161005e5e5e00ecc4a400ecc3a200ebc2a100ebc2a000ebc19f00ebc09e00ebc09d00eabf9c00eabe9a00eabd9900eabd9800e9bc97004545450043434300e9ba9400e8b99300e8b99200e8b89000e8b79000e8b68f00e7b58d00e7b58c003232320030303000
 6c6c6c006a6a6a0068686800666666006464640062626200606060005e5e5e00edc5a400edc4a300edc4a300ecc3a100ecc2a000ecc29f00ecc19e00ecc09d00ebbf9c00ebbf9b00ebbe9a00ebbd99004545450043434300eabb9500eaba9400eaba9300e9b99200e9b89100e9b89000e9b78f00e9b68d003131310030303000

@@ -1,4 +1,4 @@
-##2015-05-11 03:02:35##
+##2015-05-26 11:32:34##
 
 ##notes##
  
@@ -7,19 +7,9 @@
  
 
 ##f$alli##
-(didrais >= 0 || call >= bblind) &&
-[
-[listAllIn]
-||
-[call <= (bblind * 3) && listShortStackAllin && balance < 60 * bblind]
-]? 1 :
-betround >= 2 && [HaveTopPair || HaveTrips || HaveOverPair || HaveTwoPair || HaveFlush || HaveStraight || HaveFullHouse]
-? 1 :
+(didrais > 0 || call >= bblind) && [listAllIn]? 1 :
 
-
-dealposition = 2 && dealpositionrais = nplayersdealt && call <= 3 * bblind ? 1 :
-
-dealposition = 2 && call < bblind ? 1 : 0
+betround >= 2 && [HaveTopPair || HaveTrips || HaveOverPair || HaveTwoPair || HaveFlush || HaveStraight || HaveFullHouse]? 1 : 0
 
 
 
@@ -93,8 +83,12 @@ f$rais > 0 ? f$rais : 0
 
 
 
+
+
 ##f$rais##
-listShortStackAllin ? bblind * 4 : 0
+listAllIn ? bblind * 6 : 0
+
+
 
 
 
@@ -109,6 +103,8 @@ listShortStackAllin ? bblind * 4 : 0
 ##f$check##
 // Check whenever it is free to call
 (call == 0)
+
+
 
 
 
@@ -171,8 +167,12 @@ listShortStackAllin ? bblind * 4 : 0
 
 
 
+
+
 ##f$sitin##
 1
+
+
 
 
 
@@ -209,8 +209,12 @@ listShortStackAllin ? bblind * 4 : 0
 
 
 
+
+
 ##f$leave##
 0
+
+
 
 
 
@@ -223,6 +227,8 @@ listShortStackAllin ? bblind * 4 : 0
 
 ##f$close##
 0
+
+
 
 
 
@@ -264,8 +270,12 @@ listShortStackAllin ? bblind * 4 : 0
 
 
 
+
+
 ##f$prefold##
- f$alli?0:1
+!listAllIn
+
+
 
 
 
@@ -330,12 +340,16 @@ listShortStackAllin ? bblind * 4 : 0
 
 
 
+
+
 ##f$allin_on_betsize_balance_ratio##
 // Allin if betsize is more than X% of our total balance (including currentbet).
 // This affects f$betsize and all f$betpot_X_Y_ functions.
 //  0.00 =  0% = disabled
 //  0.50 = 50%
 0.00
+
+
 
 
 
@@ -417,11 +431,15 @@ nopponentsplaying + 1
 
 
 
+
+
 ##f$prwin_number_of_iterations##
 // "Reasonable" default to get PrWin running for beginners.
 // Large enough to get usable results,
 // small enough to save CPU-time.
 1000
+
+
 
 
 
@@ -498,6 +516,8 @@ nopponentsplaying + 1
 
 
 
+
+
 ##f$icm_prize2##
  
 
@@ -542,10 +562,55 @@ AKo
 
 
 
+
+
+##listAllInBB##
+
+##listAllInBTN##
+AA KK QQ JJ TT 
+AKs 
+AKo 
+
+
+##listAllInEP##
+AA KK QQ
+
+
+
+
+
+
+
+
+
+
+
+
+
+##listAllInLP##
+AA KK QQ JJ 
+AKs 
+AKo 
+
+
+##listAllInMP##
+AA KK QQ 
+AKs 
+AKo 
+
+
+##listAllInSB##
+AA KK QQ JJ TT 
+AKs 
+AKo 
+
+
 ##listShortStackAllin##
 AA KK QQ JJ TT 99 88 77 66 55 44 33 22
 AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs QJs JTs
 AKo AQo AJo ATo
+
+
 
 
 
