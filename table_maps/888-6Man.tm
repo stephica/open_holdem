@@ -2,7 +2,7 @@
 
 // OpenScrape 7.7.0
 
-// 2015-05-28 12:49:46
+// 2015-06-02 07:44:44
 // 32 bits per pixel
 
 //
@@ -15,6 +15,7 @@ z$clientsize       489  328
 // strings
 //
 
+s$allinconfirmationmethod   Click Bet
 s$balancenumbersonly        True
 s$nchairs                   6
 s$network                   pacific
@@ -64,11 +65,11 @@ r$i1state            337 281 353 281     e57e   60 C
 r$i2button           395 263 483 282        0    0 N
 r$i2label            412 279 453 280   2ebd66   60 I
 r$i2state            440 280 453 280    77ef9   60 C
-r$i3button           395 264 478 280        0    0 N
+r$i3button           438 287 471 295        0    0 N
 r$i3edit             440 300 479 309        0    0 N
 r$i3handle           317 300 319 306        0    0 I
 r$i3label            438 287 469 294     7efe    0 I
-r$i3slider           317 300 419 306        0    0 N
+r$i3slider           317 300 417 306        0    0 N
 r$i3state            318 302 318 302   f8a932   60 C
 r$i4button           302 264 387 281        0    0 N
 r$i4label            327 265 355 273   2ebd66   60 I
