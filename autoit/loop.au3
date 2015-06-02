@@ -5,35 +5,31 @@
 Global $IsRegistered = False
 Global $IsPlaying = False
 
-start_oh_turbo_sng()
-Run($watchdog_path)
-start_888()
-spam_killer()
-register_sng()
+;start_oh_turbo_sng()
+;Run($watchdog_path)
+;start_888()
+;spam_killer()
+;register_sng()
 
 While 0 <> 1
-   Sleep(30000)
-   if WinExists("SNG NLH", "") Then
-	  $IsPlaying = True
-   EndIf
-
    if WinExists("User Message") Then
-	 WinActivate("User Message")
-	 Send("{Enter}")
-  EndIf
+	  WinActivate("User Message")
+	  Sleep(500)
+	  Send("{ENTER}")
+   EndIf
 
    if WinExists("Member Message") Then
 	  Sleep(5000); giving OH time to close the window if it isnt the finished message
 	  if WinExists("Member Message") Then
 		 WinActivate("Member Message")
-		 Send("{Tab}{Enter}")
+		 MouseClick("Left",163,269,1)
 		 Sleep(1000)
 		 WinClose("SNG NLH","")
-		 $IsPlaying = False
-		 $IsRegistered = False
+		 WinWait("Sit & Go")
+		 WinMove("Sit & Go",0,0)
+		 MouseClick("Left",821,22,1)
+		 Sleep(1000)
+		 confirm_registration()
 	  EndIf
-   EndIf
-   If $IsRegistered = False Then
-	  $IsRegistered = register_sng()
    EndIf
 WEnd
