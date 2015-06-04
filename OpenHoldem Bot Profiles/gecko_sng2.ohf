@@ -1,4 +1,4 @@
-##2015-06-04 08:23:11##
+##2015-06-04 09:17:09##
 
 ##notes##
  
@@ -48038,6 +48038,23 @@ call == 0
 
 
 
+##f$float_board##
+[
+	rankhicommon < 11 
+	||
+	nstraightcommon == 3
+	||
+	[ nrankedcommon == 2 && rankhicommon < 11 ]
+	||
+	nsuitedcommon == 3
+]
+
+##f$float_call_cbet##
+
+##f$float_call_flop_cbet##
+
+##f$float_flop_call_cbet##
+
 ##f$flop_call##
 [ f$Odds_and_Outs          ] ? 1 :
 
@@ -63166,7 +63183,7 @@ f$sng_river_call
 		||
 
 		[
-			didrais > 0
+			f$did_raise_round_1 
 			&& call < balance / 12
 			&& prwin > 0.4
 		]
