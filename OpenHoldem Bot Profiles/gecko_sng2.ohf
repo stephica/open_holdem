@@ -1,4 +1,4 @@
-##2015-06-04 04:59:53##
+##2015-06-04 05:34:12##
 
 ##notes##
  
@@ -52719,6 +52719,12 @@ nopponentsdealt==1 && { 0
 	[
 		f$opponent_has_hit
 	]
+
+	||
+
+	[
+		f$opponent_takes_over
+	]
 ]? 0 : 1
 
 
@@ -62225,6 +62231,7 @@ f$sng_river_call
 
 	[ prtie >= 0.7  ]
 ]
+
 ? 1 : 0
 
 
@@ -62278,6 +62285,14 @@ f$sng_river_call
 
 		[
 			f$top_pair_top_kicker_or_more
+		]
+	
+		||
+
+		[
+			didrais > 0 
+			&& call < balance / 12
+			&& prwin > 0.4
 		]
 	]
 ]
@@ -62361,7 +62376,7 @@ rankhicommon < 11
 (call == 0 && f$top_pair_top_kicker_or_more && f$opponent_is_drawing) ? pot / 3 * 5 :
 
 //1 raiser
-f$top_pair_top_kicker_or_more  && (didrais == 0 && (nopponentsbetting  + nopponentstruelyraising) >= 1) ? call * 3 :
+f$top_pair_top_kicker_or_more  && f$is_betting_safe && (didrais == 0 && (nopponentsbetting  + nopponentstruelyraising) >= 1) ? call * 3 :
 
 //Continuation bet
 didraisround1 > 0 && ac_first_into_pot && f$sng_flop_cbet > 0 ? pot / 3 * 2 :
@@ -62648,9 +62663,9 @@ ac_first_into_pot
 betround == 1 && f$sng_preflop_raise	> 0 ? 1 :
 betround == 1 && f$steal_blinds && bblind > 50 && [ MaxStillToActStackSize < 20 || f$balance_in_bb < 20 ] ? 1 :
 betround == 1 && f$steal_blinds_when_sitting_out ? 1 :
-betround == 2 && f$sng_flop_raise > 0 && f$is_betting_safe ? 1 :
-betround == 3 && f$sng_turn_raise > 0 && f$is_betting_safe ? 1 :
-betround == 4 && f$sng_river_raise > 0 && f$is_betting_safe ? 1 : 0
+betround == 2 && f$sng_flop_raise > 0  ? 1 :
+betround == 3 && f$sng_turn_raise > 0  ? 1 :
+betround == 4 && f$sng_river_raise > 0 ? 1 : 0
 
 
 
@@ -62727,7 +62742,7 @@ betround == 4 && f$sng_river_raise > 0 && f$is_betting_safe ? 1 : 0
 (f$top_pair_top_kicker_or_more) && call <= bblind ? pot / 3 * 2 :
 
 //1 raiser
-f$top_pair_top_kicker_or_more && !f$opponent_takes_over && (didrais = 0 && (nopponentsbetting || nopponentstruelyraising) = 1) ? call * 3 :
+f$top_pair_top_kicker_or_more &&  f$is_betting_safe  && !f$opponent_takes_over && (didrais = 0 && (nopponentsbetting || nopponentstruelyraising) = 1) ? call * 3 :
 //2 raiser or reraise
 f$top_pair_top_kicker_or_more && !f$opponent_takes_over && ((nopponentsbetting + nopponentstruelyraising) >= 1 || didrais >=1) ? balance :
 //2 raiser or reraise
@@ -62819,9 +62834,9 @@ didraisround1 && didraisround2 && didchecround3 && f$top_pair_or_more && ac_firs
 (HaveFlushDraw || HaveStraightDraw) && HavePair && call = 0 ? pot / 3 * 2:
 
 //1 raiser
-f$top_pair_top_kicker_or_more && !f$opponent_takes_over && (didrais = 0 && (nopponentsbetting || nopponentstruelyraising) = 1) ? (call * 3) :
+f$top_pair_top_kicker_or_more && f$is_betting_safe && !f$opponent_takes_over && (didrais = 0 && (nopponentsbetting || nopponentstruelyraising) = 1) ? (call * 3) :
 //2 raiser or reraise
-f$top_pair_top_kicker_or_more  && !f$opponent_takes_over && ((nopponentsbetting || nopponentstruelyraising) >= 1 || didrais >=1) ? balance : 0
+f$top_pair_top_kicker_or_more && f$is_betting_safe  && !f$opponent_takes_over && ((nopponentsbetting || nopponentstruelyraising) >= 1 || didrais >=1) ? balance : 0
 
 
 
