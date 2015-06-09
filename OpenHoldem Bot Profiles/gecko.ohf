@@ -1,4 +1,4 @@
-##2015-06-09 18:39:54##
+##2015-06-09 19:27:16##
 
 ##notes##
  
@@ -40,7 +40,7 @@
 
 
 //[ nopponentsdealt > 1	&& f$sng_raise > 0 && f$sng_betsize > 0 ] ? f$sng_betsize :
-
+f$resteal_blinds > 0 ? call * 3 :
 betround == 1 && f$rais > 0 && f$Betsize_Gecko < 3 * bblind ? bblind * (3 + nopponentscalling):
 
 //nopponentsdealt > 1 && betround >= 2 && f$rais > 0 && f$Betsize_Gecko <= bblind && call > 0 ? call * 3  :
@@ -288,6 +288,8 @@ f$Betsize_Gecko > 0 ? f$Betsize_Gecko :
 
 
 
+
+
 ##f$rais##
 //[ nopponentsdealt == 1 && f$headsup_rai > 0 ] ? 1 :
 
@@ -297,10 +299,13 @@ f$Betsize_Gecko > 0 ? f$Betsize_Gecko :
 
 
 [ f$steal_blinds ] ? 1 :
+[ f$resteal_blinds ] ? 1 :
 
 
 [ betround == 1 && f$steal_blinds_when_sitting_out ]? 1 :
 0
+
+
 
 
 
@@ -797,10 +802,14 @@ f$Betsize_Gecko > 0 ? f$Betsize_Gecko :
 
 
 
+
+
 ##f$check##
 // f$check and f$fold should evaluate to true per default
 // for auto-check-folding instead of time-outs.
 1
+
+
 
 
 
@@ -1327,8 +1336,12 @@ f$Betsize_Gecko > 0 ? f$Betsize_Gecko :
 
 
 
+
+
 ##f$sitin##
 1
+
+
 
 
 
@@ -1739,8 +1752,12 @@ f$Betsize_Gecko > 0 ? f$Betsize_Gecko :
 
 
 
+
+
 ##f$leave##
 0
+
+
 
 
 
@@ -2169,8 +2186,12 @@ f$Betsize_Gecko > 0 ? f$Betsize_Gecko :
 
 
 
+
+
 ##f$close##
 0
+
+
 
 
 
@@ -2370,6 +2391,8 @@ f$Betsize_Gecko > 0 ? f$Betsize_Gecko :
 // f$rebuy should evaluate to the target-amount in dollars.
 // This value will be passed to the rebuy-script as a parameter.
 0
+
+
 
 
 
@@ -2897,8 +2920,12 @@ f$dealposition==4 && !list_dont_prefold ? 1 :
 
 
 
+
+
 ##f$chat##
 0
+
+
 
 
 
@@ -3173,12 +3200,16 @@ random * 1500
 
 
 
+
+
 ##f$allin_on_betsize_balance_ratio##
 // Allin if betsize is more than X% of our total balance (including currentbet).
 // This affects f$betsize and all f$betpot_X_Y_ functions.
 //  0.00 =  0% = disabled
 //  0.50 = 50%
 0.8
+
+
 
 
 
@@ -3752,8 +3783,12 @@ nopponentscalling+nopponentstruelyraising+nopponentschecking*floppct+0.49
 
 
 
+
+
 ##f$prwin_number_of_iterations##
 1000
+
+
 
 
 
@@ -4068,6 +4103,8 @@ hi_nopponentstruelyraising1 = 0 ? 169 * tablepfr :
 
 
 
+
+
 ##f$prwin_mustplay##
  
 
@@ -4075,6 +4112,8 @@ hi_nopponentstruelyraising1 = 0 ? 169 * tablepfr :
 f$prwin_calc_willplay > 0 ? f$prwin_calc_willplay :
 f$prwin_calc_willplay_headsup > 0 ? f$prwin_calc_willplay_headsup
 : handsplayed<10?72:(180*floppct)>(nopponentsplaying*2+1)?180*floppct:nopponentsplaying*2+1
+
+
 
 
 
@@ -4171,11 +4210,15 @@ f$prwin_willplay * 1.4
 
 
 
+
+
 ##f$icm_prize1##
 // f$icm_prizeX functions are used to configure the payout-structure in tournaments.
 // The sum of all f$icm_prizeX functions should be 1.00 (= 100%).
 // Default to get things going: the winner takes it all.
 1.0
+
+
 
 
 
@@ -4536,8 +4579,12 @@ f$prwin_willplay * 1.4
 
 
 
+
+
 ##f$icm_prize3##
 0.0
+
+
 
 
 
@@ -4658,6 +4705,8 @@ f$prwin_willplay * 1.4
 AA KK QQ JJ TT 99 88 77 66 55 44 33 22
 AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs KTs K9s K8s K7s K6s K5s K4s K3s K2s QJs QTs Q9s Q8s Q7s Q6s Q5s Q4s Q3s Q2s JTs J9s J8s J7s J6s J5s J4s J3s J2s T9s T8s T7s T6s T5s T4s T3s T2s 98s 97s 96s 95s 94s 93s 92s 87s 86s 85s 84s 83s 82s 76s 75s 74s 73s 72s 65s 64s 63s 62s 54s 53s 52s 43s 42s 32s
 AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo K9o K8o K7o K6o K5o K4o K3o K2o QJo QTo Q9o Q8o Q7o Q6o Q5o Q4o Q3o Q2o JTo J9o J8o J7o J6o J5o J4o J3o J2o T9o T8o T7o T6o T5o T4o T3o T2o 98o 97o 96o 95o 94o 93o 92o 87o 86o 85o 84o 83o 82o 76o 75o 74o 73o 72o 65o 64o 63o 62o 54o 53o 52o 43o 42o 32o
+
+
 
 
 
@@ -5072,10 +5121,14 @@ AKo AQo AJo
 
 
 
+
+
 ##list02##
 AA KK QQ JJ TT 99 88 77 66 55 44 33 22
 AKs AQs AJs ATs A9s KQs KJs KTs QJs JTs T9s 98s
 AKo AQo AJo ATo KQo KJo
+
+
 
 
 
@@ -5604,10 +5657,14 @@ AKo AQo AJo ATo KQo
 
 
 
+
+
 ##list04##
 AA KK QQ JJ TT 99 88 77 66 55 44 33 22
 AKs AQs AJs ATs A9s A8s A7s A6s A5s KQs KJs KTs K9s QJs QTs Q9s JTs J9s J8s T9s T8s 98s 87s 76s 65s
 AKo AQo AJo ATo A9o KQo KJo KTo QJo QTo JTo
+
+
 
 
 
@@ -6136,10 +6193,14 @@ AKo AQo AJo ATo A9o A8o KQo KJo KTo K9o QJo QTo JTo
 
 
 
+
+
 ##list06##
 AA KK QQ JJ TT 99 88 77 66 55 44 33 22
 AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs KTs K9s K8s K7s QJs QTs Q9s Q8s JTs J9s J8s T9s T8s 98s 97s 87s 76s 65s 54s
 AKo AQo AJo ATo A9o A8o A7o A6o KQo KJo KTo K9o K8o QJo QTo JTo
+
+
 
 
 
@@ -6668,10 +6729,14 @@ AKo AQo AJo ATo A9o A8o A7o A6o A5o KQo KJo KTo K9o QJo QTo Q9o JTo J9o T9o
 
 
 
+
+
 ##list08##
 AA KK QQ JJ TT 99 88 77 66 55 44 33 22
 AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs KTs K9s K8s K7s K6s K5s K4s K3s K2s QJs QTs Q9s Q8s Q7s Q6s JTs J9s J8s J7s T9s T8s T7s T6s 98s 97s 96s 95s 87s 86s 85s 76s 75s 65s 64s 54s
 AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo K9o K8o QJo QTo Q9o JTo J9o J8o T9o T8o 98o
+
+
 
 
 
@@ -7200,8 +7265,12 @@ AKo AQo
 
 
 
+
+
 ##list10##
 AA KK
+
+
 
 
 
@@ -7675,8 +7744,12 @@ AKo
 
 
 
+
+
 ##list101##
 AA KK QQ
+
+
 
 
 
@@ -8203,8 +8276,12 @@ AA KK QQ JJ
 
 
 
+
+
 ##list103##
 AA KK QQ JJ TT
+
+
 
 
 
@@ -8733,10 +8810,14 @@ AKo
 
 
 
+
+
 ##list107##
 AA KK QQ JJ TT 99
 AKs AQs AJs
 AKo AQo
+
+
 
 
 
@@ -9265,6 +9346,8 @@ AKo AQo AJo
 
 
 
+
+
 ##list109##
 AA KK QQ JJ TT 99 88 77 66
 AKs AQs AJs ATs KQs
@@ -9531,8 +9614,12 @@ AKo AQo AJo
 
 
 
+
+
 ##list11##
 AA KK QQ
+
+
 
 
 
@@ -10061,10 +10148,14 @@ AKo AQo AJo ATo A9o KQo
 
 
 
+
+
 ##list111##
 AA KK QQ JJ TT 99 88 77 66
 AKs AQs AJs ATs A9s A8s KQs KJs QJs
 AKo AQo AJo ATo A9o KQo
+
+
 
 
 
@@ -10593,10 +10684,14 @@ AKo AQo AJo ATo A9o KQo
 
 
 
+
+
 ##list113##
 AA KK QQ JJ TT 99 88 77 66 55 44
 AKs AQs AJs ATs A9s A8s A7s KQs KJs QJs JTs T9s
 AKo AQo AJo ATo A9o A8o KQo
+
+
 
 
 
@@ -11125,10 +11220,14 @@ AKo AQo AJo ATo A9o A8o KQo
 
 
 
+
+
 ##list115##
 AA KK QQ JJ TT 99 88 77 66 55 44 33 22
 AKs AQs AJs ATs A9s A8s A7s KQs KJs KTs QJs QTs JTs T9s 98s
 AKo AQo AJo ATo A9o A8o KQo KJo
+
+
 
 
 
@@ -11657,10 +11756,14 @@ AKo AQo AJo ATo A9o A8o A7o KQo KJo QJo
 
 
 
+
+
 ##list117##
 AA KK QQ JJ TT 99 88 77 66 55 44 33 22
 AKs AQs AJs ATs A9s A8s A7s A6s A5s KQs KJs KTs QJs QTs JTs T9s 98s 87s
 AKo AQo AJo ATo A9o A8o A7o A6o KQo KJo KTo QJo QTo JTo
+
+
 
 
 
@@ -12189,10 +12292,14 @@ AKo AQo AJo ATo A9o A8o A7o A6o A5o KQo KJo KTo QJo QTo JTo T9o
 
 
 
+
+
 ##list119##
 AA KK QQ JJ TT 99 88 77 66 55 44 33 22
 AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs KTs K9s QJs QTs Q9s JTs T9s 98s 87s 76s 65s 54s 43s 32s
 AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo QJo QTo JTo T9o
+
+
 
 
 
@@ -12721,10 +12828,14 @@ AKo
 
 
 
+
+
 ##list120##
 AA KK QQ JJ TT 99 88 77 66 55 44 33 22
 AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs KTs K9s K8s K7s QJs QTs Q9s JTs J9s J8s T9s T8s 98s 97s 87s 86s 76s 65s 54s 43s 32s
 AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo K9o QJo QTo Q9o JTo J9o T9o
+
+
 
 
 
@@ -13253,10 +13364,14 @@ AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo K9o QJo QTo Q9o JTo 
 
 
 
+
+
 ##list122##
 AA KK QQ JJ TT 99 88 77 66 55 44 33 22
 AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs KTs K9s K8s K7s K6s K5s K4s K3s K2s QJs QTs Q9s Q8s Q7s Q6s Q5s JTs J9s J8s J7s J6s T9s T8s T7s T6s 98s 97s 96s 87s 86s 76s 75s 65s 64s 54s 53s 43s 42s 32s
 AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo K9o K8o QJo QTo Q9o JTo J9o T9o 98o 87o
+
+
 
 
 
@@ -13785,10 +13900,14 @@ AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo K9o K8o QJo QTo Q9o 
 
 
 
+
+
 ##list124##
 AA KK QQ JJ TT 99 88 77 66 55 44 33 22
 AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs KTs K9s K8s K7s K6s K5s K4s K3s K2s QJs QTs Q9s Q8s Q7s Q6s Q5s Q4s Q3s Q2s JTs J9s J8s J7s J6s J5s J4s J3s J2s T9s T8s T7s T6s T5s T4s T3s T2s 98s 97s 96s 95s 94s 93s 92s 87s 86s 85s 84s 83s 82s 76s 75s 74s 73s 72s 65s 64s 63s 62s 54s 53s 52s 43s 42s 32s
 AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo K9o K8o K7o K6o K5o K4o K3o K2o QJo QTo Q9o Q8o Q7o Q6o Q5o Q4o Q3o Q2o JTo J9o J8o J7o J6o J5o J4o J3o J2o T9o T8o T7o T6o T5o T4o T3o T2o 98o 97o 96o 95o 94o 93o 92o 87o 86o 85o 84o 83o 82o 76o 75o 74o 73o 72o 65o 64o 63o 62o 54o 53o 52o 43o 42o
+
+
 
 
 
@@ -14317,10 +14436,14 @@ AKo AQo
 
 
 
+
+
 ##list126##
 TT 99 88 77 66 55
 AQs AJs ATs KQs QJs JTs
 AKo AQo AJo
+
+
 
 
 
@@ -14849,10 +14972,14 @@ AKo AQo AJo ATo
 
 
 
+
+
 ##list128##
 TT 99 88 77 66 55 44
 AQs AJs ATs A9s A8s KQs KJs QJs JTs
 AKo AQo AJo ATo KQo
+
+
 
 
 
@@ -15381,10 +15508,14 @@ AKo AQo AJo ATo A9o KQo
 
 
 
+
+
 ##list12BBAllIn##
 AA KK QQ JJ
 AKs
 AKo
+
+
 
 
 
@@ -15711,6 +15842,8 @@ AKo
 
 
 
+
+
 ##list12BBLateRaiseAllIn##
 AA KK QQ JJ TT 99 88
 AKs
@@ -15876,9 +16009,13 @@ AKo
 
 
 
+
+
 ##list12BBRaise##
 AQs AJs KQs
 AQo AJo KQo
+
+
 
 
 
@@ -16205,10 +16342,14 @@ AKo
 
 
 
+
+
 ##list13##
 AA KK QQ JJ TT
 AKs
 AKo
+
+
 
 
 
@@ -16737,10 +16878,14 @@ AKo AQo AJo ATo A9o A8o KQo
 
 
 
+
+
 ##list131##
 99 88 77 66 55 44 33 22
 AQs AJs ATs A9s A8s A7s A6s A5s KQs KJs KTs QJs QTs JTs T9s 98s 87s 76s
 AQo AJo ATo A9o A8o A7o KQo KJo KTo QJo QTo
+
+
 
 
 
@@ -17269,10 +17414,14 @@ AQo AJo ATo A9o A8o A7o A6o A5o KQo KJo KTo QJo QTo JTo
 
 
 
+
+
 ##list133##
 99 88 77 66 55 44 33 22
 AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs KTs K9s QJs QTs Q9s JTs J9s T9s T8s 98s 97s 87s 76s
 AQo AJo ATo A9o A8o A7o A6o A5o KQo KJo KTo QJo QTo JTo
+
+
 
 
 
@@ -17801,10 +17950,14 @@ AQo AJo ATo A9o A8o A7o A6o A5o A4o KQo KJo KTo QJo QTo JTo
 
 
 
+
+
 ##list135##
 99 88 77 66 55 44 33 22
 AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs KTs K9s K8s K7s QJs QTs Q9s JTs J9s T9s T8s 98s 97s 87s 86s 76s 75s 65s 64s 54s 43s 32s
 AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo K9o QJo QTo Q9o JTo J9o T9o
+
+
 
 
 
@@ -18333,10 +18486,14 @@ AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo K9o QJo QTo Q9o JTo J9o 
 
 
 
+
+
 ##list137##
 99 88 77 66 55 44 33 22
 AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs KTs K9s K8s K7s K6s K5s K4s K3s K2s QJs QTs Q9s Q8s Q7s Q6s Q5s JTs J9s J8s J7s J6s T9s T8s T7s T6s 98s 97s 96s 87s 86s 76s 75s 65s 64s 54s 53s 43s 42s 32s
 AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo K9o K8o QJo QTo Q9o JTo J9o T9o 98o 87o
+
+
 
 
 
@@ -18865,10 +19022,14 @@ AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo K9o K8o K7o K6o K5o QJo 
 
 
 
+
+
 ##list139##
 99 88 77 66 55 44 33 22
 AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs KTs K9s K8s K7s K6s K5s K4s K3s K2s QJs QTs Q9s Q8s Q7s Q6s Q5s Q4s Q3s Q2s JTs J9s J8s J7s J6s J5s J4s J3s J2s T9s T8s T7s T6s T5s T4s T3s T2s 98s 97s 96s 95s 94s 93s 92s 87s 86s 85s 84s 83s 82s 76s 75s 74s 73s 72s 65s 64s 63s 62s 54s 53s 52s 43s 42s 32s
 AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo K9o K8o K7o K6o K5o K4o K3o K2o QJo QTo Q9o Q8o Q7o Q6o Q5o Q4o Q3o JTo J9o J8o J7o J6o J5o J4o J3o T9o T8o T7o T6o T5o T4o T3o 98o 97o 96o 95o 94o 93o 87o 86o 85o 84o 83o 76o 75o 74o 73o 65o 64o 63o 54o 53o
+
+
 
 
 
@@ -19397,10 +19558,14 @@ AKo
 
 
 
+
+
 ##list140##
 99 88 77 66 55 44 33 22
 AJs KQs QJs JTs T9s
 AQo KQo
+
+
 
 
 
@@ -19929,10 +20094,14 @@ AQo AJo KQo
 
 
 
+
+
 ##list142##
 99 88 77 66 55 44 33 22
 AJs ATs A9s A8s A7s KQs QJs JTs T9s
 AQo AJo ATo
+
+
 
 
 
@@ -20461,10 +20630,14 @@ AQo AJo ATo A9o KQo
 
 
 
+
+
 ##list144##
 99 88 77 66 55 44 33 22
 AJs ATs A9s A8s A7s KQs KJs QJs JTs T9s
 AQo AJo ATo A9o A8o KQo
+
+
 
 
 
@@ -20993,10 +21166,14 @@ AQo AJo ATo A9o A8o KQo KJo
 
 
 
+
+
 ##list146##
 99 88 77 66 55 44 33 22
 AJs ATs A9s A8s A7s A6s KQs KJs KTs QJs QTs JTs T9s 98s 87s
 AQo AJo ATo A9o A8o A7o KQo KJo QJo
+
+
 
 
 
@@ -21525,10 +21702,14 @@ AQo AJo ATo A9o A8o A7o A6o A5o KQo KJo KTo QJo QTo JTo T9o
 
 
 
+
+
 ##list148##
 99 88 77 66 55 44 33 22
 AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs KTs K9s QJs QTs Q9s JTs T9s 98s 87s 76s 65s 54s 43s 32s
 AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo QJo QTo JTo T9o
+
+
 
 
 
@@ -22057,10 +22238,14 @@ AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo K9o QJo QTo Q9o JTo J9o 
 
 
 
+
+
 ##list15##
 AA KK QQ JJ TT 99 88 77
 AKs AQs AJs ATs KQs
 AKo AQo AJo
+
+
 
 
 
@@ -22589,10 +22774,14 @@ AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo K9o QJo QTo Q9o JTo J9o 
 
 
 
+
+
 ##list151##
 99 88 77 66 55 44 33 22
 AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs KTs K9s K8s K7s K6s K5s K4s K3s K2s QJs QTs Q9s Q8s Q7s Q6s Q5s JTs J9s J8s J7s J6s T9s T8s T7s T6s 98s 97s 96s 87s 86s 76s 75s 65s 64s 54s 53s 43s 42s 32s
 AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo K9o K8o QJo QTo Q9o JTo J9o T9o 98o 87o
+
+
 
 
 
@@ -23121,6 +23310,8 @@ AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo K9o K8o QJo QTo Q9o JTo 
 
 
 
+
+
 ##list153##
 99 88 77 66 55 44 33 22
 AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs KTs K9s K8s K7s K6s K5s K4s K3s K2s QJs QTs Q9s Q8s Q7s Q6s Q5s Q4s Q3s Q2s JTs J9s J8s J7s J6s J5s J4s J3s J2s T9s T8s T7s T6s T5s T4s T3s T2s 98s 97s 96s 95s 94s 93s 92s 87s 86s 85s 84s 83s 82s 76s 75s 74s 73s 72s 65s 64s 63s 62s 54s 53s 52s 43s 42s 32s
@@ -23223,10 +23414,14 @@ AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo K9o K8o K7o K6o K5o K4o 
 
 
 
+
+
 ##list154##
 88 77 66 55 44 33 22
 AJs ATs A9s A8s KQs QJs JTs T9s 98s 87s
 AJo
+
+
 
 
 
@@ -23755,10 +23950,14 @@ AJo ATo
 
 
 
+
+
 ##list156##
 88 77 66 55 44 33 22
 ATs A9s A8s A7s A6s KQs KJs QJs JTs T9s
 AJo ATo A9o KQo
+
+
 
 
 
@@ -24287,10 +24486,14 @@ AJo ATo A9o A8o KQo
 
 
 
+
+
 ##list16##
 AA KK QQ JJ TT 99 88 77 66 55 44 33
 AKs AQs AJs ATs KQs
 AKo AQo AJo
+
+
 
 
 
@@ -24819,10 +25022,14 @@ AKo
 
 
 
+
+
 ##list18##
 AA KK QQ JJ TT 99 88 77 66 55 44 33 22
 AKs AQs KQs QJs JTs
 AKo KQo
+
+
 
 
 
@@ -25351,6 +25558,8 @@ AKo KQo
 
 
 
+
+
 ##list20##
 AA KK QQ JJ TT 99 88 77 66 55 44 33 22
 AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs KTs K9s K8s K7s QJs QTs Q9s Q8s Q5s JTs J9s J8s T9s T8s 98s 97s 87s 86s 76s 75s 65s 54s
@@ -25515,9 +25724,13 @@ AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs KTs K9s K8s K7s QJs QTs 
 
 
 
+
+
 ##list21##
 AA KK QQ JJ TT 99 88 77 66 55 44 33 22
 AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs KTs K9s K8s K7s QJs QTs Q9s Q8s Q7s JTs J9s J8s J7s T9s T8s T7s 98s 97s 87s 86s 76s 75s 65s 54s 43s 32s
+
+
 
 
 
@@ -25844,10 +26057,14 @@ AKo
 
 
 
+
+
 ##list25BBLateAllIn##
 AA KK QQ JJ
 AKs AQs
 AKo AQo
+
+
 
 
 
@@ -26174,8 +26391,12 @@ AKo AQo AJo ATo KQo KJo KTo QJo QTo JTo
 
 
 
+
+
 ##list25BBLateRaise##
 AA KK QQ JJ TT 99 88 77 66
+
+
 
 
 
@@ -26387,6 +26608,8 @@ AKo AQo AJo ATo
 
 
 
+
+
 ##list301##
 AA KK QQ JJ TT 99 88 77 66 55
 AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs QJs JTs
@@ -26437,10 +26660,14 @@ AKo AQo AJo ATo
 
 
 
+
+
 ##list302##
 AA KK QQ JJ TT 99 88 77
 AKs AQs AJs ATs A9s KQs KJs KTs QJs QTs JTs T9s
 AKo AQo AJo ATo
+
+
 
 
 
@@ -26953,6 +27180,8 @@ AKo AQo AJo ATo KQo KJo KTo QJo QTo JTo
 
 
 
+
+
 ##list6BBAllIn##
 AA KK QQ JJ TT
 AKs
@@ -27118,10 +27347,14 @@ AKo
 
 
 
+
+
 ##list900##
 AA KK QQ JJ TT 99 88 77 66 55 44 33 22
 AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs KTs K9s K8s K7s K6s K5s K4s K3s K2s QJs QTs Q9s Q8s Q7s Q6s Q5s Q4s Q3s Q2s JTs J9s J8s J7s J6s T9s T8s T7s T6s T5s 98s 97s 96s 95s 87s 86s 85s 76s 75s 65s 64s 54s 43s 32s
 AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo K9o K8o K7o K6o K5o K4o K3o K2o QJo QTo Q9o Q8o Q7o Q6o Q5o Q4o Q3o Q2o JTo J9o J8o J7o T9o T8o T7o 98o 97o 87o 76o
+
+
 
 
 
@@ -27650,10 +27883,14 @@ AKo
 
 
 
+
+
 ##listHeadsUp3BetBB##
 AA KK QQ JJ TT 99 88 77 66 55 44 33 22
 AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs KTs QJs QTs JTs
 AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo QJo QTo JTo
+
+
 
 
 
@@ -27980,10 +28217,14 @@ AKo AQo AJo ATo KQo KJo KTo QJo QTo JTo
 
 
 
+
+
 ##listHeadsUpCallPush10##
 AA KK QQ JJ TT 99 88 77 66 55 44 33 22
 AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs KTs K9s K8s K7s K6s K5s K4s K3s K2s QJs QTs Q9s Q8s Q7s Q6s JTs J9s J8s T9s
 AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo K9o K8o K7o K6o QJo QTo Q9o Q8o JTo J9o
+
+
 
 
 
@@ -28310,10 +28551,14 @@ AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo K9o K8o K7o K6o QJo 
 
 
 
+
+
 ##listHeadsUpCallPush12##
 AA KK QQ JJ TT 99 88 77 66 55 44 33 22
 AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs KTs K9s K8s K7s K6s K5s K4s QJs QTs Q9s Q8s JTs J9s
 AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo K9o K8o QJo QTo Q9o JTo
+
+
 
 
 
@@ -28640,10 +28885,14 @@ AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo K9o K8o QJo QTo JTo
 
 
 
+
+
 ##listHeadsUpCallPush14##
 AA KK QQ JJ TT 99 88 77 66 55 44 33 22
 AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs KTs K9s K8s K7s K6s QJs QTs Q9s JTs
 AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo K9o K8o QJo QTo
+
+
 
 
 
@@ -28970,10 +29219,14 @@ AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo K9o QJo QTo
 
 
 
+
+
 ##listHeadsUpCallPush16##
 AA KK QQ JJ TT 99 88 77 66 55 44 33
 AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs KTs K9s K8s QJs QTs Q9s JTs
 AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o KQo KJo KTo K9o QJo QTo
+
+
 
 
 
@@ -29300,10 +29553,14 @@ AKo AQo AJo ATo KQo KJo KTo QJo QTo JTo
 
 
 
+
+
 ##listHeadsUpCallPush3##
 AA KK QQ JJ TT 99 88 77 66 55 44 33 22
 AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs KTs K9s K8s K7s K6s K5s K4s K3s K2s QJs QTs Q9s Q8s Q7s Q6s Q5s Q4s Q3s Q2s JTs J9s J8s J7s J6s J5s J4s J3s J2s T9s T8s T7s T6s T5s T4s T3s T2s 98s 97s 96s 95s 94s 93s 92s 87s 86s 85s 84s 83s 82s 76s 75s 74s 73s 72s 65s 64s 63s 62s 54s 53s 52s 43s 42s 32s
 AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo K9o K8o K7o K6o K5o K4o K3o K2o QJo QTo Q9o Q8o Q7o Q6o Q5o Q4o Q3o Q2o JTo J9o J8o J7o J6o J5o J4o J3o J2o T9o T8o T7o T6o T5o T4o T3o T2o 98o 97o 96o 95o 94o 93o 92o 87o 86o 85o 84o 83o 82o 76o 75o 74o 73o 65o 64o 63o 54o 53o 52o 43o
+
+
 
 
 
@@ -29630,10 +29887,14 @@ AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo K9o K8o K7o K6o K5o 
 
 
 
+
+
 ##listHeadsUpCallPush5##
 AA KK QQ JJ TT 99 88 77 66 55 44 33 22
 AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs KTs K9s K8s K7s K6s K5s K4s K3s K2s QJs QTs Q9s Q8s Q7s Q6s Q5s Q4s Q3s Q2s JTs J9s J8s J7s J6s J5s J4s J3s J2s T9s T8s T7s T6s T5s T4s T3s T2s 98s 97s 96s 95s 94s 87s 86s 85s 76s 75s 65s
 AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo K9o K8o K7o K6o K5o K4o K3o K2o QJo QTo Q9o Q8o Q7o Q6o Q5o Q4o Q3o Q2o JTo J9o J8o J7o J6o J5o J4o J3o T9o T8o T7o T6o 98o 97o 96o 87o
+
+
 
 
 
@@ -29960,10 +30221,14 @@ AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo K9o K8o K7o K6o K5o 
 
 
 
+
+
 ##listHeadsUpCallPush7##
 AA KK QQ JJ TT 99 88 77 66 55 44 33 22
 AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs KTs K9s K8s K7s K6s K5s K4s K3s K2s QJs QTs Q9s Q8s Q7s Q6s Q5s Q4s Q3s Q2s JTs J9s J8s J7s J6s J5s T9s T8s T7s 98s 97s
 AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo K9o K8o K7o K6o K5o K4o K3o K2o QJo QTo Q9o Q8o Q7o Q6o Q5o JTo J9o J8o T9o T8o
+
+
 
 
 
@@ -30290,10 +30555,14 @@ AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo K9o K8o K7o K6o K5o 
 
 
 
+
+
 ##listHeadsUpCallPush9##
 AA KK QQ JJ TT 99 88 77 66 55 44 33 22
 AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs KTs K9s K8s K7s K6s K5s K4s K3s K2s QJs QTs Q9s Q8s Q7s Q6s Q5s Q4s JTs J9s J8s J7s T9s T8s 98s
 AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo K9o K8o K7o K6o K5o K4o QJo QTo Q9o Q8o JTo J9o
+
+
 
 
 
@@ -30620,10 +30889,14 @@ AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo K9o K8o K7o K6o K5o 
 
 
 
+
+
 ##listHeadsUpOpenRaiseBTN##
 AA KK QQ JJ TT 99 88 77 66 55 44 33 22
 AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs KTs K9s K8s K7s K6s K5s K4s K3s K2s QJs QTs Q9s Q8s Q7s Q6s Q5s Q4s Q3s Q2s JTs J9s J8s J7s J6s J5s J4s J3s J2s T9s 98s 87s 76s 65s 54s 43s 32s
 AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo K9o K8o K7o K6o K5o QJo QTo Q9o Q8o Q7o Q6o JTo J9o J8o J7o T9o 98o 87o
+
+
 
 
 
@@ -30950,10 +31223,14 @@ AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo K9o K8o K7o K6o K5o 
 
 
 
+
+
 ##listHeadsUpPush10##
 AA KK QQ JJ TT 99 88 77 66 55 44 33 22
 AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs KTs K9s K8s K7s K6s K5s K4s K3s K2s QJs QTs Q9s Q8s Q7s Q6s Q5s Q4s Q3s Q2s JTs J9s J8s J7s J6s J5s J4s J3s T9s T8s T7s T6s T5s 98s 97s 96s 95s 87s 86s 85s 76s 75s 74s 65s 64s 54s 53s
 AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo K9o K8o K7o K6o K5o K4o K3o K2o QJo QTo Q9o Q8o Q7o JTo J9o J8o T9o T8o 98o 97o 87o
+
+
 
 
 
@@ -31280,10 +31557,14 @@ AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo K9o K8o K7o K6o K5o 
 
 
 
+
+
 ##listHeadsUpPush12##
 AA KK QQ JJ TT 99 88 77 66 55 44 33 22
 AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs KTs K9s K8s K7s K6s K5s K4s K3s K2s QJs QTs Q9s Q8s Q7s Q6s Q5s Q4s Q3s Q2s JTs J9s J8s J7s J6s J5s T9s T8s T7s T6s 98s 97s 96s 95s 87s 86s 85s 76s 75s 65s 64s 54s
 AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo K9o K8o K7o K6o K5o K4o QJo QTo Q9o Q8o JTo J9o T9o T8o 98o 87o
+
+
 
 
 
@@ -31610,10 +31891,14 @@ AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo K9o K8o K7o K6o K5o 
 
 
 
+
+
 ##listHeadsUpPush14##
 AA KK QQ JJ TT 99 88 77 66 55 44 33 22
 AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs KTs K9s K8s K7s K6s K5s K4s K3s K2s QJs QTs Q9s Q8s Q7s Q6s Q5s Q4s JTs J9s J8s J7s J6s J5s T9s T8s T7s T6s 98s 97s 96s 95s 87s 86s 85s 76s 75s 65s 64s 54s
 AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo K9o K8o K7o K6o K5o QJo QTo Q9o JTo J9o J8o T9o T8o 98o 87o
+
+
 
 
 
@@ -31940,10 +32225,14 @@ AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo K9o K8o K7o K6o QJo 
 
 
 
+
+
 ##listHeadsUpPush16##
 AA KK QQ JJ TT 99 88 77 66 55 44 33 22
 AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs KTs K9s K8s K7s K6s K5s K4s K3s K2s QJs QTs Q9s Q8s Q7s Q6s Q5s JTs J9s J8s J7s J6s T9s T8s T7s T6s 98s 97s 96s 87s 86s 85s 76s 75s 65s 54s
 AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo K9o K8o K7o QJo QTo Q9o JTo J9o T9o 98o
+
+
 
 
 
@@ -32270,10 +32559,14 @@ AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo K9o K8o K7o K6o K5o 
 
 
 
+
+
 ##listHeadsUpPush3##
 AA KK QQ JJ TT 99 88 77 66 55 44 33 22
 AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs KTs K9s K8s K7s K6s K5s K4s K3s K2s QJs QTs Q9s Q8s Q7s Q6s Q5s Q4s Q3s Q2s JTs J9s J8s J7s J6s J5s J4s J3s J2s T9s T8s T7s T6s T5s T4s T3s T2s 98s 97s 96s 95s 94s 93s 92s 87s 86s 85s 84s 83s 82s 76s 75s 74s 73s 65s 64s 63s 54s 53s
 AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo K9o K8o K7o K6o K5o K4o K3o K2o QJo QTo Q9o Q8o Q7o Q6o Q5o Q4o Q3o Q2o JTo J9o J8o J7o J6o J5o J4o J3o J2o T9o T8o T7o T6o T5o T4o T3o T2o 98o 97o 96o 95o 94o 93o 87o 86o 85o 84o 76o 75o 65o
+
+
 
 
 
@@ -32600,10 +32893,14 @@ AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo K9o K8o K7o K6o K5o 
 
 
 
+
+
 ##listHeadsUpPush5##
 AA KK QQ JJ TT 99 88 77 66 55 44 33 22
 AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs KTs K9s K8s K7s K6s K5s K4s K3s K2s QJs QTs Q9s Q8s Q7s Q6s Q5s Q4s Q3s Q2s JTs J9s J8s J7s J6s J5s J4s J3s J2s T9s T8s T7s T6s T5s T4s T3s T2s 98s 97s 96s 95s 94s 93s 87s 86s 85s 84s 76s 75s 74s 65s 64s 54s 53s
 AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo K9o K8o K7o K6o K5o K4o K3o K2o QJo QTo Q9o Q8o Q7o Q6o Q5o Q4o Q3o Q2o JTo J9o J8o J7o J6o J5o J4o T9o T8o T7o T6o T5o 98o 97o 96o 87o 86o 76o
+
+
 
 
 
@@ -32930,10 +33227,14 @@ AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo K9o K8o K7o K6o K5o 
 
 
 
+
+
 ##listHeadsUpPush7##
 AA KK QQ JJ TT 99 88 77 66 55 44 33 22
 AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs KTs K9s K8s K7s K6s K5s K4s K3s K2s QJs QTs Q9s Q8s Q7s Q6s Q5s Q4s Q3s Q2s JTs J9s J8s J7s J6s J5s J4s J3s J2s T9s T8s T7s T6s T5s T4s T3s 98s 97s 96s 95s 87s 86s 85s 84s 76s 75s 74s 65s 64s 54s 53s 43s
 AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo K9o K8o K7o K6o K5o K4o K3o K2o QJo QTo Q9o Q8o Q7o Q6o Q5o Q4o Q3o Q2o JTo J9o J8o J7o J6o T9o T8o T7o 98o 97o 87o 76o
+
+
 
 
 
@@ -33260,10 +33561,14 @@ AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo K9o K8o K7o K6o K5o 
 
 
 
+
+
 ##listHeadsUpPush9##
 AA KK QQ JJ TT 99 88 77 66 55 44 33 22
 AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs KTs K9s K8s K7s K6s K5s K4s K3s K2s QJs QTs Q9s Q8s Q7s Q6s Q5s Q4s Q3s Q2s JTs J9s J8s J7s J6s J5s J4s J3s J2s T9s T8s T7s T6s T5s 98s 97s 96s 95s 87s 86s 85s 76s 75s 74s 65s 64s 54s 53s
 AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo K9o K8o K7o K6o K5o K4o K3o K2o QJo QTo Q9o Q8o Q7o Q6o Q5o JTo J9o J8o T9o T8o 98o 97o 87o
+
+
 
 
 
@@ -33590,10 +33895,14 @@ AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo K9o K8o K7o K6o K5o 
 
 
 
+
+
 ##listHeadsUpPushLessTen##
 AA KK QQ JJ TT 99 88 77 66 55 44 33 22
 AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs KTs K9s K8s K7s K6s K5s K4s K3s K2s QJs QTs Q9s Q8s Q7s Q6s Q5s Q4s Q3s Q2s JTs J9s J8s J7s J6s J5s J4s J3s T9s T8s T7s T6s T5s T4s 98s 97s 96s 95s 87s 86s 85s 84s 76s 75s 74s 65s 64s 54s 43s
 AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo K9o K8o K7o K6o K5o K4o K3o K2o QJo QTo Q9o Q8o Q7o JTo J9o J8o T9o T8o 98o 97o 87o 76o
+
+
 
 
 
@@ -33920,10 +34229,14 @@ AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo K9o K8o K7o K6o K5o 
 
 
 
+
+
 ##listLessFiveEPMP##
 AA KK QQ JJ TT 99 88 77 66 55 44 33 22
 AKs AQs AJs ATs KQs KJs KTs QJs QTs JTs
 AKo AQo AJo ATo KQo KJo KTo QJo QTo JTo
+
+
 
 
 
@@ -34250,10 +34563,14 @@ AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo QJo JTo
 
 
 
+
+
 ##listLessSevenEarlyOpponent##
 AA KK QQ JJ TT 99 88
 AKs AQs
 AKo AQo
+
+
 
 
 
@@ -34580,6 +34897,8 @@ AKo AQo AJo ATo A9o A8o A7o A6o A5o KQo KJo KTo QJo
 
 
 
+
+
 ##listLessSevenMiddleOpponent##
 AA KK QQ JJ TT 99 88 77
 AKs AQs AJs
@@ -34745,10 +35064,14 @@ AKo AQo AJo
 
 
 
+
+
 ##listLessfiveEPMP##
 AA KK QQ JJ TT 99 88 77 66 55 44 33 22
 AKs AQs AJs ATs KQs KJs KTs QJs QTs JTs
 AKo AQo AJo ATo KQo KJo KTo QJo QTo JTo
+
+
 
 
 
@@ -35076,6 +35399,8 @@ AKo AQo AJo JTo
 
 
 
+
+
 ##listOneToTwelveLP##
 AA KK QQ JJ TT 99 88 77 66 55 44 33 22
 AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs KTs K9s QJs QTs Q9s JTs J9s T9s
@@ -35178,8 +35503,12 @@ AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo QJo QTo JTo T9o
 
 
 
+
+
 ##listPFR1##
 AA
+
+
 
 
 
@@ -35506,10 +35835,14 @@ AKo AQo AJo ATo KQo QJo
 
 
 
+
+
 ##listPFR11##
 AA KK QQ JJ TT 99
 AKs AQs AJs ATs KQs QJs JTs
 AKo AQo AJo ATo KQo QJo JTo
+
+
 
 
 
@@ -35836,10 +36169,14 @@ AKo AQo AJo ATo KQo KJo QJo JTo
 
 
 
+
+
 ##listPFR13##
 AA KK QQ JJ TT 99
 AKs AQs AJs ATs KQs KJs KTs QJs QTs JTs
 AKo AQo AJo ATo KQo KJo QJo JTo
+
+
 
 
 
@@ -36166,10 +36503,14 @@ AKo AQo AJo ATo KQo KJo QJo JTo
 
 
 
+
+
 ##listPFR15##
 AA KK QQ JJ TT 99
 AKs AQs AJs ATs A9s A8s KQs KJs KTs QJs QTs JTs T9s
 AKo AQo AJo ATo KQo KJo KTo QJo JTo
+
+
 
 
 
@@ -36496,10 +36837,14 @@ AKo AQo AJo ATo KQo KJo KTo QJo QTo JTo
 
 
 
+
+
 ##listPFR17##
 AA KK QQ JJ TT 99 88 77 66
 AKs AQs AJs ATs A9s A8s KQs KJs KTs QJs QTs JTs T9s
 AKo AQo AJo ATo KQo KJo KTo QJo QTo JTo
+
+
 
 
 
@@ -36826,6 +37171,8 @@ AKo AQo AJo ATo KQo KJo KTo QJo QTo JTo
 
 
 
+
+
 ##listPFR19##
 AA KK QQ JJ TT 99 88 77 66
 AKs AQs AJs ATs A9s A8s A7s A6s KQs KJs KTs QJs QTs JTs T9s 98s
@@ -36991,9 +37338,13 @@ AKo AQo AJo ATo KQo KJo KTo QJo QTo JTo T9o
 
 
 
+
+
 ##listPFR2##
 AA KK QQ
 AKs
+
+
 
 
 
@@ -37320,10 +37671,14 @@ AKo AQo AJo ATo KQo KJo KTo QJo QTo JTo T9o
 
 
 
+
+
 ##listPFR21##
 AA KK QQ JJ TT 99 88 77 66 55 44 33 22
 AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s KQs KJs KTs QJs QTs JTs T9s 98s
 AKo AQo AJo ATo KQo KJo KTo QJo QTo JTo T9o
+
+
 
 
 
@@ -37650,10 +38005,14 @@ AKo AQo AJo ATo KQo KJo KTo QJo QTo JTo T9o
 
 
 
+
+
 ##listPFR23##
 AA KK QQ JJ TT 99 88 77 66 55 44 33 22
 AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs KTs QJs QTs JTs T9s 98s
 AKo AQo AJo ATo A9o A8o KQo KJo KTo QJo QTo JTo
+
+
 
 
 
@@ -37980,10 +38339,14 @@ AKo AQo AJo ATo A9o A8o KQo KJo KTo QJo QTo JTo T9o
 
 
 
+
+
 ##listPFR25##
 AA KK QQ JJ TT 99 88 77 66 55 44 33 22
 AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs KTs QJs QTs JTs T9s 98s 87s
 AKo AQo AJo ATo A9o A8o A7o KQo KJo KTo QJo QTo JTo T9o
+
+
 
 
 
@@ -38310,10 +38673,14 @@ AKo AQo AJo ATo A9o A8o A7o A6o KQo KJo KTo QJo QTo JTo T9o
 
 
 
+
+
 ##listPFR27##
 AA KK QQ JJ TT 99 88 77 66 55 44 33 22
 AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs KTs QJs QTs JTs T9s 98s 87s 76s
 AKo AQo AJo ATo A9o A8o A7o A6o A5o KQo KJo KTo QJo QTo JTo T9o
+
+
 
 
 
@@ -38640,10 +39007,14 @@ AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o KQo KJo KTo QJo QTo JTo T9o
 
 
 
+
+
 ##listPFR29##
 AA KK QQ JJ TT 99 88 77 66 55 44 33 22
 AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs KTs QJs QTs JTs T9s 98s 87s
 AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo QJo QTo JTo T9o
+
+
 
 
 
@@ -38970,10 +39341,14 @@ AKo
 
 
 
+
+
 ##listPFR30##
 AA KK QQ JJ TT 99 88 77 66 55 44 33 22
 AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs KTs QJs QTs JTs T9s 98s 87s 76s
 AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo QJo QTo JTo T9o
+
+
 
 
 
@@ -39300,10 +39675,14 @@ AKo
 
 
 
+
+
 ##listPFR5##
 AA KK QQ JJ TT
 AKs AQs KQs
 AKo AQo
+
+
 
 
 
@@ -39630,10 +40009,14 @@ AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo K9o K8o QJo QTo Q9o 
 
 
 
+
+
 ##listPFR6##
 AA KK QQ JJ TT 99 88
 AKs AQs KQs QJs
 AKo AQo
+
+
 
 
 
@@ -39960,10 +40343,14 @@ AKo AQo KQo
 
 
 
+
+
 ##listPFR8##
 AA KK QQ JJ
 AKs AQs AJs KQs QJs JTs
 AKo AQo AJo KQo QJo
+
+
 
 
 
@@ -40290,10 +40677,14 @@ AKo AQo AJo KQo
 
 
 
+
+
 ##listPushFoldLP##
 AA KK QQ JJ TT 99 88 77 66 55 44 33 22
 AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs KTs K9s K8s K7s K6s K5s K4s K3s K2s QJs QTs Q9s Q8s Q7s Q6s Q5s JTs J9s T9s 98s 87s 76s 65s 54s
 AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo K9o QJo QTo Q9o JTo J9o T9o
+
+
 
 
 
@@ -40498,10 +40889,14 @@ AKo AQo AJo ATo KQo KJo KTo QJo QTo JTo
 
 
 
+
+
 ##listTenToTwelveEPMP##
 AA KK QQ JJ TT 99 88 77
 AKs AQs AJs ATs
 AKo AQo
+
+
 
 
 
@@ -40828,10 +41223,14 @@ AKo AQo AJo ATo A9o A8o
 
 
 
+
+
 ##listTwelveToSevenLateOpponent##
 AA KK QQ JJ TT 99 88 77 66 55
 AKs AQs AJs ATs A9s A8s A7s KQs
 AKo AQo AJo ATo KQo
+
+
 
 
 
@@ -41092,10 +41491,14 @@ AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo K9o K8o K7o K6o K5o 
 
 
 
+
+
 ##list_prefold##
 AA KK QQ JJ TT 99 88 77 66 55 44 33 22
 AKs AQs AJs ATs A9s A8s A7s A6s A5s A4s A3s A2s KQs KJs KTs K9s QJs QTs Q9s JTs J9s T9s
 AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo QJo QTo JTo T9o
+
+
 
 
 
@@ -41459,10 +41862,14 @@ AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo QJo QTo JTo T9o
 
 
 
+
+
 ##f$AF##
 [ betround==2 ] ? f$AF_flop  :
 [ betround==3 ] ? f$AF_turn  :
 [ betround==4 ] ? f$AF_river : 0
+
+
 
 
 
@@ -42008,6 +42415,8 @@ AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo QJo QTo JTo T9o
 
 
 
+
+
 ##f$AF_flop1##
 [ call<=0 ] ? 0 :
 
@@ -42027,6 +42436,8 @@ AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo QJo QTo JTo T9o
     [ f$pt_aggr_factor_raischair>5.00                     ] ? 0.00 : 0 } :
 
 0
+
+
 
 
 
@@ -42617,6 +43028,8 @@ AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo QJo QTo JTo T9o
 
 
 
+
+
 ##f$AF_river1##
 [ call<=0 ] ? {
 
@@ -42681,6 +43094,8 @@ AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo QJo QTo JTo T9o
     [ f$pt_r_aggr>5.00                     ] ? 0.00 : 0 } : 0 } :
 
 0
+
+
 
 
 
@@ -43268,6 +43683,8 @@ AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo QJo QTo JTo T9o
 
 
 
+
+
 ##f$AF_turn1##
 [ call<=0 ] ? {
 
@@ -43592,6 +44009,8 @@ AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo QJo QTo JTo T9o
 
 
 
+
+
 ##f$AF_turn2##
 [
 (opponentsplayingbits==1)  ? pt_turn_af0*(pt_wssd0*4) :
@@ -43600,6 +44019,8 @@ AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo QJo QTo JTo T9o
 (opponentsplayingbits==8)  ? pt_turn_af3*(pt_wssd3*4) :
 (opponentsplayingbits==16) ? pt_turn_af4*(pt_wssd4*4) :
 (opponentsplayingbits==32) ? pt_turn_af5*(pt_wssd5*4) : 0 ]
+
+
 
 
 
@@ -44244,6 +44665,8 @@ AKo AQo AJo ATo A9o A8o A7o A6o A5o A4o A3o A2o KQo KJo KTo QJo QTo JTo T9o
 
 
 
+
+
 ##f$Betsize_Gecko##
 // Betsize in dollars, raise-to semantics.
 // OpenHoldem will auto-adapt the betsize to the casinos input-requirements.
@@ -44418,8 +44841,12 @@ call>0 && f$srai>0 ? {
 
 
 
+
+
 ##f$BettingAction_First_In##
 (f$BettingAction_Unraised_Pot && nopponentscalling<=0)
+
+
 
 
 
@@ -44948,8 +45375,12 @@ call>0 && f$srai>0 ? {
 
 
 
+
+
 ##f$BettingAction_Hero_Did_Already_Act##
 (didrais || didcall || didchec || didswag)
+
+
 
 
 
@@ -45478,8 +45909,12 @@ call>0 && f$srai>0 ? {
 
 
 
+
+
 ##f$BettingAction_Number_Of_Raisers_Preflop##
 (`f$Bits_Players_Truely_Raising_Preflop)
+
+
 
 
 
@@ -46008,8 +46443,12 @@ call>0 && f$srai>0 ? {
 
 
 
+
+
 ##f$BettingAction_One_Raiser_And_Callers_In_Front_Of_Us##
 ((f$BettingAction_Number_Of_Raisers_Preflop == 1) && (nopponentscalling >= 1))
+
+
 
 
 
@@ -46538,8 +46977,12 @@ call>0 && f$srai>0 ? {
 
 
 
+
+
 ##f$BettingAction_Raisers_Behind_Us##
 (f$BettingAction_Hero_Did_Already_Act && (nbetstocall > 0))
+
+
 
 
 
@@ -47068,8 +47511,12 @@ call>0 && f$srai>0 ? {
 
 
 
+
+
 ##f$BettingAction_Three_Limpers_Or_More##
 (nopponentscalling >= 3 && ncallbets<=1)
+
+
 
 
 
@@ -47598,6 +48045,8 @@ call>0 && f$srai>0 ? {
 
 
 
+
+
 ##f$BettingAction_Unraised_Pot##
 (ncallbets<=1)
 
@@ -47863,8 +48312,12 @@ call>0 && f$srai>0 ? {
 
 
 
+
+
 ##f$Bits_Opponents_Truely_Playing##
 (opponentsplayingbits & [~f$Bits_Players_Allin])
+
+
 
 
 
@@ -48403,8 +48856,12 @@ call>0 && f$srai>0 ? {
 
 
 
+
+
 ##f$Bits_Players_Truely_Raising_Preflop##
 (raisbits1 & f$Bits_Players_With_More_Than_One_Bet)
+
+
 
 
 
@@ -48943,6 +49400,8 @@ call>0 && f$srai>0 ? {
 
 
 
+
+
 ##f$Chart_CallRaise##
 [
 		(f$Position_SmallBlind && handrank169 <= 1.69 * (10	))
@@ -49215,6 +49674,8 @@ call>0 && f$srai>0 ? {
 
 
 
+
+
 ##f$Chart_MultiLimpers##
    (f$Position_UTG1       && handrank169 < 1.69 * 8)
 || (f$Position_UTG2       && handrank169 < 1.69 * 8)
@@ -49222,6 +49683,8 @@ call>0 && f$srai>0 ? {
 || (f$Position_Button     && handrank169 < 1.69 * 8)
 || (f$Position_SmallBlind && handrank169 < 1.69 * 8)
 || (f$Position_BigBlind   && handrank169 < 1.69 * 8)
+
+
 
 
 
@@ -49778,6 +50241,8 @@ call>0 && f$srai>0 ? {
 
 
 
+
+
 ##f$Chart_OpenRaise##
 //   [ f$dealposition==1 && list900 ] // 50%
 //|| [ f$dealposition==3 && list01  ] // 10%
@@ -49807,6 +50272,8 @@ call>0 && f$srai>0 ? {
 //|| [ f$Position_SmallBlind && (    f$Punten_Preflop_Sblind<=0 && list07   // 40%
 //                                || f$Punten_Preflop_Sblind==1 && list05   // 27%
 //                                || f$Punten_Preflop_Sblind>=2 && list04)] // 23%
+
+
 
 
 
@@ -50365,6 +50832,8 @@ call>0 && f$srai>0 ? {
 
 
 
+
+
 ##f$Chart_Squeeze##
    [ f$Position_BigBlind   && list100 ]
 || [ f$Position_SmallBlind && list100 ]
@@ -50377,6 +50846,8 @@ call>0 && f$srai>0 ? {
 
 || [ f$Position_CutOff && (      dealpositionrais==3 && list100
                               || dealpositionrais==4 && list100 )]
+
+
 
 
 
@@ -50910,10 +51381,13 @@ call>0 && f$srai>0 ? {
 
 
 
+
+
 ##f$DEBUG##
 //tablepfr
+call / (call + pot)
 
-icm
+
 
 
 
@@ -51227,9 +51701,13 @@ betround==3 ? ((nopponentsbetting*.50)*bet4) + (((nplayersplaying-1-nopponentsbe
 
 
 
+
+
 ##f$Initiative_GotRaised##
 betround==3 ? didswaground2 && didcallround2 && nbetsround2>0 :
 betround==4 ? didswaground3 && didcallround3 && nbetsround3>0 : 0
+
+
 
 
 
@@ -51760,10 +52238,14 @@ betround==4 && nbetsround3>0 && !didcallround3 ? 1 : 0
 
 
 
+
+
 ##f$Initiative_Nobody##
 betround<=2 ? nbetsround1<=1 :
 betround==3 ? nbetsround2<=0 :
 betround==4 ? nbetsround3<=0 : 0
+
+
 
 
 
@@ -52294,9 +52776,13 @@ betround==4 ? !didswaground2 && didcallround3 && nbetsround3>0 : 0
 
 
 
+
+
 ##f$Odds_and_Outs##
 betround==2 ? (f$OutOdds*2.0)>f$PotOdds :
 betround==3 ? (f$OutOdds*1.2)>f$PotOdds : 0
+
+
 
 
 
@@ -52709,6 +53195,8 @@ nopponentsseated >= 4 && bblind >= 50 && (f$is_active_chipleader || f$is_chiplea
 
 
 
+
+
 ##f$OpenReRaise_Adjusted##
 
 f$fold_to_3bet_high && pt_pfr_raischair > 0.20 ? 2 :
@@ -52867,8 +53355,12 @@ f$fold_to_3bet_low ? 1 : 1
 
 
 
+
+
 ##f$OutOdds##
 [ f$nOuts/46 ]
+
+
 
 
 
@@ -53397,8 +53889,12 @@ f$pt_icon==1
 
 
 
+
+
 ##f$Player_10##
 f$pt_icon==10
+
+
 
 
 
@@ -53927,8 +54423,12 @@ f$pt_icon==11
 
 
 
+
+
 ##f$Player_12##
 f$pt_icon==12
+
+
 
 
 
@@ -54457,8 +54957,12 @@ f$pt_icon==13
 
 
 
+
+
 ##f$Player_14##
 f$pt_icon==14
+
+
 
 
 
@@ -54987,8 +55491,12 @@ f$pt_icon==2
 
 
 
+
+
 ##f$Player_3##
 f$pt_icon==3
+
+
 
 
 
@@ -55517,8 +56025,12 @@ f$pt_icon==4
 
 
 
+
+
 ##f$Player_5##
 f$pt_icon==5
+
+
 
 
 
@@ -56047,8 +56559,12 @@ f$pt_icon==6
 
 
 
+
+
 ##f$Player_7##
 f$pt_icon==7
+
+
 
 
 
@@ -56577,8 +57093,12 @@ f$pt_icon==8
 
 
 
+
+
 ##f$Player_9##
 f$pt_icon==9
+
+
 
 
 
@@ -57120,8 +57640,12 @@ f$pt_icon==14 ? 14 : 0// agresieve donk fold normaal
 
 
 
+
+
 ##f$Position_BigBlind##
 (nchairsdealtright == 1)
+
+
 
 
 
@@ -57650,8 +58174,12 @@ f$pt_icon==14 ? 14 : 0// agresieve donk fold normaal
 
 
 
+
+
 ##f$Position_Button##
 (nchairsdealtleft == 0)
+
+
 
 
 
@@ -58180,8 +58708,12 @@ f$pt_icon==14 ? 14 : 0// agresieve donk fold normaal
 
 
 
+
+
 ##f$Position_Early##
 betposition==1
+
+
 
 
 
@@ -58710,8 +59242,12 @@ betposition==nplayersplaying
 
 
 
+
+
 ##f$Position_Middle##
 !f$Position_Early && !f$Position_Late
+
+
 
 
 
@@ -59240,6 +59776,8 @@ betposition==nplayersplaying
 
 
 
+
+
 ##f$Position_UTG1##
 (nchairsdealtleft == 3)
 
@@ -59505,8 +60043,12 @@ betposition==nplayersplaying
 
 
 
+
+
 ##f$Position_UTG2##
 (nchairsdealtleft == 2)
+
+
 
 
 
@@ -60037,6 +60579,8 @@ call>0  ? [ (call/(pot+f$ImpliedOdds)) ] : 0
 
 
 
+
+
 ##f$PreflopAggressorCbetOnFlop##
 //Return 1 if the preflop aggressor cbet on flop
  (AggressorChair == 0 & raisbits2 == 0) ? 1 :
@@ -60175,8 +60719,12 @@ call>0  ? [ (call/(pot+f$ImpliedOdds)) ] : 0
 
 
 
+
+
 ##f$Preflop_First_In##
 (f$BettingAction_First_In && f$Chart_OpenRaise) ? 1 : 0
+
+
 
 
 
@@ -60705,8 +61253,12 @@ call>0  ? [ (call/(pot+f$ImpliedOdds)) ] : 0
 
 
 
+
+
 ##f$Preflop_Raise_After_One_Limper##
 (f$BettingAction_One_Limper && f$Chart_OneLimper) ? 1 : 0
+
+
 
 
 
@@ -61235,6 +61787,8 @@ call>0  ? [ (call/(pot+f$ImpliedOdds)) ] : 0
 
 
 
+
+
 ##f$Preflop_Raise_After_Two_Limpers##
 (f$BettingAction_Two_Limpers && f$Chart_TwoLimpers) ? 1 : 0
 
@@ -61500,8 +62054,12 @@ call>0  ? [ (call/(pot+f$ImpliedOdds)) ] : 0
 
 
 
+
+
 ##f$Preflop_Raiser_And_Callers_In_Front_Of_Me##
 (f$BettingAction_One_Raiser_And_Callers_In_Front_Of_Us && list100) ? 1 : 0
+
+
 
 
 
@@ -62031,8 +62589,12 @@ call>0  ? [ (call/(pot+f$ImpliedOdds)) ] : 0
 
 
 
+
+
 ##f$Preflop_React_To_Reraise##
 (f$BettingAction_Raisers_Behind_Us && list100) ? 1 : 0
+
+
 
 
 
@@ -62610,6 +63172,8 @@ currentbet4==bblind  ? pt_icon4 : 0 } :
 
 
 
+
+
 ##f$Punten_Limper_Bigblind1##
 [ (f$Punten_Limper_Bigblind<=0)  ? 2 :
   (f$Punten_Limper_Bigblind==5)  ? 2 :
@@ -62628,6 +63192,8 @@ currentbet4==bblind  ? pt_icon4 : 0 } :
   (f$Punten_Limper_Bigblind==2)  ? 0 :
   (f$Punten_Limper_Bigblind==3)  ? 0 :
   (f$Punten_Limper_Bigblind==4)  ? 0 : 0 ]
+
+
 
 
 
@@ -63192,6 +63758,8 @@ currentbet4==bblind  ? pt_icon4 : 0 } :
 
 
 
+
+
 ##f$Punten_Limper_Button1##
 [ (f$Punten_Limper_Button<=0)  ? 2 :
   (f$Punten_Limper_Button==5)  ? 2 :
@@ -63210,6 +63778,8 @@ currentbet4==bblind  ? pt_icon4 : 0 } :
   (f$Punten_Limper_Button==2)  ? 0 :
   (f$Punten_Limper_Button==3)  ? 0 :
   (f$Punten_Limper_Button==4)  ? 0 : 0 ]
+
+
 
 
 
@@ -63768,6 +64338,8 @@ currentbet4==bblind  ? pt_icon4 : 0 } :
 
 
 
+
+
 ##f$Punten_Limper_Cutoff1##
 [ (f$Punten_Limper_Cutoff<=0)  ? 2 :
   (f$Punten_Limper_Cutoff==5)  ? 2 :
@@ -63786,6 +64358,8 @@ currentbet4==bblind  ? pt_icon4 : 0 } :
   (f$Punten_Limper_Cutoff==2) ? 0 :
   (f$Punten_Limper_Cutoff==3) ? 0 :
   (f$Punten_Limper_Cutoff==4) ? 0 : 0 ]
+
+
 
 
 
@@ -64356,6 +64930,8 @@ currentbet4==bblind  ? pt_icon4 : 0 } :
 
 
 
+
+
 ##f$Punten_Limper_Smallblind1##
 [ (f$Punten_Limper_Smallblind<=0) ? 2 :
   (f$Punten_Limper_Smallblind==5) ? 2 : // 5 regular fold te weinig
@@ -64374,6 +64950,8 @@ currentbet4==bblind  ? pt_icon4 : 0 } :
   (f$Punten_Limper_Smallblind==2) ? 0 : // 6 regular fold te veel
   (f$Punten_Limper_Smallblind==3) ? 0 : // 10 nit fold te veel
   (f$Punten_Limper_Smallblind==4) ? 0 : 0 ] // 2 agg donk fold te veel
+
+
 
 
 
@@ -64885,6 +65463,8 @@ currentbet4==bblind  ? pt_icon4 : 0 } :
 
 
 */0
+
+
 
 
 
@@ -65745,6 +66325,8 @@ currentbet4==bblind  ? pt_icon4 : 0 } :
 
 
 
+
+
 ##f$Punten_Preflop_Sblind##
 /*(userchair==0) ? {
 
@@ -66133,8 +66715,12 @@ currentbet4==bblind  ? pt_icon4 : 0 } :
 
 
 
+
+
 ##f$THIS_MUST_NOT_HAPPEN##
 log$SERIOUS_ERROR
+
+
 
 
 
@@ -66676,8 +67262,12 @@ log$SERIOUS_ERROR
 
 
 
+
+
 ##f$actionpostflop_1##
 [ call<=0 ]
+
+
 
 
 
@@ -67206,8 +67796,12 @@ log$SERIOUS_ERROR
 
 
 
+
+
 ##f$actionpostflop_2##
 [ !didswag && (call>0) && (call<=bblind) ]
+
+
 
 
 
@@ -67736,8 +68330,12 @@ log$SERIOUS_ERROR
 
 
 
+
+
 ##f$actionpostflop_4##
 [ !didswag && (call>(potcommon*0.8)) && (call<=(potcommon*1.2)) && !f$actionpostflop_2 ]
+
+
 
 
 
@@ -68266,8 +68864,12 @@ log$SERIOUS_ERROR
 
 
 
+
+
 ##f$actionpostflop_6##
 [ (didswag||didcall) && f$mycurrentbet<=potcommon && call<=f$mycurrentbet ]
+
+
 
 
 
@@ -68796,8 +69398,12 @@ log$SERIOUS_ERROR
 
 
 
+
+
 ##f$actionpostflop_8##
 [ (didswag||didcall) && (f$mycurrentbet<=potcommon) && (call>(f$mycurrentbet*3.5)) ]
+
+
 
 
 
@@ -69326,8 +69932,12 @@ log$SERIOUS_ERROR
 
 
 
+
+
 ##f$actionpreflop_1##
 [ ncallbets<=1 && nopponentscalling<=0 ]
+
+
 
 
 
@@ -69856,6 +70466,8 @@ log$SERIOUS_ERROR
 
 
 
+
+
 ##f$actionpreflop_3##
 [ ncallbets<=1 && nopponentscalling==2 ]
 
@@ -70121,8 +70733,12 @@ log$SERIOUS_ERROR
 
 
 
+
+
 ##f$actionpreflop_4##
 [ ncallbets<=1 && nopponentscalling>=3 ]
+
+
 
 
 
@@ -70657,8 +71273,12 @@ log$SERIOUS_ERROR
 
 
 
+
+
 ##f$actionpreflop_6##
 [ !(didswag || didrais || didcall) ] ? call>=6*bblind : 0
+
+
 
 
 
@@ -71187,8 +71807,12 @@ log$SERIOUS_ERROR
 
 
 
+
+
 ##f$actionpreflop_8##
 [ (didswag || didrais || didcall) && call>=20*bblind ]
+
+
 
 
 
@@ -71612,8 +72236,12 @@ balance<=1 ? bblind : balance
 
 
 
+
+
 ##f$balance_in_bb##
 balance<=1 ? 1 : balance / bblind
+
+
 
 
 
@@ -71718,6 +72346,8 @@ balance<=1 ? 1 : balance / bblind
 [ !didcallround1 && nbetsround1>1 && nbetsround1<=7 && // raise preflop
   didswaground2 && !didcallround2 && nbetsround2>0 && nbetsround2<12 && // cbet flop
   f$Position_Early && !didswag ] // early position, did not act yet
+
+
 
 
 
@@ -72154,6 +72784,8 @@ True
 
 
 
+
+
 ##f$bluffformula##
 nplayersplaying==2 && nplayersround2<4 && nbetsround2<12 && !didcallround2 ? {
 
@@ -72172,6 +72804,8 @@ f$pt_vpip>0.50 && f$stats_wsdp>0 && f$stats_wsdp<0.25 ? 3 :
 0 } :
 
 0
+
+
 
 
 
@@ -72694,8 +73328,12 @@ f$pt_vpip>0.50 && f$stats_wsdp>0 && f$stats_wsdp<0.25 ? 3 :
 
 
 
+
+
 ##f$calc_prwin_wontplay##
 WHEN BotRaisedBeforeFlop AND !BotCalledBeforeFlop AND OpponentsOnFlop = 1 AND f$stats_vpip > 0 AND f$stats_hands > 100 Return (f$stats_vpip*169) Force
+
+
 
 
 
@@ -72760,6 +73398,8 @@ WHEN BotRaisedBeforeFlop AND !BotCalledBeforeFlop AND OpponentsOnFlop = 1 AND f$
 || [isflush && f$nsuitedholeshi<4 && didchec]
 || [pokerval>flush && didchec]
 || [prwin>0.8 && didchec]
+
+
 
 
 
@@ -73047,6 +73687,8 @@ balance > stack1 ? 1 : 0
 
 
 
+
+
 ##f$committed##
 [ call*10<pot ] ? f$prwin>.30 :
 [ call*9 <pot ] ? f$prwin>.40 :
@@ -73079,6 +73721,8 @@ balance > stack1 ? 1 : 0
         [ f$prwin>0.96                  ] ? (call*1.0<pot) : 0 } : 0 } :
 
 0
+
+
 
 
 
@@ -73504,8 +74148,12 @@ bblind>=200 ? (bblind+sblind)+(25*nplayersdealt) :
 
 
 
+
+
 ##f$csi##
 (f$balance+currentbet)/f$cpr
+
+
 
 
 
@@ -73672,6 +74320,8 @@ bblind>=200 ? (bblind+sblind)+(25*nplayersdealt) :
  raischair==3 ? currentbet3 :
  raischair==4 ? currentbet4 :
  raischair==5 ? currentbet5 : 0]
+
+
 
 
 
@@ -74206,6 +74856,8 @@ bblind>=200 ? (bblind+sblind)+(25*nplayersdealt) :
 
 
 
+
+
 ##f$dangerous_board##
 ///////////////////////////////////////////////
 ///////////Dangerous flush boards//////////////
@@ -74348,6 +75000,8 @@ bblind>=200 ? (bblind+sblind)+(25*nplayersdealt) :
 
 
 
+
+
 ##f$dealposition##
 [
 dealposition==1 ? 1:
@@ -74359,6 +75013,8 @@ nchairsdealtleft==1 ? 5 :
 nchairsdealtleft==0 ? 6 :
 
 0]
+
+
 
 
 
@@ -74910,12 +75566,16 @@ nopponentsseated==2 ? (dealpositionrais==3 ? 6 : 0):
 
 
 
+
+
 ##f$delayed_check##
 call == 0
 && f$rais == 0
 && f$alli == 0
 && betround > 1
 ? 1 : 0
+
+
 
 
 
@@ -75165,8 +75825,12 @@ call == 0
 
 
 
+
+
 ##f$did_raise_round_1##
 (hi_didrais1 > 0 || hi_diswag1 > 0) ? 1 : 0
+
+
 
 
 
@@ -75300,6 +75964,8 @@ call == 0
 (f$wheeldraw && nrankedcommon==1)) ? 1 :
 
 0
+
+
 
 
 
@@ -75724,8 +76390,12 @@ call == 0
 
 
 
+
+
 ##f$evrais##
 0
+
+
 
 
 
@@ -75983,6 +76653,8 @@ call == 0
 
 
 
+
+
 ##f$flop_call##
 [ f$Odds_and_Outs          ] ? 1 :
 
@@ -75991,6 +76663,8 @@ call == 0
 [ f$Initiative_Nobody      ] ? f$flop_call_noaction     :
 
 0
+
+
 
 
 
@@ -76621,6 +77295,8 @@ call == 0
 
 
 
+
+
 ##f$flop_call_noaction##
 [ f$Position_Early ] ? {
 
@@ -76725,6 +77401,8 @@ call == 0
     [ f$actionpostflop_10] ? f$prwin1>.86 : 0 } :
 
 0
+
+
 
 
 
@@ -77358,10 +78036,14 @@ call == 0
 
 
 
+
+
 ##f$flop_raise##
 [ f$Initiative_Hero    ] ? f$flop_raise_initiative   :
 [ f$Initiative_Villian ] ? f$flop_raise_noinitiative :
 [ f$Initiative_Nobody  ] ? f$flop_raise_noaction     : 0
+
+
 
 
 
@@ -78083,6 +78765,8 @@ call == 0
 
 
 
+
+
 ##f$flop_raise_noaction##
 [ f$Position_Early ] ? {
 
@@ -78199,6 +78883,8 @@ call == 0
     [ f$actionpostflop_10] ? f$nuts      : 0 } :
 
 0
+
+
 
 
 
@@ -78881,6 +79567,8 @@ call == 0
 
 
 
+
+
 ##f$fold2cbet_normal##
 // Fold normaal
 betround == 2 && nopponentsplaying == 1 ?
@@ -78891,6 +79579,8 @@ betround == 2 && nopponentsplaying == 1 ?
 (opponentsplayingbits==16) && pt_flop_fold_to_cbet4 > 0.3 && pt_flop_fold_to_cbet4 < 0.6 ? 1 :
 (opponentsplayingbits==32) && pt_flop_fold_to_cbet5 > 0.3 && pt_flop_fold_to_cbet5 < 0.6 ? 1 : 0]
 : 0
+
+
 
 
 
@@ -79424,6 +80114,8 @@ betround == 2 && nopponentsplaying == 1 ?
 
 
 
+
+
 ##f$fold2cbet_weinig##
 // Fold weinig
 betround == 2 && nopponentsplaying == 1 ?
@@ -79434,6 +80126,8 @@ betround == 2 && nopponentsplaying == 1 ?
 (opponentsplayingbits==16) && pt_flop_fold_to_cbet4 < 0.3 && pt_flop_fold_to_cbet0 > 0 ? 1 :
 (opponentsplayingbits==32) && pt_flop_fold_to_cbet5 < 0.3 && pt_flop_fold_to_cbet0 > 0 ? 1 : 0]
 : 0
+
+
 
 
 
@@ -79757,10 +80451,14 @@ pt_hands_raischair > 100
 
 
 
+
+
 ##f$fold_to_3bet_low##
 pt_hands_raischair > 100
 &&
 (pt_fold_to_3bet_raischair < 0.50 && pt_fold_to_3bet_raischair > 0) ? 1 : 0
+
+
 
 
 
@@ -79841,6 +80539,8 @@ pt_hands_raischair > 100
 ]
 
 ? 1 : 0
+
+
 
 
 
@@ -79989,6 +80689,8 @@ pt_hands_raischair > 100
 0 } :
 
 0
+
+
 
 
 
@@ -80604,6 +81306,8 @@ pt_hands_raischair > 100
 
 
 
+
+
 ##f$foldequity_if_push##
 riverpct > 0
 &&
@@ -80634,13 +81338,12 @@ handsplayed > 25
 
 
 
+
+
 ##f$gecko_call##
 // Basic calls with nuts or free to check
-[betround = 1 && prwin>=0.65 ] ? 1 :
-[betround = 2 && prwin>=0.7 ] ? 1 :
-[betround = 3 && prwin>=0.75 ] ? 1 :
-[betround = 4 && prwin>=0.8 ] ? 1 :
-//[ call<=0.001 ] ? 1 :
+[ prwin>=0.96 ] ? 1 :
+[ call<=0.001 ] ? 1 :
 [ f$srai>0    ] ? 1 :
 [ betround==1 && ($AA||$KK) ] ? 1 :
 
@@ -80654,6 +81357,7 @@ handsplayed > 25
 [ betround==4 ] ? f$river_call   :
 
 0
+
 
 
 
@@ -80938,6 +81642,8 @@ handsplayed > 25
 
 
 
+
+
 ##f$headsup_alli##
 0
 || (f$srai >= f$sraimax && f$sraimax>0)
@@ -80948,6 +81654,8 @@ handsplayed > 25
 || (f$balance<(bblind+sblind))
 || [prwinnow > 0.6 && prwin < prwinnow]
 || (f$headsup_push_allin)
+
+
 
 
 
@@ -81275,6 +81983,8 @@ handsplayed > 25
 
 
 
+
+
 ##f$headsup_bblind_allin##
 0
 || [ 1
@@ -81285,6 +81995,8 @@ handsplayed > 25
 && f$csi<5
 && list16
 ]
+
+
 
 
 
@@ -81616,6 +82328,8 @@ handsplayed > 25
 
 
 
+
+
 ##f$headsup_bblind_raise##
 0
 || [ 1
@@ -81786,10 +82500,14 @@ handsplayed > 25
 
 
 
+
+
 ##f$headsup_betsize##
 f$srai>= f$sraimin
 ? (((f$srai/bblind)^0)*bblind) :
 0
+
+
 
 
 
@@ -82116,6 +82834,8 @@ f$srai>= f$sraimin
 
 
 
+
+
 ##f$headsup_flop_allin##
 0
 || betround==2
@@ -82129,6 +82849,8 @@ f$srai>= f$sraimin
    )
 ]
 }
+
+
 
 
 
@@ -82475,6 +83197,8 @@ f$srai>= f$sraimin
 
 
 
+
+
 ##f$headsup_flop_raise##
 0
 || betround==2
@@ -82515,6 +83239,8 @@ f$srai>= f$sraimin
    )
 ]
 }
+
+
 
 
 
@@ -82883,10 +83609,14 @@ betround == 1 &&
 
 
 
+
+
 ##f$headsup_rai##
 f$headsup_raise ? f$raise_amount :
 f$bluffing && (stack1 > bblind * 16 || betround >=2) ? f$raise_amount :
 0
+
+
 
 
 
@@ -83045,6 +83775,8 @@ f$bluffing && (stack1 > bblind * 16 || betround >=2) ? f$raise_amount :
 || f$headsup_flop_raise
 || f$headsup_turn_raise
 || f$headsup_river_raise
+
+
 
 
 
@@ -83372,8 +84104,12 @@ f$bluffing && (stack1 > bblind * 16 || betround >=2) ? f$raise_amount :
 
 
 
+
+
 ##f$headsup_river_call##
 0
+
+
 
 
 
@@ -83734,6 +84470,8 @@ nopponentsdealt==1 && { 0
 
 
 
+
+
 ##f$headsup_sblind_allin##
 0
 || betround==1
@@ -83751,6 +84489,8 @@ nopponentsdealt==1 && { 0
    )
 ]
 }
+
+
 
 
 
@@ -84106,6 +84846,8 @@ nopponentsdealt==1 && { 0
 
 
 
+
+
 ##f$headsup_sblind_raise##
 0
 || [ 1
@@ -84121,6 +84863,8 @@ nopponentsdealt==1 && { 0
    || (f$csi>10 && list17 && randomround<=0.3)
    )
 ]
+
+
 
 
 
@@ -84459,6 +85203,8 @@ nopponentsdealt==1 && { 0
 
 
 
+
+
 ##f$headsup_turn_call##
 0
 || betround==3 &&
@@ -84475,6 +85221,8 @@ nopponentsdealt==1 && { 0
    )
 ]
 }
+
+
 
 
 
@@ -84820,6 +85568,8 @@ nopponentsdealt==1 && { 0
 
 
 
+
+
 ##f$icm_alli##
 [
 	[
@@ -84832,6 +85582,8 @@ nopponentsdealt==1 && { 0
 ] ? 1 :
 
 f$icm_calc_call ? 1 : 0
+
+
 
 
 
@@ -84892,6 +85644,8 @@ f$icm_calc_call ? 1 : 0
 
 
 
+
+
 ##f$icm_calc_push##
 //Scenario (a.i). Push, get called, and lose. == 1 * (prob of getting called) * (prob of losing) == 1 * 0.20 * (1-0.65) = 0.07. We need to multiply this by our icm_allilose1, which gives us 0.07*0 == 0.
 //Scenario (a.ii). Push, get called, and win. = 1 * (prob of getting called) * (prob of winning) == 1 * 0.20 * (0.65) = 0.13. We need to multiply this by our icm_alliwin1, which gives is 0.13 * 1.
@@ -84911,6 +85665,8 @@ f$icm_calc_call ? 1 : 0
 	]
 >
 icm_fold ? 1 : 0
+
+
 
 
 
@@ -85011,6 +85767,8 @@ icm_fold ? 1 : 0
 
 
 
+
+
 ##f$is_betting_safe##
 [
 	[
@@ -85029,6 +85787,8 @@ icm_fold ? 1 : 0
 		f$opponent_takes_over
 	]
 ]? 0 : 1
+
+
 
 
 
@@ -85217,8 +85977,12 @@ icm_fold ? 1 : 0
 
 
 
+
+
 ##f$is_chipleader##
 balance > stack1 ? 1 : 0
+
+
 
 
 
@@ -85441,10 +86205,14 @@ f$balance_in_bb > 25
 
 
 
+
+
 ##f$is_mid_stage##
 f$balance_in_bb > 12
 && f$balance_in_bb < 25
 ? 1 : 0
+
+
 
 
 
@@ -85653,8 +86421,12 @@ rankloplayer>rankhicommon)
 
 
 
+
+
 ##f$last_to_act##
 betposition = nplayersplaying ? 1 : 0
+
+
 
 
 
@@ -86069,6 +86841,8 @@ betposition = nplayersplaying ? 1 : 0
 
 
 
+
+
 ##f$mycurrentbet##
 [userchair==0 ? currentbet0 :
  userchair==1 ? currentbet1 :
@@ -86076,6 +86850,8 @@ betposition = nplayersplaying ? 1 : 0
  userchair==3 ? currentbet3 :
  userchair==4 ? currentbet4 :
  userchair==5 ? currentbet5 : 0 ]
+
+
 
 
 
@@ -86643,9 +87419,13 @@ betposition = nplayersplaying ? 1 : 0
 
 
 
+
+
 ##f$nsuitedholeshi##
 // count the number of missing suited cards higher than my highest suited card
 (`((~srankbits&0x7fff)>>srankhiplayer))
+
+
 
 
 
@@ -87072,9 +87852,13 @@ betposition = nplayersplaying ? 1 : 0
 
 
 
+
+
 ##f$openboard##
 // impossible to have a boat ,flush, or straight; top set is nuts
 [ nrankedcommon == 1 && nsuitedcommon <= 2 && nstraightfillcommon >=3 ]
+
+
 
 
 
@@ -87504,8 +88288,12 @@ betposition = nplayersplaying ? 1 : 0
 
 
 
+
+
 ##f$opponent_has_hit##
 0
+
+
 
 
 
@@ -87751,6 +88539,8 @@ betposition = nplayersplaying ? 1 : 0
 
 
 
+
+
 ##f$opponent_takes_over##
 (betround == 3 && nopponentstruelyraising >= 1 && !f$openboard)
 &&
@@ -87767,6 +88557,8 @@ betposition = nplayersplaying ? 1 : 0
 &&
 (prwin <= hi_prwin2)
 ? 1 : 0
+
+
 
 
 
@@ -88027,6 +88819,8 @@ betposition = nplayersplaying ? 1 : 0
 
 
 
+
+
 ##f$position##
 // SB=1 BB=2 Early=3 Middle=4 Late=5
 
@@ -88076,6 +88870,8 @@ nplayersdealt==4 ?  (dealposition==3 ? 4 :
                      dealposition==4 ? 5 : 0):
 
 nplayersdealt==3 ?  (dealposition==3 ? 5 : 0):0
+
+
 
 
 
@@ -88443,6 +89239,8 @@ nplayersdealt==3 ?  (FirstCallerPosition==3 ? 5 : 0):0
 
 
 
+
+
 ##f$position_raiser##
 // SB=1 BB=2 Early=3 Middle=4 Late=5
 
@@ -88653,8 +89451,12 @@ nplayersdealt==3 ?  (dealpositionrais==3 ? 5 : 0):0
 
 
 
+
+
 ##f$preflop_aggressor##
 [ nplayersround2>=3 && nplayersplaying==2 ]
+
+
 
 
 
@@ -89201,6 +90003,8 @@ nplayersdealt==3 ?  (dealpositionrais==3 ? 5 : 0):0
 
 
 
+
+
 ##f$preflop_raise##
 ( f$Preflop_First_In
 | f$Preflop_Raise_After_One_Limper
@@ -89210,6 +90014,8 @@ nplayersdealt==3 ?  (dealpositionrais==3 ? 5 : 0):0
 | f$Preflop_Raiser_And_Callers_In_Front_Of_Me
 | f$Preflop_Multiple_Raisers
 | f$Preflop_React_To_Reraise)
+
+
 
 
 
@@ -89738,8 +90544,12 @@ nplayersdealt==3 ?  (dealpositionrais==3 ? 5 : 0):0
 
 
 
+
+
 ##f$prwin1##
 [prwin+(prtie/2)]**(1+f$threat)
+
+
 
 
 
@@ -90268,6 +91078,8 @@ nplayersdealt==3 ?  (dealpositionrais==3 ? 5 : 0):0
 
 
 
+
+
 ##f$prwin_calc_willplay##
 
 //PREFLOP 1 raiser before us
@@ -90393,6 +91205,8 @@ nplayersdealt==3 ?  (dealpositionrais==3 ? 5 : 0):0
 
 
 
+
+
 ##f$prwin_calc_willplay_headsup##
 WHEN BotRaisedBeforeFlop AND BotCalledBeforeFlop AND OpponentsOnFlop = 1 AND pt_hands_headsup > 100 Return (pt_3bet_headsup*169 + 6) Force
 WHEN BotRaisedBeforeFlop AND BotCalledBeforeFlop AND OpponentsOnFlop = 1 AND pt_hands_headsup <= 100 Return 18 Force
@@ -90400,6 +91214,8 @@ WHEN Opponents = 1 AND pt_hands_headsup > 30 AND pt_vpip_headsup < 0.66 Return (
 WHEN Opponents = 1 AND pt_hands_headsup > 30 AND pt_vpip_headsup >= 0.66 Return 111 Force
 WHEN Opponents = 1 AND pt_hands_headsup <= 30 Return 80 Force
 WHEN Opponents > 1 Return 84 Force
+
+
 
 
 
@@ -90598,8 +91414,12 @@ handsplayed<10?72:(180*floppct)>(nopponentsplaying*2+1)?180*floppct:nopponentspl
 
 
 
+
+
 ##f$pt_aggr_factor_raischair##
 (pt_total_af_raischair*(pt_wtsd_raischair*4))
+
+
 
 
 
@@ -91134,6 +91954,8 @@ handsplayed<10?72:(180*floppct)>(nopponentsplaying*2+1)?180*floppct:nopponentspl
 
 
 
+
+
 ##f$pt_icon##
 /*[
 (opponentsplayingbits==1)  ? pt_icon0 :
@@ -91405,6 +92227,8 @@ handsplayed<10?72:(180*floppct)>(nopponentsplaying*2+1)?180*floppct:nopponentspl
 
 
 
+
+
 ##f$pt_pfr##
 [
 (opponentsplayingbits==1)  ? pt_pfr0 :
@@ -91413,6 +92237,8 @@ handsplayed<10?72:(180*floppct)>(nopponentsplaying*2+1)?180*floppct:nopponentspl
 (opponentsplayingbits==8)  ? pt_pfr3 :
 (opponentsplayingbits==16) ? pt_pfr4 :
 (opponentsplayingbits==32) ? pt_pfr5 : 0 ]
+
+
 
 
 
@@ -91947,8 +92773,12 @@ f$oppchair==6 ? f$stats_pfr*2.0 : 0
 
 
 
+
+
 ##f$pt_pfrrr##
 [ f$stats_pfr*0.50 ]
+
+
 
 
 
@@ -92477,8 +93307,12 @@ f$oppchair==6 ? f$stats_pfr*2.0 : 0
 
 
 
+
+
 ##f$pt_r_aggt##
 (pt_total_af_raischair*(pt_wtsd_raischair*4))
+
+
 
 
 
@@ -93013,6 +93847,8 @@ f$oppchair==6 ? f$stats_pfr*2.0 : 0
 
 
 
+
+
 ##f$pt_vpip##
 [
 (opponentsplayingbits==1)  ? pt_vpip0 :
@@ -93021,6 +93857,8 @@ f$oppchair==6 ? f$stats_pfr*2.0 : 0
 (opponentsplayingbits==8)  ? pt_vpip3 :
 (opponentsplayingbits==16) ? pt_vpip4 :
 (opponentsplayingbits==32) ? pt_vpip5 : 0 ]
+
+
 
 
 
@@ -93552,6 +94390,8 @@ pt_vpip_raischair > 0.3 ? 1 : 0
 
 
 
+
+
 ##f$ptype_nit##
 // PT AUTORATE ICONS:
 /*(pt_r_icon<=1)  ? 1 :
@@ -93820,6 +94660,8 @@ pt_vpip_raischair < 0.15 ? 1 : 0
 
 
 
+
+
 ##f$ptype_semilag##
 // PT AUTORATE ICONS:
 /*(pt_r_icon==3)  ? 1 :
@@ -93830,6 +94672,8 @@ pt_vpip_raischair < 0.15 ? 1 : 0
 */
 pt_vpip_raischair > 0.22 &&
 pt_vpip_raischair < 0.3 ? 1 : 0
+
+
 
 
 
@@ -94364,6 +95208,8 @@ pt_vpip_raischair < 0.22 ? 1 : 0
 
 
 
+
+
 ##f$ptype_ubernit##
 // PT AUTORATE ICONS:
 /*(pt_r_icon==1)  ? 1 :
@@ -94381,6 +95227,8 @@ pt_pfr_raischair > 0
 pt_vpip_raischair <= 0.12
 &&
 pt_vpip_raischair > 0 ? 1 : 0
+
+
 
 
 
@@ -94913,6 +95761,8 @@ me_re_rais0
 
 
 
+
+
 ##f$raise_amount##
 betround==1 && dealposition==1 && prwin>0.7          ? bblind*5 :
 betround==1 && dealposition==1 && prwin>0.6          ? bblind*3 :
@@ -95088,6 +95938,8 @@ pot*0.5
 
 
 
+
+
 ##f$raising_chair_stacksize##
 raischair = 0 ? (balance0 + currentbet0)/bblind:
 raischair = 1 ? (balance1 + currentbet1)/bblind:
@@ -95099,6 +95951,8 @@ raischair = 6 ? (balance6 + currentbet6)/bblind:
 raischair = 7 ? (balance6 + currentbet7)/bblind:
 raischair = 8 ? (balance6 + currentbet8)/bblind:
 raischair = 9 ? (balance6 + currentbet9)/bblind: 0
+
+
 
 
 
@@ -95529,6 +96383,8 @@ f$dealpositionrais == 6 ? pt_pfr_raischair * 0.50 : 0
 
 
 
+
+
 ##f$real_pfr_range##
    f$real_pfr<=0.00                       && list99
 || f$real_pfr> 0.00 && f$real_pfr <= 0.02 && list10
@@ -95541,6 +96397,8 @@ f$dealpositionrais == 6 ? pt_pfr_raischair * 0.50 : 0
 || f$real_pfr> 0.22 && f$real_pfr <= 0.26 && list13
 || f$real_pfr> 0.26 && f$real_pfr <= 0.30 && list13
 || f$real_pfr> 0.30                       && list13
+
+
 
 
 
@@ -96085,8 +96943,12 @@ betround>1 ? balance-f$mycurrentbet : 0
 
 
 
+
+
 ##f$reducewinchance_when_have_twopair##
 [ nrankedcommon==2 && nplayersround2>2 && istwopair && trankcommon>7 && !f$twopair ] ? 0.4 : 0
+
+
 
 
 
@@ -96615,16 +97477,30 @@ betround>1 ? balance-f$mycurrentbet : 0
 
 
 
+
+
 ##f$resteal_blinds##
 [
-	f$position == 2
+	betround = 1
+	&&
+	f$Position_BigBlind
+	&&
+	(dealpositionrais = 6 || dealpositionrais = 1)
+	&&
+	nopponentscalling = 0
+	&&
+	call <= bblind * 2
+	&&
+	pt_hands_raischair > 100
+	&&
+	pt_fold_to_resteal_raischair > 0
 ]
 
+&&
 
-
-
-
-
+[
+	call / (call + pot) < pt_fold_to_resteal_raischair
+] ? 1 : 0
 
 
 
@@ -96711,6 +97587,8 @@ betround>1 ? balance-f$mycurrentbet : 0
 [ f$Initiative_GotRaised  ] ? f$river_call_wegotraised  :
 
 0
+
+
 
 
 
@@ -97262,6 +98140,8 @@ betround>1 ? balance-f$mycurrentbet : 0
 
 
 
+
+
 ##f$river_call_noaction##
 [ f$actionpostflop_2 ] ? f$prwin1>.50 :
 
@@ -97550,6 +98430,8 @@ betround>1 ? balance-f$mycurrentbet : 0
 
 
 
+
+
 ##f$river_call_noinitiative##
 [ f$actionpostflop_2 ] ? f$prwin1>.50 :
 
@@ -97575,6 +98457,8 @@ betround>1 ? balance-f$mycurrentbet : 0
 [ f$actionpostflop_10 ] ? f$prwin1>.97 :
 
 0
+
+
 
 
 
@@ -98139,6 +99023,8 @@ betround>1 ? balance-f$mycurrentbet : 0
 
 
 
+
+
 ##f$river_raise##
 [ f$Initiative_Hero      ] ? f$river_raise_initiative   :
 [ f$Initiative_Villian   ] ? f$river_raise_noinitiative :
@@ -98146,6 +99032,8 @@ betround>1 ? balance-f$mycurrentbet : 0
 [ f$Initiative_GotRaised ] ? f$river_raise_wegotraised  :
 
 0
+
+
 
 
 
@@ -98728,6 +99616,8 @@ betround>1 ? balance-f$mycurrentbet : 0
 
 
 
+
+
 ##f$river_raise_noaction##
 // Toevoegen NBETSROUND1
 
@@ -98783,6 +99673,8 @@ betround>1 ? balance-f$mycurrentbet : 0
     [ f$actionpostflop_10] ? f$nuts      : 0 } :
 
 0
+
+
 
 
 
@@ -99350,6 +100242,8 @@ betround>1 ? balance-f$mycurrentbet : 0
 
 
 
+
+
 ##f$river_raise_wegotraised##
 [ f$Position_Early ] ? {
 
@@ -99391,6 +100285,8 @@ betround>1 ? balance-f$mycurrentbet : 0
     [ f$actionpostflop_10] ? f$nuts      : 0 } :
 
 0
+
+
 
 
 
@@ -99919,8 +100815,12 @@ betround>1 ? balance-f$mycurrentbet : 0
 
 
 
+
+
 ##f$safeboard1##
 [ nrankedcommon==1 && nsuitedcommon<=2 && nstraightcommon<=2 ]
+
+
 
 
 
@@ -100356,6 +101256,8 @@ True
 
 
 
+
+
 ##f$sng_alli##
 [
 	betround == 1
@@ -100368,6 +101270,8 @@ True
 	f$sng_postflop_emergency_alli
 ]
 ? 1 : 0
+
+
 
 
 
@@ -100495,6 +101399,8 @@ betround >= 2 && f$sng_raise > 0 && call > 0 && call * 3 > f$betpot_2_3  ? call 
 
 f$sng_raise > 0 ? pot / 3 * 2 :
 0
+
+
 
 
 
@@ -100773,6 +101679,8 @@ f$sng_river_call
 
 
 
+
+
 ##f$sng_flop_call##
 [
 	[ betround == 2 ]
@@ -100906,6 +101814,8 @@ f$sng_river_call
 
 
 
+
+
 ##f$sng_flop_cbet##
 [
 	f$did_raise_round_1 > 0
@@ -100939,6 +101849,8 @@ f$sng_river_call
 	[	prwin > 0.4	]
 ]
 ? 1 : 0
+
+
 
 
 
@@ -101202,6 +102114,8 @@ f$PreflopAggressorCbetOnFlop
 
 
 
+
+
 ##f$sng_postflop_emergency_alli##
 [
 [
@@ -101227,6 +102141,8 @@ f$PreflopAggressorCbetOnFlop
 ]
 ]
 ? 1 : 0
+
+
 
 
 
@@ -101483,6 +102399,8 @@ ac_first_into_pot
 
 
 
+
+
 ##f$sng_preflop_call##
 [
 	[ betround == 1 ]
@@ -101500,6 +102418,8 @@ ac_first_into_pot
 	]
 ]
 ? 1 : 0
+
+
 
 
 
@@ -101754,6 +102674,8 @@ ac_first_into_pot
 
 
 
+
+
 ##f$sng_raise##
 betround == 1 && f$sng_preflop_raise	> 0 ? 1 :
 betround == 1 && f$steal_blinds && f$is_big_pot  ? 1 :
@@ -101761,6 +102683,8 @@ betround == 1 && f$steal_blinds_when_sitting_out ? 1 :
 betround == 2 && f$sng_flop_raise > 0  ? 1 :
 betround == 3 && f$sng_turn_raise > 0  ? 1 :
 betround == 4 && f$sng_river_raise > 0 ? 1 : 0
+
+
 
 
 
@@ -101964,6 +102888,8 @@ betround == 4 && f$sng_river_raise > 0 ? 1 : 0
 
 
 
+
+
 ##f$sng_river_raise##
 //////////////////////////////////////////////////////////
 /////////////////////RIVER////////////////////////////////
@@ -101982,6 +102908,8 @@ f$top_pair_top_kicker_or_more && !f$opponent_takes_over && ((nopponentsbetting +
 didchecround2 && didchecround3 && ac_first_into_pot && HavePair ?  pot / 3 * 1 :
 didraisround1 && didraisround2 && didchecround3 && f$top_pair_or_more && ac_first_into_pot ? pot / 3 * 1 :
 0
+
+
 
 
 
@@ -102226,6 +103154,8 @@ didraisround1 && didraisround2 && didchecround3 && f$top_pair_or_more && ac_firs
 
 
 
+
+
 ##f$sng_turn_raise##
 //////////////////////////////////////////////////////////
 /////////////////////TURN/////////////////////////////////
@@ -102243,6 +103173,8 @@ didraisround1 && didraisround2 && didchecround3 && f$top_pair_or_more && ac_firs
 f$top_pair_top_kicker_or_more && f$is_betting_safe && !f$opponent_takes_over && (didrais = 0 && (nopponentsbetting || nopponentstruelyraising) = 1) ? (call * 3) :
 //2 raiser or reraise
 f$top_pair_top_kicker_or_more && f$is_betting_safe  && !f$opponent_takes_over && ((nopponentsbetting || nopponentstruelyraising) >= 1 || didrais >=1) ? balance : 0
+
+
 
 
 
@@ -102526,8 +103458,12 @@ nopponentsseated == 1 ? f$headsup_rai : 0
 
 
 
+
+
 ##f$sraimax##
 f$balance-call
+
+
 
 
 
@@ -102851,6 +103787,8 @@ bblind * 3
 
 
 
+
+
 ##f$stackopponent##
 [
 (opponentsplayingbits==1)  ? balance0 :
@@ -102859,6 +103797,8 @@ bblind * 3
 (opponentsplayingbits==8)  ? balance3 :
 (opponentsplayingbits==16) ? balance4 :
 (opponentsplayingbits==32) ? balance5 : 0 ]
+
+
 
 
 
@@ -103393,6 +104333,8 @@ bblind * 3
 
 
 
+
+
 ##f$stats_3bet##
 [
 (opponentsplayingbits==1)  ? pt_3bet0 :
@@ -103401,6 +104343,8 @@ bblind * 3
 (opponentsplayingbits==8)  ? pt_3bet3 :
 (opponentsplayingbits==16) ? pt_3bet4 :
 (opponentsplayingbits==32) ? pt_3bet5 : 0 ]
+
+
 
 
 
@@ -103575,6 +104519,8 @@ bblind * 3
 
 
 
+
+
 ##f$stats_flopaf##
 [
 (opponentsplayingbits==1)  ? pt_flop_af0 :
@@ -103583,6 +104529,8 @@ bblind * 3
 (opponentsplayingbits==8)  ? pt_flop_af3 :
 (opponentsplayingbits==16) ? pt_flop_af4 :
 (opponentsplayingbits==32) ? pt_flop_af5 : 0 ]
+
+
 
 
 
@@ -104117,6 +105065,8 @@ bblind * 3
 
 
 
+
+
 ##f$stats_pfr##
 [
 (opponentsplayingbits==1)  ? pt_pfr0 :
@@ -104125,6 +105075,8 @@ bblind * 3
 (opponentsplayingbits==8)  ? pt_pfr3 :
 (opponentsplayingbits==16) ? pt_pfr4 :
 (opponentsplayingbits==32) ? pt_pfr5 : 0 ]
+
+
 
 
 
@@ -104659,6 +105611,8 @@ bblind * 3
 
 
 
+
+
 ##f$stats_turnaf##
 [
 (opponentsplayingbits==1)  ? pt_turn_af0 :
@@ -104667,6 +105621,8 @@ bblind * 3
 (opponentsplayingbits==8)  ? pt_turn_af3 :
 (opponentsplayingbits==16) ? pt_turn_af4 :
 (opponentsplayingbits==32) ? pt_turn_af5: 0 ]
+
+
 
 
 
@@ -105201,6 +106157,8 @@ bblind * 3
 
 
 
+
+
 ##f$stats_wsdp##
 [
 (opponentsplayingbits==1)  ? pt_wtsd0 :
@@ -105209,6 +106167,8 @@ bblind * 3
 (opponentsplayingbits==8)  ? pt_wtsd3 :
 (opponentsplayingbits==16) ? pt_wtsd4 :
 (opponentsplayingbits==32) ? pt_wtsd5 : 0 ]
+
+
 
 
 
@@ -105614,11 +106574,15 @@ bblind * 3
 
 
 
+
+
 ##f$steal_blinds_when_sitting_out##
 //Steal when blinds are sitting out
 f$position == 5 && ac_first_into_pot && f$sb_sitting_out && f$big_blind_sitting_out ? 1 :
 
 f$position == 2 && ac_first_into_pot && f$sb_sitting_out && f$big_blind_sitting_out ? 1 : 0
+
+
 
 
 
@@ -105881,10 +106845,14 @@ f$position == 2 && ac_first_into_pot && f$sb_sitting_out && f$big_blind_sitting_
 
 
 
+
+
 ##f$threat##
 betround==2 ? (f$AF_flop+f$foldequity+f$villiantakeover+f$reducewinchance_when_have_twopair)  :
 betround==3 ? (f$AF_turn+f$foldequity+f$villiantakeover+f$reducewinchance_when_have_twopair)  :
 betround==4 ? (f$AF_river+f$foldequity+f$villiantakeover+f$reducewinchance_when_have_twopair) : 0
+
+
 
 
 
@@ -106415,8 +107383,12 @@ betround==4 ? (f$AF_river1+f$foldequity1+f$villiantakeover1+f$reducewinchance_wh
 
 
 
+
+
 ##f$threat2##
 betround==2 ? (f$foldequity+f$reducewinchance_when_have_twopair) : 0
+
+
 
 
 
@@ -106850,10 +107822,14 @@ betround==2 ? (f$foldequity+f$reducewinchance_when_have_twopair) : 0
 
 
 
+
+
 ##f$top_pair_or_more##
 HaveTopPair ||
 f$top_pair_top_kicker_or_more
 ? 1 : 0
+
+
 
 
 
@@ -107179,11 +108155,15 @@ f$top_pair_top_kicker_or_more
 
 
 
+
+
 ##f$top_pair_top_kicker_or_more##
 f$top_pair_top_kicker
 ||HaveOverPair
 ||f$two_pair_or_more
 ? 1 : 0
+
+
 
 
 
@@ -107509,6 +108489,8 @@ nrankedcommon==1 &&
 
 
 
+
+
 ##f$turn_call##
 [ f$Odds_and_Outs          ] ? 1 :
 
@@ -107518,6 +108500,8 @@ nrankedcommon==1 &&
 [ f$Initiative_GotRaised   ] ? f$turn_call_wegotraised  :
 
 0
+
+
 
 
 
@@ -108082,6 +109066,8 @@ nrankedcommon==1 &&
 
 
 
+
+
 ##f$turn_call_noaction##
 [ f$Position_Early ] ? {
 
@@ -108120,6 +109106,8 @@ nrankedcommon==1 &&
     [ f$actionpostflop_10] ? f$prwin1>.97 : 0 } :
 
 0
+
+
 
 
 
@@ -108684,6 +109672,8 @@ nrankedcommon==1 &&
 
 
 
+
+
 ##f$turn_call_wegotraised##
 [ f$Position_Early ] ? {
 
@@ -108985,6 +109975,8 @@ nrankedcommon==1 &&
 
 
 
+
+
 ##f$turn_raise##
 [ f$Initiative_Hero      ] ? f$turn_raise_initiative   :
 [ f$Initiative_Villian   ] ? f$turn_raise_noinitiative :
@@ -108992,6 +109984,8 @@ nrankedcommon==1 &&
 [ f$Initiative_GotRaised ] ? f$turn_raise_wegotraised  :
 
 0
+
+
 
 
 
@@ -109582,6 +110576,8 @@ nrankedcommon==1 &&
 
 
 
+
+
 ##f$turn_raise_noaction##
 [ f$Position_Early ] ? {
 
@@ -109642,6 +110638,8 @@ nrankedcommon==1 &&
     [ f$actionpostflop_10] ? f$nuts      : 0 } :
 
 0
+
+
 
 
 
@@ -110224,6 +111222,8 @@ nrankedcommon==1 &&
 
 
 
+
+
 ##f$turn_raise_wegotraised##
 [ f$Position_Early ] ? {
 
@@ -110280,6 +111280,8 @@ nrankedcommon==1 &&
     [ f$actionpostflop_10] ? f$nuts      : 0 } :
 
 0
+
+
 
 
 
@@ -110714,8 +111716,12 @@ HaveTwoPair
 
 
 
+
+
 ##f$twopair##
 (pokervalcommon & twopair)
+
+
 
 
 
@@ -111280,6 +112286,8 @@ HaveTwoPair
 
 
 
+
+
 ##f$villiantakeover1##
 [ betround==3 && !didcallround1 && nbetsround1>1 && !didswaground2 && didcallround2 && f$Position_Late ] ? {
 
@@ -111581,9 +112589,13 @@ HaveTwoPair
 
 
 
+
+
 ##f$wheeldraw##
 (rankbits>>9==0b111100)                                 //check AKQJ
 || (rankbits & 0b0000000000011110)==0b0000000000011110        //check 432A
+
+
 
 
 
