@@ -2,7 +2,7 @@
 
 // OpenScrape 7.7.0
 
-// 2015-06-09 18:33:18
+// 2015-06-09 19:31:19
 // 32 bits per pixel
 
 //
@@ -106,7 +106,7 @@ r$p1cardface1nocard  439  97 439  97   1a1b1a    0 C
 r$p1cardface1rank    437  96 449 110   d9d5e6  150 T2
 r$p1cardface1suit    437  96 440  99        0    0 I
 r$p1dealer           392  97 402 105        0    0 I
-r$p1name             408 126 465 135   ffffff    0 T0
+r$p1name             408 126 472 135   ffffff    0 T0
 r$p1seated           464  91 464  91   212121   -1 C
 r$p2active           290 198 321 203        0    0 I
 r$p2balance          258 228 327 235   ffffff    0 T0
@@ -132,7 +132,7 @@ r$p3cardface1nocard  188 188 188 188   6d7171    0 C
 r$p3cardface1rank    185 187 197 201   d9d5e6  150 T2
 r$p3cardface1suit    185 187 188 190        0    0 I
 r$p3dealer           209 171 219 179        0    0 I
-r$p3name             156 216 221 225   ffffff    0 T0
+r$p3name             157 216 218 225   ffffff    0 T0
 r$p3seated           156 231 156 231   414141   -1 C
 r$p4active            39 107  70 112        0    0 I
 r$p4balance            9 136  71 143   ffffff    0 T0
@@ -235,6 +235,7 @@ t0$B 3f 29 29 16
 t0$E 3f 29 29 21
 t0$B 3f 29 29 36
 t0$H 3f 8 8 8 3f
+t0$K 3f c 16 21
 t0$N 3f c 3f
 t0$j 41 17e
 t0$4 4 1c 3f 4
