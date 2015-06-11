@@ -1,4 +1,4 @@
-##2015-06-11 21:16:31##
+##2015-06-11 21:46:40##
 
 ##notes##
  
@@ -39,8 +39,8 @@ f$resteal_blinds > 0 ? call * 3 :
 
 betround == 1 && f$rais > 0 && f$Betsize_Gecko < 3 * bblind ? bblind * (3 + nopponentscalling):
 
-f$Betsize_Gecko > 0 ? (((((f$Betsize_Gecko)/.5)+.5)^0)*.5) : 0
-//f$Betsize_Gecko > 0 ? f$Betsize_Gecko : 0
+//f$Betsize_Gecko > 0 ? (((((f$Betsize_Gecko)/.5)+.5)^0)*.5) : 0
+f$Betsize_Gecko > 0 ? f$Betsize_Gecko : 0
 
 
 
@@ -128,16 +128,7 @@ elapsed > 5400 ? 1 :
 
 
 ##f$leave##
-elapsed > 5400 && issittingout ? 1 :
-handsplayed > 250 && issittingout ? 1 :
 0
-
-
-
-
-
-
-
 
 ##f$autopost##
 1
@@ -150,10 +141,7 @@ handsplayed > 250 && issittingout ? 1 :
 
 
 ##f$close##
-elapsed > 5400 && issittingout ? 1 :
-handsplayed > 250 && issittingout ? 1 :
 0
-
 
 
 
@@ -198,7 +186,7 @@ f$dealposition==4 && !list_dont_prefold ? 1 :
 
 ##f$delay##
 // Autoplayer-delay in milli-seconds
-random * 1500 + f$delayed_raise + f$delayed_check
+random * 300 + f$delayed_raise + f$delayed_check
 
 
 
@@ -4611,7 +4599,7 @@ call == 0
 
 
 ##f$delayed_raise##
-f$rais > 0 ? 500 : 0
+f$rais > 0 ? random * 1000 : 0
 
 
 
@@ -6436,9 +6424,9 @@ betround>1 ? balance-f$mycurrentbet : 0
 ]
 &&
 [
-	(call / (call + pot) < pt_fold_to_resteal_raischair)
+	((3 * call) / ((3 * call) + pot) < pt_fold_to_resteal_raischair)
 	||
-	(call / (call + pot) < pt_fold_to_3bet_raischair)
+	((3 * call) / ((3 * call) + pot) < pt_fold_to_3bet_raischair)
 ] ? 1 : 0
 
 
