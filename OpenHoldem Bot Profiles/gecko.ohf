@@ -1,4 +1,4 @@
-##2015-06-11 20:11:46##
+##2015-06-11 21:16:31##
 
 ##notes##
  
@@ -7029,17 +7029,15 @@ bblind * 3
 
 ##f$steal_blinds##
 //steal if btn or sb and sb/bb are nit players
-[betround == 1 && ac_first_into_pot && pt_hands_bigblind > 50]
+[betround == 1 && ac_first_into_pot]
 &&
 [
-	(f$Position_CutOff && pt_hands_smallblind > 50 && pt_bb_fold_to_steal_bigblind > 0.7 && pt_sb_fold_to_steal_smallblind > 0.7)
+	//fold equity higher than 3 bb invest to gain 4.5
+	(f$Position_Button && (f$steal_equity > (3 / 4.5)))
 	||
-	(f$Position_Button && pt_hands_smallblind > 50 && pt_bb_fold_to_steal_bigblind > 0.6 && pt_sb_fold_to_steal_smallblind > 0.6)
-	||
-	(f$Position_SmallBlind && pt_bb_fold_to_steal_bigblind > 0.6)
+	(f$Position_SmallBlind && (f$steal_equity > (2.5 / 4)))
 ]
 ? 1 : 0
-
 
 
 
@@ -7051,6 +7049,26 @@ bblind * 3
 //Steal when blinds are sitting out
 f$position == 5 && ac_first_into_pot && f$sb_sitting_out && f$big_blind_sitting_out ? 1 :
 f$position == 2 && ac_first_into_pot && f$sb_sitting_out && f$big_blind_sitting_out ? 1 : 0
+
+
+
+
+
+
+
+
+##f$steal_equity##
+//calculate the fold equity for f$steal_blinds from BTN & SB
+[betround == 1 && ac_first_into_pot && pt_hands_bigblind > 50 && pt_hands_smallblind > 50]
+&&
+(f$Position_Button && pt_bb_fold_to_steal_bigblind > 0 && pt_sb_fold_to_steal_smallblind > 0)
+? ( pt_bb_fold_to_steal_bigblind * pt_sb_fold_to_steal_smallblind ) : 
+
+[betround == 1 && ac_first_into_pot && pt_hands_bigblind > 50]
+&&
+(f$Position_SmallBlind && pt_bb_fold_to_steal_bigblind > 0)
+? ( pt_bb_fold_to_steal_bigblind ) : 0 
+
 
 
 
