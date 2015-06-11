@@ -1,4 +1,4 @@
-##2015-06-11 19:54:12##
+##2015-06-11 20:11:46##
 
 ##notes##
  
@@ -5845,7 +5845,7 @@ nplayersdealt==3 ?  (dealposition==3 ? 5 : 0):0
         [ nopponentscalling==0 && (ispair   ||dealposition==1 && handrank169<25) ] ? 1 :
         [ nopponentscalling==1 && (list301||dealposition==1 && handrank169<25) ] ? 1 :
         [ nopponentscalling>=2 && (list300||dealposition==1 && handrank169<25) ] ? 1 : 0 } :
-    [ ncallbets>1 && (call*8)<balance && (call*2)<pot && list17 && (call*8)<f$stackraiser ] ? 1 : 0 } :
+    [ ncallbets>1 && !f$ptype_raiser_nit && !f$ptype_raiser_uebernit && (call*8)<balance && (call*2)<pot && list17 && (call*8)<f$stackraiser ] ? 1 : 0 } :
 [ didswag ] ? {
     [ call*4<pot                                                             ] ? 1 :
     [ (call*8)<balance && (call*2)<pot && list17 && (call*8)<f$stackraiser ] ? 1 : 0 } :
@@ -6184,6 +6184,31 @@ f$stats_vpip > 0 ? 1 : 0
 
 
 
+
+
+##f$ptype_raiser_nit##
+pt_hands_raischair > 25
+&&
+pt_pfr_raischair <= 0.9
+&&
+pt_pfr_raischair > 0.7
+&&
+pt_vpip_raischair <= 0.15
+&&
+pt_vpip_raischair > 0 ? 1 : 0
+
+
+
+##f$ptype_raiser_uebernit##
+pt_hands_raischair > 25
+&&
+pt_pfr_raischair <= 0.9
+&&
+pt_pfr_raischair > 0.7
+&&
+pt_vpip_raischair <= 0.15
+&&
+pt_vpip_raischair > 0 ? 1 : 0
 
 
 ##f$ptype_semilag##
