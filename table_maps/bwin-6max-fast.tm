@@ -2,7 +2,7 @@
 
 // OpenScrape 7.7.0
 
-// 2015-06-11 03:30:09
+// 2015-06-12 00:20:32
 // 32 bits per pixel
 
 //
@@ -70,7 +70,7 @@ r$i2label            421 281 459 297   151515    0 T1
 r$i2state            411 300 411 300    8cdfe  200 C
 r$i3button           371 241 394 250        0    0 N
 r$i3edit             429 259 469 265        0    0 N
-r$i3handle           267 257 271 266        0    0 I
+r$i3handle           267 257 271 266        0    0 H0
 r$i3label            373 243 390 249        0    0 I
 r$i3slider           268 259 393 264        0    0 N
 r$i3state            470 259 470 259   f2f2f2    0 C
@@ -96,7 +96,7 @@ r$p0cardface1nocard  313  11 313  11   1e1e1e    0 C
 r$p0cardface1rank    305   8 317  22   d9d5e6  150 T2
 r$p0cardface1suit    305   9 308  12        0    0 I
 r$p0dealer           270  55 280  63        0    0 I
-r$p0name             272  37 342  46   ffffff    0 T0
+r$p0name             272  37 343  46   ffffff    0 T0
 r$p0seated           332   3 332   3   1b1b1b   -1 C
 r$p1active           438 107 469 112        0    0 I
 r$p1balance          408 137 472 144   ffffff    0 T0
@@ -109,7 +109,7 @@ r$p1cardface1nocard  439  97 439  97   1a1b1a    0 C
 r$p1cardface1rank    437  96 449 110   d9d5e6  150 T2
 r$p1cardface1suit    437  96 440  99        0    0 I
 r$p1dealer           392  97 402 105        0    0 I
-r$p1name             408 126 472 135   ffffff    0 T0
+r$p1name             406 126 474 135   ffffff    0 T0
 r$p1seated           464  91 464  91   212121   -1 C
 r$p2active           290 198 321 203        0    0 I
 r$p2balance          258 228 327 235   ffffff    0 T0
@@ -135,7 +135,7 @@ r$p3cardface1nocard  188 188 188 188   6d7171    0 C
 r$p3cardface1rank    185 187 197 201   d9d5e6  150 T2
 r$p3cardface1suit    185 187 188 190        0    0 I
 r$p3dealer           209 171 219 179        0    0 I
-r$p3name             155 216 219 225   ffffff    0 T0
+r$p3name             155 216 220 225   ffffff    0 T0
 r$p3seated           156 231 156 231   414141   -1 C
 r$p4active            39 107  70 112        0    0 I
 r$p4balance            9 136  71 143   ffffff    0 T0
@@ -166,13 +166,13 @@ r$p5seated           168   3 168   3   1c1c1c   -1 C
 r$u0balance          276  48 340  55        0    0 T0
 r$u0name             272  37 341  46        0    0 T0
 r$u1balance          408 137 472 144        0    0 T0
-r$u1name             408 126 472 135        0    0 T0
+r$u1name             407 126 473 135        0    0 T0
 r$u2balance          258 227 322 234        0    0 T0
 r$u2name             258 216 322 225        0    0 T0
 r$u3balance          157 227 221 234        0    0 T0
-r$u3name             157 216 221 225        0    0 T0
+r$u3name             155 216 221 225        0    0 T0
 r$u4balance            8 137  72 144        0    0 T0
-r$u4name               9 126  73 135        0    0 T0
+r$u4name               8 126  73 135        0    0 T0
 r$u5balance          139  48 203  55        0    0 T0
 r$u5name             139  37 203  46        0    0 T0
 
@@ -378,6 +378,7 @@ t3$? f 8 8 f 9 9 3f d b b f 30
 // hash
 //
 
+h0$handle             4d7b65a5
 h0$true               4f49a5f0
 h0$prefold            506c2fed
 h0$sitin              61fc2a4a
