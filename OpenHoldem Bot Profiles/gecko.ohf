@@ -1,4 +1,4 @@
-##2015-06-16 01:25:46##
+##2015-06-16 01:55:54##
 
 ##notes##
  
@@ -20604,7 +20604,7 @@ call>bblind && f$srai>0 ? {
 
 ##f$Chart_ReRaise##
 [ f$dealposition==1 ] ? { // sb
-    [ f$dealpositionrais==3 ] && handrank169 < 1.69 * (5	* f$Chart_ReRaise_Adjusted) ? 1 : // 04%
+    [ f$dealpositionrais==3 ] && handrank169 < 1.69 * (5.5	* f$Chart_ReRaise_Adjusted) ? 1 : // 04%
     [ f$dealpositionrais==4 ] && handrank169 < 1.69 * (8	* f$Chart_ReRaise_Adjusted) ? 1 : // 08%
     [ f$dealpositionrais==5 ] && handrank169 < 1.69 * (10	* f$Chart_ReRaise_Adjusted) ? 1 : // 12%
     [ f$dealpositionrais==6 ] && handrank169 < 1.69 * (12	* f$Chart_ReRaise_Adjusted) ? 1 : // 12%
@@ -20612,18 +20612,18 @@ call>bblind && f$srai>0 ? {
 [ f$dealposition==2 ] ? { // bb
     [ f$dealpositionrais==1 ] && handrank169 < 1.69 * (10	* f$Chart_ReRaise_Adjusted) ? 1 :// 04%
     [ f$dealpositionrais==1 && f$resteal_blinds ] ? 1 :
-    [ f$dealpositionrais==3 ] && handrank169 < 1.69 * (5	* f$Chart_ReRaise_Adjusted) ? 1 :// 04%
+    [ f$dealpositionrais==3 ] && handrank169 < 1.69 * (6.5	* f$Chart_ReRaise_Adjusted) ? 1 :// 04%
     [ f$dealpositionrais==4 ] && handrank169 < 1.69 * (8	* f$Chart_ReRaise_Adjusted) ? 1 :// 08%
     [ f$dealpositionrais==5 ] && handrank169 < 1.69 * (10	* f$Chart_ReRaise_Adjusted) ? 1 :// 12%
     [ f$dealpositionrais==6 ] && handrank169 < 1.69 * (12	* f$Chart_ReRaise_Adjusted) ? 1 :
     [ f$dealpositionrais==6 && f$resteal_blinds ] ? 1 : 0 } :
 [ f$dealposition==4 ] ? { // utg+1
-    [ f$dealpositionrais==3 ] && handrank169 < 1.69 * (5	* f$Chart_ReRaise_Adjusted) ? 1 : 0 } : // 04%
+    [ f$dealpositionrais==3 ] && handrank169 < 1.69 * (6.5	* f$Chart_ReRaise_Adjusted) ? 1 : 0 } : // 04%
 [ f$dealposition==5 ] ? { // co
-    [ f$dealpositionrais==3 ] && handrank169 < 1.69 * (5	* f$Chart_ReRaise_Adjusted) ? 1 :       // 04%
+    [ f$dealpositionrais==3 ] && handrank169 < 1.69 * (6.5	* f$Chart_ReRaise_Adjusted) ? 1 :       // 04%
     [ f$dealpositionrais==4 ] && handrank169 < 1.69 * (8	* f$Chart_ReRaise_Adjusted) ? 1 : 0 } : // 08%
 [ f$dealposition==6 ] ? { // button
-    [ f$dealpositionrais==3 ] && handrank169 < 1.69 * (5	* f$Chart_ReRaise_Adjusted) ? 1 :       // 04%
+    [ f$dealpositionrais==3 ] && handrank169 < 1.69 * (6.5	* f$Chart_ReRaise_Adjusted) ? 1 :       // 04%
     [ f$dealpositionrais==4 ] && handrank169 < 1.69 * (10	* f$Chart_ReRaise_Adjusted) ? 1 :       // 08%
     [ f$dealpositionrais==5 ] && handrank169 < 1.69 * (12	* f$Chart_ReRaise_Adjusted) ? 1 : 0 } : // 12%
 0
