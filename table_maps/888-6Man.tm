@@ -2,7 +2,7 @@
 
 // OpenScrape 7.7.0
 
-// 2015-06-20 01:40:06
+// 2015-06-23 14:47:53
 // 32 bits per pixel
 
 //
@@ -30,8 +30,8 @@ s$t1type                    0.10
 s$t2type                    fuzzy
 s$t3type                    0.20
 s$titletext                 NLH
-s$ttlimits                  ^* ^LH ^s/^b
-s$ttlimits0                 ^* ^L^*s: ^s/^b(^a)
+s$ttlimits                  ^* ^L^*s: ^s/^b(^a)
+s$ttlimits0                 ^* ^LH ^s/^b
 s$ttlimits1                 ^* ^* ^L^*H ^s/^b
 s$ttlimits2                 ^* ^L^*s: ^s/^b
 s$ttlimits3                 ^* ^L^*s: ^s/^b(^a)
