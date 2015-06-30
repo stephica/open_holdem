@@ -1,4 +1,4 @@
-##2015-07-01 01:34:20##
+##2015-07-01 01:38:21##
 
 ##notes##
  
@@ -20,8 +20,6 @@
 	&&
 	f$headsup_push_allin
 ] ? 1 :
-
-//[ nopponentsdealt > 1 && f$icm_alli ] ? 1 :
 0
 
 
@@ -1540,8 +1538,6 @@ nplayersplaying==6 && nplayersround2<=6 ? 3.50 : 1.25
 // f$icm_prizeX functions are used to configure the payout-structure in tournaments.
 // The sum of all f$icm_prizeX functions should be 1.00 (= 100%).
 // Default to get things going: the winner takes it all.
-nopponentsseated = 1 ? 1.0 :
-nopponentsseated >= 2 && nopponentsseated <= 6 ? 0.7 :
 1.0
 
 
@@ -1598,20 +1594,8 @@ nopponentsseated >= 2 && nopponentsseated <= 6 ? 0.7 :
 
 
 
-
-
 ##f$icm_prize2##
-nopponentsseated = 1 ? 0 :
-nopponentsseated >= 2 && nopponentsseated <= 6 ? 0.3 :
-0.3
-
-
-
-
-
-
-
-
+0.0
 
 
 
@@ -1744,19 +1728,6 @@ nopponentsseated >= 2 && nopponentsseated <= 6 ? 0.3 :
  
 
 ##f$test##
-me_re_PtypeHands
-
-
-
-
-
-
-
-
-
-
-
-
 
 ##f$debug##
  
