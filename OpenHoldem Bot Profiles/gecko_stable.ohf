@@ -1,4 +1,4 @@
-##2015-07-01 01:38:21##
+##2015-07-01 01:59:16##
 
 ##notes##
  
@@ -29437,11 +29437,11 @@ bblind * 3
 &&
 [
 	//fold equity higher than 3 bb invest to gain 4.5
-	(f$Position_CutOff && (f$ptype_button_nit || f$ptype_button_ubernit) && (f$steal_equity > 0.62))
+	(f$Position_CutOff && (f$steal_equity > 0.7))
 	||
-	(f$Position_Button && (f$steal_equity > 0.62))
+	(f$Position_Button && (f$steal_equity > 0.66))
 	||
-	(f$Position_SmallBlind && (f$steal_equity > 0.57))
+	(f$Position_SmallBlind && (f$steal_equity > 0.66))
 ]
 ? 1 : 0
 
@@ -29576,8 +29576,11 @@ f$Position_SmallBlind && ac_first_into_pot && f$big_blind_sitting_out ? 1 : 0
 ///////////////////////////////////////////////////////////////////////////////
 ////////calculate the fold equity for f$steal_blinds from BTN & SB/////////////
 ///////////////////////////////////////////////////////////////////////////////
-[ betround == 1 && ac_first_into_pot && pt_hands_bigblind > 25 ] ? {
-	[ (f$Position_Button || f$Position_CutOff) && pt_hands_smallblind > 25 ] ? {
+[ betround == 1 && ac_first_into_pot && pt_hands_bigblind > 100 ] ? {
+	[ f$Position_CutOff && pt_hands_smallblind > 100 && f$stats_button_hands > 100] ? {
+		pt_bb_fold_to_steal_bigblind * pt_sb_fold_to_steal_smallblind * (1 - (f$stats_button_vpip - f$stats_button_pfr))
+	} :
+	[ f$Position_Button && pt_hands_smallblind > 100 ] ? {
 		pt_bb_fold_to_steal_bigblind * pt_sb_fold_to_steal_smallblind
 	} :
 	[ f$Position_SmallBlind ] ? pt_bb_fold_to_steal_bigblind : 0
@@ -29653,7 +29656,11 @@ ac_first_into_pot
 &&
 prwin < 0.6
 &&
-(pot / 3 * 2) / ((pot / 3 * 2) + pot) < f$stats_flop_folder ? 1 : 0
+[ nbetsround1<=6 ]
+&&
+[ didraisround1 ]
+&&
+(pot*.75) / ((pot*.75) + pot) < f$stats_flop_folder ? 1 : 0
 
 
 
