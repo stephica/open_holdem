@@ -1,4 +1,4 @@
-##2015-06-30 23:57:56##
+##2015-06-30 23:59:34##
 
 ##notes##
  
@@ -13167,11 +13167,11 @@ call>bblind && f$srai>0 ? {
 */
 [
 	[
-		[ f$dealposition==1 && listOpenRaiseSmallBlind && handrank169 < 1.69 * (16 * f$Chart_OpenRaise_Adjusted) ] // 15%
+		[ f$dealposition==1 && listOpenRaiseSmallBlind ] // 15%
 		|| [ f$dealposition==3 && listOpenRaiseUTG1 ] // 13%
 		|| [ f$dealposition==4 && listOpenRaiseUTG2 ] // 15%
 		|| [ f$dealposition==5 && listOpenRaiseCutOff ] // 23%
-		|| [ f$dealposition==6 && listOpenRaiseButton ] // 40
+		|| [ f$dealposition==6 && listOpenRaiseButton ] // 29%
 		|| [ ispair && handrank169 <= 51]  //any pair above 44 when opponents = 5
 		|| [ f$steal_blinds && (isrush || handrank169 < 70) ]
 		|| [ f$steal_blinds_when_sitting_out ] ? 1 : 0
