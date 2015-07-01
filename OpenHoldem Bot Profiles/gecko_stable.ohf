@@ -1,4 +1,4 @@
-##2015-07-01 02:58:06##
+##2015-07-01 03:13:50##
 
 ##notes##
  
@@ -29380,6 +29380,43 @@ bblind * 3
 
 
 
+##f$stats_button_3bet##
+[ f$Position_UTG1 && userchair = 0 ] ? pt_3bet3 :
+[ f$Position_UTG1 && userchair = 1 ] ? pt_3bet4 :
+[ f$Position_UTG1 && userchair = 2 ] ? pt_3bet5 :
+[ f$Position_UTG1 && userchair = 3 ] ? pt_3bet0 :
+[ f$Position_UTG1 && userchair = 4 ] ? pt_3bet1 :
+[ f$Position_UTG1 && userchair = 5 ] ? pt_3bet2 :
+///////////////////////////////////////////////////
+[ f$Position_UTG2 && userchair = 0 ] ? pt_3bet2 :
+[ f$Position_UTG2 && userchair = 1 ] ? pt_3bet3 :
+[ f$Position_UTG2 && userchair = 2 ] ? pt_3bet4 :
+[ f$Position_UTG2 && userchair = 3 ] ? pt_3bet5 :
+[ f$Position_UTG2 && userchair = 4 ] ? pt_3bet0 :
+[ f$Position_UTG2 && userchair = 5 ] ? pt_3bet1 :
+///////////////////////////////////////////////////
+[ f$Position_CutOff && userchair = 0 ] ? pt_3bet1 :
+[ f$Position_CutOff && userchair = 1 ] ? pt_3bet2 :
+[ f$Position_CutOff && userchair = 2 ] ? pt_3bet3 :
+[ f$Position_CutOff && userchair = 3 ] ? pt_3bet4 :
+[ f$Position_CutOff && userchair = 4 ] ? pt_3bet5 :
+[ f$Position_CutOff && userchair = 5 ] ? pt_3bet0 :
+///////////////////////////////////////////////////
+[ f$Position_SmallBlind && userchair = 0 ] ? pt_3bet5 :
+[ f$Position_SmallBlind && userchair = 1 ] ? pt_3bet0 :
+[ f$Position_SmallBlind && userchair = 2 ] ? pt_3bet1 :
+[ f$Position_SmallBlind && userchair = 3 ] ? pt_3bet2 :
+[ f$Position_SmallBlind && userchair = 4 ] ? pt_3bet3 :
+[ f$Position_SmallBlind && userchair = 5 ] ? pt_3bet4 :
+///////////////////////////////////////////////////
+[ f$Position_BigBlind && userchair = 0 ] ? pt_3bet4 :
+[ f$Position_BigBlind && userchair = 1 ] ? pt_3bet5 :
+[ f$Position_BigBlind && userchair = 2 ] ? pt_3bet0 :
+[ f$Position_BigBlind && userchair = 3 ] ? pt_3bet1 :
+[ f$Position_BigBlind && userchair = 4 ] ? pt_3bet2 :
+[ f$Position_BigBlind && userchair = 5 ] ? pt_3bet3 :
+0
+
 ##f$stats_button_hands##
 [ f$Position_UTG1 && userchair = 0 ] ? pt_hands3 :
 [ f$Position_UTG1 && userchair = 1 ] ? pt_hands4 :
@@ -29615,6 +29652,106 @@ bblind * 3
 [ f$Position_BigBlind && userchair = 3 ] ? pt_vpip1 :
 [ f$Position_BigBlind && userchair = 4 ] ? pt_vpip2 :
 [ f$Position_BigBlind && userchair = 5 ] ? pt_vpip3 :
+0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##f$stats_cutoff_3bet##
+[ f$Position_UTG1 && userchair = 0 ] ? pt_3bet2 :
+[ f$Position_UTG1 && userchair = 1 ] ? pt_3bet3 :
+[ f$Position_UTG1 && userchair = 2 ] ? pt_3bet4 :
+[ f$Position_UTG1 && userchair = 3 ] ? pt_3bet5 :
+[ f$Position_UTG1 && userchair = 4 ] ? pt_3bet0 :
+[ f$Position_UTG1 && userchair = 5 ] ? pt_3bet1 :
+///////////////////////////////////////////////////
+[ f$Position_UTG2 && userchair = 0 ] ? pt_3bet1 :
+[ f$Position_UTG2 && userchair = 1 ] ? pt_3bet2 :
+[ f$Position_UTG2 && userchair = 2 ] ? pt_3bet3 :
+[ f$Position_UTG2 && userchair = 3 ] ? pt_3bet4 :
+[ f$Position_UTG2 && userchair = 4 ] ? pt_3bet5 :
+[ f$Position_UTG2 && userchair = 5 ] ? pt_3bet0 :
+///////////////////////////////////////////////////
+[ f$Position_CutOff && userchair = 0 ] ? pt_3bet0 :
+[ f$Position_CutOff && userchair = 1 ] ? pt_3bet1 :
+[ f$Position_CutOff && userchair = 2 ] ? pt_3bet2 :
+[ f$Position_CutOff && userchair = 3 ] ? pt_3bet3 :
+[ f$Position_CutOff && userchair = 4 ] ? pt_3bet4 :
+[ f$Position_CutOff && userchair = 5 ] ? pt_3bet5 :
+///////////////////////////////////////////////////
+[ f$Position_SmallBlind && userchair = 0 ] ? pt_3bet4 :
+[ f$Position_SmallBlind && userchair = 1 ] ? pt_3bet5 :
+[ f$Position_SmallBlind && userchair = 2 ] ? pt_3bet0 :
+[ f$Position_SmallBlind && userchair = 3 ] ? pt_3bet1 :
+[ f$Position_SmallBlind && userchair = 4 ] ? pt_3bet2 :
+[ f$Position_SmallBlind && userchair = 5 ] ? pt_3bet3 :
+///////////////////////////////////////////////////
+[ f$Position_BigBlind && userchair = 0 ] ? pt_3bet3 :
+[ f$Position_BigBlind && userchair = 1 ] ? pt_3bet4 :
+[ f$Position_BigBlind && userchair = 2 ] ? pt_3bet5 :
+[ f$Position_BigBlind && userchair = 3 ] ? pt_3bet0 :
+[ f$Position_BigBlind && userchair = 4 ] ? pt_3bet1 :
+[ f$Position_BigBlind && userchair = 5 ] ? pt_3bet2 :
 0
 
 
@@ -30350,6 +30487,43 @@ bblind * 3
 
 
 
+
+##f$stats_utg2_3bet##
+[ f$Position_UTG1 && userchair = 0 ] ? pt_3bet1 :
+[ f$Position_UTG1 && userchair = 1 ] ? pt_3bet2 :
+[ f$Position_UTG1 && userchair = 2 ] ? pt_3bet3 :
+[ f$Position_UTG1 && userchair = 3 ] ? pt_3bet4 :
+[ f$Position_UTG1 && userchair = 4 ] ? pt_3bet5 :
+[ f$Position_UTG1 && userchair = 5 ] ? pt_3bet0 :
+///////////////////////////////////////////////////
+[ f$Position_UTG2 && userchair = 0 ] ? pt_3bet0 :
+[ f$Position_UTG2 && userchair = 1 ] ? pt_3bet1 :
+[ f$Position_UTG2 && userchair = 2 ] ? pt_3bet2 :
+[ f$Position_UTG2 && userchair = 3 ] ? pt_3bet3 :
+[ f$Position_UTG2 && userchair = 4 ] ? pt_3bet4 :
+[ f$Position_UTG2 && userchair = 5 ] ? pt_3bet5 :
+///////////////////////////////////////////////////
+[ f$Position_CutOff && userchair = 0 ] ? pt_3bet5 :
+[ f$Position_CutOff && userchair = 1 ] ? pt_3bet0 :
+[ f$Position_CutOff && userchair = 2 ] ? pt_3bet1 :
+[ f$Position_CutOff && userchair = 3 ] ? pt_3bet2 :
+[ f$Position_CutOff && userchair = 4 ] ? pt_3bet3 :
+[ f$Position_CutOff && userchair = 5 ] ? pt_3bet4 :
+///////////////////////////////////////////////////
+[ f$Position_SmallBlind && userchair = 0 ] ? pt_3bet3 :
+[ f$Position_SmallBlind && userchair = 1 ] ? pt_3bet4 :
+[ f$Position_SmallBlind && userchair = 2 ] ? pt_3bet5 :
+[ f$Position_SmallBlind && userchair = 3 ] ? pt_3bet0 :
+[ f$Position_SmallBlind && userchair = 4 ] ? pt_3bet1 :
+[ f$Position_SmallBlind && userchair = 5 ] ? pt_3bet2 :
+///////////////////////////////////////////////////
+[ f$Position_BigBlind && userchair = 0 ] ? pt_3bet2 :
+[ f$Position_BigBlind && userchair = 1 ] ? pt_3bet3 :
+[ f$Position_BigBlind && userchair = 2 ] ? pt_3bet4 :
+[ f$Position_BigBlind && userchair = 3 ] ? pt_3bet5 :
+[ f$Position_BigBlind && userchair = 4 ] ? pt_3bet0 :
+[ f$Position_BigBlind && userchair = 5 ] ? pt_3bet1 :
+0
 
 ##f$stats_utg2_hands##
 [ f$Position_UTG1 && userchair = 0 ] ? pt_hands1 :
