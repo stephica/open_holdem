@@ -2,7 +2,7 @@
 
 // OpenScrape 7.7.0
 
-// 2015-06-13 23:04:15
+// 2015-07-01 23:04:35
 // 32 bits per pixel
 
 //
@@ -18,7 +18,6 @@ z$clientsize       480  323
 s$allinconfirmationmethod   Click Bet
 s$balancenumbersonly        True
 s$buttonclickmethod         1
-s$c0limits                  ^*^s/^b)(^a)
 s$nchairs                   6
 s$network                   party
 s$potmethod                 2
@@ -33,32 +32,29 @@ s$t2type                    fuzzy
 s$t3type                    fuzzy
 s$titletext                 Supersonic
 s$titletext0                NL
-s$ttlimits                  ^*m - ^s/^b
+s$ttlimits                  ^* -  ^L  ^*m - ^s/^b
 
 //
 // regions
 //
 
-r$c0bigblind          37   9  58  14   ffffff    0 T1
-r$c0cardface0nocard  146 108 146 108   333536    0 C
+r$c0cardface0nocard  168 103 168 103   fefefe  -24 C
 r$c0cardface0rank    146  95 158 109   d9d5e6  150 T2
-r$c0cardface0suit    146  95 149  98        0    0 I
-r$c0cardface1nocard  184 108 184 108   434444    0 C
+r$c0cardface0suit    160  95 177 111   fefefe  142 T2
+r$c0cardface1nocard  207 103 207 103   fefefe   -9 C
 r$c0cardface1rank    184  95 196 109   d9d5e6  150 T2
-r$c0cardface1suit    184  95 187  98        0    0 I
-r$c0cardface2nocard  223 108 223 108   585858    0 C
+r$c0cardface1suit    197  95 214 111   fefefe  142 T2
+r$c0cardface2nocard  245 103 245 103   5a5b5b    7 C
 r$c0cardface2rank    223  95 235 109   d9d5e6  150 T2
-r$c0cardface2suit    223  95 226  98        0    0 I
-r$c0cardface3nocard  262 108 262 108   575757    0 C
+r$c0cardface2suit    236  95 253 111   fefefe  142 T2
+r$c0cardface3nocard  284 103 284 103   fefefe   -1 C
 r$c0cardface3rank    262  95 274 109   d9d5e6  150 T2
-r$c0cardface3suit    262  95 265  98        0    0 I
-r$c0cardface4nocard  300 108 300 108   414343    0 C
+r$c0cardface3suit    275  95 292 111   fefefe  142 T2
+r$c0cardface4nocard  322 103 322 103   ffffff   -6 C
 r$c0cardface4rank    300  95 312 109   d9d5e6  150 T2
-r$c0cardface4suit    300  95 303  98        0    0 I
+r$c0cardface4suit    313  95 330 111   fefefe  142 T2
 r$c0handnumber       419   0 476   9   ffffff    0 T0
-r$c0limits            26   9  91  14   1c1c1c -200 T1
 r$c0pot0             213  60 275  69   ffffff    0 T1
-r$c0smallblind        26   9  37  14   ffffff    0 T1
 r$i0button           254 280 320 301        0    0 N
 r$i0label            272 287 300 296   151515    0 T1
 r$i0state            255 288 255 288   82e5fe   60 C
@@ -97,7 +93,7 @@ r$p0cardface0suit    292   8 295  11        0    0 I
 r$p0cardface1nocard  313  11 313  11   1e1e1e    0 C
 r$p0cardface1rank    305   8 317  22   d9d5e6  150 T2
 r$p0cardface1suit    305   9 308  12        0    0 I
-r$p0dealer           270  55 280  63        0    0 I
+r$p0dealer           266  55 276  63        0    0 I
 r$p0name             272  37 343  46   ffffff    0 T0
 r$p0seated           332   3 332   3   1b1b1b   -1 C
 r$p1active           438 107 469 112        0    0 I
@@ -117,10 +113,10 @@ r$p2active           290 198 321 203        0    0 I
 r$p2balance          258 228 327 235   ffffff    0 T0
 r$p2bet              256 173 313 181   ffffff    0 T1
 r$p2cardback         312 195 312 195   207e97    0 C
-r$p2cardface0nocard  276 188 276 188   444645    0 C
+r$p2cardface0nocard  276 188 276 188   737777    0 C
 r$p2cardface0rank    274 187 287 201   d9d5e6  150 T2
 r$p2cardface0suit    275 187 278 190        0    0 I
-r$p2cardface1nocard  289 188 289 188   434444    0 C
+r$p2cardface1nocard  289 188 289 188   6b6d6d    0 C
 r$p2cardface1rank    288 187 300 201   d9d5e6  150 T2
 r$p2cardface1suit    288 187 291 190        0    0 I
 r$p2dealer           255 171 265 179        0    0 I
@@ -347,16 +343,21 @@ t2$3 186 1a7 323 3f3 3fe 1de
 t2$4 18 78 ca 1ff 3ff 1e 18
 t2$Q 1e0 3f8 7f8 40c c04 c06 c0e 7ff 3fb 1f1 1
 t2$9 1f0 1f3 312 31e 1fc 1f8
+t2$c 1f0 3f8 3f8 3f8 1ff8 3ff1 3fff 3ff3 3ff8 1ff8 1fc 1fc 1f8 f0
+t2$s 1f0 3f8 3fc 7fc ff8 1ff8 3fff 1ff8 ff8 7fc 3f8 1f8 f0
 t2$5 2 1e6 323 323 33e 33e
 t2$7 3c0 383 38e 3b8 3e0 380
+t2$h 3e0 7f0 ff8 ff8 ffc 7fe 3ff 3ff 7fe ffc ff8 ff0 7f0 3c0
 t2$J 401 7ff 7fe 7f0
 t2$2 41 c3 187 18d f9 f3 2
+t2$d 60 f0 1f8 3fc 7fe fff 1fff fff 7fe 3fc 1f8 f0 60
 t2$0 7c 1fe 187 101 1cf 1fe
 t2$6 7c fe 1f2 123 33e 23e 18
 t2$8 8c 1fe 373 233 3fe 1de
 t2$7 c0 1c1 187 18e 1f0 1c0
 t2$4 c 3c 65 ff 1ff d c
 t2$9 e0 1f3 3f3 316 3fe 1fc f0
+t2$c f0 1f8 3f8 1f8 1ff8 3ff0 3fe7 3ff3 3ff8 1ff8 1fc 1fc 1f8 f0
 t2$5 f6 3e7 323 337 33e 31c
 t3$0 1e 21 21 1e
 t3$0 21 21 1e
