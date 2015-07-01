@@ -1,4 +1,4 @@
-##2015-07-01 08:19:44##
+##2015-07-01 09:47:45##
 
 ##notes##
  
@@ -16359,6 +16359,9 @@ pt_pfr_raischair > 0 && pt_hands_raischair > me_re_CallRaiseHands ? {
     [ f$dealpositionrais==3 ] && handrank169 < 1.69 * (6.5	* f$Chart_ReRaise_Adjusted) ? 1 :       // 04%
     [ f$dealpositionrais==4 ] && handrank169 < 1.69 * (7	* f$Chart_ReRaise_Adjusted) ? 1 : 0 } : // 08%
 [ f$dealposition==6 ] ? { // button
+    [ f$dealpositionrais==3 ] && f$steal_by_3bet ? 1 :     
+    [ f$dealpositionrais==4 ] && f$steal_by_3bet ? 1 :    
+    [ f$dealpositionrais==5 ] && f$steal_by_3bet ? 1 : 
     [ f$dealpositionrais==3 ] && handrank169 < 1.69 * (9	* f$Chart_ReRaise_Adjusted) ? 1 :       // 04%
     [ f$dealpositionrais==4 ] && handrank169 < 1.69 * (11	* f$Chart_ReRaise_Adjusted) ? 1 :       // 08%
     [ f$dealpositionrais==5 ] && handrank169 < 1.69 * (12	* f$Chart_ReRaise_Adjusted) ? 1 : 0 } : // 12%
@@ -34915,6 +34918,29 @@ f$Position_SmallBlind && ac_first_into_pot && f$big_blind_sitting_out ? 1 : 0
 
 
 
+
+##f$steal_by_3bet##
+[ 
+	f$Position_Button 
+	&&
+	nopponentstruelyraising = 1
+	&&
+	nopponentscalling = 0
+	&&
+	pt_hands_raischair > 100
+	&&
+	pt_fold_to_3bet_raischair > 0
+	&&
+	pt_hands_smallblind > 100
+	&&
+	pt_vpip_smallblind < 0.18
+	&&
+	pt_hands_bigblind > 100
+	&&
+	pt_vpip_bigblind < 0.18
+	&&
+	f$currentbet_raischair * 2.5 / ((f$currentbet_raischair * 2.5)+pot) < pt_fold_to_3bet_raischair 
+] ? 1 : 0
 
 ##f$steal_equity##
 ///////////////////////////////////////////////////////////////////////////////
